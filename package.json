@@ -1,0 +1,32 @@
+{
+  "name": "catwalk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CP-Front-End-Capstone/catwalk.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CP-Front-End-Capstone/catwalk/issues"
+  },
+  "homepage": "https://github.com/CP-Front-End-Capstone/catwalk#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "express": "^4.17.1",
+    "jquery": "^3.6.0",
+    "react": "^17.0.2"
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "nodemon": "^2.0.7",
+    "webpack": "^5.32.0"
+  }
+}
