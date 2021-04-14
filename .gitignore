@@ -1,1 +1,6 @@
+<<<<<<< HEAD
 /config.js
+=======
+node_modules
+/API/config.js
+>>>>>>> 76ef637b6ad4e8f647d93dfda69e89738a6c2d02
