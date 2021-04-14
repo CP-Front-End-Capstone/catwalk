@@ -1,9 +1,21 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /config.js
+=======
+=======
+>>>>>>> 40b6c2ae8cc93fb8e439fa3abbc2396670f74f86
+node_modules
+<<<<<<< HEAD
 =======
 node_modules
 /API/config.js
+>>>>>>> origin
+=======
+/API/config.js
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> 76ef637b6ad4e8f647d93dfda69e89738a6c2d02
 =======
+=======
+>>>>>>> 40b6c2ae8cc93fb8e439fa3abbc2396670f74f86
 >>>>>>> 4d01411a81074e328a53e76c7dc319058e86cea7
