@@ -1,10 +1,11 @@
+/* eslint-disable react/prefer-stateless-function */
 import React from 'react';
 
 class App extends React.Component {
-  render () {
+  render() {
     return (
       <h1>Hello Even Bigger Earth!</h1>
-    )
+    );
   }
 }
 
