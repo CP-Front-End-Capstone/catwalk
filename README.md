@@ -12,14 +12,14 @@ Project Catwalk is a complete redesign of a client-facing retail web-portal. Thi
   [usage](###Usage)
   -------------------------------
   [team-members](###Team)
-
   --------------------------------
 
 
 # Description
 
     - Product Details Overview: this module includes the following:
-        - Product Information: general information about the product including Star Rating, Product Category, Title, Price, and any Product Description if available. Also includes the option to share on Social Media.
+        - Product Information: general information about the product including Star Rating, Product Category, Title, Price, and any Product Description if available.
+        Also includes the option to share on Social Media.
         - Style Selector: image thumbnails of the style options for the selected product. When user toggles between them, large images should be updated to reflect the selected style.
         - Add to Cart: the user can select a size and quantity of the selected product in the selected style.
 
@@ -27,7 +27,9 @@ Project Catwalk is a complete redesign of a client-facing retail web-portal. Thi
     - Ratings & Reviews: this module includes the following:
         - Write new review: the user has the option to write a new review of the selected product.
         - Reviews list: the user can see and sort a list of previous reviews of the selected product, the user will have the option to see "More Reviews" by clicking a link if more are available.
-        - Individual reviews: including star ratings, date of review, a one sentence summary of the review, and the review body. The user will also be able to see the reviewer's name and whether they would recommend the product. If the user's email address is associated with a sale in the system, then next to the username the user will see that the reviewer is a "Verified Purchaser"
+        - Individual reviews: including star ratings, date of review, a one sentence summary of the review, and the review body.
+        The user will also be able to see the reviewer's name and whether they would recommend the product.
+        If the user's email address is associated with a sale in the system, then next to the username the user will see that the reviewer is a "Verified Purchaser"
         - Rating Helpfulness: the user will be able to rate whether the review was helpful with a Y/N, and will see if the review was previously rated helpful or not.
         - Filtering Reviews: the user has the option to filter reviews.
         - Search Reviews for key word
