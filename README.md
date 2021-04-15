@@ -6,8 +6,11 @@ Project Catwalk is a complete redesign of a client-facing retail web-portal. Thi
 
 # Table of Contents
   [description](###Description)
+  -------------------------------
   [installation](###Installation)
+  -------------------------------
   [usage](###Usage)
+  -------------------------------
   [team-members](###Team)
 
   --------------------------------
