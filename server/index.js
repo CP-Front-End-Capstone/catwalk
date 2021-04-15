@@ -22,3 +22,8 @@ app.get('/products', (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
+
+function sum(a, b) {
+  return a + b;
+}
+module.exports = sum;
