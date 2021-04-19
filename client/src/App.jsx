@@ -1,13 +1,13 @@
 /* eslint-disable react/prefer-stateless-function */
 import React from 'react';
-import ProductContext from './contexts/ProductContext.jsx';
+import productContext from './contexts/ProductContext.jsx';
 import ReviewsRatings from './widgets/ReviewsRatings.jsx';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedProduct: {},
+      selectedProduct: { test: 'test' },
     };
   }
 
@@ -18,9 +18,9 @@ class App extends React.Component {
 
         <h1>Hello Even Bigger Earth!</h1>
         <div>
-          <ProductContext.Provider value={this.state.selectedProduct}>
+          <productContext.Provider value={this.state.selectedProduct}>
             <ReviewsRatings />
-          </ProductContext.Provider>
+          </productContext.Provider>
         </div>
       </div>
 
@@ -28,6 +28,6 @@ class App extends React.Component {
   }
 }
 
-App.contextType = ProductContext;
+App.contextType = productContext;
 
 export default App;

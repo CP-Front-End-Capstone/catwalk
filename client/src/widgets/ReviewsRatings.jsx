@@ -1,4 +1,5 @@
 import React from 'react';
+import productContext from '../contexts/ProductContext.jsx';
 
 class ReviewsRatings extends React.Component {
   constructor(props) {
@@ -8,7 +9,16 @@ class ReviewsRatings extends React.Component {
 
   render() {
     return (
-      'Review hello'
+      <div>
+        <h3>Reviews & Ratings</h3>
+        <div>
+          this is selectedProduct:
+          <productContext.Consumer>
+            {(value) => value}
+          </productContext.Consumer>
+        </div>
+
+      </div>
     );
   }
 }
