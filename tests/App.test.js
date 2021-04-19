@@ -4,6 +4,6 @@ const config = require('./testconfig.js');
 const App = require('../client/src/App.jsx');
 
 
-const body = Enzyme.mount(<App/>);
+const body = <App/>;
 
 console.log("INNERHTML:",body.innerHtml);
