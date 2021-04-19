@@ -13,13 +13,15 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: [],
+      productId: '',
+      product: [],
+      styles: [],
     };
   }
 
   componentDidMount() {
     axios({
-      url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/products',
+      url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/products/18078',
       method: 'GET',
       headers: {
         Authorization: config.TOKEN,
@@ -27,7 +29,23 @@ class App extends React.Component {
     })
       .then((res) => {
         console.log(res);
-        this.setState({ products: res.data });
+        this.setState({
+          product: res.data,
+          productId: res.data.id,
+        });
+        axios({
+          url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/products/18078/styles',
+          method: 'GET',
+          headers: {
+            Authorization: config.TOKEN,
+          },
+        })
+          .then((resp) => {
+            this.setState({ styles: resp.data.results });
+          })
+          .catch((err) => {
+            console.log('Error: ', err);
+          });
       })
       .catch((err) => {
         console.log('Error: ', err);
