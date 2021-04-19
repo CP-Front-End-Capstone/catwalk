@@ -5,6 +5,7 @@
 import React from 'react';
 import axios from 'axios';
 
+<<<<<<< HEAD
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -29,6 +30,10 @@ class App extends React.Component {
       <h1>Hello Even Bigger Earth!</h1>
     );
   }
+=======
+function App(props) {
+  return <h1>Hello Even Bigger Earth!</h1>;
+>>>>>>> 0043b6eb71b50ecf08630b3a41e6a4d86fb8d630
 }
 
 export default App;
