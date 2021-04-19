@@ -1,31 +1,28 @@
 /* eslint-disable no-console */
 const axios = require('axios');
-const config = require('./config.example.js');
+const config = require('./config.js');
 
-const apiRequest = (endpoint, cb) => {
+const fetchEndpoint = (endpoint, callback) => {
+  // const apiUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/:hr-bld';
   // TODO - Use the axios module to request repos for a specific
   // user from the github API
   // The options object has been provided to help you out,
   // but you'll have to fill in the URL
-  const options = {
-    url: `https://app-hrsei-api.herokuapp.com/api/fec2/:hr-bld16/${endpoint}`,
-    method: 'GET',
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/:hr-bld${endpoint}`, {
     headers: {
-      'User-Agent': 'request',
-      Authorization: `token ${config.TOKEN}`,
+      Authorization: config.TOKEN,
     },
-  };
-
-  axios(options)
+  })
     .then((res) => {
-      cb(res.data);
+      console.log('This is helper fetch data:', res.param);
+      callback(res.data);
     })
-    .catch((err) => {
-      console.log(err);
+    .catch((error) => {
+      console.log(error);
     });
 };
 
-module.exports.apiRequest = apiRequest;
+module.exports.fetchEndpoint = fetchEndpoint;
 
 // axios.get(/review,options)
 // .then()
