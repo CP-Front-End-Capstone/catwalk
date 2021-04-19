@@ -1,18 +1,17 @@
 /* eslint-disable react/prefer-stateless-function */
 import React from 'react';
-import productContext from './contexts/ProductContext.jsx';
+import productContext from './contexts/ProductContext';
 import ReviewsRatings from './widgets/ReviewsRatings.jsx';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedProduct: { test: 'test' },
+      selectedProduct: { test: 'testing' },
     };
   }
 
   render() {
-    console.log(this.context);
     return (
       <div>
 
@@ -27,7 +26,5 @@ class App extends React.Component {
     );
   }
 }
-
-App.contextType = productContext;
 
 export default App;

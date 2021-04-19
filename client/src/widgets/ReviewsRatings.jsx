@@ -1,10 +1,16 @@
 import React from 'react';
-import productContext from '../contexts/ProductContext.jsx';
+import productContext from '../contexts/ProductContext';
 
 class ReviewsRatings extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      productId:
+      <productContext.Consumer>
+        {(value) => value.test}
+      </productContext.Consumer>,
+
+    };
   }
 
   render() {
@@ -13,9 +19,7 @@ class ReviewsRatings extends React.Component {
         <h3>Reviews & Ratings</h3>
         <div>
           this is selectedProduct:
-          <productContext.Consumer>
-            {(value) => value}
-          </productContext.Consumer>
+          {this.state.productId}
         </div>
 
       </div>
