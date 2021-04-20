@@ -6,9 +6,9 @@ class ReviewsRatings extends React.Component {
     super(props);
     this.state = {
       productId:
-      <productContext.Consumer>
-        {(value) => value.id}
-      </productContext.Consumer>,
+  <productContext.Consumer>
+    {(value) => value.id}
+  </productContext.Consumer>,
 
     };
   }
@@ -17,11 +17,22 @@ class ReviewsRatings extends React.Component {
     return (
       <div>
         <h3>Reviews & Ratings</h3>
-        <div>
-          this is selectedProduct:
-          {this.state.productId}
+        <div className="container">
+          <div className="row">
+            <div className="col-sm">
+              Review Breakdown
+            </div>
+            <div className="col-sm">
+              this is selectedProduct:
+              {this.state.productId}
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-sm">
+              Product Breakdown
+            </div>
+          </div>
         </div>
-
       </div>
     );
   }
