@@ -1,6 +1,11 @@
+/* eslint-disable react/destructuring-assignment */
 import React from 'react';
+import axios from 'axios';
 import productContext from '../../contexts/ProductContext';
 import ReviewsList from './ReviewsList.jsx';
+import AddReview from './AddReview.jsx';
+
+const dummyData = require('./dummydata.js');
 
 class ReviewsRatings extends React.Component {
   constructor(props) {
@@ -10,37 +15,35 @@ class ReviewsRatings extends React.Component {
   <productContext.Consumer>
     {(value) => value.id}
   </productContext.Consumer>,
+      reviewList: dummyData.dummyData.results,
+      sort: 'relevant',
+      reviewsMeta: {},
+      addReview: null,
 
     };
   }
 
+  addReviewClick() {
+    this.setState({ addReview: true });
+  }
+
   render() {
     return (
-      <div>
+      <div className="reviewscontainer">
         <h3>Reviews & Ratings</h3>
-        <div className="container">
-          <div className="row">
-            <div className="col-sm">
-              Review Breakdown
-            </div>
-            <div className="col-sm">
-              <ReviewsList/>
-              <div className="container">
-                <div className="row">
-                  <div className="col-sm">
-                    <button>More Reviews</button>
-
-                  </div>
-                  <div className="col-sm">
-                  <button>Add a Review</button>
-                  </div>
-                </div>
+        <div>
+          Average Review: Stars
+        </div>
+        <div className="col-sm">
+          <div className="container">
+            <div className="row">
+              <ReviewsList reviewList={this.state.reviewList} />
+              <div className="col-sm">
+                <button type="button">More Reviews</button>
               </div>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-sm">
-              Product Breakdown
+              <div className="col-sm">
+                <button type="button">Add a Review</button>
+              </div>
             </div>
           </div>
         </div>
