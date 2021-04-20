@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import productContext from './contexts/ProductContext';
 import ReviewsRatings from './widgets/reviews/ReviewsRatings.jsx';
+import QandA from './widgets/qa/QandA.jsx';
 import config from '../../API/config.js';
 
 class App extends React.Component {
@@ -55,6 +56,7 @@ class App extends React.Component {
         <div>
           <productContext.Provider value={this.state.selectedProduct}>
             <ReviewsRatings />
+            <QandA />
           </productContext.Provider>
         </div>
       </div>
