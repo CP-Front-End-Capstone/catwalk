@@ -1,20 +1,19 @@
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-unresolved */
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/no-unused-state */
 /* eslint-disable no-console */
-/* eslint-disable no-useless-constructor */
-/* eslint-disable react/prefer-stateless-function */
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/no-unused-state */
+/* eslint-disable import/extensions */
 import React from 'react';
 import axios from 'axios';
+import productContext from './contexts/ProductContext';
+import ReviewsRatings from './widgets/reviews/ReviewsRatings.jsx';
 import config from '../../API/config.js';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      selectedProduct: { test: 'testing' },
       productId: '',
-      product: [],
       styles: [],
     };
   }
@@ -30,7 +29,7 @@ class App extends React.Component {
       .then((res) => {
         console.log(res);
         this.setState({
-          product: res.data,
+          selectedProduct: res.data,
           productId: res.data.id,
         });
         axios({
@@ -53,7 +52,18 @@ class App extends React.Component {
   }
 
   render() {
-    return <h1>Hello Even Bigger Earth!</h1>;
+    return (
+      <div>
+
+        <h1>Hello Even Bigger Earth!</h1>
+        <div>
+          <productContext.Provider value={this.state.selectedProduct}>
+            <ReviewsRatings />
+          </productContext.Provider>
+        </div>
+      </div>
+
+    );
   }
 }
 
