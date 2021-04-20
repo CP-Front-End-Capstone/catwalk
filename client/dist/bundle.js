@@ -311,7 +311,7 @@ eval("\n\nvar bind = __webpack_require__(/*! ./helpers/bind */ \"./node_modules/
   \***********************/
 /***/ ((module) => {
 
-eval("module.exports = {\n  TOKEN: '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'\n};\n\n//# sourceURL=webpack://catwalk/./API/config.js?");
+eval("module.exports = {\n  TOKEN: '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'\n};\n\n//# sourceURL=webpack://catwalk/./API/config.js?");
 
 /***/ }),
 
