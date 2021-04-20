@@ -1,5 +1,6 @@
 import React from 'react';
 import productContext from '../../contexts/ProductContext';
+import ReviewsList from './ReviewsList.jsx';
 
 class ReviewsRatings extends React.Component {
   constructor(props) {
@@ -23,8 +24,18 @@ class ReviewsRatings extends React.Component {
               Review Breakdown
             </div>
             <div className="col-sm">
-              this is selectedProduct:
-              {this.state.productId}
+              <ReviewsList/>
+              <div className="container">
+                <div className="row">
+                  <div className="col-sm">
+                    <button>More Reviews</button>
+
+                  </div>
+                  <div className="col-sm">
+                  <button>Add a Review</button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div className="row">
