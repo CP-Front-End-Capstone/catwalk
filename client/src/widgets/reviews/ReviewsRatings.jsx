@@ -1,5 +1,5 @@
 import React from 'react';
-import productContext from '../contexts/ProductContext';
+import productContext from '../../contexts/ProductContext';
 
 class ReviewsRatings extends React.Component {
   constructor(props) {
@@ -7,7 +7,7 @@ class ReviewsRatings extends React.Component {
     this.state = {
       productId:
       <productContext.Consumer>
-        {(value) => value.test}
+        {(value) => value.id}
       </productContext.Consumer>,
 
     };

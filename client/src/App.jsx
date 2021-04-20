@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import productContext from './contexts/ProductContext';
-import ReviewsRatings from './widgets/ReviewsRatings.jsx';
+import ReviewsRatings from './widgets/reviews/ReviewsRatings.jsx';
 import config from '../../API/config.js';
 
 class App extends React.Component {
