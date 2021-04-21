@@ -8,15 +8,19 @@ const App = () => {
   const [productId, changeProductId] = useState('18078');
   const [product, changeProduct] = useState();
   const [styles, changeStyles] = useState();
+  const [reviews, changeReviews] = useState();
+  const [questions, changeQuestions] = useState();
 
   useEffect(() => {
     api.fetchEndpoint(`/products/${productId}`)
       .then((productData) => {
         changeProduct(productData);
-        api.fetchEndpoint(`products`);
+        api.fetchEndpoint(`/products/${productId}/styles`)
+          .then((stylesData) => {
+            changeStyles(stylesData.results);
+          });
       });
-  });
-  // changeStyles(stylesData.results);
+  }, [productId]);
 
   return (
     <div>
@@ -26,9 +30,11 @@ const App = () => {
           <ReviewsRatings />
           <QandA />
         </productContext.Provider> */}
-        {productId}
-        {JSON.stringify(product)}
-        {/* {JSON.stringify(styles)} */}
+        <div>{productId}</div>
+        <div>____________________________________________</div>
+        <div>{JSON.stringify(product)}</div>
+        <div>____________________________________________</div>
+        <div>{JSON.stringify(styles)}</div>
       </div>
     </div>
   );
