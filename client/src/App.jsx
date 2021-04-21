@@ -8,6 +8,7 @@ const App = () => {
   const [productId, changeProductId] = useState('18078');
   const [product, changeProduct] = useState();
   const [styles, changeStyles] = useState();
+  const [related, changeRelated] = useState();
   const [reviews, changeReviews] = useState();
   const [questions, changeQuestions] = useState();
 
@@ -18,6 +19,12 @@ const App = () => {
         api.fetchEndpoint(`/products/${productId}/styles`)
           .then((stylesData) => {
             changeStyles(stylesData.results);
+            api.fetchEndpoint(`/products/${productId}/related`)
+              .then((relatedData) => {
+                changeRelated(relatedData);
+                api.fetchEndpoint()
+                  .then(() => {});
+              });
           });
       });
   }, [productId]);
@@ -35,6 +42,8 @@ const App = () => {
         <div>{JSON.stringify(product)}</div>
         <div>____________________________________________</div>
         <div>{JSON.stringify(styles)}</div>
+        <div>____________________________________________</div>
+        <div>{JSON.stringify(related)}</div>
       </div>
     </div>
   );
