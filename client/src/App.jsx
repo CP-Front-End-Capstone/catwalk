@@ -1,16 +1,14 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import api from '../../API/helper';
-// import productContext from './contexts/ProductContext';
-// import ReviewsRatings from './widgets/reviews/ReviewsRatings.jsx';
-// import QandA from './widgets/qa/QandA.jsx';
+import productContext from './contexts/ProductContext';
+import ReviewsRatings from './widgets/reviews/ReviewsRatings.jsx';
+import QandA from './widgets/qa/QandA.jsx';
 
 const App = () => {
   const [productId, changeProductId] = useState('18078');
   const [product, changeProduct] = useState();
   const [styles, changeStyles] = useState();
-  const [related, changeRelated] = useState();
-  const [reviews, changeReviews] = useState();
-  const [questions, changeQuestions] = useState();
 
   useEffect(() => {
     api.fetchEndpoint(`/products/${productId}`)
@@ -19,13 +17,10 @@ const App = () => {
         api.fetchEndpoint(`/products/${productId}/styles`)
           .then((stylesData) => {
             changeStyles(stylesData.results);
-            api.fetchEndpoint(`/products/${productId}/related`)
-              .then((relatedData) => {
-                changeRelated(relatedData);
-                api.fetchEndpoint()
-                  .then(() => {});
-              });
           });
+      })
+      .catch((error) => {
+        console.log('Error fetching data', error);
       });
   }, [productId]);
 
@@ -33,17 +28,9 @@ const App = () => {
     <div>
       <h1>Hello Even Bigger Earth!</h1>
       <div>
-        {/* <productContext.Provider value={1}>
+        <productContext.Provider value={{ product, changeProduct }}>
           <ReviewsRatings />
-          <QandA />
-        </productContext.Provider> */}
-        <div>{productId}</div>
-        <div>____________________________________________</div>
-        <div>{JSON.stringify(product)}</div>
-        <div>____________________________________________</div>
-        <div>{JSON.stringify(styles)}</div>
-        <div>____________________________________________</div>
-        <div>{JSON.stringify(related)}</div>
+        </productContext.Provider>
       </div>
     </div>
   );
