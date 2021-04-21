@@ -29,20 +29,24 @@ class ReviewsRatings extends React.Component {
 
   render() {
     return (
-      <div className="reviewscontainer">
+      <div>
         <h3>Reviews & Ratings</h3>
-        <div>
-          Average Review: Stars
-        </div>
-        <div className="col-sm">
-          <div className="container">
-            <div className="row">
-              <ReviewsList reviewList={this.state.reviewList} />
-              <div className="col-sm">
-                <button type="button">More Reviews</button>
-              </div>
-              <div className="col-sm">
-                <button type="button">Add a Review</button>
+        <div className="container">
+          <div className="row">
+            <div className="col-sm">
+              Average Review: Stars
+            </div>
+            <div className="col-sm">
+              <div className="container">
+                <div className="row">
+                  <ReviewsList reviewList={this.state.reviewList} />
+                  <div className="col-sm">
+                    <button type="button">More Reviews</button>
+                  </div>
+                  <div className="col-sm">
+                    <button type="button">Add a Review</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
