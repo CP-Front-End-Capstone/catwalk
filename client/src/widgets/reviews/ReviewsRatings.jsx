@@ -1,3 +1,6 @@
+/* eslint-disable import/extensions */
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/no-unused-state */
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import axios from 'axios';
@@ -23,20 +26,20 @@ class ReviewsRatings extends React.Component {
     };
   }
 
-  componentDidMount() {
-    axios.get('/reviews/', {
-      params: {
-        page: 1, count: 2, sort: this.state.sort, product_id: this.state.productId,
-      },
-    })
-      .then((response) => {
-        this.setState({ reviewList: response.data.results });
-        console.log('successfully pulled from API', this.state.reviewList);
-      })
-      .catch((err) => {
-        console.log('error pulling from reviews API', err);
-      });
-  }
+  // componentDidMount() {
+  //   axios.get('/reviews/', {
+  //     params: {
+  //       page: 1, count: 2, sort: this.state.sort, product_id: this.state.productId,
+  //     },
+  //   })
+  //     .then((response) => {
+  //       this.setState({ reviewList: response.data.results });
+  //       console.log('successfully pulled from API', this.state.reviewList);
+  //     })
+  //     .catch((err) => {
+  //       console.log('error pulling from reviews API', err);
+  //     });
+  // }
 
   addReviewClick() {
     this.setState({ addReview: true });
