@@ -14,15 +14,11 @@ const fetchEndpoint = (endpoint, callback) => {
     },
   })
     .then((res) => {
-      console.log('This is helper fetch data:', res.param);
-      callback(res.data);
+      callback(null, res.data);
     })
     .catch((error) => {
-      console.log(error);
+      callback(error, null);
     });
 };
 
 module.exports.fetchEndpoint = fetchEndpoint;
-
-// axios.get(/review,options)
-// .then()
