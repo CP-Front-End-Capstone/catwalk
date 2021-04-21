@@ -3,15 +3,14 @@ import axios from 'axios';
 import productContext from '../contexts/ProductContext.js';
 import config from '../../../API/config.js';
 
-class QandA extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+const QandA = () => {
+  //state variables
+  const [product, setProduct] = useState();
+  
+};
 
-  render() {
-    return ();
-  }
-}
+const fetchQuestions = () => {
+
+};
 
 export default QandA;
