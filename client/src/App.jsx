@@ -1,10 +1,14 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/jsx-no-undef */
 /* eslint-disable no-console */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/no-unused-state */
 /* eslint-disable import/extensions */
 import React from 'react';
 import axios from 'axios';
+import Route from 'react-router-dom';
 import productContext from './contexts/ProductContext';
+import Overview from './overview/Overview.jsx';
 import ReviewsRatings from './widgets/reviews/ReviewsRatings.jsx';
 import config from '../../API/config.js';
 
@@ -54,10 +58,10 @@ class App extends React.Component {
   render() {
     return (
       <div>
-
         <h1>Hello Even Bigger Earth!</h1>
         <div>
           <productContext.Provider value={this.state.selectedProduct}>
+            <Overview />
             <ReviewsRatings />
           </productContext.Provider>
         </div>
