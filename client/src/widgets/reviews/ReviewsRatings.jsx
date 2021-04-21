@@ -23,6 +23,21 @@ class ReviewsRatings extends React.Component {
     };
   }
 
+  componentDidMount() {
+    axios.get('/reviews/', {
+      params: {
+        page: 1, count: 2, sort: this.state.sort, product_id: this.state.productId,
+      },
+    })
+      .then((response) => {
+        this.setState({ reviewList: response.data.results });
+        console.log('successfully pulled from API', this.state.reviewList);
+      })
+      .catch((err) => {
+        console.log('error pulling from reviews API', err);
+      });
+  }
+
   addReviewClick() {
     this.setState({ addReview: true });
   }
