@@ -1,16 +1,16 @@
-import React from 'react';
-import axios from 'axios';
-import productContext from '../contexts/ProductContext.js';
-import config from '../../../API/config.js';
+// import React from 'react';
+// import axios from 'axios';
+// import productContext from '../contexts/ProductContext.js';
+// import config from '../../../API/config.js';
 
-const QandA = () => {
-  //state variables
-  const [product, setProduct] = useState();
+// const QandA = () => {
+//   //state variables
+//   const [product, setProduct] = useState();
   
-};
+// };
 
-const fetchQuestions = () => {
+// const fetchQuestions = () => {
 
-};
+// };
 
-export default QandA;
+// export default QandA;
