@@ -8,7 +8,7 @@ const fetchEndpoint = (endpoint, callback) => {
   // user from the github API
   // The options object has been provided to help you out,
   // but you'll have to fill in the URL
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/:hr-bld${endpoint}`, {
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld${endpoint}`, {
     headers: {
       Authorization: config.TOKEN,
     },
