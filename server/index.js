@@ -20,6 +20,17 @@ app.get('/products', (req, res) => {
   });
 });
 
+app.get('/reviews/', (req, res) => {
+  helper.fetchEndpoint('/reviews/', (error, data) => {
+    if (error) {
+      console.log('this is an error with express get request', error);
+      res.send(error);
+    } else {
+      res.send(data);
+    }
+  });
+});
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
