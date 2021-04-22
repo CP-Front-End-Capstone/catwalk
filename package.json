@@ -21,12 +21,15 @@
   "homepage": "https://github.com/CP-Front-End-Capstone/catwalk#readme",
   "dependencies": {
     "axios": "^0.21.1",
+    "bar-charts": "^1.0.3",
     "bootstrap": "^4.6.0",
     "express": "^4.17.1",
     "jquery": "^3.6.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-horizontal-stacked-bar-chart": "^8.15.2",
     "react-router-dom": "^5.2.0",
+    "react-stacked-horizontal-bar-chart": "^1.0.1",
     "react-star-ratings": "^2.3.0"
   },
   "devDependencies": {
