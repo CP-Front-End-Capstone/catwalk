@@ -6,6 +6,7 @@ import axios from 'axios';
 import StarRatings from 'react-star-ratings';
 import productContext from '../../contexts/ProductContext';
 import ReviewsList from './ReviewsList.jsx';
+import ReviewBreakDown from './ReviewBreakDown.jsx'
 import AddReview from './AddReview.jsx';
 import api from '../../../../API/helper';
 
@@ -27,6 +28,13 @@ const ReviewsRatings = () => {
         <div className="row">
           <h5 className="col-sm">
             Avg:Average Stars
+            <div className="container">
+              <div className="row">
+                <div className="col-sm">
+                  <ReviewBreakDown/>
+                </div>
+              </div>
+            </div>
           </h5>
           <div className="col-sm">
             <ReviewsList />
