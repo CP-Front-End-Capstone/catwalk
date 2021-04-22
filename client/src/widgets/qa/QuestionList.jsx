@@ -1,16 +1,19 @@
 import React, { useContext } from 'react';
 import Question from './Question.jsx';
+import qaContext from '../../contexts/QaContext';
 
-const QuestionList = (props) => {
-  const { questions } = useContext();
+const QuestionList = () => {
+  const { questions } = useContext(qaContext);
   const list = questions.map((question) => (
-    <li key={question.question_id}>
+    <div key={question.question_id}>
       <Question question={question} />
-    </li>
+    </div>
   ));
 
   return (
-    <ul>{list}</ul>
+    <>
+      <ul>{list}</ul>
+    </>
   );
 };
 
