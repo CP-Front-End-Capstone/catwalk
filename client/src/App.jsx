@@ -13,6 +13,24 @@ import { ProductProvider } from './contexts/ProductContext.js';
 import Overview from './widgets/overview/Overview.jsx';
 
 const App = () => {
+  const [productId, changeProductId] = useState('18078');
+  const [product, setProduct] = useState();
+  const [styles, setSetyles] = userState();
+
+  useEffect(() => {
+    api.fetchEndpoint(`/products/${productId}`)
+      .then((productData) => {
+        changeProduct(productData);
+        api.fetchEndpoint(`/products/${productId}/styles`)
+          .then((stylesData) => {
+            changeStyles(stylesData.results);
+          });
+      })
+      .catch((error) => {
+        console.log('Error fetching data', error);
+      });
+  }, [productId]);
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
