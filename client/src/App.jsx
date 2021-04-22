@@ -6,7 +6,7 @@ import ReviewsRatings from './widgets/reviews/ReviewsRatings.jsx';
 import QandA from './widgets/qa/QandA.jsx';
 
 const App = () => {
-  const [productId, changeProductId] = useState('18080');
+  const [productId, changeProductId] = useState('18078');
   const [product, changeProduct] = useState();
   const [styles, changeStyles] = useState();
 

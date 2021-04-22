@@ -2,13 +2,14 @@
 /* eslint-disable react/prop-types */
 import React, { useContext } from 'react';
 import IndividualReview from './IndividualReview.jsx';
-import productContext from '../../contexts/ProductContext';
+import reviewContext from '../../contexts/ReviewContext';
 
-const ReviewsList = (props) =>
-  // const reviews = useContext(productContext);
-  (
+const ReviewsList = () => {
+  const reviewsInfo = useContext(reviewContext);
+  const reviewsArray = reviewsInfo.reviewList.results;
+  return (
     <div>
-      {props.selectedProduct.results.map((review) => (
+      {reviewsArray.map((review) => (
         <ul key={review.review_id} className="border">
           <IndividualReview review={review} />
         </ul>
@@ -16,4 +17,5 @@ const ReviewsList = (props) =>
     </div>
 
   );
+};
 export default ReviewsList;

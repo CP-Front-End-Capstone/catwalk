@@ -5,6 +5,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import StarRatings from 'react-star-ratings';
 import productContext from '../../contexts/ProductContext';
+import reviewContext from '../../contexts/ReviewContext';
 import ReviewsList from './ReviewsList.jsx';
 import ReviewBreakDown from './ReviewBreakDown.jsx';
 import AddReview from './AddReview.jsx';
@@ -16,17 +17,18 @@ const ReviewsRatings = () => {
   const selectedProduct = useContext(productContext);
 
   const [productId, setProductId] = useState(selectedProduct.productId);
-  const [sort, setSort] = useState('Relevant');
-  const [addReview, setAddReview] = useState(null);
-  const [reviewList, setReviewList] = useState({ results: [] });
+  const [reviewList, setReviewList] = useState({ results: [1, 2, 3] });
   const [reviewsMeta, setReviewsMeta] = useState(dummyData.dummyDataMeta);
-  const [reviewCount, setReviewCount] = useState(2);
-  console.log(selectedProduct);
+  const [isMounted, setIsMounted] = useState();
 
   useEffect(() => {
     api.fetchEndpoint(`/reviews/?product_id=${productId}&count=2&sort=relevant`)
       .then((reviewData) => {
         setReviewList(reviewData);
+        api.fetchEndpoint(`/reviews/meta/?product_id=${productId}`)
+          .then((reviewMeta) => {
+            setReviewsMeta(reviewMeta);
+          });
       })
       .catch((err) => {
         console.log('error fetching review data', err);
@@ -45,7 +47,9 @@ const ReviewsRatings = () => {
             <div className="container">
               <div className="row border">
                 <div className="col-sm">
-                  <ReviewBreakDown />
+                  <reviewContext.Provider value={{ reviewsMeta }}>
+                    <ReviewBreakDown />
+                  </reviewContext.Provider>
                 </div>
               </div>
               <div className="row border">
@@ -60,7 +64,9 @@ const ReviewsRatings = () => {
             {' '}
             reviews, sorted by
             <div className="row">
-              <ReviewsList selectedProduct={reviewList} />
+              <reviewContext.Provider value={{ reviewsMeta, reviewList }}>
+                <ReviewsList />
+              </reviewContext.Provider>
               <div className="col-sm">
                 <button type="button">More Reviews</button>
               </div>
