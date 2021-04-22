@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import api from '../../API/helper';
 import productContext from './contexts/ProductContext';
-import ReviewsRatings from './widgets/reviews/ReviewsRatings.jsx';
 import QandA from './widgets/qa/QandA.jsx';
 
 const App = () => {
@@ -28,8 +27,8 @@ const App = () => {
     <div>
       <h1>Hello Even Bigger Earth!</h1>
       <div>
-        <productContext.Provider value={{ product, changeProduct }}>
-          <ReviewsRatings />
+        <productContext.Provider value={productId}>
+          <QandA />
         </productContext.Provider>
       </div>
     </div>
