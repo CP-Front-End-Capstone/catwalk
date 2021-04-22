@@ -9,6 +9,8 @@ const App = () => {
   const [productId, changeProductId] = useState('18078');
   const [product, changeProduct] = useState();
   const [styles, changeStyles] = useState();
+  const [reviewList, setReviewList] = useState();
+  const [isMounted, setIsMounted] = useState(null);
 
   useEffect(() => {
     api.fetchEndpoint(`/products/${productId}`)
@@ -17,23 +19,35 @@ const App = () => {
         api.fetchEndpoint(`/products/${productId}/styles`)
           .then((stylesData) => {
             changeStyles(stylesData.results);
+            api.fetchEndpoint(`/reviews/?product_id=${productId}&count=2&sort=relevant`)
+              .then((reviewData) => {
+                setReviewList(reviewData);
+                setIsMounted(true);
+              });
           });
       })
       .catch((error) => {
         console.log('Error fetching data', error);
       });
-  }, [productId]);
+  }, []);
 
+  if (isMounted) {
+    return (
+      <>
+        <h1>Hello Even Bigger Earth!</h1>
+        <div>
+          <productContext.Provider value={{ productId, changeProductId, reviewList }}>
+            <ReviewsRatings />
+          </productContext.Provider>
+          <productContext.Provider value={productId}>
+            <QandA changeContext={changeProductId} />
+          </productContext.Provider>
+        </div>
+      </>
+    );
+  }
   return (
-    <div>
-      <h1>Hello Even Bigger Earth!</h1>
-      <div>
-        <productContext.Provider value={productId}>
-          <ReviewsRatings />
-          <QandA changeContext={changeProductId} />
-        </productContext.Provider>
-      </div>
-    </div>
+    'Loading...'
   );
 };
 
