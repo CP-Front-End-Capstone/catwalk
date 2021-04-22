@@ -4,10 +4,7 @@ import React, { useState } from 'react';
 import StarRatings from 'react-star-ratings';
 
 const IndividualReview = (props) => {
-  const [recommend, setRecommend] = useState();
-  if (props.review.recommend) {
-    setRecommend('I recommend this product');
-  }
+  const recommend = props.review.recommend && 'I recommend this product';
 
   return (
     <div>
@@ -25,5 +22,4 @@ const IndividualReview = (props) => {
     </div>
   );
 };
-
 export default IndividualReview;

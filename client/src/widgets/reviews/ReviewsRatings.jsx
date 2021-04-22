@@ -18,9 +18,20 @@ const ReviewsRatings = () => {
   const [productId, setProductId] = useState(selectedProduct.productId);
   const [sort, setSort] = useState('Relevant');
   const [addReview, setAddReview] = useState(null);
+  const [reviewList, setReviewList] = useState({ results: [] });
   const [reviewsMeta, setReviewsMeta] = useState(dummyData.dummyDataMeta);
   const [reviewCount, setReviewCount] = useState(2);
   console.log(selectedProduct);
+
+  useEffect(() => {
+    api.fetchEndpoint(`/reviews/?product_id=${productId}&count=2&sort=relevant`)
+      .then((reviewData) => {
+        setReviewList(reviewData);
+      })
+      .catch((err) => {
+        console.log('error fetching review data', err);
+      });
+  }, []);
 
   return (
     <div>
@@ -45,9 +56,11 @@ const ReviewsRatings = () => {
             </div>
           </div>
           <div className="col-sm">
-            {selectedProduct.reviewList.count} reviews, sorted by
+            {reviewList.count}
+            {' '}
+            reviews, sorted by
             <div className="row">
-            <ReviewsList selectedProduct={selectedProduct} />
+              <ReviewsList selectedProduct={reviewList} />
               <div className="col-sm">
                 <button type="button">More Reviews</button>
               </div>

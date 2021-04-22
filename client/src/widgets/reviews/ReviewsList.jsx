@@ -4,11 +4,11 @@ import React, { useContext } from 'react';
 import IndividualReview from './IndividualReview.jsx';
 import productContext from '../../contexts/ProductContext';
 
-const ReviewsList = (props) => {
-  const reviews = useContext(productContext);
-  return (
+const ReviewsList = (props) =>
+  // const reviews = useContext(productContext);
+  (
     <div>
-      {reviews.reviewList.results.map((review) => (
+      {props.selectedProduct.results.map((review) => (
         <ul key={review.review_id} className="border">
           <IndividualReview review={review} />
         </ul>
@@ -16,6 +16,4 @@ const ReviewsList = (props) => {
     </div>
 
   );
-};
-
 export default ReviewsList;

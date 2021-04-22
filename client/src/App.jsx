@@ -6,11 +6,9 @@ import ReviewsRatings from './widgets/reviews/ReviewsRatings.jsx';
 import QandA from './widgets/qa/QandA.jsx';
 
 const App = () => {
-  const [productId, changeProductId] = useState('18079');
+  const [productId, changeProductId] = useState('18080');
   const [product, changeProduct] = useState();
   const [styles, changeStyles] = useState();
-  const [reviewList, setReviewList] = useState();
-  const [isMounted, setIsMounted] = useState(null);
 
   useEffect(() => {
     api.fetchEndpoint(`/products/${productId}`)
@@ -19,11 +17,6 @@ const App = () => {
         api.fetchEndpoint(`/products/${productId}/styles`)
           .then((stylesData) => {
             changeStyles(stylesData.results);
-            api.fetchEndpoint(`/reviews/?product_id=${productId}&count=2&sort=relevant`)
-              .then((reviewData) => {
-                setReviewList(reviewData);
-                setIsMounted(true);
-              });
           });
       })
       .catch((error) => {
@@ -31,20 +24,15 @@ const App = () => {
       });
   }, []);
 
-  if (isMounted) {
-    return (
-      <div>
-        <h1>Hello Even Bigger Earth!</h1>
-        <div>
-          <productContext.Provider value={{ productId, changeProductId, reviewList }}>
-            <ReviewsRatings />
-          </productContext.Provider>
-        </div>
-      </div>
-    );
-  }
   return (
-    'Loading...'
+    <div>
+      <h1>Hello Even Bigger Earth!</h1>
+      <div>
+        <productContext.Provider value={{ productId }}>
+          <ReviewsRatings />
+        </productContext.Provider>
+      </div>
+    </div>
   );
 };
 
