@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable import/named */
 /* eslint-disable import/extensions */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
@@ -9,8 +11,10 @@ function RelatedProducts() {
 
   return (
     <div>
-      <h3>Related Items:</h3>
-      <RelatedProductsList products={products} />
+      <div>
+        <h3>Related Items:</h3>
+        <RelatedProductsList products={products} />
+      </div>
     </div>
   );
 }

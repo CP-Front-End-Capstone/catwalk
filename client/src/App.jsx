@@ -13,14 +13,19 @@ const App = () => {
   const [productId, changeProductId] = useState('18078');
   const [product, changeProduct] = useState();
   const [styles, changeStyles] = useState();
+  const [relatedItems, setItems] = useState();
 
   useEffect(() => {
     api.fetchEndpoint(`/products/${productId}`)
       .then((productData) => {
         changeProduct(productData);
-        api.fetchEndpoint(`/products/${productId}/styles`)
+        api.fetchEndpoint(`/products/${productId}/related`)
           .then((stylesData) => {
             changeStyles(stylesData.results);
+            api.fetchEndpoint(`/products/${productId}/related`)
+              .then((itemsArray) => {
+                setItems(itemsArray);
+              });
           });
       })
       .catch((error) => {
@@ -32,7 +37,7 @@ const App = () => {
     <div>
       <h1>Hello Even Bigger Earth!</h1>
       <div>
-        <productContext.Provider value={product}>
+        <productContext.Provider value={relatedItems}>
           {/* <ReviewsRatings /> */}
           <RelatedProducts />
         </productContext.Provider>
