@@ -1,35 +1,53 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, createContext } from 'react';
 import api from '../../../../API/helper';
 import productContext from '../../contexts/ProductContext';
+import qaContext from '../../contexts/QaContext';
 import QuestionList from './QuestionList.jsx';
 
-const QandA = (props) => {
-  const product = useContext(productContext);
-  const [questions, changeQuestions] = useState();
+const QandA = () => {
+  const { productId, changeProductId } = useContext(productContext);
+  const [questions, changeQuestions] = useState([]);
+  const [count, changeCount] = useState(4);
+  const [page, changePage] = useState(1);
+  const qaContext = createContext({
+    questions,
+    count,
+    changeCount,
+    page,
+  });
+  const qa = useContext(qaContext);
 
   useEffect(() => {
-    api.fetchEndpoint(`/qa/questions?product_id=${product.productId}`)
+    api.fetchEndpoint(`/qa/questions?product_id=${productId}`)
       .then((questionsData) => {
         changeQuestions(questionsData.results);
       })
       .catch((error) => {
         console.log('Error fetching questions:', error);
       });
-  }, [product.productId]);
+  }, [productId]);
 
   const handleClick = () => {
-    product.changeProductId('18079');
+    changeProductId('18079');
   };
-  if (questions) {
+
+  if (questions.length > 0) {
     return (
       <>
-        <div>{JSON.stringify(product.productId)}</div>
-        <QuestionList questions={questions} />
+        <div>{JSON.stringify(productId)}</div>
+        <qaContext.Provider value={{
+          questions,
+          count,
+          changeCount,
+          page,
+        }}
+        >
+          <QuestionList />
+        </qaContext.Provider>
         <button onClick={handleClick}>Change Product</button>
       </>
     );
-  } else {
-    return <div>Loading Questions and Answers...</div>
   }
+  return <div>Loading Questions and Answers...</div>;
 };
 export default QandA;
