@@ -4,15 +4,15 @@ import productContext from '../../contexts/ProductContext';
 
 const ReviewsList = (props) => {
   const reviews = useContext(productContext);
-  return (
 
-    <div>
+  return (
+    <ul>
       {reviews.reviewList.results.map((review) => (
-        <ul key={review.id}>
+        <li key={review.review_id}>
           <IndividualReview review={review} />
-        </ul>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 };
 

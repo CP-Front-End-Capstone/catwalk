@@ -1,31 +1,35 @@
 import React, { useState, useEffect, useContext } from 'react';
 import api from '../../../../API/helper';
 import productContext from '../../contexts/ProductContext';
+import QuestionList from './QuestionList.jsx';
 
 const QandA = (props) => {
-  const productId = useContext(productContext);
+  const product = useContext(productContext);
   const [questions, changeQuestions] = useState();
 
   useEffect(() => {
-    api.fetchEndpoint(`/qa/questions?product_id=${productId}`)
+    api.fetchEndpoint(`/qa/questions?product_id=${product.productId}`)
       .then((questionsData) => {
         changeQuestions(questionsData.results);
       })
       .catch((error) => {
         console.log('Error fetching questions:', error);
       });
-  }, [productId]);
+  }, [product.productId]);
 
   const handleClick = () => {
-    props.changeContext('18079');
+    product.changeProductId('18079');
   };
-
-  return (
-    <>
-      <div>{JSON.stringify(productId)}</div>
-      <div>{JSON.stringify(questions)}</div>
-      <button onClick={handleClick}>Change Product</button>
-    </>
-  );
+  if (questions) {
+    return (
+      <>
+        <div>{JSON.stringify(product.productId)}</div>
+        <QuestionList questions={questions} />
+        <button onClick={handleClick}>Change Product</button>
+      </>
+    );
+  } else {
+    return <div>Loading Questions and Answers...</div>
+  }
 };
 export default QandA;

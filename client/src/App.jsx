@@ -34,13 +34,13 @@ const App = () => {
   if (isMounted) {
     return (
       <>
-        <h1>Hello Even Bigger Earth!</h1>
+        {/* <h1>Hello Even Bigger Earth!</h1> */}
         <div>
-          <productContext.Provider value={{ productId, changeProductId, reviewList }}>
+          {/* <productContext.Provider value={{ productId, reviewList }}>
             <ReviewsRatings />
-          </productContext.Provider>
-          <productContext.Provider value={productId}>
-            <QandA changeContext={changeProductId} />
+          </productContext.Provider> */}
+          <productContext.Provider value={{ productId, changeProductId }}>
+            <QandA />
           </productContext.Provider>
         </div>
       </>
