@@ -1,7 +1,7 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
-import Stars from '../../../src/stars.jsx'
+import StarRatings from 'react-star-ratings';
 
 const IndividualReview = (props) => {
   const [recommend, setRecommend] = useState();
@@ -11,7 +11,14 @@ const IndividualReview = (props) => {
 
   return (
     <div>
-      <span><Stars/></span>
+      <span>
+        <StarRatings
+          rating={props.review.rating}
+          starRatedColor="black"
+          numberOfStars={5}
+          name="rating"
+        />
+      </span>
       <h5>{props.review.summary}</h5>
       <div>{props.review.body}</div>
       <div>{recommend}</div>

@@ -3,11 +3,11 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
+import StarRatings from 'react-star-ratings';
 import productContext from '../../contexts/ProductContext';
 import ReviewsList from './ReviewsList.jsx';
 import AddReview from './AddReview.jsx';
 import api from '../../../../API/helper';
-import Stars from '../../../src/stars.jsx'
 
 const dummyData = require('./dummydata.js');
 
@@ -26,7 +26,7 @@ const ReviewsRatings = () => {
       <div className="container">
         <div className="row">
           <h5 className="col-sm">
-            Avg:<Stars/>
+            Avg:Average Stars
           </h5>
           <div className="col-sm">
             <ReviewsList />

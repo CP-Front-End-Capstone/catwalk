@@ -8,7 +8,7 @@ const ReviewsList = (props) => {
 
     <div>
       {reviews.reviewList.results.map((review) => (
-        <ul key={review.id}>
+        <ul key={review.review_id}>
           <IndividualReview review={review} />
         </ul>
       ))}
