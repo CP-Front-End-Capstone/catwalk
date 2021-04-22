@@ -1,36 +1,36 @@
+/* eslint-disable no-undef */
+/* eslint-disable arrow-body-style */
+/* eslint-disable import/no-named-as-default */
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable no-console */
+/* eslint-disable import/extensions */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import api from '../../API/helper';
-import productContext from './contexts/ProductContext';
-import ReviewsRatings from './widgets/reviews/ReviewsRatings.jsx';
-import QandA from './widgets/qa/QandA.jsx';
+import { ProductProvider } from './contexts/ProductContext.js';
+// import ReviewsRatings from './widgets/reviews/ReviewsRatings.jsx';
+// import QandA from './widgets/qa/QandA.jsx';
+import Overview from './widgets/overview/Overview.jsx';
 
 const App = () => {
-  const [productId, changeProductId] = useState('18078');
-  const [product, changeProduct] = useState();
-  const [styles, changeStyles] = useState();
-
-  useEffect(() => {
-    api.fetchEndpoint(`/products/${productId}`)
-      .then((productData) => {
-        changeProduct(productData);
-        api.fetchEndpoint(`/products/${productId}/styles`)
-          .then((stylesData) => {
-            changeStyles(stylesData.results);
-          });
-      })
-      .catch((error) => {
-        console.log('Error fetching data', error);
-      });
-  }, [productId]);
-
   return (
     <div>
-      <h1>Hello Even Bigger Earth!</h1>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <a className="navbar-brand" href="#">Catwalk App</a>
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon" />
+        </button>
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <form className="form-inline my-2 my-lg-0">
+            <input className="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" />
+            <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
       <div>
-        <productContext.Provider value={{ product, changeProduct }}>
-          <ReviewsRatings />
-        </productContext.Provider>
+        <ProductProvider>
+          <Overview />
+        </ProductProvider>
       </div>
     </div>
   );
