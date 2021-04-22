@@ -14,7 +14,6 @@ const ReviewsRatings = () => {
   const selectedProduct = useContext(productContext);
 
   const [productId, setProductId] = useState(selectedProduct.productId);
-  const [reviewList, setReviewList] = useState(selectedProduct.reviewList);
   const [sort, setSort] = useState('Relevant');
   const [addReview, setAddReview] = useState(null);
   const [reviewsMeta, setReviewsMeta] = useState(dummyData.dummyDataMeta);
@@ -25,19 +24,17 @@ const ReviewsRatings = () => {
       <h3>Reviews & Ratings</h3>
       <div className="container">
         <div className="row">
-          <div className="col-sm">
+          <h5 className="col-sm">
             Average Review: Stars
-          </div>
+          </h5>
           <div className="col-sm">
-            <div className="container">
-              <div className="row">
-                <ReviewsList />
-                <div className="col-sm">
-                  <button type="button">More Reviews</button>
-                </div>
-                <div className="col-sm">
-                  <button type="button">Add a Review</button>
-                </div>
+            <ReviewsList />
+            <div className="row">
+              <div className="col-sm">
+                <button type="button">More Reviews</button>
+              </div>
+              <div className="col-sm">
+                <button type="button">Add a Review</button>
               </div>
             </div>
           </div>

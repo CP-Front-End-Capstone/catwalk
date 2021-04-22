@@ -6,7 +6,7 @@ import ReviewsRatings from './widgets/reviews/ReviewsRatings.jsx';
 import QandA from './widgets/qa/QandA.jsx';
 
 const App = () => {
-  const [productId, changeProductId] = useState('18078');
+  const [productId, changeProductId] = useState('18079');
   const [product, changeProduct] = useState();
   const [styles, changeStyles] = useState();
   const [reviewList, setReviewList] = useState();
@@ -19,18 +19,17 @@ const App = () => {
         api.fetchEndpoint(`/products/${productId}/styles`)
           .then((stylesData) => {
             changeStyles(stylesData.results);
-          });
-        api.fetchEndpoint(`/reviews/?product_id=${productId}&count=2&sort=relevant`)
-          .then((reviewData) => {
-            setReviewList(reviewData);
-            setIsMounted(true);
+            api.fetchEndpoint(`/reviews/?product_id=${productId}&count=2&sort=relevant`)
+              .then((reviewData) => {
+                setReviewList(reviewData);
+                setIsMounted(true);
+              });
           });
       })
       .catch((error) => {
         console.log('Error fetching data', error);
-        console.log('this is reviewData:', reviewData);
       });
-  }, [productId]);
+  }, []);
 
   if (isMounted) {
     return (
