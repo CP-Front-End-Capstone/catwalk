@@ -11,14 +11,12 @@ import ReviewBreakDown from './ReviewBreakDown.jsx';
 import AddReview from './AddReview.jsx';
 import api from '../../../../API/helper';
 
-const dummyData = require('./dummydata.js');
-
 const ReviewsRatings = () => {
   const selectedProduct = useContext(productContext);
 
   const [productId, setProductId] = useState(selectedProduct.productId);
   const [reviewList, setReviewList] = useState({ results: [1, 2, 3] });
-  const [reviewsMeta, setReviewsMeta] = useState(dummyData.dummyDataMeta);
+  const [reviewsMeta, setReviewsMeta] = useState();
   const [isMounted, setIsMounted] = useState();
 
   useEffect(() => {
@@ -34,6 +32,7 @@ const ReviewsRatings = () => {
         console.log('error fetching review data', err);
       });
   }, []);
+if(reviewsMeta) {
 
   return (
     <div>
@@ -41,11 +40,8 @@ const ReviewsRatings = () => {
       <div className="container border">
         <div className="row">
           <div className="col-sm">
-            <h5>
-              Avg:Average Stars
-            </h5>
             <div className="container">
-              <div className="row border">
+              <div className="row">
                 <div className="col-sm">
                   <reviewContext.Provider value={{ reviewsMeta }}>
                     <ReviewBreakDown />
@@ -79,6 +75,8 @@ const ReviewsRatings = () => {
       </div>
     </div>
   );
+}
+return "Reviews are Loading ..."
 };
 
 export default ReviewsRatings;

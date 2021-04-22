@@ -14,6 +14,8 @@ const IndividualReview = (props) => {
           starRatedColor="black"
           numberOfStars={5}
           name="rating"
+          starDimension="15px"
+          starSpacing="2px"
         />
       </span>
       <h5>{props.review.summary}</h5>
