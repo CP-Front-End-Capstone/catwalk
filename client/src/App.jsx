@@ -19,7 +19,7 @@ const App = () => {
     api.fetchEndpoint(`/products/${productId}`)
       .then((productData) => {
         changeProduct(productData);
-        api.fetchEndpoint(`/products/${productId}/related`)
+        api.fetchEndpoint(`/products/${productId}/styles`)
           .then((stylesData) => {
             changeStyles(stylesData.results);
             api.fetchEndpoint(`/products/${productId}/related`)
