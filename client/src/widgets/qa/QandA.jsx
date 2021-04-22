@@ -1,16 +1,31 @@
-// import React from 'react';
-// import axios from 'axios';
-// import productContext from '../contexts/ProductContext.js';
-// import config from '../../../API/config.js';
+import React, { useState, useEffect, useContext } from 'react';
+import api from '../../../../API/helper';
+import productContext from '../../contexts/ProductContext';
 
-// const QandA = () => {
-//   //state variables
-//   const [product, setProduct] = useState();
-  
-// };
+const QandA = (props) => {
+  const productId = useContext(productContext);
+  const [questions, changeQuestions] = useState();
 
-// const fetchQuestions = () => {
+  useEffect(() => {
+    api.fetchEndpoint(`/qa/questions?product_id=${productId}`)
+      .then((questionsData) => {
+        changeQuestions(questionsData.results);
+      })
+      .catch((error) => {
+        console.log('Error fetching questions:', error);
+      });
+  }, [productId]);
 
-// };
+  const handleClick = () => {
+    props.changeContext('18079');
+  };
 
-// export default QandA;
+  return (
+    <>
+      <div>{JSON.stringify(productId)}</div>
+      <div>{JSON.stringify(questions)}</div>
+      <button onClick={handleClick}>Change Product</button>
+    </>
+  );
+};
+export default QandA;

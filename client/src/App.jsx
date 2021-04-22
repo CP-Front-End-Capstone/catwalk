@@ -28,7 +28,7 @@ const App = () => {
       <h1>Hello Even Bigger Earth!</h1>
       <div>
         <productContext.Provider value={productId}>
-          <QandA />
+          <QandA changeContext={changeProductId} />
         </productContext.Provider>
       </div>
     </div>
