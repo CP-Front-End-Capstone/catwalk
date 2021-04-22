@@ -6,8 +6,8 @@ const Answer = (props) => {
   const { answer } = props;
   const {id, body, date, answerer_name, helpfulness, photos} = answer;
   return (
-    <>
-      <div>A: {body}</div>
+    <div className="col">
+      <div className="row">A: {body}</div>
       <div>
         <span>
           by {answerer_name} {(new Date(date)).toDateString().slice(4)}
@@ -15,7 +15,7 @@ const Answer = (props) => {
         <span> | </span>
         <Report />
       </div>
-    </>
+    </div>
 
   );
 };

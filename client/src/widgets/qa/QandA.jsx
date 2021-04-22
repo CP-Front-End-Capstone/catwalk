@@ -27,8 +27,9 @@ const QandA = () => {
 
   if (questions.length > 0) {
     return (
-      <>
-        <div>{JSON.stringify(productId)}</div>
+      <div className="container">
+        <div className="col">{JSON.stringify(productId)}</div>
+        <div className="col">QUESTIONS & ANSWERS</div>
         <qaContext.Provider value={{
           questions,
           changeQuestions,
@@ -41,8 +42,8 @@ const QandA = () => {
           <Search />
           <QuestionList />
         </qaContext.Provider>
-        <button onClick={handleClick}>Change Product</button>
-      </>
+        <button type="submit" className="col" onClick={handleClick}>Change Product</button>
+      </div>
     );
   }
   return <div>Loading Questions and Answers...</div>;

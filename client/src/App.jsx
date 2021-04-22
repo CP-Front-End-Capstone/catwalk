@@ -4,6 +4,7 @@ import api from '../../API/helper';
 import productContext from './contexts/ProductContext';
 import QandA from './widgets/qa/QandA.jsx';
 import ReviewsRatings from './widgets/reviews/ReviewsRatings.jsx';
+import Overview from './widgets/overview/Overview.jsx';
 
 const App = () => {
   const [productId, changeProductId] = useState('18078');
@@ -41,6 +42,9 @@ const App = () => {
           </productContext.Provider> */}
           <productContext.Provider value={{ productId, changeProductId }}>
             <QandA />
+          </productContext.Provider>
+          <productContext.Provider value = {product}>
+            <Overview />
           </productContext.Provider>
         </div>
       </>

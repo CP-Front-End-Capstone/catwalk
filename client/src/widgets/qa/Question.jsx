@@ -13,17 +13,17 @@ const Question = (props) => {
     answers.push(question.answers[id]);
   }
   const answersList = answers.map((answer) => (
-    <div key={answer.id}>
+    <div className="col" key={answer.id}>
       <Answer answer={answer} />
     </div>
   ));
   return (
     <>
-      <div>
+      <div className="col">
         Q: {question.question_body}
       </div>
       {answersList}
-      <button>See More Answers</button>
+      <input type="button" className="btn" value="LOAD MORE ANSWERS" />
     </>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import qaContext from '../../contexts/QaContext';
 
 const Search = () => {
@@ -6,7 +6,11 @@ const Search = () => {
     questions,
     changeQuestions,
   } = useContext(qaContext);
-  return <h1>Search Bar</h1>;
+  const [query, changeQuery] = useState('');
+  const handleChange = (e) => {
+    
+  };
+  return <input type="text" className="col" onChange={handleChange} />;
 };
 
 export default Search;
