@@ -1,3 +1,5 @@
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/prop-types */
 import React, { useContext } from 'react';
 import IndividualReview from './IndividualReview.jsx';
 import productContext from '../../contexts/ProductContext';
@@ -5,14 +7,14 @@ import productContext from '../../contexts/ProductContext';
 const ReviewsList = (props) => {
   const reviews = useContext(productContext);
   return (
-
     <div>
       {reviews.reviewList.results.map((review) => (
-        <ul key={review.review_id}>
+        <ul key={review.review_id} className="border">
           <IndividualReview review={review} />
         </ul>
       ))}
     </div>
+
   );
 };
 

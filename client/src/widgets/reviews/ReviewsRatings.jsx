@@ -6,7 +6,7 @@ import axios from 'axios';
 import StarRatings from 'react-star-ratings';
 import productContext from '../../contexts/ProductContext';
 import ReviewsList from './ReviewsList.jsx';
-import ReviewBreakDown from './ReviewBreakDown.jsx'
+import ReviewBreakDown from './ReviewBreakDown.jsx';
 import AddReview from './AddReview.jsx';
 import api from '../../../../API/helper';
 
@@ -20,25 +20,34 @@ const ReviewsRatings = () => {
   const [addReview, setAddReview] = useState(null);
   const [reviewsMeta, setReviewsMeta] = useState(dummyData.dummyDataMeta);
   const [reviewCount, setReviewCount] = useState(2);
+  console.log(selectedProduct);
 
   return (
     <div>
       <h3>Reviews & Ratings</h3>
-      <div className="container">
+      <div className="container border">
         <div className="row">
-          <h5 className="col-sm">
-            Avg:Average Stars
+          <div className="col-sm">
+            <h5>
+              Avg:Average Stars
+            </h5>
             <div className="container">
-              <div className="row">
+              <div className="row border">
                 <div className="col-sm">
-                  <ReviewBreakDown/>
+                  <ReviewBreakDown />
+                </div>
+              </div>
+              <div className="row border">
+                <div className="col-sm">
+                  Product Breakdown
                 </div>
               </div>
             </div>
-          </h5>
+          </div>
           <div className="col-sm">
-            <ReviewsList />
+            {selectedProduct.reviewList.count} reviews, sorted by
             <div className="row">
+            <ReviewsList selectedProduct={selectedProduct} />
               <div className="col-sm">
                 <button type="button">More Reviews</button>
               </div>
