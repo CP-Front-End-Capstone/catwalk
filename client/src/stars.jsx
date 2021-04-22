@@ -2,7 +2,7 @@ import React from 'react';
 
 const Stars = () => (
   <div className="star">
-    &#9733; &#9733; &#9733; &#9733; &#9733;
+    &#9734; &#9734; &#9734; &#9734; &#9734;
   </div>
 );
 

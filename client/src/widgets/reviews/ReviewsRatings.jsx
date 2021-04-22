@@ -7,6 +7,7 @@ import productContext from '../../contexts/ProductContext';
 import ReviewsList from './ReviewsList.jsx';
 import AddReview from './AddReview.jsx';
 import api from '../../../../API/helper';
+import Stars from '../../../src/stars.jsx'
 
 const dummyData = require('./dummydata.js');
 
@@ -25,7 +26,7 @@ const ReviewsRatings = () => {
       <div className="container">
         <div className="row">
           <h5 className="col-sm">
-            Average Review: Stars
+            Avg:<Stars/>
           </h5>
           <div className="col-sm">
             <ReviewsList />
