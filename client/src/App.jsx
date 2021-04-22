@@ -1,3 +1,4 @@
+/* eslint-disable no-sequences */
 /* eslint-disable no-console */
 /* eslint-disable import/extensions */
 /* eslint-disable no-unused-vars */
@@ -14,11 +15,13 @@ const App = () => {
   const [product, changeProduct] = useState();
   const [styles, changeStyles] = useState();
   const [relatedItems, setItems] = useState();
+  const [isMounted, setIsMounted] = useState(null);
 
   useEffect(() => {
     api.fetchEndpoint(`/products/${productId}`)
       .then((productData) => {
         changeProduct(productData);
+        setIsMounted(true);
         api.fetchEndpoint(`/products/${productId}/styles`)
           .then((stylesData) => {
             changeStyles(stylesData.results);
@@ -31,18 +34,23 @@ const App = () => {
       .catch((error) => {
         console.log('Error fetching data', error);
       });
-  }, [productId]);
+  }, []);
 
-  return (
-    <div>
-      <h1>Hello Even Bigger Earth!</h1>
+  if (isMounted) {
+    return (
       <div>
-        <productContext.Provider value={relatedItems}>
-          {/* <ReviewsRatings /> */}
-          <RelatedProducts />
-        </productContext.Provider>
+        <h1>Hello Even Bigger Earth!</h1>
+        <div>
+          <productContext.Provider value={productId}>
+            {/* <ReviewsRatings /> */}
+            <RelatedProducts />
+          </productContext.Provider>
+        </div>
       </div>
-    </div>
+    );
+  }
+  return (
+    'Loading...'
   );
 };
 
