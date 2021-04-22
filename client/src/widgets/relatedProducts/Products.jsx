@@ -10,21 +10,31 @@ import RelatedProductsList from './RelatedProductsList.jsx';
 
 function RelatedProducts() {
   // const [products, setProducts] = useState(dummyProducts);
-  const productId = useContext(productContext);
-  // const [related, setRelated] = useState();
+  const context = useContext(productContext);
+  console.log('Current Styles: ', context.styles);
   const [products, setProducts] = useState([]);
+  const [styles, setStyles] = useState([]);
 
   const getProducts = (array) => {
-    const promises = array.map((id) => (
+    // fetch products object
+    const productsArray = array.map((id) => (
       api.fetchEndpoint(`/products/${id}`)
     ));
-    Promise.all(promises).then((response) => {
+    const stylesArray = array.map((id) => (
+      api.fetchEndpoint(`/products/${id}/styles`)
+    ));
+    Promise.all(productsArray).then((response) => {
+      console.log('your array: ', response);
       setProducts(response);
+    });
+    Promise.all(stylesArray).then((response) => {
+      console.log('Your styles array: ', response);
+      setStyles(response);
     });
   };
 
   useEffect(() => {
-    api.fetchEndpoint(`/products/${productId}/related`)
+    api.fetchEndpoint(`/products/${context.productId}/related`)
       .then((response) => {
         getProducts(response);
         console.log('Your related Items: ', response);
@@ -38,7 +48,7 @@ function RelatedProducts() {
     <div>
       <div>
         <h3>Related Items:</h3>
-        <RelatedProductsList products={products} />
+        <RelatedProductsList products={{ products, context }} />
       </div>
     </div>
   );

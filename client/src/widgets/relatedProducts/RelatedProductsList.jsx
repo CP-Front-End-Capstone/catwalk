@@ -2,6 +2,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/extensions */
 /* eslint-disable react/prop-types */
+import { Carousel } from 'bootstrap';
 import React, { useState, useContext, useEffect } from 'react';
 // import api from '../../../../API/helper.js';
 import RelatedProductsCard from './RelatedProductsCard.jsx';
@@ -24,10 +25,15 @@ function RelatedProductsList({ products }) {
   //   });
   // });
 
-  console.log('List of Products: ', products);
+  console.log('List of Products: ', products.products);
+  console.log('List of Styles: ', products.context.styles);
   return (
-    <div>
-      {products.map((product) => <RelatedProductsCard product={product} />)}
+    <div className="container">
+      <div className="row">
+        {products.products.map((product) => products.context.styles.map((style) => (
+          <RelatedProductsCard product={product} style={style} />
+        )))}
+      </div>
     </div>
   );
 }

@@ -14,7 +14,6 @@ const App = () => {
   const [productId, changeProductId] = useState('18078');
   const [product, changeProduct] = useState();
   const [styles, changeStyles] = useState();
-  const [relatedItems, setItems] = useState();
   const [isMounted, setIsMounted] = useState(null);
 
   useEffect(() => {
@@ -25,10 +24,6 @@ const App = () => {
         api.fetchEndpoint(`/products/${productId}/styles`)
           .then((stylesData) => {
             changeStyles(stylesData.results);
-            api.fetchEndpoint(`/products/${productId}/related`)
-              .then((itemsArray) => {
-                setItems(itemsArray);
-              });
           });
       })
       .catch((error) => {
@@ -41,7 +36,7 @@ const App = () => {
       <div>
         <h1>Hello Even Bigger Earth!</h1>
         <div>
-          <productContext.Provider value={productId}>
+          <productContext.Provider value={{ productId, styles }}>
             {/* <ReviewsRatings /> */}
             <RelatedProducts />
           </productContext.Provider>
