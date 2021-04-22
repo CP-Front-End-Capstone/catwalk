@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import IndividualReview from './IndividualReview.jsx';
+import productContext from '../../contexts/ProductContext';
 
-const ReviewsList = (props) => (
-  <div>
-    {props.reviewList.map((review) => (
-      <ul key={review.id}>
-        <IndividualReview review={review} />
-      </ul>
-    ))}
-  </div>
-);
+const ReviewsList = (props) => {
+  const reviews = useContext(productContext);
+  return (
+
+    <div>
+      {reviews.reviewList.results.map((review) => (
+        <ul key={review.id}>
+          <IndividualReview review={review} />
+        </ul>
+      ))}
+    </div>
+  );
+};
 
 export default ReviewsList;

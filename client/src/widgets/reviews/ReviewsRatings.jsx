@@ -31,7 +31,7 @@ const ReviewsRatings = () => {
           <div className="col-sm">
             <div className="container">
               <div className="row">
-                Reviews List
+                <ReviewsList />
                 <div className="col-sm">
                   <button type="button">More Reviews</button>
                 </div>
