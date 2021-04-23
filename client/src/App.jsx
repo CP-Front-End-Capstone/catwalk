@@ -30,7 +30,7 @@ const App = () => {
       .catch((error) => {
         console.log('Error fetching data', error);
       });
-  }, []);
+  }, [productId]);
 
   if (isMounted) {
     return (

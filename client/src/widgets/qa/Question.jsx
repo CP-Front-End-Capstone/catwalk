@@ -15,7 +15,11 @@ const Question = (props) => {
   for (const id in question.answers) {
     answers.push(question.answers[id]);
   }
-  console.log(answers.length);
+
+  answers.sort((a, b) => (
+    b.helpfulness - a.helpfulness
+  ));
+
   const handleClick = (e) => {
     e.preventDefault();
     changeShowAll(true);

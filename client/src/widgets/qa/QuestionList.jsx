@@ -1,10 +1,14 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import Question from './Question.jsx';
 import qaContext from '../../contexts/QaContext';
 
 const QuestionList = () => {
   const { questions, count, changeCount } = useContext(qaContext);
-  const [questionList, changeQuestionList] = useState(questions.slice(0, 4));
+  const [questionList, changeQuestionList] = useState([]);
+
+  useEffect(() => {
+    changeQuestionList(questions.slice(0, count));
+  }, [questions, count]);
 
   return (
     <>
