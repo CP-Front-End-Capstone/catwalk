@@ -3,46 +3,72 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
+import StarRatings from 'react-star-ratings';
 import productContext from '../../contexts/ProductContext';
+import reviewContext from '../../contexts/ReviewContext';
 import ReviewsList from './ReviewsList.jsx';
+import ReviewBreakDown from './ReviewBreakDown.jsx';
+import ProductBreakDown from './ProductBreakDown.jsx';
 import AddReview from './AddReview.jsx';
 import api from '../../../../API/helper';
-import Stars from '../../../src/stars.jsx'
-
-const dummyData = require('./dummydata.js');
 
 const ReviewsRatings = () => {
   const selectedProduct = useContext(productContext);
 
   const [productId, setProductId] = useState(selectedProduct.productId);
-  const [sort, setSort] = useState('Relevant');
-  const [addReview, setAddReview] = useState(null);
-  const [reviewsMeta, setReviewsMeta] = useState(dummyData.dummyDataMeta);
-  const [reviewCount, setReviewCount] = useState(2);
+  const [reviewList, setReviewList] = useState({ results: [1, 2, 3] });
+  const [reviewsMeta, setReviewsMeta] = useState();
+  const [isMounted, setIsMounted] = useState();
 
-  return (
-    <div>
-      <h3>Reviews & Ratings</h3>
-      <div className="container">
-        <div className="row">
-          <h5 className="col-sm">
-            Avg:<Stars/>
-          </h5>
-          <div className="col-sm">
-            <ReviewsList />
-            <div className="row">
-              <div className="col-sm">
-                <button type="button">More Reviews</button>
+  useEffect(() => {
+    api.fetchEndpoint(`/reviews/?product_id=${productId}&count=2&sort=relevant`)
+      .then((reviewData) => {
+        setReviewList(reviewData);
+        api.fetchEndpoint(`/reviews/meta/?product_id=${productId}`)
+          .then((reviewMeta) => {
+            setReviewsMeta(reviewMeta);
+          });
+      })
+      .catch((err) => {
+        console.log('error fetching review data', err);
+      });
+  }, []);
+  if (reviewsMeta) {
+    return (
+      <div>
+        <h3>Reviews & Ratings</h3>
+        <div className="container-fluid border">
+          <div className="row">
+            <div className="col-sm-4">
+              <div className="container border" />
+              <div className="container">
+                <div className="row">
+                  <reviewContext.Provider value={{ reviewsMeta }}>
+                    <ReviewBreakDown />
+                  </reviewContext.Provider>
+                </div>
               </div>
-              <div className="col-sm">
-                <button type="button">Add a Review</button>
+              <div className="container">
+                <div className="row">
+                  <reviewContext.Provider value={{ reviewsMeta, reviewList }}>
+                    <ProductBreakDown />
+                  </reviewContext.Provider>
+                </div>
+              </div>
+            </div>
+            <div className="col">
+              <div className="row h-80">
+                <reviewContext.Provider value={{ reviewsMeta, reviewList }}>
+                  <ReviewsList />
+                </reviewContext.Provider>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
+  return 'Reviews are Loading ...';
 };
 
 export default ReviewsRatings;

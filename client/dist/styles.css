@@ -1,4 +1,11 @@
-.reviewscontainer {
-  display: grid;
-  grid-template-columns: 30% 70%;
+.reviews-overarching {
+border: black;
+border-width: 1mm;
+
 }
+
+.container {
+  border: black;
+  border-width: 1mm;
+
+  }
