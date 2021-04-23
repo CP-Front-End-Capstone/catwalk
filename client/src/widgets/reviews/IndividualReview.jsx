@@ -32,7 +32,7 @@ const IndividualReview = (props) => {
       <div className="row small">{recommend}</div>
       <div className="row small">
         What this review helpful?
-        <button type="foo">Yes</button>
+        <button type="button">Yes</button>
         <div>
           (
           {props.review.helpfulness}

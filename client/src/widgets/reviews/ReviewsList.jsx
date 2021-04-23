@@ -25,7 +25,7 @@ const ReviewsList = () => {
   };
 
   return (
-    <div className="container 75%">
+    <div className="container">
       {reviewCount}
       {' '}
       reviews, sorted by

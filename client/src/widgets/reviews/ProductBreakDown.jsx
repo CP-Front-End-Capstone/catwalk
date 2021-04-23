@@ -13,12 +13,12 @@ const ProductBreakdown = () => {
   const widthValue = (productDesc.Width) && Number(productDesc.Width.value);
 
   return (
-    <div className="container">
+    <div className="container small">
       <div className="row small">Fit</div>
       <div className="row small">
         <StackedHorizontalBarChart
           rangesPoints={[1, 5]}
-          backgroundColors={['#4F81BD']}
+          backgroundColors={[`#d3d3d3`]}
           points={[{ value: fitValue }]}
           edges={['Too small', 'Too large']}
         />
@@ -27,7 +27,7 @@ const ProductBreakdown = () => {
       <div className="row small">
         <StackedHorizontalBarChart
           rangesPoints={[1, 5]}
-          backgroundColors={['#4F81BD']}
+          backgroundColors={[`#d3d3d3`]}
           points={[{ value: lengthValue }]}
           edges={['Too short', 'Too long']}
         />
@@ -36,7 +36,7 @@ const ProductBreakdown = () => {
       <div className="row small">
         <StackedHorizontalBarChart
           rangesPoints={[1, 5]}
-          backgroundColors={['#4F81BD']}
+          backgroundColors={[`#d3d3d3`]}
           points={[{ value: comfortValue }]}
           edges={['Poor', 'Perfect']}
         />
@@ -45,7 +45,7 @@ const ProductBreakdown = () => {
       <div className="row small">
         <StackedHorizontalBarChart
           rangesPoints={[1, 5]}
-          backgroundColors={['#4F81BD']}
+          backgroundColors={[`#d3d3d3`]}
           points={[{ value: widthValue }]}
           edges={['Narrow', 'Wide']}
         />
@@ -54,7 +54,7 @@ const ProductBreakdown = () => {
       <div className="row small">
         <StackedHorizontalBarChart
           rangesPoints={[1, 5]}
-          backgroundColors={['#4F81BD']}
+          backgroundColors={[`#d3d3d3`]}
           points={[{ value: qualityValue }]}
           edges={['Low', 'High']}
         />
