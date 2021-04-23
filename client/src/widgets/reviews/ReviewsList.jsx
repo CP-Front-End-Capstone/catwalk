@@ -1,8 +1,10 @@
+/* eslint-disable no-console */
+/* eslint-disable no-undef */
 /* eslint-disable import/extensions */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 // import Dropdown from 'react-bootstrap-dropdown';
 // import DropdownButton from 'react-bootstrap/DropdownButton';
 import IndividualReview from './IndividualReview.jsx';
@@ -12,7 +14,8 @@ import api from '../../../../API/helper';
 const ReviewsList = () => {
   const reviewsInfo = useContext(reviewContext);
   const productId = reviewsInfo.reviewList.product;
-  const [reviewsArray, setReviewsArray] = useState(reviewsInfo.reviewList.results);
+  const [reviewsList, setReviewsList] = useState(reviewsInfo.reviewList)
+  const [reviewsArray, setReviewsArray] = useState(reviewsList.results);
   const [reviewCount, setReviewCount] = useState(2);
   const [sortBy, setSortBy] = useState('relevant');
 
@@ -24,11 +27,25 @@ const ReviewsList = () => {
       });
   };
 
+  const handleSortBy = (selection) => {
+    setSortBy(selection);
+  };
+
+  useEffect(() => {
+    api.fetchEndpoint(`/reviews/?product_id=${productId}&count=${reviewCount}&sort=${sortBy}`)
+      .then((reviewData) => {
+        setReviewsList(reviewData);
+      })
+      .catch((err) => {
+        console.log('error fetching review data', err);
+      });
+  }, [sortBy]);
+
   const moreReviews = reviewCount > reviewsArray.length ? '' : <button type="button" onClick={() => { handleMoreReviews(reviewCount + 2); }}>More Reviews</button>;
 
   return (
     <div className="container">
-      <div className="row">
+      <h5 className="row">
         {reviewCount}
         {' '}
         reviews, sorted by&nbsp;
@@ -48,8 +65,8 @@ const ReviewsList = () => {
             <a className="dropdown-item" href="#!">helpful</a>
           </div>
         </div>
-      </div>
-      <div className="row h-75 overflow-auto border">
+      </h5>
+      <div className="row bg-light h-75 overflow-auto border">
         {reviewsArray.reverse().map((review) => (
           <ul key={review.review_id} className="container">
             <reviewContext.Provider value={reviewCount}>
@@ -60,6 +77,8 @@ const ReviewsList = () => {
       </div>
       <div className="row">
         <div>{moreReviews}</div>
+        &nbsp;
+        &nbsp;
         <button type="button">Add a Review +</button>
       </div>
     </div>

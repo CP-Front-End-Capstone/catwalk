@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import HSBar from 'react-horizontal-stacked-bar-chart';
 import StarRatings from 'react-star-ratings';
 import reviewContext from '../../contexts/ReviewContext';
+import starsContext from '../../contexts/StarsContext';
+import Overview from '../overview/Overview.jsx';
 
 const ReviewBreakDown = () => {
   const reviewMeta = useContext(reviewContext);
@@ -37,51 +39,55 @@ const ReviewBreakDown = () => {
   const oneStar = (reviewMeta.reviewsMeta.ratings[1])
     ? ((reviewMeta.reviewsMeta.ratings[1] * 100) / largestCount) : 0;
 
-  if (recommendPercent) {
-    return (
-      <div>
-        <h1>
-          {formattedAvg}
-          {' '}
-          <StarRatings
-            rating={formattedAvg}
-            starRatedColor="black"
-            numberOfStars={5}
-            name="rating"
-            starDimension="30px"
-          />
-        </h1>
+      <starsContext.provider value={{ starRating: formattedAvg }}>
+        <Overview />
+      </starsContext.provider>;
 
-        <div className="border small" style={{ padding: '20px' }}>
+      if (recommendPercent) {
+        return (
           <div>
-            {recommendPercent}
-            % of reviewers recommend this product
-          </div>
-          <div>
-            5 Stars
-            <HSBar height={10} data={[{ value: fiveStars, color: 'black' }, { value: 100 - fiveStars, color: 'grey' }]} />
-          </div>
-          <div>
-            4 Stars
-            <HSBar height={10} data={[{ value: fourStars, color: 'black' }, { value: 100 - fourStars, color: 'grey' }]} />
-          </div>
-          <div>
-            3 Stars
-            <HSBar height={10} data={[{ value: threeStars, color: 'black' }, { value: 100 - threeStars, color: 'grey' }]} />
-          </div>
-          <div>
-            2 Stars
-            <HSBar height={10} data={[{ value: twoStars, color: 'black' }, { value: 100 - twoStars, color: 'grey' }]} />
-          </div>
-          <div>
-            1 Star
-            <HSBar height={10} data={[{ value: oneStar, color: 'black' }, { value: 100 - oneStar, color: 'grey' }]} />
-          </div>
-        </div>
-      </div>
+            <h1>
+              {formattedAvg}
+              {' '}
+              <StarRatings
+                rating={formattedAvg}
+                starRatedColor="black"
+                numberOfStars={5}
+                name="rating"
+                starDimension="30px"
+              />
+            </h1>
 
-    );
-  }
-  return 'Review Breakdown is loading';
+            <div className="border small" style={{ padding: '20px' }}>
+              <div>
+                {recommendPercent}
+                % of reviewers recommend this product
+              </div>
+              <div>
+                5 Stars
+                <HSBar height={10} data={[{ value: fiveStars, color: 'black' }, { value: 100 - fiveStars, color: 'grey' }]} />
+              </div>
+              <div>
+                4 Stars
+                <HSBar height={10} data={[{ value: fourStars, color: 'black' }, { value: 100 - fourStars, color: 'grey' }]} />
+              </div>
+              <div>
+                3 Stars
+                <HSBar height={10} data={[{ value: threeStars, color: 'black' }, { value: 100 - threeStars, color: 'grey' }]} />
+              </div>
+              <div>
+                2 Stars
+                <HSBar height={10} data={[{ value: twoStars, color: 'black' }, { value: 100 - twoStars, color: 'grey' }]} />
+              </div>
+              <div>
+                1 Star
+                <HSBar height={10} data={[{ value: oneStar, color: 'black' }, { value: 100 - oneStar, color: 'grey' }]} />
+              </div>
+            </div>
+          </div>
+
+        );
+      }
+      return 'Review Breakdown is loading';
 };
 export default ReviewBreakDown;
