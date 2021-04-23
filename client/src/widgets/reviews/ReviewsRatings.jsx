@@ -1,11 +1,12 @@
+/* eslint-disable import/extensions */
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/destructuring-assignment */
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import StarRatings from 'react-star-ratings';
-import productContext from '../../contexts/ProductContext';
-import reviewContext from '../../contexts/ReviewContext';
+import { productContext } from '../../contexts/ProductContext.js';
+import reviewContext from '../../contexts/ReviewContext.js';
 import ReviewsList from './ReviewsList.jsx';
 import ReviewBreakDown from './ReviewBreakDown.jsx';
 import ProductBreakDown from './ProductBreakDown.jsx';

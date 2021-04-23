@@ -5,11 +5,20 @@ import qaContext from '../../contexts/QaContext';
 import QuestionList from './QuestionList.jsx';
 import Search from './Search.jsx';
 
+<<<<<<< HEAD
 const QandA = () => {
   const { productId, changeProductId } = useContext(productContext);
   const [questions, changeQuestions] = useState([]);
   const [count, changeCount] = useState(4);
   const [page, changePage] = useState(1);
+=======
+// const QandA = () => {
+//   //state variables
+//   const [product, setProduct] = useState();
+  // eslint-disable-next-line no-trailing-spaces
+
+// };
+>>>>>>> 6e81e43f2959d5df3a2a3f20592e3e0a410a6cc6
 
   useEffect(() => {
     api.fetchEndpoint(`/qa/questions?product_id=${productId}&count=100`)
