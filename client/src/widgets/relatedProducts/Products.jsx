@@ -24,7 +24,7 @@ function RelatedProducts() {
       api.fetchEndpoint(`/products/${id}/styles`)
     ));
     Promise.all(productsArray).then((response) => {
-      console.log('Your response object: ', response);
+      // console.log('Your response object: ', response);
       setProducts(response);
     });
 
@@ -37,15 +37,15 @@ function RelatedProducts() {
     api.fetchEndpoint(`/products/${context.productId}/related`)
       .then((response) => {
         getProducts(response);
-        console.log('Your related Items: ', response);
+        // console.log('Your related Items: ', response);
       })
       .catch((error) => {
         console.log('Error fetching related items: ', error);
       });
   }, []);
 
-  console.log('Your products: ', products);
-  console.log('Your stsyles: ', styles);
+  // console.log('Your products: ', products);
+  // console.log('Your stsyles: ', styles);
 
   if (products.length !== 0 && styles.length !== 0) {
     return (

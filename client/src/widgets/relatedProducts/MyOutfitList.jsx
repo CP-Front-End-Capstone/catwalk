@@ -6,7 +6,9 @@ function MyOutfitList() {
   return (
     <div className="Container">
       <div className="row">
-        <MyOutfitCard />
+        <div className="card-deck">
+          <MyOutfitCard />
+        </div>
       </div>
     </div>
   );
