@@ -28,7 +28,6 @@ const App = (props) => {
         api.fetchEndpoint(`/products/${productId}/styles`)
           .then((stylesData) => {
             changeStyles(stylesData.results);
-            changeMount(true);
           });
       })
       .catch((error) => {
@@ -54,8 +53,9 @@ const App = (props) => {
           product, styles, productId, changeProductId,
         }}
         >
-          <Overview />
-          <ReviewsRatings />
+          {/* <Overview /> */}
+          <QandA />
+          {/* <ReviewsRatings /> */}
         </productContext.Provider>
       </div>
     </div>
