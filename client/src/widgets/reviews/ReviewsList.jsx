@@ -28,14 +28,30 @@ const ReviewsList = () => {
 
   return (
     <div className="container">
-      {reviewCount}
-      {' '}
-      reviews, sorted by
-      {' '}
-      relevance
-      <div className="row h-75 overflow-auto">
+      <div className="row">
+        {reviewCount}
+        {' '}
+        reviews, sorted by&nbsp;
+        <div className="dropdown">
+          <u
+            className="dropdown-toggle"
+            id="dropdownMenu1"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            {sortBy}
+          </u>
+          <div className="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <a className="dropdown-item" href="#!">newest</a>
+            <a className="dropdown-item" href="#!">relevant</a>
+            <a className="dropdown-item" href="#!">helpful</a>
+          </div>
+        </div>
+      </div>
+      <div className="row h-75 overflow-auto border">
         {reviewsArray.reverse().map((review) => (
-          <ul key={review.review_id} className="container border">
+          <ul key={review.review_id} className="container">
             <reviewContext.Provider value={reviewCount}>
               <IndividualReview review={review} />
             </reviewContext.Provider>

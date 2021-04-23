@@ -8,8 +8,10 @@ const IndividualReview = (props) => {
   const recommend = props.review.recommend && '✓ I recommend this product';
   const response = props.review.response && props.review.response;
 
+  const images = props.review.photos.length > 0 && 'Image';
+
   return (
-    <div className="container">
+    <div className="container border">
       <div className="row">
         <span className="col-sm">
 
@@ -31,9 +33,14 @@ const IndividualReview = (props) => {
         </div>
       </div>
       <h5 className="row">{props.review.summary}</h5>
-      <div className="row border">{props.review.body}</div>
-      <div className="row border">{response}</div>
+      <div className="row border" style={{padding:"5px"}}>{props.review.body}</div>
       <div className="row small">{recommend}</div>
+      <div className="row border">{response}</div>
+      <div className="row">
+        {' '}
+        {images}
+        {' '}
+      </div>
       <div className="row small">
         What this review helpful?
         <u>&nbsp;Yes&nbsp;</u>
