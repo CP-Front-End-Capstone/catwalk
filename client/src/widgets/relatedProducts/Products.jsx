@@ -9,9 +9,8 @@ import RelatedProductsList from './RelatedProductsList.jsx';
 import MyOutfitList from './MyOutfitList.jsx';
 
 function RelatedProducts() {
-  // const [products, setProducts] = useState(dummyProducts);
   const context = useContext(productContext);
-  console.log('Current object: ', context);
+  // console.log('Current object: ', context);
   const [products, setProducts] = useState([]);
   const [isMounted, setIsMounted] = useState(null);
   const [styles, setStyles] = useState([]);
