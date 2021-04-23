@@ -25,18 +25,18 @@ const ReviewsList = () => {
       {reviewCount}
       {' '}
       reviews, sorted by
-      <div className="container border">
-        {reviewsArray.map((review) => (
-          <ul key={review.review_id} className="border col-lg">
-            <reviewContext.Provider value={reviewCount}>
-              <IndividualReview review={review} />
-            </reviewContext.Provider>
-          </ul>
+      <div className="row h-75 overflow-auto">
+        {reviewsArray.reverse().map((review) => (
+            <ul key={review.review_id} className="container border">
+              <reviewContext.Provider value={reviewCount}>
+                <IndividualReview review={review} />
+              </reviewContext.Provider>
+            </ul>
         ))}
-        <div>
-          <button type="button" onClick={() => { handleMoreReviews(reviewCount + 2); }}>{moreReviews}</button>
-          <button type="button">Add a Review</button>
-        </div>
+      </div>
+      <div>
+        <button type="button" onClick={() => { handleMoreReviews(reviewCount + 2); }}>{moreReviews}</button>
+        <button type="button">Add a Review</button>
       </div>
     </div>
 

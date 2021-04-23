@@ -8,6 +8,7 @@ import productContext from '../../contexts/ProductContext';
 import reviewContext from '../../contexts/ReviewContext';
 import ReviewsList from './ReviewsList.jsx';
 import ReviewBreakDown from './ReviewBreakDown.jsx';
+import ProductBreakDown from './ProductBreakDown.jsx';
 import AddReview from './AddReview.jsx';
 import api from '../../../../API/helper';
 
@@ -44,7 +45,9 @@ const ReviewsRatings = () => {
                   <ReviewBreakDown />
                 </reviewContext.Provider>
                 <div className="row border">
-                  Product Breakdown
+                  <reviewContext.Provider value={{ reviewsMeta, reviewList }}>
+                    <ProductBreakDown />
+                  </reviewContext.Provider>
                 </div>
               </div>
             </div>
