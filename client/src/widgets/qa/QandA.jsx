@@ -14,7 +14,9 @@ const QandA = () => {
   useEffect(() => {
     api.fetchEndpoint(`/qa/questions?product_id=${productId}&count=100`)
       .then((questionsData) => {
-        changeQuestions(questionsData.results);
+        changeQuestions(questionsData.results.sort((a, b) => (
+          b.question_helpfulness - a.question_helpfulness
+        )));
       })
       .catch((error) => {
         console.log('Error fetching questions:', error);
@@ -48,4 +50,5 @@ const QandA = () => {
   }
   return <div>Loading Questions and Answers...</div>;
 };
+
 export default QandA;
