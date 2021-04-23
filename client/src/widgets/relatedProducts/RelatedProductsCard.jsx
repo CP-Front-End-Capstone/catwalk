@@ -13,9 +13,7 @@ function RelatedProductsCard({ product }) {
       <div className="card">
         <img className="card-img-top" src="http://placekitten.com/g/200/300" />
         <div className="card-body">
-          <div className="card-subtitle">
-            <h5>{product.category}</h5>
-          </div>
+          <h5 className="card-title">{product.category}</h5>
           <div className="card-text">
             <h6>{product.name}</h6>
           </div>

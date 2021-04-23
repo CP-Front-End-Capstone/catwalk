@@ -32,7 +32,9 @@ function RelatedProductsList({ products }) {
     <div className="container">
       <div className="row">
         {products.products.map((product) => (
-          <RelatedProductsCard product={product} />
+          <ul key={product.id}>
+            <RelatedProductsCard product={product} />
+          </ul>
         ))}
       </div>
     </div>

@@ -6,6 +6,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import api from '../../../../API/helper.js';
 import productContext from '../../contexts/ProductContext.js';
 import RelatedProductsList from './RelatedProductsList.jsx';
+import MyOutfitList from './MyOutfitList.jsx';
 
 function RelatedProducts() {
   // const [products, setProducts] = useState(dummyProducts);
@@ -49,6 +50,7 @@ function RelatedProducts() {
       </div>
       <div>
         <h3>My Outfit:</h3>
+        <MyOutfitList />
       </div>
     </div>
   );
