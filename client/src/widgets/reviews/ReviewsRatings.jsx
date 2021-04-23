@@ -36,8 +36,8 @@ const ReviewsRatings = () => {
   if (reviewsMeta) {
     return (
       <div>
-        <h3>Reviews & Ratings</h3>
-        <div className="container-fluid border">
+        <div className="container border">
+          <h3>Reviews & Ratings</h3>
           <div className="row">
             <div className="col-sm-4">
               <div className="container border" />
