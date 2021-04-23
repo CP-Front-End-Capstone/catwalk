@@ -11,7 +11,7 @@ import MyOutfitList from './MyOutfitList.jsx';
 function RelatedProducts() {
   // const [products, setProducts] = useState(dummyProducts);
   const context = useContext(productContext);
-  console.log('Current Styles: ', context.styles);
+  console.log('Current object: ', context);
   const [products, setProducts] = useState([]);
   const [styles, setStyles] = useState([]);
 
@@ -21,9 +21,10 @@ function RelatedProducts() {
       api.fetchEndpoint(`/products/${id}`)
     ));
     // const stylesArray = array.map((id) => (
-    //   api.fetchEndpoint(`/products/${id}/styles`)
+      // api.fetchEndpoint(`/products/${id}/styles`)
     // ));
     Promise.all(productsArray).then((response) => {
+      console.log('Your response object: ', response);
       setProducts(response);
     });
     // Promise.all(stylesArray).then((response) => {

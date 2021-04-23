@@ -6,7 +6,7 @@ import React from 'react';
 import { Carousel } from 'react-bootstrap';
 
 function RelatedProductsCard({ product }) {
-  // console.log('HEllO from products card: ', product);
+  // console.log('HEllO from products card: ', currentStyles);
 
   return (
     <div className="col-sm">
