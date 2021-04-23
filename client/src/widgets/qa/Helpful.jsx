@@ -1,13 +1,25 @@
-import 'react', { useState, useEffect } from 'React';
-
+import React, { useState, useEffect } from 'react';
 
 const Helpful = (props) => {
   const { input } = props;
-  if(input.hasOwnPropert('question_id')) {
+  if (input.hasOwnProperty('question_id')) {
     const count = input.question_helpfulness;
-  } else {
-    const count = input.helpfulness;
+    return (
+      <>
+        <div className="col">Helpful?</div>
+        <button type="button" className="col btn btn-link">Yes</button>
+        <div className="col">({count})</div>
+      </>
+    );
   }
+  const count = input.helpfulness;
+  return (
+    <>
+      <div className="col">Helpful?</div>
+      <div className="col">Yes</div>
+      <div className="col">({count})</div>
+    </>
+  );
 };
 
 export default Helpful;

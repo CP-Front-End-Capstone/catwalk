@@ -57,9 +57,7 @@ const Question = (props) => {
     <>
       <div className="row">
         Q: {question.question_body}
-        <div className="col">
-          <Helpful input={question} />
-        </div>
+        <Helpful input={question} />
       </div>
       {answerList}
     </>
