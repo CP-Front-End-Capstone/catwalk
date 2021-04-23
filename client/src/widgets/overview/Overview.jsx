@@ -19,25 +19,28 @@ import { ProductContext } from '../../contexts/ProductContext.js';
 
 function Overview(props) {
   const { product, styles } = useContext(ProductContext);
-  const [currentStyle, changeCurrentStyle] = useState(styles[0].style_id);
+  // const [currentStyle, changeCurrentStyle] = useState(styles[0].style_id);
 
-  return (
-    <div class="container ">
-      <div class="row d-flex justify-content-between">
-        <div class="col">
-          <ImageGallery />
+  if (styles) {
+    return (
+      <div class="container ">
+        <div class="row d-flex justify-content-between">
+          <div class="col">
+            <ImageGallery />
+          </div>
+          <div class="col d-flex align-content-around flex-wrap">
+            <ProductInfoTop />
+            <Styles />
+            <AddToCart />
+          </div>
         </div>
-        <div class="col d-flex align-content-around flex-wrap">
-          <ProductInfoTop />
-          <Styles changeCurrentStyle={changeCurrentStyle} />
-          <AddToCart />
+        <div class="row">
+          <ProductInfoBottom />
         </div>
       </div>
-      <div class="row">
-        <ProductInfoBottom />
-      </div>
-    </div>
-  );
+    );
+  }
+  return <h1>Loading Product Overview</h1>;
 }
 
 export default Overview;
