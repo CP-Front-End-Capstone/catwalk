@@ -14,7 +14,7 @@ const ProductBreakdown = () => {
 
   return (
     <div className="container small">
-      <div className="row small">Fit</div>
+      <div className="text-center">Fit</div>
       <div className="row small">
         <StackedHorizontalBarChart
           rangesPoints={[1, 5]}
@@ -23,7 +23,7 @@ const ProductBreakdown = () => {
           edges={['Too small', 'Too large']}
         />
       </div>
-      <div className="row small">Length</div>
+      <div className="text-center">Length</div>
       <div className="row small">
         <StackedHorizontalBarChart
           rangesPoints={[1, 5]}
@@ -32,7 +32,7 @@ const ProductBreakdown = () => {
           edges={['Too short', 'Too long']}
         />
       </div>
-      <div className="row small">Comfort</div>
+      <div className="text-center">Comfort</div>
       <div className="row small">
         <StackedHorizontalBarChart
           rangesPoints={[1, 5]}
@@ -41,7 +41,7 @@ const ProductBreakdown = () => {
           edges={['Poor', 'Perfect']}
         />
       </div>
-      <div className="row small">Width</div>
+      <div className="text-center">Width</div>
       <div className="row small">
         <StackedHorizontalBarChart
           rangesPoints={[1, 5]}
@@ -50,7 +50,7 @@ const ProductBreakdown = () => {
           edges={['Narrow', 'Wide']}
         />
       </div>
-      <div className="row small">Quality</div>
+      <div className="text-center">Quality</div>
       <div className="row small">
         <StackedHorizontalBarChart
           rangesPoints={[1, 5]}
