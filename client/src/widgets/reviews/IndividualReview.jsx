@@ -1,12 +1,11 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React from 'react';
 import StarRatings from 'react-star-ratings';
 
 const IndividualReview = (props) => {
   const recommend = props.review.recommend && '✓ I recommend this product';
   const response = props.review.response && props.review.response;
-
 
   return (
     <div className="container">

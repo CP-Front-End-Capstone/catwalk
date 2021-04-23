@@ -74,17 +74,11 @@ const ProductBreakdown = () => {
 
   return (
     <div className="container border">
-
       {fitValue}
-
       {lengthValue}
-
       {comfortValue}
-
       {widthValue}
-
       {qualityValue}
-
     </div>
   );
 };
