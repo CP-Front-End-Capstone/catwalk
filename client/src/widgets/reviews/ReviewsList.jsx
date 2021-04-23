@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */

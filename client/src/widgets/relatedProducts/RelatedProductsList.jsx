@@ -16,11 +16,13 @@ function RelatedProductsList({ products, styles }) {
   return (
     <div className="container">
       <div className="row">
-        {products.map((product, index) => (
-          <ul key={product.id}>
-            <RelatedProductsCard product={product} style={styles[index]} />
-          </ul>
-        ))}
+        <div className="card-deck">
+          {products.map((product, index) => (
+            <div className="card" key={product.id}>
+              <RelatedProductsCard product={product} style={styles[index]} />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -4,7 +4,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect, useContext } from 'react';
 import api from '../../../../API/helper.js';
-import productContext from '../../contexts/ProductContext.js';
+import { productContext } from '../../contexts/ProductContext.js';
 import RelatedProductsList from './RelatedProductsList.jsx';
 import MyOutfitList from './MyOutfitList.jsx';
 
