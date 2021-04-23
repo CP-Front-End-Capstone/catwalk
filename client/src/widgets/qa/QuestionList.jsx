@@ -5,12 +5,12 @@ import qaContext from '../../contexts/QaContext';
 const QuestionList = () => {
   const { questions, count, changeCount } = useContext(qaContext);
   const [questionList, changeQuestionList] = useState(questions.slice(0, 4));
-  console.log(questionList);
-  console.log(questions);
 
   return (
     <div className="row">
-      {}
+      {questionList.map((question) => (
+        <Question question={question} />
+      ))}
     </div>
   );
 };

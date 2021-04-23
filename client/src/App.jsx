@@ -43,9 +43,9 @@ const App = () => {
           <productContext.Provider value={{ productId, changeProductId }}>
             <QandA />
           </productContext.Provider>
-          <productContext.Provider value = {product}>
+          {/* <productContext.Provider value = {product}>
             <Overview />
-          </productContext.Provider>
+          </productContext.Provider> */}
         </div>
       </>
     );
