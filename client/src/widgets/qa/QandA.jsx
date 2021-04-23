@@ -6,7 +6,8 @@
 // const QandA = () => {
 //   //state variables
 //   const [product, setProduct] = useState();
-  
+  // eslint-disable-next-line no-trailing-spaces
+
 // };
 
 // const fetchQuestions = () => {
