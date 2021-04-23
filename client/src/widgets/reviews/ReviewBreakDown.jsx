@@ -59,23 +59,23 @@ const ReviewBreakDown = () => {
           </div>
           <div>
             5 Stars
-            <HSBar data={[{ value: fiveStars, color: 'black' }, { value: 100 - fiveStars, color: 'grey' }]} />
+            <HSBar height={10} data={[{ value: fiveStars, color: 'black' }, { value: 100 - fiveStars, color: 'grey' }]} />
           </div>
           <div>
             4 Stars
-            <HSBar data={[{ value: fourStars, color: 'black' }, { value: 100 - fourStars, color: 'grey' }]} />
+            <HSBar height={10} data={[{ value: fourStars, color: 'black' }, { value: 100 - fourStars, color: 'grey' }]} />
           </div>
           <div>
             3 Stars
-            <HSBar data={[{ value: threeStars, color: 'black' }, { value: 100 - threeStars, color: 'grey' }]} />
+            <HSBar height={10} data={[{ value: threeStars, color: 'black' }, { value: 100 - threeStars, color: 'grey' }]} />
           </div>
           <div>
             2 Stars
-            <HSBar data={[{ value: twoStars, color: 'black' }, { value: 100 - twoStars, color: 'grey' }]} />
+            <HSBar height={10} data={[{ value: twoStars, color: 'black' }, { value: 100 - twoStars, color: 'grey' }]} />
           </div>
           <div>
             1 Star
-            <HSBar data={[{ value: oneStar, color: 'black' }, { value: 100 - oneStar, color: 'grey' }]} />
+            <HSBar height={10} data={[{ value: oneStar, color: 'black' }, { value: 100 - oneStar, color: 'grey' }]} />
           </div>
         </div>
       </div>
