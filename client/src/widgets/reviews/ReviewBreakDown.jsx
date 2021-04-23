@@ -3,13 +3,13 @@ import HSBar from 'react-horizontal-stacked-bar-chart';
 import StarRatings from 'react-star-ratings';
 import reviewContext from '../../contexts/ReviewContext';
 
-const ReviewBreakDown = (props) => {
+const ReviewBreakDown = () => {
   const reviewMeta = useContext(reviewContext);
 
   const totalRatings = Number(reviewMeta.reviewsMeta.recommended.true)
   + Number(reviewMeta.reviewsMeta.recommended.false);
 
-  const recommendPercent = Math.round((Number(reviewMeta.reviewsMeta.recommended.true) * 100
+  const recommendPercent = Math.round(((Number(reviewMeta.reviewsMeta.recommended.true) * 100)
   / (totalRatings)) * 10) / 10;
 
   const ratingsCountArray = (Object.values(reviewMeta.reviewsMeta.ratings));
@@ -27,15 +27,15 @@ const ReviewBreakDown = (props) => {
   const formattedAvg = Math.round(avgCalc * 10) / 10;
 
   const fiveStars = (reviewMeta.reviewsMeta.ratings[5])
-    ? (reviewMeta.reviewsMeta.ratings[5] * 100 / largestCount) : 0;
+    ? ((reviewMeta.reviewsMeta.ratings[5] * 100) / largestCount) : 0;
   const fourStars = (reviewMeta.reviewsMeta.ratings[4])
-    ? (reviewMeta.reviewsMeta.ratings[4] * 100 / largestCount) : 0;
+    ? ((reviewMeta.reviewsMeta.ratings[4] * 100) / largestCount) : 0;
   const threeStars = (reviewMeta.reviewsMeta.ratings[3])
-    ? (reviewMeta.reviewsMeta.ratings[3] * 100 / largestCount) : 0;
+    ? ((reviewMeta.reviewsMeta.ratings[3] * 100) / largestCount) : 0;
   const twoStars = (reviewMeta.reviewsMeta.ratings[2])
-    ? (reviewMeta.reviewsMeta.ratings[2] * 100 / largestCount) : 0;
+    ? ((reviewMeta.reviewsMeta.ratings[2] * 100) / largestCount) : 0;
   const oneStar = (reviewMeta.reviewsMeta.ratings[1])
-    ? (reviewMeta.reviewsMeta.ratings[1] * 100 / largestCount) : 0;
+    ? ((reviewMeta.reviewsMeta.ratings[1] * 100) / largestCount) : 0;
 
   if (recommendPercent) {
     return (
