@@ -11,9 +11,9 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import api from '../../API/helper';
-import { ProductContext } from './contexts/ProductContext.js';
-// import ReviewsRatings from './widgets/reviews/ReviewsRatings.jsx';
-// import QandA from './widgets/qa/QandA.jsx';
+import { productContext } from './contexts/ProductContext.js';
+import ReviewsRatings from './widgets/reviews/ReviewsRatings.jsx';
+import QandA from './widgets/qa/QandA.jsx';
 import Overview from './widgets/overview/Overview.jsx';
 
 const App = (props) => {
@@ -50,10 +50,11 @@ const App = (props) => {
         </div>
       </nav>
       <div>
-        <ProductContext.Provider value={{ product, styles }}>
+        <productContext.Provider value={{
+          product, styles, productId, changeProductId,
+        }}
+        >
           <Overview />
-        </ProductContext.Provider>
-        <productContext.Provider value={{ productId }}>
           <ReviewsRatings />
         </productContext.Provider>
       </div>

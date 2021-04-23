@@ -4,10 +4,10 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prefer-stateless-function */
 import React, { useContext } from 'react';
-import { ProductContext } from '../../contexts/ProductContext.js';
+import { productContext } from '../../contexts/ProductContext.js';
 
 function ImageGallery() {
-  const { styles } = useContext(ProductContext);
+  const { styles } = useContext(productContext);
   return (<img className="img" src={styles[0].photos[0].url} alt="Thumbnail image" />);
 }
 

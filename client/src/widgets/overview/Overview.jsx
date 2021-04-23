@@ -15,10 +15,10 @@ import ProductInfoTop from './ProductInfoTop.jsx';
 import ProductInfoBottom from './ProductInfoBottom.jsx';
 import Styles from './Styles.jsx';
 import AddToCart from './AddToCart.jsx';
-import { ProductContext } from '../../contexts/ProductContext.js';
+import { productContext } from '../../contexts/ProductContext.js';
 
 function Overview(props) {
-  const { product, styles } = useContext(ProductContext);
+  const { product, styles } = useContext(productContext);
   // const [currentStyle, changeCurrentStyle] = useState(styles[0].style_id);
 
   if (styles) {

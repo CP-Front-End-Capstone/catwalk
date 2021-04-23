@@ -1,11 +1,11 @@
 /* eslint-disable import/extensions */
 /* eslint-disable react/prefer-stateless-function */
 import React, { useContext } from 'react';
-import { ProductContext } from '../../contexts/ProductContext.js';
+import { productContext } from '../../contexts/ProductContext.js';
 
 function ProductInfoTop() {
-  const { product } = useContext(ProductContext);
-  const { styles } = useContext(ProductContext);
+  const { product, styles } = useContext(productContext);
+
   return (
     <div>
       <h4>{product.category}</h4>

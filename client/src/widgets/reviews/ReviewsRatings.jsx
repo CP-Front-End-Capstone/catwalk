@@ -1,11 +1,12 @@
+/* eslint-disable import/extensions */
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/destructuring-assignment */
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import StarRatings from 'react-star-ratings';
-import productContext from '../../contexts/ProductContext';
-import reviewContext from '../../contexts/ReviewContext';
+import { productContext } from '../../contexts/ProductContext.js';
+import reviewContext from '../../contexts/ReviewContext.js';
 import ReviewsList from './ReviewsList.jsx';
 import ReviewBreakDown from './ReviewBreakDown.jsx';
 import ProductBreakDown from './ProductBreakDown.jsx';
@@ -71,37 +72,4 @@ const ReviewsRatings = () => {
   return 'Reviews are Loading ...';
 };
 
-//   addReviewClick() {
-//     this.setState({ addReview: true });
-//   }
-
-//   render() {
-//     return (
-//       <div>
-//         <h3>Reviews & Ratings</h3>
-//         <div className="container">
-//           <div className="row">
-//             <div className="col-sm">
-//               Average Review: Stars
-//             </div>
-//             <div className="col-sm">
-//               <div className="container">
-//                 <div className="row">
-//                   <ReviewsList />
-//                   <div className="col-sm">
-//                     <button type="button">More Reviews</button>
-//                   </div>
-//                   <div className="col-sm">
-//                     <button type="button">Add a Review</button>
-//                   </div>
-//                 </div>
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     );
-//   }
-// }
-
-// export default ReviewsRatings;
+export default ReviewsRatings;

@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prefer-stateless-function */
 import React, { useContext, useState } from 'react';
-import { ProductContext } from '../../contexts/ProductContext.js';
+import { productContext } from '../../contexts/ProductContext.js';
 
 function AddToCart() {
   return (

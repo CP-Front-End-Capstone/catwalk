@@ -10,10 +10,10 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prefer-stateless-function */
 import React, { useContext, useState } from 'react';
-import { ProductContext } from '../../contexts/ProductContext.js';
+import { productContext } from '../../contexts/ProductContext.js';
 
 function Styles(props) {
-  const { styles } = useContext(ProductContext);
+  const { styles } = useContext(productContext);
   const handleClick = (e) => props.changeCurrentStyle(e.target.value);
 
   return (

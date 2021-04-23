@@ -7,6 +7,6 @@
 /* eslint-disable import/prefer-default-export */
 import React, { createContext } from 'react';
 
-export const ProductContext = createContext();
+export const productContext = createContext();
 
 // whatever is passed in create Context is the default setting.
