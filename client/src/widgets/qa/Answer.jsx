@@ -7,16 +7,15 @@ const Answer = (props) => {
   const {id, body, date, answerer_name, helpfulness, photos} = answer;
   return (
     <div className="col">
-      <div className="row">A: {body}</div>
+      <div>A: {body}</div>
       <div>
-        <span>
+        <span className="col">
           by {answerer_name} {(new Date(date)).toDateString().slice(4)}
         </span>
-        <span> | </span>
+        <span className="col">|</span>
         <Report />
       </div>
     </div>
-
   );
 };
 

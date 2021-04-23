@@ -12,7 +12,7 @@ const QandA = () => {
   const [page, changePage] = useState(1);
 
   useEffect(() => {
-    api.fetchEndpoint(`/qa/questions?product_id=${productId}`)
+    api.fetchEndpoint(`/qa/questions?product_id=${productId}&count=100`)
       .then((questionsData) => {
         changeQuestions(questionsData.results);
       })

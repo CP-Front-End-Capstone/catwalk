@@ -8,22 +8,52 @@ import Answer from './Answer.jsx';
 
 const Question = (props) => {
   const { question } = props;
-  let answers = [];
+  const [answersList, changeAnswerList] = useState([]);
+  const [showAll, changeShowAll] = useState(false);
+
+  const answers = [];
   for (const id in question.answers) {
     answers.push(question.answers[id]);
   }
-  const answersList = answers.map((answer) => (
-    <div className="col" key={answer.id}>
-      <Answer answer={answer} />
-    </div>
-  ));
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    changeShowAll(true);
+  };
+
+  useEffect(() => {
+    if (!showAll) {
+      if (answers.length > 4) {
+        const temp = [];
+        for (let i = 0; i < 4; i++) {
+          temp.push(<Answer answer={answers[i]} key={answers[i].answer_id} />);
+        }
+        temp.push(<input
+          type="button"
+          className="btn"
+          key={question.question_id}
+          value="LOAD MORE ANSWERS"
+          onClick={handleClick}
+        />);
+        changeAnswerList(temp);
+      } else if (answers.length > 0) {
+        changeAnswerList(answers.map((answer) => (
+          <Answer answer={answer} key={answer.id} />
+        )));
+      }
+    } else {
+      changeAnswerList(answers.map((answer) => (
+        <Answer answer={answer} key={answer.id} />
+      )));
+    }
+  }, [showAll]);
+
   return (
     <>
       <div className="col">
         Q: {question.question_body}
       </div>
       {answersList}
-      <input type="button" className="btn" value="LOAD MORE ANSWERS" />
     </>
   );
 };
