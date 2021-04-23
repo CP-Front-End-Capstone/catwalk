@@ -7,10 +7,8 @@ const Search = () => {
     changeQuestions,
   } = useContext(qaContext);
   const [query, changeQuery] = useState('');
-  const handleChange = (e) => {
-    
-  };
-  return <input type="text" className="col" onChange={handleChange} />;
+
+  return <input type="text" className="row" />;
 };
 
 export default Search;

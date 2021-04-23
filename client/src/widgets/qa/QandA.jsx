@@ -30,8 +30,8 @@ const QandA = () => {
   if (questions.length > 0) {
     return (
       <div className="container">
-        <div className="col">{JSON.stringify(productId)}</div>
-        <div className="col">QUESTIONS & ANSWERS</div>
+        <div className="row">{JSON.stringify(productId)}</div>
+        <div className="row">QUESTIONS & ANSWERS</div>
         <qaContext.Provider value={{
           questions,
           changeQuestions,
@@ -44,7 +44,7 @@ const QandA = () => {
           <Search />
           <QuestionList />
         </qaContext.Provider>
-        <button type="submit" className="col" onClick={handleClick}>Change Product</button>
+        <button type="submit" className="row" onClick={handleClick}>Change Product</button>
       </div>
     );
   }

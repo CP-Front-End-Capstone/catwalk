@@ -7,11 +7,11 @@ const QuestionList = () => {
   const [questionList, changeQuestionList] = useState(questions.slice(0, 4));
 
   return (
-    <div className="row">
+    <>
       {questionList.map((question) => (
-        <Question question={question} />
+        <Question question={question} key={question.question_id} />
       ))}
-    </div>
+    </>
   );
 };
 

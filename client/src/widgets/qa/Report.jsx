@@ -1,9 +1,9 @@
 import React from 'react';
 
 const Report = () => (
-  <span>
+  <div>
     Report
-  </span>
+  </div>
 );
 
 export default Report;

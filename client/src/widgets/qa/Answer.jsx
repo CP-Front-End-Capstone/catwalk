@@ -6,16 +6,16 @@ const Answer = (props) => {
   const { answer } = props;
   const {id, body, date, answerer_name, helpfulness, photos} = answer;
   return (
-    <div className="col">
-      <div>A: {body}</div>
-      <div>
-        <span className="col">
+    <>
+      <div className="row">A: {body}</div>
+      <div className="row">
+        <div className="col">
           by {answerer_name} {(new Date(date)).toDateString().slice(4)}
-        </span>
-        <span className="col">|</span>
-        <Report />
+        </div>
+        <div className="col">|</div>
+        <Report className="col" />
       </div>
-    </div>
+    </>
   );
 };
 

@@ -15,7 +15,7 @@ const Question = (props) => {
   for (const id in question.answers) {
     answers.push(question.answers[id]);
   }
-
+  console.log(answers.length);
   const handleClick = (e) => {
     e.preventDefault();
     changeShowAll(true);
@@ -26,7 +26,7 @@ const Question = (props) => {
       if (answers.length > 4) {
         const temp = [];
         for (let i = 0; i < 4; i++) {
-          temp.push(<Answer answer={answers[i]} key={answers[i].answer_id} />);
+          temp.push(<Answer answer={answers[i]} key={answers[i].id} />);
         }
         temp.push(<input
           type="button"
@@ -50,7 +50,7 @@ const Question = (props) => {
 
   return (
     <>
-      <div className="col">
+      <div className="row">
         Q: {question.question_body}
       </div>
       {answerList}
