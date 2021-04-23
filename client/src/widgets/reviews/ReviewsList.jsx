@@ -1,6 +1,9 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
 import React, { useContext, useState } from 'react';
+// import Dropdown from 'react-bootstrap-dropdown';
+// import DropdownButton from 'react-bootstrap/DropdownButton';
 import IndividualReview from './IndividualReview.jsx';
 import reviewContext from '../../contexts/ReviewContext';
 import api from '../../../../API/helper';
@@ -10,6 +13,7 @@ const ReviewsList = () => {
   const productId = reviewsInfo.reviewList.product;
   const [reviewsArray, setReviewsArray] = useState(reviewsInfo.reviewList.results);
   const [reviewCount, setReviewCount] = useState(2);
+  const [sortBy, setSortBy] = useState('relevant');
   const moreReviews = reviewCount > reviewsArray.length ? '' : 'More Reviews';
 
   const handleMoreReviews = (count) => {
@@ -25,13 +29,14 @@ const ReviewsList = () => {
       {reviewCount}
       {' '}
       reviews, sorted by
+      {' '}
       <div className="row h-75 overflow-auto">
         {reviewsArray.reverse().map((review) => (
-            <ul key={review.review_id} className="container border">
-              <reviewContext.Provider value={reviewCount}>
-                <IndividualReview review={review} />
-              </reviewContext.Provider>
-            </ul>
+          <ul key={review.review_id} className="container border">
+            <reviewContext.Provider value={reviewCount}>
+              <IndividualReview review={review} />
+            </reviewContext.Provider>
+          </ul>
         ))}
       </div>
       <div>
