@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
@@ -14,7 +15,6 @@ const ReviewsList = () => {
   const [reviewsArray, setReviewsArray] = useState(reviewsInfo.reviewList.results);
   const [reviewCount, setReviewCount] = useState(2);
   const [sortBy, setSortBy] = useState('relevant');
-  const moreReviews = reviewCount > reviewsArray.length ? '' : 'More Reviews';
 
   const handleMoreReviews = (count) => {
     setReviewCount(count);
@@ -23,6 +23,8 @@ const ReviewsList = () => {
         setReviewsArray(reviewData.results);
       });
   };
+
+  const moreReviews = reviewCount > reviewsArray.length ? '' : <button type="button" onClick={() => { handleMoreReviews(reviewCount + 2); }}>More Reviews</button>;
 
   return (
     <div className="container">
@@ -40,8 +42,8 @@ const ReviewsList = () => {
           </ul>
         ))}
       </div>
-      <div>
-        <button type="button" onClick={() => { handleMoreReviews(reviewCount + 2); }}>{moreReviews}</button>
+      <div className="row">
+        <div>{moreReviews}</div>
         <button type="button">Add a Review +</button>
       </div>
     </div>

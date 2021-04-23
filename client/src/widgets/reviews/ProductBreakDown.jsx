@@ -6,59 +6,85 @@ const ProductBreakdown = () => {
   const reviewMeta = useContext(reviewContext);
   const productDesc = reviewMeta.reviewsMeta.characteristics;
 
-  const fitValue = (productDesc.Fit) && Number(productDesc.Fit.value);
-  const lengthValue = (productDesc.Length) && Number(productDesc.Length.value);
-  const comfortValue = (productDesc.Comfort) && Number(productDesc.Comfort.value);
-  const qualityValue = (productDesc.Quality) && Number(productDesc.Quality.value);
-  const widthValue = (productDesc.Width) && Number(productDesc.Width.value);
-
-  return (
-    <div className="container small">
+  const fitValue = (productDesc.Fit) && (
+    <div className="container">
       <div className="text-center">Fit</div>
-      <div className="row small">
+      <div className="small">
         <StackedHorizontalBarChart
-          rangesPoints={[1, 5]}
-          backgroundColors={[`#d3d3d3`]}
-          points={[{ value: fitValue }]}
+          rangesPoints={[0, 5]}
+          backgroundColors={['#d3d3d3']}
+          points={[{ value: Number(productDesc.Fit.value) }]}
           edges={['Too small', 'Too large']}
         />
       </div>
+    </div>
+  );
+  const lengthValue = (productDesc.Length) && (
+    <div className="container">
       <div className="text-center">Length</div>
-      <div className="row small">
+      <div className="small">
         <StackedHorizontalBarChart
-          rangesPoints={[1, 5]}
-          backgroundColors={[`#d3d3d3`]}
-          points={[{ value: lengthValue }]}
+          rangesPoints={[0, 5]}
+          backgroundColors={['#d3d3d3']}
+          points={[{ value: Number(productDesc.Length.value) }]}
           edges={['Too short', 'Too long']}
         />
       </div>
+    </div>
+  );
+  const comfortValue = (productDesc.Comfort) && (
+    <div className="container">
       <div className="text-center">Comfort</div>
-      <div className="row small">
+      <div className="small">
         <StackedHorizontalBarChart
-          rangesPoints={[1, 5]}
-          backgroundColors={[`#d3d3d3`]}
-          points={[{ value: comfortValue }]}
+          rangesPoints={[0, 5]}
+          backgroundColors={['#d3d3d3']}
+          points={[{ value: Number(productDesc.Comfort.value) }]}
           edges={['Poor', 'Perfect']}
         />
       </div>
-      <div className="text-center">Width</div>
-      <div className="row small">
-        <StackedHorizontalBarChart
-          rangesPoints={[1, 5]}
-          backgroundColors={[`#d3d3d3`]}
-          points={[{ value: widthValue }]}
-          edges={['Narrow', 'Wide']}
-        />
-      </div>
+    </div>
+  );
+  const qualityValue = (productDesc.Quality) && (
+    <div className="container">
       <div className="text-center">Quality</div>
-      <div className="row small">
+      <div className="small">
         <StackedHorizontalBarChart
-          rangesPoints={[1, 5]}
-          backgroundColors={[`#d3d3d3`]}
-          points={[{ value: qualityValue }]}
+          rangesPoints={[0, 5]}
+          backgroundColors={['#d3d3d3']}
+          points={[{ value: Number(productDesc.Quality.value) }]}
           edges={['Low', 'High']}
         />
       </div>
+    </div>
+  );
+  const widthValue = (productDesc.Width) && (
+    <div>
+      <div className="text-center">Width</div>
+      <div className="small">
+        <StackedHorizontalBarChart
+          rangesPoints={[0, 5]}
+          backgroundColors={['#d3d3d3']}
+          points={[{ value: Number(productDesc.Width.value) }]}
+          edges={['Narrow', 'Wide']}
+        />
+      </div>
+    </div>
+  );
+
+  return (
+    <div className="container border">
+
+      {fitValue}
+
+      {lengthValue}
+
+      {comfortValue}
+
+      {widthValue}
+
+      {qualityValue}
+
     </div>
   );
 };
