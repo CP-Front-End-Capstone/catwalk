@@ -15,21 +15,34 @@ const QuestionList = () => {
     changeQuestionList(questions.slice(0, count));
   }, [count]);
 
-  const handleClick = () => {
+  const moreQuestions = () => {
     changeCount(count + 4);
   };
 
+  const addQuestion = () => {
+
+  };
+
   return (
-    <>
+    <div className="h-75 overflow-auto">
       {questionList.map((question) => (
         <Question question={question} key={question.question_id} />
       ))}
-      <input
-        type="button"
-        value="Show more questions..."
-        onClick={handleClick}
-      />
-    </>
+      <div className="row-3 p-1">
+        <input
+          type="button"
+          className="btn btn-outline-secondary"
+          value="MORE ANSWERED QUESTIONS"
+          onClick={moreQuestions}
+        />
+        <input
+          type="button"
+          className="btn btn-outline-secondary"
+          value="ADD A QUESTION +"
+          onClick={addQuestion}
+        />
+      </div>
+    </div>
   );
 };
 

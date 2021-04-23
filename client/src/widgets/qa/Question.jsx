@@ -34,13 +34,18 @@ const Question = (props) => {
         for (let i = 0; i < 2; i++) {
           temp.push(<Answer answer={answers[i]} key={answers[i].id} />);
         }
-        temp.push(<input
-          type="button"
-          className="btn"
-          key={question.question_id}
-          value="LOAD MORE ANSWERS"
-          onClick={handleClick}
-        />);
+        temp.push(
+          <div>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input
+              type="button"
+              className="btn"
+              key={question.question_id}
+              value="LOAD MORE ANSWERS"
+              onClick={handleClick}
+            />
+          </div>,
+        );
         changeAnswerList(temp);
       } else if (answers.length > 0) {
         changeAnswerList(answers.map((answer) => (
@@ -56,8 +61,8 @@ const Question = (props) => {
 
   return (
     <>
-      <div className="row">
-        <div className="col h4 g-4">
+      <div className="row p-1">
+        <div className="col h4">
           Q: {question.question_body}
         </div>
         <Helpful input={question} />

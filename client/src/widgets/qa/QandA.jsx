@@ -30,7 +30,7 @@ const QandA = () => {
   if (questions.length > 0) {
     return (
       <div className="container">
-        <div className="row">
+        <div className="row py-3">
           <div className="col lead">
             QUESTIONS & ANSWERS
           </div>
@@ -47,7 +47,7 @@ const QandA = () => {
           <Search />
           <QuestionList />
         </qaContext.Provider>
-        <button type="submit" className="row" onClick={handleClick}>Change Product</button>
+        <button type="submit" className="col" onClick={handleClick}>Change Product</button>
       </div>
     );
   }

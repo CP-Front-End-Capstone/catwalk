@@ -14,7 +14,7 @@ const Search = () => {
   };
 
   return (
-    <div className="row">
+    <div className="row p-1">
       <div className="col">
         <input type="text" className="form-control" onChange={handleChange} value="Have a question? Search for answers..." />
       </div>
