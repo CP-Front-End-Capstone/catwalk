@@ -2,6 +2,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import StarRatings from 'react-star-ratings';
+import dateFormat from 'dateformat';
 
 const IndividualReview = (props) => {
   const recommend = props.review.recommend && '✓ I recommend this product';
@@ -23,6 +24,10 @@ const IndividualReview = (props) => {
         </span>
         <div className="col-sm text-right small">
           {props.review.reviewer_name}
+          &nbsp;
+          &nbsp;
+          &nbsp;
+          {dateFormat(props.review.date, 'mmmm dS, yyyy')}
         </div>
       </div>
       <h5 className="row">{props.review.summary}</h5>
@@ -31,7 +36,7 @@ const IndividualReview = (props) => {
       <div className="row small">{recommend}</div>
       <div className="row small">
         What this review helpful?
-        <button type="button">Yes</button>
+        <u>&nbsp;Yes&nbsp;</u>
         <div>
           (
           {props.review.helpfulness}

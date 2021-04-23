@@ -37,7 +37,7 @@ const ReviewsRatings = () => {
   if (reviewsMeta) {
     return (
       <div>
-        <div className="container border">
+        <div className="container border" style={{ padding: '20px' }}>
           <h3>Reviews & Ratings</h3>
           <div className="row">
             <div className="col-sm-4">
@@ -49,7 +49,7 @@ const ReviewsRatings = () => {
                   </reviewContext.Provider>
                 </div>
               </div>
-              <div className="container">
+              <div className="container" style={{ padding: '10px' }}>
                 <div className="row">
                   <reviewContext.Provider value={{ reviewsMeta, reviewList }}>
                     <ProductBreakDown />
@@ -58,7 +58,7 @@ const ReviewsRatings = () => {
               </div>
             </div>
             <div className="col">
-              <div className="row h-80">
+              <div className="row" style={{ height: '500px' }}>
                 <reviewContext.Provider value={{ reviewsMeta, reviewList }}>
                   <ReviewsList />
                 </reviewContext.Provider>

@@ -73,7 +73,7 @@ const ProductBreakdown = () => {
   );
 
   return (
-    <div className="container border">
+    <div className="container border" style={{ padding: '20px' }}>
       {fitValue}
       {lengthValue}
       {comfortValue}
