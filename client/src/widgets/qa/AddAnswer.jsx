@@ -1,7 +1,7 @@
 import React from 'react';
 
-const AddAnswer = () => {
-  return <div className="col">Add Answer</div>
-};
+const AddAnswer = () => (
+  <div className="col h6 font-weight-light"><u>Add Answer</u></div>
+);
 
 export default AddAnswer;
