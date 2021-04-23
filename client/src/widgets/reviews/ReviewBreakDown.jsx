@@ -52,7 +52,7 @@ const ReviewBreakDown = (props) => {
           />
         </h1>
 
-        <div className="border">
+        <div className="border small">
           <div>
             {recommendPercent}
             % of reviewers recommend this product
