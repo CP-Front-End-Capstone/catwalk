@@ -12,7 +12,6 @@ const QandA = () => {
   const [page, changePage] = useState(1);
 
   useEffect(() => {
-    console.log("Fetching questions", productId);
     api.fetchEndpoint(`/qa/questions?product_id=${productId}&count=100`)
       .then((questionsData) => {
         changeQuestions(questionsData.results.sort((a, b) => (
@@ -42,7 +41,7 @@ const QandA = () => {
           changePage,
         }}
         >
-          {/* <Search /> */}
+          <Search />
           <QuestionList />
         </qaContext.Provider>
         <button type="submit" className="row" onClick={handleClick}>Change Product</button>

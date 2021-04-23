@@ -5,6 +5,7 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { useState, useEffect } from 'react';
 import Answer from './Answer.jsx';
+import Helpful from './Helpful.jsx';
 
 const Question = (props) => {
   const { question } = props;
@@ -27,9 +28,9 @@ const Question = (props) => {
 
   useEffect(() => {
     if (!showAll) {
-      if (answers.length > 4) {
+      if (answers.length > 2) {
         const temp = [];
-        for (let i = 0; i < 4; i++) {
+        for (let i = 0; i < 2; i++) {
           temp.push(<Answer answer={answers[i]} key={answers[i].id} />);
         }
         temp.push(<input
@@ -56,6 +57,9 @@ const Question = (props) => {
     <>
       <div className="row">
         Q: {question.question_body}
+        <div className="col">
+          <Helpful input={question} />
+        </div>
       </div>
       {answerList}
     </>
