@@ -5,13 +5,13 @@
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
 
-function RelatedProductsCard({ product }) {
+function RelatedProductsCard({ product, style }) {
   // console.log('HEllO from products card: ', currentStyles);
 
   return (
     <div className="col-sm">
       <div className="card">
-        <img className="card-img-top" src="http://placekitten.com/g/200/300" />
+        <img className="card-img-top" src={style.results[0].photos[0].thumbnail_url} />
         <div className="card-body">
           <h5 className="card-title">{product.category}</h5>
           <div className="card-text">

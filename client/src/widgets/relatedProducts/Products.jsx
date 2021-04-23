@@ -12,7 +12,6 @@ function RelatedProducts() {
   const context = useContext(productContext);
   // console.log('Current object: ', context);
   const [products, setProducts] = useState([]);
-  const [isMounted, setIsMounted] = useState(null);
   const [styles, setStyles] = useState([]);
 
   const getProducts = (array) => {
@@ -20,23 +19,24 @@ function RelatedProducts() {
     const productsArray = array.map((id) => (
       api.fetchEndpoint(`/products/${id}`)
     ));
-    // const stylesArray = array.map((id) => (
-      // api.fetchEndpoint(`/products/${id}/styles`)
-    // ));
+
+    const stylesArray = array.map((id) => (
+      api.fetchEndpoint(`/products/${id}/styles`)
+    ));
     Promise.all(productsArray).then((response) => {
       console.log('Your response object: ', response);
       setProducts(response);
     });
-    // Promise.all(stylesArray).then((response) => {
-    //   setStyles(response);
-    // });
+
+    Promise.all(stylesArray).then((response) => {
+      setStyles(response);
+    });
   };
 
   useEffect(() => {
     api.fetchEndpoint(`/products/${context.productId}/related`)
       .then((response) => {
         getProducts(response);
-        setIsMounted(true);
         console.log('Your related Items: ', response);
       })
       .catch((error) => {
@@ -44,12 +44,15 @@ function RelatedProducts() {
       });
   }, []);
 
-  if (isMounted) {
+  console.log('Your products: ', products);
+  console.log('Your stsyles: ', styles);
+
+  if (products.length !== 0 && styles.length !== 0) {
     return (
       <div>
         <div>
           <h3>Related Items:</h3>
-          <RelatedProductsList products={{ products, context }} />
+          <RelatedProductsList products={products} styles={styles} />
         </div>
         <div>
           <h3>My Outfit:</h3>

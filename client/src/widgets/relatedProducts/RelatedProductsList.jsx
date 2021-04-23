@@ -9,16 +9,16 @@ import React, { useState, useContext, useEffect } from 'react';
 import RelatedProductsCard from './RelatedProductsCard.jsx';
 // import productContext from '../../contexts/ProductContext.js';
 
-function RelatedProductsList({ products }) {
-  console.log('List of Products: ', products.products);
-  console.log('List of Styles: ', products.context.styles);
+function RelatedProductsList({ products, styles }) {
+  console.log('List of Products: ', products);
+  console.log('List of Styles: ', styles);
 
   return (
     <div className="container">
       <div className="row">
-        {products.products.map((product) => (
+        {products.map((product, index) => (
           <ul key={product.id}>
-            <RelatedProductsCard product={product} />
+            <RelatedProductsCard product={product} style={styles[index]} />
           </ul>
         ))}
       </div>
