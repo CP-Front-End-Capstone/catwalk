@@ -8,19 +8,6 @@ import IndividualReview from './IndividualReview.jsx';
 import reviewContext from '../../contexts/ReviewContext';
 import api from '../../../../API/helper';
 
-<<<<<<< HEAD
-const ReviewsList = (props) => {
-  const reviews = useContext(productContext);
-
-  return (
-    <ul>
-      {reviews.reviewList.results.map((review) => (
-        <li key={review.review_id}>
-          <IndividualReview review={review} />
-        </li>
-      ))}
-    </ul>
-=======
 const ReviewsList = () => {
   const reviewsInfo = useContext(reviewContext);
   const productId = reviewsInfo.reviewList.product;
@@ -59,7 +46,6 @@ const ReviewsList = () => {
       </div>
     </div>
 
->>>>>>> cb40697e2bb44fe40cc908777ee6221dc0c5c186
   );
 };
 export default ReviewsList;

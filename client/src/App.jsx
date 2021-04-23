@@ -27,9 +27,9 @@ const App = () => {
 
   return (
     <div>
-      <h1>Hello Even Bigger Earth!</h1>
       <div>
         <productContext.Provider value={{ productId }}>
+          <QandA />
           <ReviewsRatings />
         </productContext.Provider>
       </div>

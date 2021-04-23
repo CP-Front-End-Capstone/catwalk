@@ -4,18 +4,6 @@ import React, { useState } from 'react';
 import StarRatings from 'react-star-ratings';
 
 const IndividualReview = (props) => {
-<<<<<<< HEAD
-  const [recommend, setRecommend] = useState();
-  if (props.review.recommend) {
-    setRecommend('I recommend this product');
-  }
-  return (
-    <div>
-      <span><Stars /></span>
-      <h5>{props.review.summary}</h5>
-      <div>{props.review.body}</div>
-      <div>{recommend}</div>
-=======
   const recommend = props.review.recommend && '✓ I recommend this product';
   const response = props.review.response && props.review.response;
 
@@ -51,7 +39,6 @@ const IndividualReview = (props) => {
           )
         </div>
       </div>
->>>>>>> cb40697e2bb44fe40cc908777ee6221dc0c5c186
     </div>
   );
 };
