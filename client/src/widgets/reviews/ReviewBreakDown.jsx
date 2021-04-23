@@ -9,8 +9,8 @@ const ReviewBreakDown = (props) => {
   const totalRatings = Number(reviewMeta.reviewsMeta.recommended.true)
   + Number(reviewMeta.reviewsMeta.recommended.false);
 
-  const recommendPercent = Number(reviewMeta.reviewsMeta.recommended.true) * 100
-  / (totalRatings);
+  const recommendPercent = Math.round((Number(reviewMeta.reviewsMeta.recommended.true) * 100
+  / (totalRatings)) * 10) / 10;
 
   const ratingsCountArray = (Object.values(reviewMeta.reviewsMeta.ratings));
   const numbersArray = ratingsCountArray.map((number) => (

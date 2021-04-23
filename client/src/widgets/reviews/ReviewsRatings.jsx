@@ -38,7 +38,7 @@ const ReviewsRatings = () => {
         <h3>Reviews & Ratings</h3>
         <div className="container-fluid border">
           <div className="row">
-            <div className="col-sm">
+            <div className="col-sm-4">
               <div className="container 25%">
                 <reviewContext.Provider value={{ reviewsMeta }}>
                   <ReviewBreakDown />

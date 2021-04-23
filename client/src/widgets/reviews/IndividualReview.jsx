@@ -4,7 +4,8 @@ import React, { useState } from 'react';
 import StarRatings from 'react-star-ratings';
 
 const IndividualReview = (props) => {
-  const recommend = props.review.recommend && 'I recommend this product';
+  const recommend = props.review.recommend && '✓ I recommend this product';
+  const response = props.review.response && props.review.response;
 
   return (
     <div>
@@ -19,8 +20,13 @@ const IndividualReview = (props) => {
         />
       </span>
       <h5>{props.review.summary}</h5>
-      <div>{props.review.body}</div>
+      <div className="border">{props.review.body}</div>
       <div>{recommend}</div>
+      <div className="row">
+        What this review helpful?
+        <button type="foo">Yes</button>
+        <div>({props.review.helpfulness})</div>
+      </div>
     </div>
   );
 };

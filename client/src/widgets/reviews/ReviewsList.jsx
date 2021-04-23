@@ -8,7 +8,7 @@ const ReviewsList = () => {
   const reviewsInfo = useContext(reviewContext);
   const reviewsArray = reviewsInfo.reviewList.results;
   return (
-    <div>
+    <div className="container border">
       {reviewsArray.map((review) => (
         <ul key={review.review_id} className="border col-lg">
           <IndividualReview review={review} />
