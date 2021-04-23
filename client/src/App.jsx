@@ -52,6 +52,9 @@ const App = (props) => {
         <ProductContext.Provider value={{ product, styles }}>
           <Overview />
         </ProductContext.Provider>
+        <productContext.Provider value={{ productId }}>
+          <ReviewsRatings />
+        </productContext.Provider>
       </div>
     </div>
   );
