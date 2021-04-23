@@ -19,9 +19,8 @@ import { productContext } from '../../contexts/ProductContext.js';
 
 function Overview(props) {
   const { product, styles } = useContext(productContext);
-  // const [currentStyle, changeCurrentStyle] = useState(styles[0].style_id);
-
   if (styles) {
+    const [currentStyle, changeCurrentStyle] = useState(styles[0].style_id);
     return (
       <div class="container ">
         <div class="row d-flex justify-content-between">

@@ -21,7 +21,7 @@ function Styles(props) {
       <div className="row">
         <h5>
           Style
-          :
+          :&nbsp;
           {styles[0].name}
         </h5>
       </div>
