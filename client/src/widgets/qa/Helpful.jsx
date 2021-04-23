@@ -7,7 +7,7 @@ const Helpful = (props) => {
     return (
       <>
         <div className="col">Helpful?</div>
-        <button type="button" className="col btn btn-link">Yes</button>
+        <div className="col">Yes</div>
         <div className="col">({count})</div>
       </>
     );

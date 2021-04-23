@@ -6,6 +6,7 @@
 import React, { useState, useEffect } from 'react';
 import Answer from './Answer.jsx';
 import Helpful from './Helpful.jsx';
+import AddAnswer from './AddAnswer.jsx';
 
 const Question = (props) => {
   const { question } = props;
@@ -57,7 +58,10 @@ const Question = (props) => {
     <>
       <div className="row">
         Q: {question.question_body}
+        <div className="col"></div>
         <Helpful input={question} />
+        <div className="col">|</div>
+        <AddAnswer question={question} />
       </div>
       {answerList}
     </>
