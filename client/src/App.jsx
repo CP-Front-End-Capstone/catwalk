@@ -22,13 +22,13 @@ const App = () => {
       .catch((error) => {
         console.log('Error fetching data', error);
       });
-  }, [productId]);
+  }, []);
 
   return (
     <div>
       <h1>Hello Even Bigger Earth!</h1>
       <div>
-        <productContext.Provider value={{ product, changeProduct }}>
+        <productContext.Provider value={{ productId }}>
           <ReviewsRatings />
         </productContext.Provider>
       </div>
