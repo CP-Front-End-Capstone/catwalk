@@ -49,15 +49,10 @@ const ReviewsRatings = () => {
               </div>
             </div>
             <div className="col">
-              <div className="container 75%">
-                {reviewList.count}
-                {' '}
-                reviews, sorted by
-                <div className="row">
-                  <reviewContext.Provider value={{ reviewsMeta, reviewList }}>
-                    <ReviewsList />
-                  </reviewContext.Provider>
-                </div>
+              <div className="row">
+                <reviewContext.Provider value={{ reviewsMeta, reviewList }}>
+                  <ReviewsList />
+                </reviewContext.Provider>
               </div>
             </div>
           </div>
