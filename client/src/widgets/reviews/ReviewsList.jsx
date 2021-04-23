@@ -21,11 +21,10 @@ const ReviewsList = () => {
 
   const handleMoreReviews = (count) => {
     setReviewCount(count);
-    api.fetchEndpoint(`/reviews/?product_id=${productId}&count=${count}&sort=relevant`)
-      .then((reviewData) => {
-        setReviewsArray(reviewData.results);
-      });
   };
+
+  const displayedReviews = reviewsArray.slice(0, reviewCount);
+  console.log(displayedReviews)
 
   const handleSortBy = (selection) => {
     setSortBy(selection);
@@ -67,7 +66,7 @@ const ReviewsList = () => {
         </div>
       </h5>
       <div className="row bg-light h-75 overflow-auto border">
-        {reviewsArray.reverse().map((review) => (
+        {displayedReviews.map((review) => (
           <ul key={review.review_id} className="container">
             <reviewContext.Provider value={reviewCount}>
               <IndividualReview review={review} />

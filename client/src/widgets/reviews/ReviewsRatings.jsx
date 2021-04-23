@@ -22,7 +22,7 @@ const ReviewsRatings = () => {
   const [isMounted, setIsMounted] = useState();
 
   useEffect(() => {
-    api.fetchEndpoint(`/reviews/?product_id=${productId}&count=2&sort=relevant`)
+    api.fetchEndpoint(`/reviews/?product_id=${productId}&count=100&sort=relevant`)
       .then((reviewData) => {
         setReviewList(reviewData);
         api.fetchEndpoint(`/reviews/meta/?product_id=${productId}`)

@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import React, { useContext } from 'react';
 import HSBar from 'react-horizontal-stacked-bar-chart';
 import StarRatings from 'react-star-ratings';
@@ -63,26 +64,26 @@ const ReviewBreakDown = () => {
                 {recommendPercent}
                 % of reviewers recommend this product
               </div>
-              <div>
+              <a>
                 5 Stars
                 <HSBar height={10} data={[{ value: fiveStars, color: 'black' }, { value: 100 - fiveStars, color: 'grey' }]} />
-              </div>
-              <div>
+              </a>
+              <a>
                 4 Stars
                 <HSBar height={10} data={[{ value: fourStars, color: 'black' }, { value: 100 - fourStars, color: 'grey' }]} />
-              </div>
-              <div>
+              </a>
+              <a>
                 3 Stars
                 <HSBar height={10} data={[{ value: threeStars, color: 'black' }, { value: 100 - threeStars, color: 'grey' }]} />
-              </div>
-              <div>
+              </a>
+              <a>
                 2 Stars
                 <HSBar height={10} data={[{ value: twoStars, color: 'black' }, { value: 100 - twoStars, color: 'grey' }]} />
-              </div>
-              <div>
+              </a>
+              <a>
                 1 Star
                 <HSBar height={10} data={[{ value: oneStar, color: 'black' }, { value: 100 - oneStar, color: 'grey' }]} />
-              </div>
+              </a>
             </div>
           </div>
 
