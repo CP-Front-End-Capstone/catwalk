@@ -3,7 +3,6 @@
 /* eslint-disable import/extensions */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect, useContext } from 'react';
-import { dummyProducts } from './exampleData.js';
 import api from '../../../../API/helper.js';
 import productContext from '../../contexts/ProductContext.js';
 import RelatedProductsList from './RelatedProductsList.jsx';
@@ -20,17 +19,15 @@ function RelatedProducts() {
     const productsArray = array.map((id) => (
       api.fetchEndpoint(`/products/${id}`)
     ));
-    const stylesArray = array.map((id) => (
-      api.fetchEndpoint(`/products/${id}/styles`)
-    ));
+    // const stylesArray = array.map((id) => (
+    //   api.fetchEndpoint(`/products/${id}/styles`)
+    // ));
     Promise.all(productsArray).then((response) => {
-      console.log('your array: ', response);
       setProducts(response);
     });
-    Promise.all(stylesArray).then((response) => {
-      console.log('Your styles array: ', response);
-      setStyles(response);
-    });
+    // Promise.all(stylesArray).then((response) => {
+    //   setStyles(response);
+    // });
   };
 
   useEffect(() => {
@@ -49,6 +46,9 @@ function RelatedProducts() {
       <div>
         <h3>Related Items:</h3>
         <RelatedProductsList products={{ products, context }} />
+      </div>
+      <div>
+        <h3>My Outfit:</h3>
       </div>
     </div>
   );

@@ -1,8 +1,9 @@
+/* eslint-disable import/no-unresolved */
+/* eslint-disable no-lone-blocks */
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/extensions */
 /* eslint-disable react/prop-types */
-import { Carousel } from 'bootstrap';
 import React, { useState, useContext, useEffect } from 'react';
 // import api from '../../../../API/helper.js';
 import RelatedProductsCard from './RelatedProductsCard.jsx';
@@ -30,11 +31,19 @@ function RelatedProductsList({ products }) {
   return (
     <div className="container">
       <div className="row">
-        {products.products.map((product) => products.context.styles.map((style) => (
-          <RelatedProductsCard product={product} style={style} />
-        )))}
+        {products.products.map((product) => (
+          <RelatedProductsCard product={product} />
+        ))}
       </div>
     </div>
   );
 }
 export default RelatedProductsList;
+
+{ /* <div className="container">
+<div className="row">
+  {products.products.map((product) => products.context.styles.map((style) => (
+    <RelatedProductsCard product={product} style={style} />
+  )))}
+</div>
+</div> */ }

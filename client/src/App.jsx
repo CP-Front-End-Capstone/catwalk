@@ -11,7 +11,7 @@ import Overview from './overview/Overview.jsx';
 import RelatedProducts from './widgets/relatedProducts/Products.jsx';
 
 const App = () => {
-  const [productId, changeProductId] = useState('18078');
+  const [productId, changeProductId] = useState('18079');
   const [product, changeProduct] = useState();
   const [styles, changeStyles] = useState();
   const [isMounted, setIsMounted] = useState(null);
