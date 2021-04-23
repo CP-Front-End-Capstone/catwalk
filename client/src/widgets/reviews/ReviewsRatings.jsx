@@ -40,10 +40,15 @@ const ReviewsRatings = () => {
         <div className="container-fluid border">
           <div className="row">
             <div className="col-sm-4">
-              <div className="container 25%">
-                <reviewContext.Provider value={{ reviewsMeta }}>
-                  <ReviewBreakDown />
-                </reviewContext.Provider>
+              <div className="container border" />
+              <div className="container">
+                <div className="row">
+                  <reviewContext.Provider value={{ reviewsMeta }}>
+                    <ReviewBreakDown />
+                  </reviewContext.Provider>
+                </div>
+              </div>
+              <div className="container">
                 <div className="row border">
                   <reviewContext.Provider value={{ reviewsMeta, reviewList }}>
                     <ProductBreakDown />

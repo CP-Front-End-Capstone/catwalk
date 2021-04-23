@@ -30,6 +30,7 @@ const ReviewsList = () => {
       {' '}
       reviews, sorted by
       {' '}
+      relevance
       <div className="row h-75 overflow-auto">
         {reviewsArray.reverse().map((review) => (
           <ul key={review.review_id} className="container border">
@@ -41,7 +42,7 @@ const ReviewsList = () => {
       </div>
       <div>
         <button type="button" onClick={() => { handleMoreReviews(reviewCount + 2); }}>{moreReviews}</button>
-        <button type="button">Add a Review</button>
+        <button type="button">Add a Review +</button>
       </div>
     </div>
 
