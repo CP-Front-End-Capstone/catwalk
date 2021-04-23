@@ -10,10 +10,14 @@ const ReviewsList = () => {
   return (
     <div>
       {reviewsArray.map((review) => (
-        <ul key={review.review_id} className="border">
+        <ul key={review.review_id} className="border col-lg">
           <IndividualReview review={review} />
         </ul>
       ))}
+      <div>
+        <button type="button">More Reviews</button>
+        <button type="button">Add a Review</button>
+      </div>
     </div>
 
   );

@@ -32,51 +32,40 @@ const ReviewsRatings = () => {
         console.log('error fetching review data', err);
       });
   }, []);
-if(reviewsMeta) {
-
-  return (
-    <div>
-      <h3>Reviews & Ratings</h3>
-      <div className="container border">
-        <div className="row">
-          <div className="col-sm">
-            <div className="container">
-              <div className="row">
-                <div className="col-sm">
-                  <reviewContext.Provider value={{ reviewsMeta }}>
-                    <ReviewBreakDown />
-                  </reviewContext.Provider>
-                </div>
-              </div>
-              <div className="row border">
-                <div className="col-sm">
+  if (reviewsMeta) {
+    return (
+      <div>
+        <h3>Reviews & Ratings</h3>
+        <div className="container-fluid border">
+          <div className="row">
+            <div className="col-sm">
+              <div className="container 25%">
+                <reviewContext.Provider value={{ reviewsMeta }}>
+                  <ReviewBreakDown />
+                </reviewContext.Provider>
+                <div className="row border">
                   Product Breakdown
                 </div>
               </div>
             </div>
-          </div>
-          <div className="col-sm">
-            {reviewList.count}
-            {' '}
-            reviews, sorted by
-            <div className="row">
-              <reviewContext.Provider value={{ reviewsMeta, reviewList }}>
-                <ReviewsList />
-              </reviewContext.Provider>
-              <div className="col-sm">
-                <button type="button">More Reviews</button>
-              </div>
-              <div className="col-sm">
-                <button type="button">Add a Review</button>
+            <div className="col">
+              <div className="container 75%">
+                {reviewList.count}
+                {' '}
+                reviews, sorted by
+                <div className="row">
+                  <reviewContext.Provider value={{ reviewsMeta, reviewList }}>
+                    <ReviewsList />
+                  </reviewContext.Provider>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  );
-}
-return "Reviews are Loading ..."
+    );
+  }
+  return 'Reviews are Loading ...';
 };
 
 export default ReviewsRatings;
