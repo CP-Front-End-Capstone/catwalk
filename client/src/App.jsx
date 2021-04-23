@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default-member */
 /* eslint-disable no-sequences */
 /* eslint-disable no-console */
 /* eslint-disable import/extensions */
@@ -34,13 +35,9 @@ const App = () => {
   if (isMounted) {
     return (
       <div>
-        <h1>Hello Even Bigger Earth!</h1>
-        <div>
-          <productContext.Provider value={{ productId, styles }}>
-            {/* <ReviewsRatings /> */}
-            <RelatedProducts />
-          </productContext.Provider>
-        </div>
+        <productContext.Provider value={{ productId }}>
+          <ReviewsRatings />
+        </productContext.Provider>
       </div>
     );
   }
