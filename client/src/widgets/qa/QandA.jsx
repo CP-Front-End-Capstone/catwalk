@@ -30,8 +30,11 @@ const QandA = () => {
   if (questions.length > 0) {
     return (
       <div className="container">
-        <div className="row">{JSON.stringify(productId)}</div>
-        <div className="row lead">QUESTIONS & ANSWERS</div>
+        <div className="row">
+          <div className="col lead">
+            QUESTIONS & ANSWERS
+          </div>
+        </div>
         <qaContext.Provider value={{
           questions,
           changeQuestions,

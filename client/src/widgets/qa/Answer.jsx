@@ -10,11 +10,18 @@ const Answer = (props) => {
   const { body, date, answerer_name } = answer;
   return (
     <>
-      <div className="row h4">A:
-        <div className="col h6">{body}</div>
+      <div className="row text-left">
+        <div className="col h4">
+          A: <span className="h6 font-weight-light">{body}</span>
+        </div>
       </div>
-      <div className="row h6 text-left font-weight-light ">
-        by {answerer_name} {(new Date(date)).toDateString().slice(4)} | <Helpful input={answer} />
+      <div className="row text-left">
+        <div className="col h6 font-weight-light">
+          <span className="text-muted">
+            by {answerer_name} {(new Date(date)).toDateString().slice(4)} |
+          </span>
+          <Helpful input={answer} />
+        </div>
       </div>
     </>
   );

@@ -57,14 +57,10 @@ const Question = (props) => {
   return (
     <>
       <div className="row">
-        <div className="col h4">
+        <div className="col h4 g-4">
           Q: {question.question_body}
         </div>
-        <div className="col h6 text-right font-weight-light">
-          <div className="row">
-            <Helpful input={question} />
-          </div>
-        </div>
+        <Helpful input={question} />
       </div>
       {answerList}
     </>

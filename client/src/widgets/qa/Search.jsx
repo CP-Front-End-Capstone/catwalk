@@ -8,7 +8,18 @@ const Search = () => {
   } = useContext(qaContext);
   const [query, changeQuery] = useState('');
 
-  return <input type="text" className="row" />;
+  const handleChange = (e) => {
+    e.preventDefault();
+    changeQuery(e.value);
+  };
+
+  return (
+    <div className="row">
+      <div className="col">
+        <input type="text" className="form-control" onChange={handleChange} value="Have a question? Search for answers..." />
+      </div>
+    </div>
+  )
 };
 
 export default Search;

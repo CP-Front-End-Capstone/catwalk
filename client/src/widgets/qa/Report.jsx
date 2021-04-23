@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Report = () => (
-  <div className="col h6 font-weight-light"><u>Report</u></div>
+  <span className="h6 font-weight-light"><u>Report</u></span>
 );
 
 export default Report;
