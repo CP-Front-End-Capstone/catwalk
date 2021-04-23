@@ -8,7 +8,7 @@ import Answer from './Answer.jsx';
 
 const Question = (props) => {
   const { question } = props;
-  const [answersList, changeAnswerList] = useState([]);
+  const [answerList, changeAnswerList] = useState([]);
   const [showAll, changeShowAll] = useState(false);
 
   const answers = [];
@@ -53,7 +53,7 @@ const Question = (props) => {
       <div className="col">
         Q: {question.question_body}
       </div>
-      {answersList}
+      {answerList}
     </>
   );
 };
