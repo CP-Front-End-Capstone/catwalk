@@ -13,6 +13,7 @@ function RelatedProducts() {
   const context = useContext(productContext);
   console.log('Current object: ', context);
   const [products, setProducts] = useState([]);
+  const [isMounted, setIsMounted] = useState(null);
   const [styles, setStyles] = useState([]);
 
   const getProducts = (array) => {
@@ -36,6 +37,7 @@ function RelatedProducts() {
     api.fetchEndpoint(`/products/${context.productId}/related`)
       .then((response) => {
         getProducts(response);
+        setIsMounted(true);
         console.log('Your related Items: ', response);
       })
       .catch((error) => {
@@ -43,17 +45,22 @@ function RelatedProducts() {
       });
   }, []);
 
+  if (isMounted) {
+    return (
+      <div>
+        <div>
+          <h3>Related Items:</h3>
+          <RelatedProductsList products={{ products, context }} />
+        </div>
+        <div>
+          <h3>My Outfit:</h3>
+          <MyOutfitList />
+        </div>
+      </div>
+    );
+  }
   return (
-    <div>
-      <div>
-        <h3>Related Items:</h3>
-        <RelatedProductsList products={{ products, context }} />
-      </div>
-      <div>
-        <h3>My Outfit:</h3>
-        <MyOutfitList />
-      </div>
-    </div>
+    'Related Items Loading...'
   );
 }
 

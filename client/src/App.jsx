@@ -15,13 +15,11 @@ const App = () => {
   const [productId, changeProductId] = useState('18079');
   const [product, changeProduct] = useState();
   const [styles, changeStyles] = useState();
-  const [isMounted, setIsMounted] = useState(null);
 
   useEffect(() => {
     api.fetchEndpoint(`/products/${productId}`)
       .then((productData) => {
         changeProduct(productData);
-        setIsMounted(true);
         api.fetchEndpoint(`/products/${productId}/styles`)
           .then((stylesData) => {
             changeStyles(stylesData.results);
@@ -32,17 +30,13 @@ const App = () => {
       });
   }, []);
 
-  if (isMounted) {
-    return (
-      <div>
-        <productContext.Provider value={{ productId }}>
-          <ReviewsRatings />
-        </productContext.Provider>
-      </div>
-    );
-  }
   return (
-    'Loading...'
+    <div>
+      <productContext.Provider value={{ productId }}>
+        <RelatedProducts />
+        <ReviewsRatings />
+      </productContext.Provider>
+    </div>
   );
 };
 
