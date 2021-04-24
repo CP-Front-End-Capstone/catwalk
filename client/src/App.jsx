@@ -29,7 +29,6 @@ const App = (props) => {
         api.fetchEndpoint(`/products/${productId}/styles`)
           .then((stylesData) => {
             changeStyles(stylesData.results);
-            changeMount(true);
           });
       })
       .catch((error) => {
