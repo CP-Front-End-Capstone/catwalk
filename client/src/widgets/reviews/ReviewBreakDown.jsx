@@ -50,8 +50,6 @@ const ReviewBreakDown = () => {
     }
   };
 
-  console.log(selectedRating);
-
   const fiveStars = (reviewMeta.reviewsMeta.ratings[5])
     ? ((reviewMeta.reviewsMeta.ratings[5] * 100) / largestCount) : 0;
   const fourStars = (reviewMeta.reviewsMeta.ratings[4])
@@ -89,19 +87,19 @@ const ReviewBreakDown = () => {
             5 Stars
             <HSBar height={10} data={[{ value: fiveStars, color: 'black' }, { value: 100 - fiveStars, color: 'grey' }]} />
           </button>
-          <button type="button" className="text-left btn-light" onClick={() => { handleRatingFilter('4'); }}>
+          <button type="button" className="text-left btn-light small" onClick={() => { handleRatingFilter('4'); }}>
             4 Stars
             <HSBar height={10} data={[{ value: fourStars, color: 'black' }, { value: 100 - fourStars, color: 'grey' }]} />
           </button>
-          <button type="button" className="text-left" onClick={() => { handleRatingFilter('3'); }}>
+          <button type="button" className="text-left btn-light small" onClick={() => { handleRatingFilter('3'); }}>
             3 Stars
             <HSBar height={10} data={[{ value: threeStars, color: 'black' }, { value: 100 - threeStars, color: 'grey' }]} />
           </button>
-          <button type="button" className="text-left" onClick={() => { handleRatingFilter('2'); }}>
+          <button type="button" className="text-left btn-light small" onClick={() => { handleRatingFilter('2'); }}>
             2 Stars
             <HSBar height={10} data={[{ value: twoStars, color: 'black' }, { value: 100 - twoStars, color: 'grey' }]} />
           </button>
-          <button type="button" className="text-left" onClick={() => { handleRatingFilter('1'); }}>
+          <button type="button" className="text-left btn-light small" onClick={() => { handleRatingFilter('1'); }}>
             1 Star
             <HSBar height={10} data={[{ value: oneStar, color: 'black' }, { value: 100 - oneStar, color: 'grey' }]} />
           </button>

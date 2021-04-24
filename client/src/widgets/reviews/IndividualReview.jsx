@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
@@ -6,16 +7,23 @@ import StarRatings from 'react-star-ratings';
 import dateFormat from 'dateformat';
 import axios from 'axios';
 import reviewContext from '../../contexts/ReviewContext';
+import ReviewPhotos from './ReviewPhotos.jsx';
+
+const config = require('../../../../API/config.js');
 
 const IndividualReview = (props) => {
   const recommend = props.review.recommend && '✓ I recommend this product';
   const response = props.review.response && props.review.response;
   const reviewsInfo = useContext(reviewContext);
 
-  const images = props.review.photos.length > 0 && 'Image';
+  const images = props.review.photos.length > 0 && <ReviewPhotos photos={props.review.photos} />;
 
   const handleHelpfulness = () => {
-    axios.put(`/reviews/${props.review.review_id}/helpful`)
+    axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/${props.review.review_id}/helpful`, {
+      headers: {
+        Authorization: config.TOKEN,
+      },
+    })
       .then(() => {
         reviewsInfo.setHelpful(true);
       })
