@@ -1,6 +1,9 @@
+<<<<<<< HEAD
 /* eslint-disable no-const-assign */
 /* eslint-disable no-console */
 /* eslint-disable no-undef */
+=======
+>>>>>>> 676eb8f2baf59d050487ca9395b7021ca3f5d764
 /* eslint-disable import/extensions */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/destructuring-assignment */
