@@ -44,10 +44,6 @@ const ReviewBreakDown = () => {
         <Overview />
       </starsContext.provider>;
 
-      const handleRatingsClick = () => {
-
-      };
-
       if (recommendPercent) {
         return (
           <div>
@@ -68,7 +64,7 @@ const ReviewBreakDown = () => {
                 {recommendPercent}
                 % of reviewers recommend this product
               </div>
-              <span className="text-left" onClick={() => {handleRatingsClick(5)}}>
+              <span className="text-left">
                 5 Stars
                 <HSBar height={10} data={[{ value: fiveStars, color: 'black' }, { value: 100 - fiveStars, color: 'grey' }]} />
               </span>

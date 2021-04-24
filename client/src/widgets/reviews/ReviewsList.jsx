@@ -59,9 +59,9 @@ const ReviewsList = () => {
             {sortBy}
           </u>
           <div className="dropdown-menu" aria-labelledby="dropdownMenu1">
-            <a className="dropdown-item" href="#!" value="newest" onClick={() => { handleSortBy('newest'); }}>Newest</a>
-            <a className="dropdown-item" href="#!" onClick={() => { handleSortBy('relevant'); }}>relevant</a>
-            <a className="dropdown-item" href="#!" onClick={() => { handleSortBy('helpful'); }}>helpful</a>
+            <a className="dropdown-item" href="#!" onClick={() => { handleSortBy('newest'); }}>Newest</a>
+            <a className="dropdown-item" href="#!" onClick={() => { handleSortBy('relevant'); }}>Relevant</a>
+            <a className="dropdown-item" href="#!" onClick={() => { handleSortBy('helpful'); }}>Helpful</a>
           </div>
         </div>
       </h5>

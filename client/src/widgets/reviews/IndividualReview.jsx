@@ -35,7 +35,7 @@ const IndividualReview = (props) => {
       <h5 className="row">{props.review.summary}</h5>
       <div className="row border" style={{ padding: '5px' }}>{props.review.body}</div>
       <div className="row small">{recommend}</div>
-      <div className="row border">{response}</div>
+      <div className="row">{response}</div>
       <div className="row">
         {' '}
         {images}
