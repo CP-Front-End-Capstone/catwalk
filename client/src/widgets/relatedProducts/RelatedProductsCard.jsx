@@ -9,8 +9,6 @@ import React from 'react';
 import { Carousel } from 'react-bootstrap';
 
 function RelatedProductsCard({ product, style }) {
-  console.log('HEllO from products card: ', style.result);
-
   return (
     // if (style.results[0].photos[0].thumbnail_url)
     <div>
@@ -27,7 +25,6 @@ function RelatedProductsCard({ product, style }) {
             $
             {style.results[0].sale_price ? style.results[0].sale_price : style.results[0].original_price}
           </h6>
-          {/* {style.sale_price ? style.sale_price : 'sold out'} */}
         </div>
       </div>
     </div>

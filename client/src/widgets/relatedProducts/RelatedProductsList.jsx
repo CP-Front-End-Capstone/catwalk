@@ -36,11 +36,11 @@ function RelatedProductsList({ products, styles }) {
               </div>
             </div>
             <a href="#inam" className="carousel-control-prev text-primary" data-slide="prev">
-              <span className="carousel-control-prev-icon bg-dark" />
+              <span className="carousel-control-prev-icon p-3 mb-2 bg-dark text-dark" />
             </a>
-            <a href="#inam" className="carousel-control-next" data-slide="next">
-              <span className="carousel-control-next-icon bg-dark text-white" />
-            </a>
+            {/* <a href="#inam" className="carousel-control-next" data-slide="next">
+              <span className="carousel-control-next-icon p-3 mb-2 bg-dark text-dark" />
+            </a> */}
           </div>
         </div>
       </div>
