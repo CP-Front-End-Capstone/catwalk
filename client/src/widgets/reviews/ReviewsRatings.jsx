@@ -44,7 +44,6 @@ const ReviewsRatings = () => {
           <h3>Reviews & Ratings</h3>
           <div className="row">
             <div className="col-sm-4">
-              <div className="container border" />
               <div className="container">
                 <div className="row">
                   <reviewContext.Provider value={{ reviewsMeta, reviewList }}>

@@ -65,44 +65,46 @@ const ReviewBreakDown = () => {
 
   if (recommendPercent) {
     return (
-      <div>
-        <h1>
-          {formattedAvg}
-          {' '}
-          <StarRatings
-            rating={formattedAvg}
-            starRatedColor="black"
-            numberOfStars={5}
-            name="rating"
-            starDimension="30px"
-          />
-        </h1>
+      <div className="container" style={{ padding: '10px' }}>
+        <div className="row">
+          <h1>
+            {formattedAvg}
+            {' '}
+            <StarRatings
+              rating={formattedAvg}
+              starRatedColor="black"
+              numberOfStars={5}
+              name="rating"
+              starDimension="30px"
+            />
+          </h1>
+        </div>
 
-        <div className="border small" style={{ padding: '20px' }}>
-          <div>
+        <div className="container border" style={{ padding: '20px' }}>
+          <div className="font-weight-bold small">
             {recommendPercent}
             % of reviewers recommend this product
           </div>
-          <span onClick={() => { handleRatingFilter('5'); }}>
+          <button type="button" className="text-left btn-light small" onClick={() => { handleRatingFilter('5'); }}>
             5 Stars
             <HSBar height={10} data={[{ value: fiveStars, color: 'black' }, { value: 100 - fiveStars, color: 'grey' }]} />
-          </span>
-          <span onClick={() => { handleRatingFilter('4'); }}>
+          </button>
+          <button type="button" className="text-left btn-light" onClick={() => { handleRatingFilter('4'); }}>
             4 Stars
             <HSBar height={10} data={[{ value: fourStars, color: 'black' }, { value: 100 - fourStars, color: 'grey' }]} />
-          </span>
-          <span onClick={() => { handleRatingFilter('3'); }}>
+          </button>
+          <button type="button" className="text-left" onClick={() => { handleRatingFilter('3'); }}>
             3 Stars
             <HSBar height={10} data={[{ value: threeStars, color: 'black' }, { value: 100 - threeStars, color: 'grey' }]} />
-          </span>
-          <span onClick={() => { handleRatingFilter('2'); }}>
+          </button>
+          <button type="button" className="text-left" onClick={() => { handleRatingFilter('2'); }}>
             2 Stars
             <HSBar height={10} data={[{ value: twoStars, color: 'black' }, { value: 100 - twoStars, color: 'grey' }]} />
-          </span>
-          <span onClick={() => { handleRatingFilter('1'); }}>
+          </button>
+          <button type="button" className="text-left" onClick={() => { handleRatingFilter('1'); }}>
             1 Star
             <HSBar height={10} data={[{ value: oneStar, color: 'black' }, { value: 100 - oneStar, color: 'grey' }]} />
-          </span>
+          </button>
         </div>
       </div>
 
