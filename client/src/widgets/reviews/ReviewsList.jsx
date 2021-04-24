@@ -31,9 +31,7 @@ const ReviewsList = () => {
   useEffect(() => (
     api.fetchEndpoint(`/reviews/?product_id=${productId}&count=100&sort=${sortBy}`)
       .then((reviewData) => {
-        console.log('made it here');
         setReviewsArray(reviewData.results);
-        // displayedReviews = reviewData.results.slice(0, reviewCount);
       })
       .catch((err) => {
         console.log('error fetching review data', err);

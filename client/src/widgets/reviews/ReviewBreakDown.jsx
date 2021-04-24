@@ -1,5 +1,5 @@
 /* eslint-disable import/extensions */
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import HSBar from 'react-horizontal-stacked-bar-chart';
 import StarRatings from 'react-star-ratings';
 import reviewContext from '../../contexts/ReviewContext';
@@ -7,6 +7,7 @@ import { productContext } from '../../contexts/ProductContext';
 
 const ReviewBreakDown = () => {
   const reviewMeta = useContext(reviewContext);
+  const [selectedRating, setSelectedRating] = useState(['1', '2', '3', '4', '5']);
 
   const totalRatings = Number(reviewMeta.reviewsMeta.recommended.true)
   + Number(reviewMeta.reviewsMeta.recommended.false);
@@ -31,6 +32,25 @@ const ReviewBreakDown = () => {
   const passStars = useContext(productContext);
 
   passStars.changeStarAvg(formattedAvg);
+
+  const handleRatingFilter = (rating) => {
+    const selectedArray = selectedRating.slice();
+    if (selectedRating.length === 5) {
+      setSelectedRating([rating]);
+    } else if (selectedArray.indexOf(rating) > -1) {
+      if (selectedArray.length > 1) {
+        selectedArray.splice(selectedArray.indexOf(rating), 1);
+        setSelectedRating(selectedArray);
+      } else {
+        setSelectedRating(['1', '2', '3', '4', '5']);
+      }
+    } else {
+      selectedArray.push(rating);
+      setSelectedRating(selectedArray);
+    }
+  };
+
+  console.log(selectedRating);
 
   const fiveStars = (reviewMeta.reviewsMeta.ratings[5])
     ? ((reviewMeta.reviewsMeta.ratings[5] * 100) / largestCount) : 0;
@@ -63,23 +83,23 @@ const ReviewBreakDown = () => {
             {recommendPercent}
             % of reviewers recommend this product
           </div>
-          <span className="text-left">
+          <span onClick={() => { handleRatingFilter('5'); }}>
             5 Stars
             <HSBar height={10} data={[{ value: fiveStars, color: 'black' }, { value: 100 - fiveStars, color: 'grey' }]} />
           </span>
-          <span>
+          <span onClick={() => { handleRatingFilter('4'); }}>
             4 Stars
             <HSBar height={10} data={[{ value: fourStars, color: 'black' }, { value: 100 - fourStars, color: 'grey' }]} />
           </span>
-          <span>
+          <span onClick={() => { handleRatingFilter('3'); }}>
             3 Stars
             <HSBar height={10} data={[{ value: threeStars, color: 'black' }, { value: 100 - threeStars, color: 'grey' }]} />
           </span>
-          <span>
+          <span onClick={() => { handleRatingFilter('2'); }}>
             2 Stars
             <HSBar height={10} data={[{ value: twoStars, color: 'black' }, { value: 100 - twoStars, color: 'grey' }]} />
           </span>
-          <span>
+          <span onClick={() => { handleRatingFilter('1'); }}>
             1 Star
             <HSBar height={10} data={[{ value: oneStar, color: 'black' }, { value: 100 - oneStar, color: 'grey' }]} />
           </span>

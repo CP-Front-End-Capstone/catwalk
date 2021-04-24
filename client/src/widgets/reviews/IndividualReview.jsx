@@ -24,8 +24,6 @@ const IndividualReview = (props) => {
       });
   };
 
-  console.log('this is the date', props.review.date);
-
   return (
     <div className="container bg-white border">
       <div className="row">
