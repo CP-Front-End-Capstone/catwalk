@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable no-console */
 /* eslint-disable react/prop-types */
@@ -6,7 +7,7 @@ import React from 'react';
 import { Carousel } from 'react-bootstrap';
 
 function RelatedProductsCard({ product, style }) {
-  // console.log('HEllO from products card: ', currentStyles);
+  console.log('HEllO from products card: ', style.result);
 
   return (
     // if (style.results[0].photos[0].thumbnail_url)
@@ -19,8 +20,9 @@ function RelatedProductsCard({ product, style }) {
         </div>
         <div className="card-text">
           <h6>
+            {style.results[0].sale_price ? 'Sale: ' : 'Original Price: '}
             $
-            {product.default_price}
+            {style.results[0].sale_price ? style.results[0].sale_price : style.results[0].original_price}
           </h6>
           {/* {style.sale_price ? style.sale_price : 'sold out'} */}
         </div>

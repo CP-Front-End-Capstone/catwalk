@@ -22,10 +22,12 @@ function RelatedProductsList({ products, styles }) {
               <div className="container">
                 <div className="row">
                   {products.map((product, index) => (
-                    <div className={index === 0 ? 'carousel-item active' : 'carousel-item'}>
+                    <div className={index > 0 ? 'carousel-item' : 'carousel-item active'}>
                       <div className="col-sm-12 col-lg-4">
-                        <div className="card" key={product.id}>
-                          <RelatedProductsCard product={product} style={styles[index]} />
+                        <div className="card-group">
+                          <div className="card" key={product.id}>
+                            <RelatedProductsCard product={product} style={styles[index]} />
+                          </div>
                         </div>
                       </div>
                     </div>
