@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable react/jsx-no-undef */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable import/named */

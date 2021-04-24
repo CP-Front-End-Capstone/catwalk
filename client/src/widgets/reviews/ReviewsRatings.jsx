@@ -17,6 +17,7 @@ const ReviewsRatings = () => {
   const selectedProduct = useContext(productContext);
 
   const [productId, setProductId] = useState(selectedProduct.productId);
+  console.log('this is product id: ', selectedProduct.productId);
   const [reviewList, setReviewList] = useState({ results: [1, 2, 3] });
   const [reviewsMeta, setReviewsMeta] = useState();
   const [isMounted, setIsMounted] = useState();

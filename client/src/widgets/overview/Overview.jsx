@@ -1,4 +1,4 @@
-  
+/* eslint-disable max-len */
 /* eslint-disable import/no-named-as-default-member */
 /* eslint-disable no-undef */
 /* eslint-disable import/extensions */
@@ -17,27 +17,37 @@ import ProductInfoBottom from './ProductInfoBottom.jsx';
 import Styles from './Styles.jsx';
 import AddToCart from './AddToCart.jsx';
 import { productContext } from '../../contexts/ProductContext.js';
+import { styleContext } from '../../contexts/StyleContext.js';
 
 function Overview(props) {
-  const { product, styles } = useContext(productContext);
-  // const [currentStyle, changeCurrentStyle] = useState(styles[0].style_id);
+  const { styles } = useContext(productContext);
+  const [currentStyle, setStyle] = useState('');
+  const [currentImage, setImage] = useState('');
+  useEffect(() => {
+    setStyle(styles[0]);
+  }, [styles]);
 
-  if (styles) {
+  if (props.styles) {
     return (
-      <div class="container ">
-        <div class="row d-flex justify-content-between">
-          <div class="col">
-            <ImageGallery />
+      <div className="container ">
+        <styleContext.Provider value={{
+          currentStyle, setImage, setStyle, currentImage,
+        }}
+        >
+          <div className="row d-flex justify-content-between">
+            <div className="col">
+              <ImageGallery />
+            </div>
+            <div className="col d-flex align-content-around flex-wrap">
+              <ProductInfoTop />
+              <Styles />
+              <AddToCart />
+            </div>
           </div>
-          <div class="col d-flex align-content-around flex-wrap">
-            <ProductInfoTop />
-            <Styles />
-            <AddToCart />
+          <div className="row">
+            <ProductInfoBottom />
           </div>
-        </div>
-        <div class="row">
-          <ProductInfoBottom />
-        </div>
+        </styleContext.Provider>
       </div>
     );
   }
