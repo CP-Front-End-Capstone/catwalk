@@ -8,7 +8,7 @@ const ProductBreakdown = () => {
 
   const fitValue = (productDesc.Fit) && (
     <div className="container">
-      <div className="text-center">Fit</div>
+      <div className="text-center" style={{ padding: '5px' }}>Fit</div>
       <div className="small">
         <StackedHorizontalBarChart
           rangesPoints={[0, 5]}
@@ -21,7 +21,7 @@ const ProductBreakdown = () => {
   );
   const lengthValue = (productDesc.Length) && (
     <div className="container">
-      <div className="text-center">Length</div>
+      <div className="text-center" style={{ padding: '5px' }}>Length</div>
       <div className="small">
         <StackedHorizontalBarChart
           rangesPoints={[0, 5]}
@@ -34,7 +34,7 @@ const ProductBreakdown = () => {
   );
   const comfortValue = (productDesc.Comfort) && (
     <div className="container">
-      <div className="text-center">Comfort</div>
+      <div className="text-center" style={{ padding: '5px' }}>Comfort</div>
       <div className="small">
         <StackedHorizontalBarChart
           rangesPoints={[0, 5]}
@@ -47,7 +47,7 @@ const ProductBreakdown = () => {
   );
   const qualityValue = (productDesc.Quality) && (
     <div className="container">
-      <div className="text-center">Quality</div>
+      <div className="text-center" style={{ padding: '5px' }}>Quality</div>
       <div className="small">
         <StackedHorizontalBarChart
           rangesPoints={[0, 5]}
@@ -60,7 +60,7 @@ const ProductBreakdown = () => {
   );
   const widthValue = (productDesc.Width) && (
     <div>
-      <div className="text-center">Width</div>
+      <div className="text-center" style={{ padding: '5px' }}>Width</div>
       <div className="small">
         <StackedHorizontalBarChart
           rangesPoints={[0, 5]}
