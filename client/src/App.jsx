@@ -21,6 +21,9 @@ const App = (props) => {
   const [productId, changeProductId] = useState('18078');
   const [product, changeProduct] = useState();
   const [styles, changeStyles] = useState();
+  const [starAvg, changeStarAvg] =useState();
+
+  console.log(starAvg);
 
   useEffect(() => {
     api.fetchEndpoint(`/products/${productId}`)
@@ -51,7 +54,7 @@ const App = (props) => {
       </nav>
       <div>
         <productContext.Provider value={{
-          product, styles, productId, changeProductId,
+          product, styles, productId, changeProductId, starAvg, changeStarAvg
         }}
         >
           <Overview />

@@ -21,9 +21,11 @@ const ReviewsRatings = () => {
   const [reviewList, setReviewList] = useState({ results: [1, 2, 3] });
   const [reviewsMeta, setReviewsMeta] = useState();
   const [isMounted, setIsMounted] = useState();
+  const [ratingFilter, setRatingFilter] = useState();
+  const [helpful, setHelpful] = useState();
 
   useEffect(() => {
-    api.fetchEndpoint(`/reviews/?product_id=${productId}&count=2&sort=relevant`)
+    api.fetchEndpoint(`/reviews/?product_id=${productId}&count=100&sort=relevant`)
       .then((reviewData) => {
         setReviewList(reviewData);
         api.fetchEndpoint(`/reviews/meta/?product_id=${productId}`)
@@ -34,33 +36,28 @@ const ReviewsRatings = () => {
       .catch((err) => {
         console.log('error fetching review data', err);
       });
-  }, []);
+  }, [productId, helpful]);
+
   if (reviewsMeta) {
     return (
       <div>
-        <h3>Reviews & Ratings</h3>
-        <div className="container-fluid border">
+        <div className="container border" style={{ padding: '20px' }}>
+          <h3>Reviews & Ratings</h3>
           <div className="row">
             <div className="col-sm-4">
               <div className="container border" />
               <div className="container">
                 <div className="row">
-                  <reviewContext.Provider value={{ reviewsMeta }}>
-                    <ReviewBreakDown />
-                  </reviewContext.Provider>
-                </div>
-              </div>
-              <div className="container">
-                <div className="row">
                   <reviewContext.Provider value={{ reviewsMeta, reviewList }}>
+                    <ReviewBreakDown />
                     <ProductBreakDown />
                   </reviewContext.Provider>
                 </div>
               </div>
             </div>
             <div className="col">
-              <div className="row h-80">
-                <reviewContext.Provider value={{ reviewsMeta, reviewList }}>
+              <div className="row" style={{ height: '550px' }}>
+                <reviewContext.Provider value={{ reviewsMeta, reviewList, setHelpful }}>
                   <ReviewsList />
                 </reviewContext.Provider>
               </div>
