@@ -57,6 +57,7 @@ const App = (props) => {
         >
           <Overview />
           <RelatedProducts />
+          <QandA />
           <ReviewsRatings />
         </productContext.Provider>
       </div>
