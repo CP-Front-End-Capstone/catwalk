@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-/* eslint-disable no-const-assign */
-/* eslint-disable no-console */
-/* eslint-disable no-undef */
-=======
->>>>>>> 676eb8f2baf59d050487ca9395b7021ca3f5d764
 /* eslint-disable import/extensions */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/destructuring-assignment */
@@ -34,12 +28,11 @@ const ReviewsList = () => {
   };
 
   useEffect(() => (
-
     api.fetchEndpoint(`/reviews/?product_id=${productId}&count=100&sort=${sortBy}`)
       .then((reviewData) => {
         console.log('made it here');
         setReviewsArray(reviewData.results);
-        displayedReviews = reviewData.results.slice(0, reviewCount);
+        // displayedReviews = reviewData.results.slice(0, reviewCount);
       })
       .catch((err) => {
         console.log('error fetching review data', err);
@@ -66,8 +59,8 @@ const ReviewsList = () => {
           </u>
           <div className="dropdown-menu" aria-labelledby="dropdownMenu1">
             <a className="dropdown-item" href="#!" value="newest" onClick={() => { handleSortBy('newest'); }}>Newest</a>
-            <a className="dropdown-item" href="#!">relevant</a>
-            <a className="dropdown-item" href="#!">helpful</a>
+            <a className="dropdown-item" href="#!" onClick={() => { handleSortBy('relevant'); }}>relevant</a>
+            <a className="dropdown-item" href="#!" onClick={() => { handleSortBy('helpful'); }}>helpful</a>
           </div>
         </div>
       </h5>
