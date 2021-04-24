@@ -1,67 +1,67 @@
+/* eslint-disable import/extensions */
+/* eslint-disable no-console */
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/destructuring-assignment */
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import productContext from '../../contexts/ProductContext';
+import StarRatings from 'react-star-ratings';
+import { productContext } from '../../contexts/ProductContext.js';
+import reviewContext from '../../contexts/ReviewContext.js';
 import ReviewsList from './ReviewsList.jsx';
+import ReviewBreakDown from './ReviewBreakDown.jsx';
+import ProductBreakDown from './ProductBreakDown.jsx';
 import AddReview from './AddReview.jsx';
+import api from '../../../../API/helper';
 
-const dummyData = require('./dummydata.js');
+const ReviewsRatings = () => {
+  const selectedProduct = useContext(productContext);
 
-class ReviewsRatings extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      productId:
-  <productContext.Consumer>
-    {(value) => value.id}
-  </productContext.Consumer>,
-      reviewList: dummyData.dummyData.results,
-      sort: 'relevant',
-      reviewsMeta: {},
-      addReview: null,
+  const [productId, setProductId] = useState(selectedProduct.productId);
+  const [reviewList, setReviewList] = useState({ results: [1, 2, 3] });
+  const [reviewsMeta, setReviewsMeta] = useState();
+  const [isMounted, setIsMounted] = useState();
 
-    };
-  }
-
-  componentDidMount() {
-    axios.get('/reviews/', {
-      params: {
-        page: 1, count: 2, sort: this.state.sort, product_id: this.state.productId,
-      },
-    })
-      .then((response) => {
-        this.setState({ reviewList: response.data.results });
-        console.log('successfully pulled from API', this.state.reviewList);
+  useEffect(() => {
+    api.fetchEndpoint(`/reviews/?product_id=${productId}&count=2&sort=relevant`)
+      .then((reviewData) => {
+        setReviewList(reviewData);
+        api.fetchEndpoint(`/reviews/meta/?product_id=${productId}`)
+          .then((reviewMeta) => {
+            setReviewsMeta(reviewMeta);
+          });
       })
       .catch((err) => {
-        console.log('error pulling from reviews API', err);
+        console.log('error fetching review data', err);
       });
-  }
-
-  addReviewClick() {
-    this.setState({ addReview: true });
-  }
-
-  render() {
+  }, []);
+  if (reviewsMeta) {
     return (
       <div>
         <h3>Reviews & Ratings</h3>
-        <div className="container">
+        <div className="container-fluid border">
           <div className="row">
-            <div className="col-sm">
-              Average Review: Stars
-            </div>
-            <div className="col-sm">
+            <div className="col-sm-4">
+              <div className="container border" />
               <div className="container">
                 <div className="row">
-                  <ReviewsList reviewList={this.state.reviewList} />
-                  <div className="col-sm">
-                    <button type="button">More Reviews</button>
-                  </div>
-                  <div className="col-sm">
-                    <button type="button">Add a Review</button>
-                  </div>
+                  <reviewContext.Provider value={{ reviewsMeta }}>
+                    <ReviewBreakDown />
+                  </reviewContext.Provider>
                 </div>
+              </div>
+              <div className="container">
+                <div className="row">
+                  <reviewContext.Provider value={{ reviewsMeta, reviewList }}>
+                    <ProductBreakDown />
+                  </reviewContext.Provider>
+                </div>
+              </div>
+            </div>
+            <div className="col">
+              <div className="row h-80">
+                <reviewContext.Provider value={{ reviewsMeta, reviewList }}>
+                  <ReviewsList />
+                </reviewContext.Provider>
               </div>
             </div>
           </div>
@@ -69,6 +69,7 @@ class ReviewsRatings extends React.Component {
       </div>
     );
   }
-}
+  return 'Reviews are Loading ...';
+};
 
 export default ReviewsRatings;
