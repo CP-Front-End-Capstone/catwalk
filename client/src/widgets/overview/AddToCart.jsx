@@ -3,8 +3,12 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { useContext, useState } from 'react';
 import { productContext } from '../../contexts/ProductContext.js';
+import { styleContext } from '../../contexts/StyleContext.js';
 
 function AddToCart() {
+  const { currentStyle } = useContext(styleContext);
+  const [skuArray, setSkuArray] = useState([]);
+
   return (
     <div className="container mx-auto">
       <div className="row d-flex justify-content-between">
@@ -20,6 +24,7 @@ function AddToCart() {
             Select Size
           </button>
           <div className="dropdown-menu" aria-labelledby="dropdownMenu1">
+
             <a className="dropdown-item" href="#!">Action</a>
             <a className="dropdown-item" href="#!">Another action</a>
           </div>

@@ -23,11 +23,8 @@ function Overview(props) {
   const { styles } = useContext(productContext);
   const [currentStyle, setStyle] = useState('');
   const [currentImage, setImage] = useState('');
-  useEffect(() => {
-    setStyle(styles[0]);
-  }, [styles]);
 
-  if (props.styles) {
+  if (styles) {
     return (
       <div className="container ">
         <styleContext.Provider value={{
