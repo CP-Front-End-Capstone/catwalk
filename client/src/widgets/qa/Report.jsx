@@ -1,7 +1,19 @@
 import React from 'react';
 
-const Report = () => (
-  <span className="h6 font-weight-light"><u>Report</u></span>
-);
+const Report = (props) => {
+  const { answer } = props;
+
+  const handleClick = () => {
+    
+  };
+  return (
+    <span
+      className="btn h6 font-weight-light"
+      onClick={handleClick}
+    >
+      <u>Report</u>ß
+    </span>
+  );
+}
 
 export default Report;

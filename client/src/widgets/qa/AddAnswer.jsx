@@ -2,8 +2,6 @@ import React from 'react';
 
 const AddAnswer = (props) => {
   const { question, name } = props;
-  console.log(question);
-  console.log(name);
   return (
     <>
       <span
