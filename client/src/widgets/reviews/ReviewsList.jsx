@@ -1,13 +1,13 @@
+/* eslint-disable no-console */
 /* eslint-disable import/extensions */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
 import React, { useContext, useState, useEffect } from 'react';
-// import Dropdown from 'react-bootstrap-dropdown';
-// import DropdownButton from 'react-bootstrap/DropdownButton';
 import IndividualReview from './IndividualReview.jsx';
 import reviewContext from '../../contexts/ReviewContext';
 import api from '../../../../API/helper';
+import ReviewBreakDown from './ReviewBreakDown.jsx';
 
 const ReviewsList = () => {
   const reviewsInfo = useContext(reviewContext);
@@ -44,7 +44,7 @@ const ReviewsList = () => {
   return (
     <div className="container">
       <h5 className="row">
-        {reviewCount}
+        {displayedReviews.length}
         {' '}
         reviews, sorted by&nbsp;
         <div className="dropdown">
