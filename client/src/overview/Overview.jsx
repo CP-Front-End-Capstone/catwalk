@@ -18,20 +18,20 @@ class Overview extends React.Component {
 
   render() {
     return (
-      <div class="container">
-        <div class="row">
-          <div class="col-8">
+      <div className="container">
+        <div className="row">
+          <div className="col-8">
             <ImageGallery />
           </div>
-          <div class="col-4">
+          <div className="col-4">
             <Styles />
           </div>
         </div>
-        <div class="row">
-          <div class="col-8">
+        <div className="row">
+          <div className="col-8">
             <ProductInfo />
           </div>
-          <div class="col-4">
+          <div className="col-4">
             <AddToCart />
           </div>
         </div>
