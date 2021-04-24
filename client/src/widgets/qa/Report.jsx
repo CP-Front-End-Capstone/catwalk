@@ -1,11 +1,12 @@
 import React from 'react';
 
 const Report = (props) => {
-  const { answer } = props;
+  const { answer, changeAnswerList } = props;
 
   const handleClick = () => {
-    
+
   };
+
   return (
     <span
       className="btn h6 font-weight-light"

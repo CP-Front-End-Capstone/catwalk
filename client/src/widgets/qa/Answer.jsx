@@ -22,6 +22,7 @@ const Answer = (props) => {
             by {answerer_name} {(new Date(date)).toDateString().slice(4)} |
           </span>
           <Helpful input={answer} />
+          <Report />
         </div>
       </div>
     </>
