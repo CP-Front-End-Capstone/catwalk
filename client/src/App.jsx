@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable react/jsx-no-undef */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable import/named */
@@ -28,7 +29,6 @@ const App = (props) => {
         api.fetchEndpoint(`/products/${productId}/styles`)
           .then((stylesData) => {
             changeStyles(stylesData.results);
-            changeMount(true);
           });
       })
       .catch((error) => {
