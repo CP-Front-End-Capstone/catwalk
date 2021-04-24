@@ -32,10 +32,13 @@
     "react-bootstrap-carousel": "^4.1.1",
     "react-bootstrap-dropdown": "^0.3.0",
     "react-dom": "^17.0.2",
+    "react-elastic-carousel": "^0.11.5",
     "react-horizontal-stacked-bar-chart": "^8.15.2",
+    "react-modal": "^3.13.1",
     "react-router-dom": "^5.2.0",
     "react-stacked-horizontal-bar-chart": "^1.0.1",
-    "react-star-ratings": "^2.3.0"
+    "react-star-ratings": "^2.3.0",
+    "styled-components": "^5.2.3"
   },
   "devDependencies": {
     "@babel/core": "^7.13.15",
