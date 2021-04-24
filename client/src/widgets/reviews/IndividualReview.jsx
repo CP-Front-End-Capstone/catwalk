@@ -24,6 +24,8 @@ const IndividualReview = (props) => {
       });
   };
 
+  console.log('this is the date', props.review.date);
+
   return (
     <div className="container bg-white border">
       <div className="row">
@@ -43,7 +45,7 @@ const IndividualReview = (props) => {
           &nbsp;
           &nbsp;
           &nbsp;
-          {dateFormat(props.review.date, 'mmmm dS, yyyy')}
+          {dateFormat(props.review.date, 'mmmm dS, yyyy', true)}
         </div>
       </div>
       <h5 className="row">{props.review.summary}</h5>
