@@ -14,30 +14,30 @@ function RelatedProductsList({ products, styles }) {
   // console.log('List of Styles: ', styles);
 
   return (
-    <div className="container">
+    <div className="container-fluid">
       <div className="row">
         <div className="col-sm-12">
           <div id="inam" className="carousel slide" data-ride="carousel">
             <div className="carousel-inner">
-              {products.map((product, index) => (
-                <div className={index === 0 ? 'carousel-item active' : 'carousel-item'}>
-                  <div className="container">
-                    <div className="row">
+              <div className="container">
+                <div className="row">
+                  {products.map((product, index) => (
+                    <div className={index === 0 ? 'carousel-item active' : 'carousel-item'}>
                       <div className="col-sm-12 col-lg-4">
                         <div className="card" key={product.id}>
                           <RelatedProductsCard product={product} style={styles[index]} />
                         </div>
                       </div>
                     </div>
-                  </div>
+                  ))}
                 </div>
-              ))}
+              </div>
             </div>
-            <a href="#inam" className="carousel-control-prev" data-slide="prev">
-              <span className="carousel-control-prev-icon" />
+            <a href="#inam" className="carousel-control-prev text-primary" data-slide="prev">
+              <span className="carousel-control-prev-icon bg-dark" />
             </a>
             <a href="#inam" className="carousel-control-next" data-slide="next">
-              <span className="carousel-control-next-icon" />
+              <span className="carousel-control-next-icon bg-dark text-white" />
             </a>
           </div>
         </div>
