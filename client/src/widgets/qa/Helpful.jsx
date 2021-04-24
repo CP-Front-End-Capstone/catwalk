@@ -10,14 +10,18 @@ const Helpful = (props) => {
     const count = input.question_helpfulness;
     return ( // Helpful Question
       <span className="col h6 text-right font-weight-light g-4">
-          &nbsp;Helpful?&nbsp;<u>Yes</u>&nbsp;({count})&nbsp;|&nbsp;<AddAnswer question={input} />
+        &nbsp;Helpful?&nbsp;
+        <u>Yes</u>&nbsp;({count})&nbsp;|&nbsp;
+        <AddAnswer question={input} name={name} />
       </span>
     );
   }
   const count = input.helpfulness;
   return ( // Helpful Answer
     <span className="h6 text-left font-weight-light">
-        &nbsp;Helpful?&nbsp;<u>Yes</u>&nbsp;({count})&nbsp;|&nbsp;<Report answer={input} />
+      &nbsp;Helpful?&nbsp;
+      <u>Yes</u>&nbsp;({count})&nbsp;|&nbsp;
+      <Report answer={input} />
     </span>
   );
 };
