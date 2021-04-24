@@ -32,8 +32,6 @@ const ReviewBreakDown = () => {
 
   passStars.changeStarAvg(formattedAvg);
 
-
-
   const fiveStars = (reviewMeta.reviewsMeta.ratings[5])
     ? ((reviewMeta.reviewsMeta.ratings[5] * 100) / largestCount) : 0;
   const fourStars = (reviewMeta.reviewsMeta.ratings[4])
