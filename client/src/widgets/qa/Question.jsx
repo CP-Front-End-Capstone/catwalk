@@ -34,18 +34,17 @@ const Question = (props) => {
           temp.push(<Answer answer={answers[i]} key={answers[i].id} />);
         }
         temp.push(
-          <div>
+          <div key={question.question_id}>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <input
               type="button"
               className="btn"
-              key={question.question_id}
+              
               value="LOAD MORE ANSWERS"
               onClick={handleClick}
             />
           </div>,
         );
-        console.log(temp);
         changeAnswerList(temp);
       } else if (answers.length > 0) {
         changeAnswerList(answers.map((answer) => (
