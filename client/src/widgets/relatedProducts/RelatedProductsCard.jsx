@@ -7,7 +7,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
-import Modal from 'react-modal';
 import ComparisonModal from './ComparisonModal.jsx';
 
 function RelatedProductsCard({ product, style }) {

@@ -4,13 +4,27 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 
+Modal.setAppElement('#app');
+
 function ComparisonModal(props) {
+  const customStyles = {
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+      width: '500px',
+      height: '300px',
+      border: '1px solid black',
+    },
+  };
   return (
-    <Modal isOpen onRequestClose={() => props.updateModal(false)}>
-      <h1>Modal</h1>
-      <p>Modal Body</p>
-      <div>
-        {/* <button type="button" onClick={() => setModalIsOpen(false)}>Close</button> */}
+    <Modal isOpen onRequestClose={() => props.updateModal(false)} style={customStyles}>
+      <div className="container">
+        <h1>Comparison</h1>
+        <p>Yo what up, this is a comparison</p>
       </div>
     </Modal>
   );
