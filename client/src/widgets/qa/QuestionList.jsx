@@ -3,7 +3,12 @@ import Question from './Question.jsx';
 import qaContext from '../../contexts/QaContext';
 
 const QuestionList = () => {
-  const { questions, count, changeCount } = useContext(qaContext);
+  const {
+    questions,
+    count,
+    changeCount,
+    productName,
+  } = useContext(qaContext);
   const [questionList, changeQuestionList] = useState([]);
 
   useEffect(() => {
@@ -26,7 +31,7 @@ const QuestionList = () => {
   return (
     <div className="h-75 w-150 overflow-auto">
       {questionList.map((question) => (
-        <Question question={question} key={question.question_id} />
+        <Question question={question} name={productName} key={question.question_id} />
       ))}
       <div className="row-3 p-1">
         <input

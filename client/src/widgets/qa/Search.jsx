@@ -5,6 +5,9 @@ const Search = () => {
   const {
     questions,
     changeQuestions,
+    count,
+    changeCount,
+    productName,
   } = useContext(qaContext);
   const [query, changeQuery] = useState('');
 

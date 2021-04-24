@@ -1,7 +1,7 @@
 import React from 'react';
 
 const AddAnswer = (props) => {
-  const { question } = props;
+  const { question, name } = props;
   return (
     <>
       <span
@@ -15,7 +15,8 @@ const AddAnswer = (props) => {
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title" id="addAnswerModalLabel">Add Answer</h5>
+              <h5 className="modal-title" id="addAnswerModalLabel">Submit your answer:</h5>
+              <h6>{name}:&nbsp;{JSON.stringify(question.question_body)}</h6>
               <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>

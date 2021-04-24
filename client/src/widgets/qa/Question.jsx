@@ -9,10 +9,9 @@ import Helpful from './Helpful.jsx';
 import AddAnswer from './AddAnswer.jsx';
 
 const Question = (props) => {
-  const { question } = props;
+  const { question, name } = props;
   const [answerList, changeAnswerList] = useState([]);
   const [showAll, changeShowAll] = useState(false);
-
   const answers = [];
   for (const id in question.answers) {
     answers.push(question.answers[id]);
@@ -46,6 +45,7 @@ const Question = (props) => {
             />
           </div>,
         );
+        console.log(temp);
         changeAnswerList(temp);
       } else if (answers.length > 0) {
         changeAnswerList(answers.map((answer) => (
@@ -65,7 +65,7 @@ const Question = (props) => {
         <div className="col h4">
           Q: {question.question_body}
         </div>
-        <Helpful input={question} />
+        <Helpful input={question} name={name} key={question.id}/>
       </div>
       {answerList}
     </>

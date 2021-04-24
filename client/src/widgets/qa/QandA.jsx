@@ -6,22 +6,25 @@ import QuestionList from './QuestionList.jsx';
 import Search from './Search.jsx';
 
 const QandA = () => {
-  const { productId, changeProductId } = useContext(productContext);
+  const { product, productId, changeProductId } = useContext(productContext);
+  const [productName, changeProductName] = useState('');
   const [questions, changeQuestions] = useState([]);
   const [count, changeCount] = useState(4);
-  const [page, changePage] = useState(1);
 
   useEffect(() => {
-    api.fetchEndpoint(`/qa/questions?product_id=${productId}&count=100`)
-      .then((questionsData) => {
-        changeQuestions(questionsData.results.sort((a, b) => (
-          b.question_helpfulness - a.question_helpfulness
-        )));
-      })
-      .catch((error) => {
-        console.log('Error fetching questions:', error);
-      });
-  }, [productId]);
+    if (typeof product === 'object') {
+      changeProductName(product.name);
+      api.fetchEndpoint(`/qa/questions?product_id=${product.id}&count=100`)
+        .then((questionsData) => {
+          changeQuestions(questionsData.results.sort((a, b) => (
+            b.question_helpfulness - a.question_helpfulness
+          )));
+        })
+        .catch((error) => {
+          console.log('Error fetching questions:', error);
+        });
+    }
+  }, [product]);
 
   const handleClick = () => {
     changeProductId('18079');
@@ -40,8 +43,7 @@ const QandA = () => {
           changeQuestions,
           count,
           changeCount,
-          page,
-          changePage,
+          productName,
         }}
         >
           <Search />
