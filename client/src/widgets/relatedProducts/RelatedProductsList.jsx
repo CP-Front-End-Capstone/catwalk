@@ -39,11 +39,3 @@ function RelatedProductsList({ products, styles }) {
   );
 }
 export default RelatedProductsList;
-
-{ /* <div className="container">
-<div className="row">
-  {products.products.map((product) => products.context.styles.map((style) => (
-    <RelatedProductsCard product={product} style={style} />
-  )))}
-</div>
-</div> */ }
