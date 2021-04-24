@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 /* eslint-disable react/jsx-no-undef */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable import/named */
@@ -16,6 +15,7 @@ import { productContext } from './contexts/ProductContext.js';
 import ReviewsRatings from './widgets/reviews/ReviewsRatings.jsx';
 import QandA from './widgets/qa/QandA.jsx';
 import Overview from './widgets/overview/Overview.jsx';
+import RelatedProducts from './widgets/relatedProducts/Products.jsx';
 
 const App = (props) => {
   const [productId, changeProductId] = useState('18078');
@@ -29,6 +29,7 @@ const App = (props) => {
         api.fetchEndpoint(`/products/${productId}/styles`)
           .then((stylesData) => {
             changeStyles(stylesData.results);
+            changeMount(true);
           });
       })
       .catch((error) => {
@@ -55,6 +56,7 @@ const App = (props) => {
         }}
         >
           <Overview />
+          <RelatedProducts />
           <ReviewsRatings />
         </productContext.Provider>
       </div>
