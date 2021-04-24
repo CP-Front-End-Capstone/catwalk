@@ -15,6 +15,7 @@ import { productContext } from './contexts/ProductContext.js';
 import ReviewsRatings from './widgets/reviews/ReviewsRatings.jsx';
 import QandA from './widgets/qa/QandA.jsx';
 import Overview from './widgets/overview/Overview.jsx';
+import RelatedProducts from './widgets/relatedProducts/Products.jsx';
 
 const App = (props) => {
   const [productId, changeProductId] = useState('18078');
@@ -53,9 +54,15 @@ const App = (props) => {
           product, styles, productId, changeProductId,
         }}
         >
+<<<<<<< HEAD
           {/* <Overview /> */}
           <QandA />
           {/* <ReviewsRatings /> */}
+=======
+          <Overview />
+          <RelatedProducts />
+          <ReviewsRatings />
+>>>>>>> 676eb8f2baf59d050487ca9395b7021ca3f5d764
         </productContext.Provider>
       </div>
     </div>
