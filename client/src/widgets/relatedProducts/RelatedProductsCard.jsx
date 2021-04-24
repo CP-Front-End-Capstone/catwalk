@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable max-len */
@@ -5,15 +6,23 @@
 /* eslint-disable no-console */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React from 'react';
-import { Carousel } from 'react-bootstrap';
+import React, { useState } from 'react';
+import Modal from 'react-modal';
+// import ComparisonModal from './ComparisonModal.jsx';
 
 function RelatedProductsCard({ product, style }) {
+  const [visible, setVisible] = useState(false);
+
+  function handleClick() {
+    setVisible(true);
+    console.log('clicked: ', visible);
+  }
+
   return (
     // if (style.results[0].photos[0].thumbnail_url)
     <div>
       <img className="card-img-top" src={style.results[0].photos[0].thumbnail_url ? style.results[0].photos[0].thumbnail_url : 'https://images.unsplash.com/photo-1519857609704-61e751edba25?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80'} width={300} height={400} />
-      <button type="button" className="btn btn-outline-primary float-right">More Info</button>
+      <button type="button" className="btn btn-outline-primary float-right" onClick={handleClick}>More Info</button>
       <div className="card-body">
         <h5 className="card-title">{product.category}</h5>
         <div className="card-text">

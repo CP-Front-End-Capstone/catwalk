@@ -6,43 +6,34 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useContext, useEffect } from 'react';
 // import api from '../../../../API/helper.js';
+import Carousel from 'react-elastic-carousel';
 import RelatedProductsCard from './RelatedProductsCard.jsx';
 // import productContext from '../../contexts/ProductContext.js';
 
 function RelatedProductsList({ products, styles }) {
   // console.log('List of Products: ', products);
   // console.log('List of Styles: ', styles);
+  const breakPoints = [
+    { width: 500, itemsToShow: 1 },
+    { width: 768, itemsToShow: 2 },
+    { width: 1200, itemsToShow: 3 },
+    { width: 1500, itemsToShow: 4 },
+  ];
 
   return (
     <div className="container-fluid">
       <div className="row">
-        <div className="col-sm-12">
-          <div id="inam" className="carousel slide" data-ride="carousel">
-            <div className="carousel-inner">
-              <div className="container">
-                <div className="row">
-                  {products.map((product, index) => (
-                    <div className={index > 0 ? 'carousel-item' : 'carousel-item active'}>
-                      <div className="col-sm-12 col-lg-4">
-                        <div className="card-group">
-                          <div className="card" key={product.id}>
-                            <RelatedProductsCard product={product} style={styles[index]} />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
+        <Carousel breakPoints={breakPoints}>
+          {products.map((product, index) => (
+            <div className="col-sm-12 col-lg-10">
+              <div className="card-group">
+                <div className="card" key={product.id}>
+                  <RelatedProductsCard product={product} style={styles[index]} />
                 </div>
               </div>
             </div>
-            <a href="#inam" className="carousel-control-prev text-primary" data-slide="prev">
-              <span className="carousel-control-prev-icon p-3 mb-2 bg-dark text-dark" />
-            </a>
-            {/* <a href="#inam" className="carousel-control-next" data-slide="next">
-              <span className="carousel-control-next-icon p-3 mb-2 bg-dark text-dark" />
-            </a> */}
-          </div>
-        </div>
+          ))}
+        </Carousel>
       </div>
     </div>
   );
