@@ -39,7 +39,6 @@ const Question = (props) => {
             <input
               type="button"
               className="btn"
-              
               value="LOAD MORE ANSWERS"
               onClick={handleClick}
             />
