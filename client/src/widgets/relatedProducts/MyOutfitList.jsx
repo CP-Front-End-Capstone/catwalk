@@ -6,7 +6,7 @@ function MyOutfitList() {
   return (
     <div className="Container">
       <div className="row">
-        <div className="card-deck">
+        <div className="card-group">
           <MyOutfitCard />
         </div>
       </div>
