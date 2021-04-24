@@ -33,7 +33,8 @@ const ReviewsRatings = () => {
       .catch((err) => {
         console.log('error fetching review data', err);
       });
-  }, []);
+  }, [productId]);
+
   if (reviewsMeta) {
     return (
       <div>
