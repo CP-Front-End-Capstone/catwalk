@@ -18,9 +18,9 @@ import { styleContext } from '../../contexts/StyleContext.js';
 
 function Styles(props) {
   const { styles } = useContext(productContext);
-  const { currentStyle, setStyle, setImage } = useContext(styleContext);
+  const { currentStyles, setStyles, setImage } = useContext(styleContext);
   const handleClick = (value, url) => {
-    setStyle(value);
+    setStyles(value);
     setImage(url);
   };
 
@@ -32,7 +32,7 @@ function Styles(props) {
           <h5>
             Style
             :&nbsp;
-            {currentStyle.name}
+            {currentStyles.name}
           </h5>
         </div>
         <div className="row d-flex align-content-around flex-wrap row-cols-4">

@@ -20,15 +20,25 @@ import { productContext } from '../../contexts/ProductContext.js';
 import { styleContext } from '../../contexts/StyleContext.js';
 
 function Overview(props) {
-  const { styles } = useContext(productContext);
-  const [currentStyle, setStyle] = useState('');
+  const { product, styles } = useContext(productContext);
+  const [currentStyles, setStyles] = useState([]);
   const [currentImage, setImage] = useState('');
 
-  if (styles) {
+  const getProducts = (array) => {
+    const stylesArray = array.map((id) => (
+      api.fetchEndpoint(`/products/${id}/styles`)
+    ));
+
+    Promise.all(stylesArray).then((response) => {
+      setStyles(response);
+    });
+  };
+
+  if (currentStyles) {
     return (
       <div className="container ">
         <styleContext.Provider value={{
-          currentStyle, setImage, setStyle, currentImage,
+          currentStyles, setImage, setStyles, currentImage,
         }}
         >
           <div className="row d-flex justify-content-between">
