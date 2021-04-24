@@ -20,6 +20,8 @@ const ReviewsRatings = () => {
   const [reviewList, setReviewList] = useState({ results: [1, 2, 3] });
   const [reviewsMeta, setReviewsMeta] = useState();
   const [isMounted, setIsMounted] = useState();
+  const [ratingFilter, setRatingFilter] = useState();
+  const [helpful, setHelpful] = useState();
 
   useEffect(() => {
     api.fetchEndpoint(`/reviews/?product_id=${productId}&count=100&sort=relevant`)
@@ -33,7 +35,7 @@ const ReviewsRatings = () => {
       .catch((err) => {
         console.log('error fetching review data', err);
       });
-  }, [productId]);
+  }, [productId, helpful]);
 
   if (reviewsMeta) {
     return (
@@ -45,14 +47,8 @@ const ReviewsRatings = () => {
               <div className="container border" />
               <div className="container">
                 <div className="row">
-                  <reviewContext.Provider value={{ reviewsMeta }}>
-                    <ReviewBreakDown />
-                  </reviewContext.Provider>
-                </div>
-              </div>
-              <div className="container" style={{ padding: '10px' }}>
-                <div className="row">
                   <reviewContext.Provider value={{ reviewsMeta, reviewList }}>
+                    <ReviewBreakDown />
                     <ProductBreakDown />
                   </reviewContext.Provider>
                 </div>
@@ -60,7 +56,7 @@ const ReviewsRatings = () => {
             </div>
             <div className="col">
               <div className="row" style={{ height: '550px' }}>
-                <reviewContext.Provider value={{ reviewsMeta, reviewList }}>
+                <reviewContext.Provider value={{ reviewsMeta, reviewList, setHelpful }}>
                   <ReviewsList />
                 </reviewContext.Provider>
               </div>
