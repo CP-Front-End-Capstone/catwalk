@@ -11,7 +11,7 @@ const Report = (props) => {
       className="btn h6 font-weight-light"
       onClick={handleClick}
     >
-      <u>Report</u>ß
+      <u>Report</u>
     </span>
   );
 }
