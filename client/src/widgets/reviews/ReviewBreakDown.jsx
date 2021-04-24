@@ -68,26 +68,26 @@ const ReviewBreakDown = () => {
                 {recommendPercent}
                 % of reviewers recommend this product
               </div>
-              <div className="text-left" onClick={() => {handleRatingsClick(5)}}>
+              <span className="text-left" onClick={() => {handleRatingsClick(5)}}>
                 5 Stars
                 <HSBar height={10} data={[{ value: fiveStars, color: 'black' }, { value: 100 - fiveStars, color: 'grey' }]} />
-              </div>
-              <div>
+              </span>
+              <span>
                 4 Stars
                 <HSBar height={10} data={[{ value: fourStars, color: 'black' }, { value: 100 - fourStars, color: 'grey' }]} />
-              </div>
-              <div>
+              </span>
+              <span>
                 3 Stars
                 <HSBar height={10} data={[{ value: threeStars, color: 'black' }, { value: 100 - threeStars, color: 'grey' }]} />
-              </div>
-              <div>
+              </span>
+              <span>
                 2 Stars
                 <HSBar height={10} data={[{ value: twoStars, color: 'black' }, { value: 100 - twoStars, color: 'grey' }]} />
-              </div>
-              <div>
+              </span>
+              <span>
                 1 Star
                 <HSBar height={10} data={[{ value: oneStar, color: 'black' }, { value: 100 - oneStar, color: 'grey' }]} />
-              </div>
+              </span>
             </div>
           </div>
 

@@ -8,6 +8,7 @@ import IndividualReview from './IndividualReview.jsx';
 import reviewContext from '../../contexts/ReviewContext';
 import api from '../../../../API/helper';
 import ReviewBreakDown from './ReviewBreakDown.jsx';
+import AddReview from './AddReview.jsx';
 
 const ReviewsList = () => {
   const reviewsInfo = useContext(reviewContext);
@@ -73,11 +74,31 @@ const ReviewsList = () => {
           </ul>
         ))}
       </div>
-      <div className="row">
+      <div className="row" style={{ padding: '10px' }}>
         <div>{moreReviews}</div>
         &nbsp;
         &nbsp;
-        <button type="button">Add a Review +</button>
+        <button type="button" data-toggle="modal" data-target="#exampleModal">
+          Add a Review +
+        </button>
+        <div className="modal" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">Add a Review</h5>
+                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div className="modal-body">
+                <AddReview />
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-primary">Submit Review</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
