@@ -1,7 +1,7 @@
 import React from 'react';
 
 const AddAnswer = (props) => {
-  const { question, name } = props;
+  const { question, name, changeAnswerList } = props;
   return (
     <>
       <span

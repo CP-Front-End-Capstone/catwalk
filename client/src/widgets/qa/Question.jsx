@@ -64,8 +64,16 @@ const Question = (props) => {
           Q: {question.question_body}
         </div>
         <div className="col h6 text-right">
-          <Helpful input={question} name={name} key={question.id} />
-          <AddAnswer question={question} name={name} />
+          <Helpful
+            input={question}
+            name={name}
+            key={question.id}
+          />
+          <AddAnswer
+            question={question}
+            name={name}
+            changeAnswerList={changeAnswerList}
+          />
         </div>
       </div>
       {answerList}
