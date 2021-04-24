@@ -7,17 +7,16 @@ import { productContext } from '../../contexts/ProductContext.js';
 import { styleContext } from '../../contexts/StyleContext.js';
 
 function ProductInfoTop() {
-  const { product } = useContext(productContext);
-  const { currrentStyles } = useContext(styleContext);
+  const { product, currentStyle } = useContext(productContext);
 
-  if (currrentStyles) {
+  if (currentStyle) {
     return (
       <div>
         <h4>{product.category}</h4>
         <h1>{product.name}</h1>
         <h5>
           $
-          {currentStyles[0].original_price}
+          {currentStyle.original_price}
         </h5>
       </div>
     );

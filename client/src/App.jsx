@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable react/jsx-no-undef */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable import/named */
@@ -21,7 +22,9 @@ const App = (props) => {
   const [productId, changeProductId] = useState('18078');
   const [product, changeProduct] = useState();
   const [styles, changeStyles] = useState();
-  const [starAvg, changeStarAvg] =useState();
+  const [starAvg, changeStarAvg] = useState();
+  const [currentStyle, setStyle] = useState();
+  const [currentImage, setImage] = useState();
 
   console.log(starAvg);
 
@@ -31,7 +34,10 @@ const App = (props) => {
         changeProduct(productData);
         api.fetchEndpoint(`/products/${productId}/styles`)
           .then((stylesData) => {
+            console.log('this is styles data:', stylesData);
             changeStyles(stylesData.results);
+            setStyle(stylesData.results[0]);
+            setImage(stylesData.results[0].photos[0].url);
           });
       })
       .catch((error) => {
@@ -54,7 +60,7 @@ const App = (props) => {
       </nav>
       <div>
         <productContext.Provider value={{
-          product, styles, productId, changeProductId, starAvg, changeStarAvg
+          product, styles, productId, changeProductId, starAvg, changeStarAvg, currentStyle, setStyle, currentImage, setImage,
         }}
         >
           <Overview />

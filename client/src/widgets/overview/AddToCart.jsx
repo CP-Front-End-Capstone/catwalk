@@ -6,7 +6,7 @@ import { productContext } from '../../contexts/ProductContext.js';
 import { styleContext } from '../../contexts/StyleContext.js';
 
 function AddToCart() {
-  const { currentStyle } = useContext(styleContext);
+  const { currentStyle } = useContext(productContext);
   const [skuArray, setSkuArray] = useState([]);
 
   return (

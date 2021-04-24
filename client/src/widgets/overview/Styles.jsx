@@ -17,14 +17,15 @@ import { productContext } from '../../contexts/ProductContext.js';
 import { styleContext } from '../../contexts/StyleContext.js';
 
 function Styles(props) {
-  const { styles } = useContext(productContext);
-  const { currentStyles, setStyles, setImage } = useContext(styleContext);
+  const {
+    styles, currentStyle, setStyle, setImage,
+  } = useContext(productContext);
   const handleClick = (value, url) => {
-    setStyles(value);
+    setStyle(value);
     setImage(url);
   };
 
-  if (styles) {
+  if (currentStyle) {
     const firstStyle = styles[0];
     return (
       <div className="container ">
@@ -32,7 +33,7 @@ function Styles(props) {
           <h5>
             Style
             :&nbsp;
-            {currentStyles.name}
+            {currentStyle.name}
           </h5>
         </div>
         <div className="row d-flex align-content-around flex-wrap row-cols-4">

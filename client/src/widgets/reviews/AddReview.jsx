@@ -23,8 +23,8 @@ const AddReview = () => {
   return (
     <div className="container">
       <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
+        <span aria-hidden="true">&times;</span>
+      </button>
       <h3 className="text-center">Write Your Review</h3>
       <h5 className="text-center">
         About the

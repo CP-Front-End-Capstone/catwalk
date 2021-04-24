@@ -11,8 +11,9 @@ import { productContext } from '../../contexts/ProductContext.js';
 import { styleContext } from '../../contexts/StyleContext.js';
 
 function ImageGallery(props) {
-  const { styles } = useContext(productContext);
-  const { currentImage, currentStyle, setImage } = useContext(styleContext);
+  const {
+    styles, currentImage, currentStyle, setImage,
+  } = useContext(productContext);
 
   if (styles) {
     return (<img className="img w-100" src={currentImage} alt="Thumbnail image" />);

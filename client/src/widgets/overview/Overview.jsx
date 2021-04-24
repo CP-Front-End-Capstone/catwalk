@@ -20,41 +20,34 @@ import { productContext } from '../../contexts/ProductContext.js';
 import { styleContext } from '../../contexts/StyleContext.js';
 
 function Overview(props) {
-  const { product, styles } = useContext(productContext);
-  const [currentStyles, setStyles] = useState([]);
-  const [currentImage, setImage] = useState('');
+  const { currentStyle } = useContext(productContext);
 
-  const getProducts = (array) => {
-    const stylesArray = array.map((id) => (
-      api.fetchEndpoint(`/products/${id}/styles`)
-    ));
+  // const getProducts = (array) => {
+  //   const stylesArray = array.map((id) => (
+  //     api.fetchEndpoint(`/products/${id}/styles`)
+  //   ));
 
-    Promise.all(stylesArray).then((response) => {
-      setStyles(response);
-    });
-  };
+  //   Promise.all(stylesArray).then((response) => {
+  //     setStyles(response);
+  //   });
+  // };
 
-  if (currentStyles) {
+  if (currentStyle) {
     return (
       <div className="container ">
-        <styleContext.Provider value={{
-          currentStyles, setImage, setStyles, currentImage,
-        }}
-        >
-          <div className="row d-flex justify-content-between">
-            <div className="col">
-              <ImageGallery />
-            </div>
-            <div className="col d-flex align-content-around flex-wrap">
-              <ProductInfoTop />
-              <Styles />
-              <AddToCart />
-            </div>
+        <div className="row d-flex justify-content-between">
+          <div className="col">
+            <ImageGallery />
           </div>
-          <div className="row">
-            <ProductInfoBottom />
+          <div className="col d-flex align-content-around flex-wrap">
+            <ProductInfoTop />
+            <Styles />
+            <AddToCart />
           </div>
-        </styleContext.Provider>
+        </div>
+        <div className="row">
+          <ProductInfoBottom />
+        </div>
       </div>
     );
   }
