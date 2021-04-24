@@ -22,10 +22,34 @@ function ComparisonModal(props) {
   };
   return (
     <Modal isOpen onRequestClose={() => props.updateModal(false)} style={customStyles}>
-      <div className="container">
-        <h1>Comparison</h1>
-        <p>Yo what up, this is a comparison</p>
-      </div>
+      <h1 className="modal-title lead">Comparing:</h1>
+      <table className="table table-bordered table-hover">
+        <thead className="thead-dark">
+          <tr>
+            <th scope="col">Current Product Name</th>
+            <th scope="col">Characteristic</th>
+            <th scope="col">Compared Product Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>true</td>
+            <td>Very stylish</td>
+            <td>true</td>
+          </tr>
+          <tr>
+            <td>false</td>
+            <td>Not very cool</td>
+            <td>true</td>
+          </tr>
+          <tr>
+            <td>true</td>
+            <td>Pretty decent fabric</td>
+            <td>false</td>
+          </tr>
+        </tbody>
+      </table>
+
     </Modal>
   );
 }

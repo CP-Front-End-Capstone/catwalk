@@ -10,9 +10,9 @@ import MyOutfitList from './MyOutfitList.jsx';
 
 function RelatedProducts() {
   const context = useContext(productContext);
-  // console.log('Current object: ', context);
   const [products, setProducts] = useState([]);
   const [styles, setStyles] = useState([]);
+  console.log('current context: ', context);
 
   const getProducts = (array) => {
     // fetch products object
@@ -48,11 +48,11 @@ function RelatedProducts() {
       <div>
         <div>
           <h3 className="h3">Related Items:</h3>
-          <RelatedProductsList products={products} styles={styles} />
+          <RelatedProductsList products={products} styles={styles} rating={context.starAvg} />
         </div>
         <div>
           <h3 className="h3">My Outfit:</h3>
-          <MyOutfitList />
+          <MyOutfitList currentProduct={context.product} styles={context.styles} />
         </div>
       </div>
     );

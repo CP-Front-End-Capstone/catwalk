@@ -10,7 +10,7 @@ import Carousel from 'react-elastic-carousel';
 import RelatedProductsCard from './RelatedProductsCard.jsx';
 // import productContext from '../../contexts/ProductContext.js';
 
-function RelatedProductsList({ products, styles }) {
+function RelatedProductsList({ products, styles, rating }) {
   // console.log('List of Products: ', products);
   // console.log('List of Styles: ', styles);
   const breakPoints = [
@@ -28,7 +28,7 @@ function RelatedProductsList({ products, styles }) {
             <div className="col-sm-12 col-lg-10">
               <div className="card-group">
                 <div className="card" key={product.id}>
-                  <RelatedProductsCard product={product} style={styles[index]} />
+                  <RelatedProductsCard product={product} style={styles[index]} rating={rating} />
                 </div>
               </div>
             </div>

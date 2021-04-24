@@ -7,9 +7,10 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
+import StarRatings from 'react-star-ratings';
 import ComparisonModal from './ComparisonModal.jsx';
 
-function RelatedProductsCard({ product, style }) {
+function RelatedProductsCard({ product, style, rating }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   return (
@@ -29,6 +30,16 @@ function RelatedProductsCard({ product, style }) {
             $
             {style.results[0].sale_price ? style.results[0].sale_price : style.results[0].original_price}
           </h6>
+        </div>
+        <div className="card-subtitle">
+          <StarRatings
+            rating={rating}
+            starRatedColor="black"
+            numberOfStars={5}
+            name="rating"
+            starDimension="15px"
+            starSpacing="2px"
+          />
         </div>
       </div>
     </div>
