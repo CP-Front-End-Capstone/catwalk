@@ -1,44 +1,47 @@
-/* eslint-disable react/no-unknown-property */
+  
+/* eslint-disable import/no-named-as-default-member */
+/* eslint-disable no-undef */
 /* eslint-disable import/extensions */
+/* eslint-disable no-console */
+/* eslint-disable import/named */
+/* eslint-disable react/no-unknown-property */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-useless-constructor */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prefer-stateless-function */
-import React from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import ImageGallery from './ImageGallery.jsx';
-import ProductInfo from './ProductInfo.jsx';
+import ProductInfoTop from './ProductInfoTop.jsx';
+import ProductInfoBottom from './ProductInfoBottom.jsx';
 import Styles from './Styles.jsx';
 import AddToCart from './AddToCart.jsx';
+import { productContext } from '../../contexts/ProductContext.js';
 
-class Overview extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+function Overview(props) {
+  const { product, styles } = useContext(productContext);
+  // const [currentStyle, changeCurrentStyle] = useState(styles[0].style_id);
 
-  render() {
+  if (styles) {
     return (
-      <div className="container">
-        <div className="row">
-          <div className="col-8">
+      <div class="container ">
+        <div class="row d-flex justify-content-between">
+          <div class="col">
             <ImageGallery />
           </div>
-          <div className="col-4">
+          <div class="col d-flex align-content-around flex-wrap">
+            <ProductInfoTop />
             <Styles />
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-8">
-            <ProductInfo />
-          </div>
-          <div className="col-4">
             <AddToCart />
           </div>
+        </div>
+        <div class="row">
+          <ProductInfoBottom />
         </div>
       </div>
     );
   }
+  return <h1>Loading Product Overview</h1>;
 }
-
 
 export default Overview;

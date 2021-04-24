@@ -54,15 +54,10 @@ const App = (props) => {
           product, styles, productId, changeProductId,
         }}
         >
-<<<<<<< HEAD
-          {/* <Overview /> */}
-          <QandA />
-          {/* <ReviewsRatings /> */}
-=======
           <Overview />
           <RelatedProducts />
+          <QandA />
           <ReviewsRatings />
->>>>>>> 676eb8f2baf59d050487ca9395b7021ca3f5d764
         </productContext.Provider>
       </div>
     </div>
