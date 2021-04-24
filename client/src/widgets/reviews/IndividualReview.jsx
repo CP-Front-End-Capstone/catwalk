@@ -10,6 +10,10 @@ const IndividualReview = (props) => {
 
   const images = props.review.photos.length > 0 && 'Image';
 
+  const handleHelpfulness = () => {
+    console.log('helpful');
+  };
+
   return (
     <div className="container bg-white border">
       <div className="row">
@@ -43,7 +47,7 @@ const IndividualReview = (props) => {
       </div>
       <div className="row small">
         What this review helpful?
-        <u>&nbsp;Yes&nbsp;</u>
+        <u onClick={handleHelpfulness}>&nbsp;Yes&nbsp;</u>
         <div>
           (
           {props.review.helpfulness}
