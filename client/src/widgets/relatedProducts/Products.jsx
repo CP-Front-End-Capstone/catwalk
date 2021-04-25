@@ -12,7 +12,6 @@ function RelatedProducts() {
   const context = useContext(productContext);
   const [products, setProducts] = useState([]);
   const [styles, setStyles] = useState([]);
-  console.log('current context: ', context);
 
   const getProducts = (array) => {
     // fetch products object
