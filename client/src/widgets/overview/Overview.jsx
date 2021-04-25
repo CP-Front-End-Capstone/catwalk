@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 /* eslint-disable max-len */
 /* eslint-disable import/no-named-as-default-member */
 /* eslint-disable no-undef */
@@ -11,6 +12,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prefer-stateless-function */
 import React, { useContext, useState, useEffect } from 'react';
+import api from '../../../../API/helper';
 import ImageGallery from './ImageGallery.jsx';
 import ProductInfoTop from './ProductInfoTop.jsx';
 import ProductInfoBottom from './ProductInfoBottom.jsx';
@@ -20,7 +22,23 @@ import { productContext } from '../../contexts/ProductContext.js';
 import { styleContext } from '../../contexts/StyleContext.js';
 
 function Overview(props) {
-  const { currentStyle } = useContext(productContext);
+  const { product, productId } = useContext(productContext);
+  const [styles, changeStyles] = useState();
+  const [currentStyle, setStyle] = useState();
+  const [currentImage, setImage] = useState();
+
+  useEffect(() => {
+    api.fetchEndpoint(`/products/${productId}/styles`)
+      .then((stylesData) => {
+        console.log('this is styles data:', stylesData);
+        changeStyles(stylesData.results);
+        setStyle(stylesData.results[0]);
+        setImage(stylesData.results[0].photos[0].url);
+      })
+      .catch((error) => {
+        console.log('Error fetching data', error);
+      });
+  }, []);
 
   // const getProducts = (array) => {
   //   const stylesArray = array.map((id) => (
@@ -35,19 +53,24 @@ function Overview(props) {
   if (currentStyle) {
     return (
       <div className="container ">
-        <div className="row d-flex justify-content-between">
-          <div className="col">
-            <ImageGallery />
+        <styleContext.Provider value={{
+          styles, currentStyle, currentImage, setImage, setStyle,
+        }}
+        >
+          <div className="row d-flex justify-content-between">
+            <div className="col">
+              <ImageGallery />
+            </div>
+            <div className="col d-flex align-content-around flex-wrap">
+              <ProductInfoTop />
+              <Styles />
+              <AddToCart />
+            </div>
           </div>
-          <div className="col d-flex align-content-around flex-wrap">
-            <ProductInfoTop />
-            <Styles />
-            <AddToCart />
+          <div className="row">
+            <ProductInfoBottom />
           </div>
-        </div>
-        <div className="row">
-          <ProductInfoBottom />
-        </div>
+        </styleContext.Provider>
       </div>
     );
   }

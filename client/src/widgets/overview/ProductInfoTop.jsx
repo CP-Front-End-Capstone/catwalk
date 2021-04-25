@@ -6,10 +6,11 @@ import React, { useContext } from 'react';
 import { productContext } from '../../contexts/ProductContext.js';
 import { styleContext } from '../../contexts/StyleContext.js';
 
-function ProductInfoTop() {
-  const { product, currentStyle } = useContext(productContext);
+function ProductInfoTop(props) {
+  const { product } = useContext(productContext);
+  const { styles, currentStyle } = useContext(styleContext);
 
-  if (currentStyle) {
+  if (styles && product) {
     return (
       <div>
         <h4>{product.category}</h4>

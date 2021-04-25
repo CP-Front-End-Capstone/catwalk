@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/CP-Front-End-Capstone/catwalk#readme",
   "dependencies": {
+    "@brainhubeu/react-carousel": "^2.0.3",
     "axios": "^0.21.1",
     "bar-charts": "^1.0.3",
     "bootstrap": "^4.6.0",
