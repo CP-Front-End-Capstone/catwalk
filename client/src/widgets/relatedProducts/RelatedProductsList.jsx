@@ -13,17 +13,11 @@ import RelatedProductsCard from './RelatedProductsCard.jsx';
 function RelatedProductsList({ products, styles, rating }) {
   // console.log('List of Products: ', products);
   // console.log('List of Styles: ', styles);
-  const breakPoints = [
-    { width: 500, itemsToShow: 1 },
-    { width: 768, itemsToShow: 2 },
-    { width: 1200, itemsToShow: 3 },
-    { width: 1500, itemsToShow: 4 },
-  ];
 
   return (
     <div className="container-fluid">
       <div className="row">
-        <Carousel breakPoints={breakPoints}>
+        <Carousel itemsToShow={3} itemsToScroll={1}>
           {products.map((product, index) => (
             <div className="col-sm-12 col-lg-10">
               <div className="card-group">

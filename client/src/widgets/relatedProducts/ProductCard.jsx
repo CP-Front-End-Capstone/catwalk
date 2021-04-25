@@ -6,8 +6,6 @@
 import React from 'react';
 
 function ProductCard({ currentProduct, style }) {
-  console.log('HELLO FROM PRODUCT CARD: ', currentProduct);
-  console.log('STYLES FROM PRODUCT CARD: ', style);
   return (
     <div>
       <img className="card-img-top" src={style.photos[0].thumbnail_url ? style.photos[0].thumbnail_url : 'https://images.unsplash.com/photo-1519857609704-61e751edba25?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80'} width={300} height={400} />
