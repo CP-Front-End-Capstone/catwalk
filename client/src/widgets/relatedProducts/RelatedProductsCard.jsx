@@ -10,14 +10,16 @@ import React, { useState } from 'react';
 import StarRatings from 'react-star-ratings';
 import ComparisonModal from './ComparisonModal.jsx';
 
-function RelatedProductsCard({ product, style, rating }) {
+function RelatedProductsCard({
+  product, style, rating, currentProduct,
+}) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   return (
     // if (style.results[0].photos[0].thumbnail_url)
     <div>
       <img className="card-img-top" src={style.results[0].photos[0].thumbnail_url ? style.results[0].photos[0].thumbnail_url : 'https://images.unsplash.com/photo-1519857609704-61e751edba25?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80'} width={300} height={400} />
-      {modalIsOpen ? <ComparisonModal updateModal={setModalIsOpen} /> : null}
+      {modalIsOpen ? <ComparisonModal updateModal={setModalIsOpen} product={product} currentProduct={currentProduct} /> : null}
       <button type="button" className="btn btn-primary float-right" onClick={() => setModalIsOpen(true)}>More Info</button>
       <div className="card-body">
         <h5 className="card-title">{product.category}</h5>

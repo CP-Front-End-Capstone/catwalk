@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-console */
 /* eslint-disable import/named */
 /* eslint-disable import/extensions */
@@ -47,7 +48,7 @@ function RelatedProducts() {
       <div>
         <div className="container-fluid">
           <h3 className="h3">Related Items:</h3>
-          <RelatedProductsList products={products} styles={styles} rating={context.starAvg} />
+          <RelatedProductsList products={products} styles={styles} rating={context.starAvg} currentProduct={context.product} />
         </div>
         <div className="container-fluid">
           <h3 className="h3">My Outfit:</h3>

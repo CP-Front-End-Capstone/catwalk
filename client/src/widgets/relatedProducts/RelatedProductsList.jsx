@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable no-lone-blocks */
 /* eslint-disable no-console */
@@ -10,7 +11,9 @@ import Carousel from 'react-elastic-carousel';
 import RelatedProductsCard from './RelatedProductsCard.jsx';
 // import productContext from '../../contexts/ProductContext.js';
 
-function RelatedProductsList({ products, styles, rating }) {
+function RelatedProductsList({
+  products, styles, rating, currentProduct,
+}) {
   // console.log('List of Products: ', products);
   // console.log('List of Styles: ', styles);
 
@@ -22,7 +25,7 @@ function RelatedProductsList({ products, styles, rating }) {
             <div className="col-sm-12 col-lg-10">
               <div className="card-group">
                 <div className="card" key={product.id}>
-                  <RelatedProductsCard product={product} style={styles[index]} rating={rating} />
+                  <RelatedProductsCard product={product} style={styles[index]} rating={rating} currentProduct={currentProduct} />
                 </div>
               </div>
             </div>

@@ -6,7 +6,8 @@ import Modal from 'react-modal';
 
 Modal.setAppElement('#app');
 
-function ComparisonModal(props) {
+function ComparisonModal({ updateModal, product, currentProduct }) {
+  console.log('HELLO FROM COMPARISON: ', currentProduct);
   const customStyles = {
     content: {
       top: '50%',
@@ -21,14 +22,14 @@ function ComparisonModal(props) {
     },
   };
   return (
-    <Modal isOpen onRequestClose={() => props.updateModal(false)} style={customStyles}>
+    <Modal isOpen onRequestClose={() => updateModal(false)} style={customStyles}>
       <h1 className="modal-title lead">Comparing:</h1>
       <table className="table table-bordered table-hover">
         <thead className="thead-dark">
           <tr>
-            <th scope="col">Current Product Name</th>
+            <th scope="col">{currentProduct.name}</th>
             <th scope="col">Characteristic</th>
-            <th scope="col">Compared Product Name</th>
+            <th scope="col">{product.name}</th>
           </tr>
         </thead>
         <tbody>
