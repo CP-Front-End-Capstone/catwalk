@@ -35,7 +35,7 @@ const IndividualReview = (props) => {
 
   const [reviewBody, setReviewBody] = useState(props.review.body.length < 250 ? props.review.body
     : (`${props.review.body.slice(0, 250)}...`));
-  const [viewMore, setViewMore] = useState('View More');
+  const [viewMore, setViewMore] = useState(longBody && 'View More');
 
   const handleViewMore = () => {
     setReviewBody(props.review.body);
