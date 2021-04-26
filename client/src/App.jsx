@@ -1,3 +1,5 @@
+/* eslint-disable import/no-named-as-default-member */
+/* eslint-disable max-len */
 /* eslint-disable react/jsx-no-undef */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable import/named */
@@ -29,6 +31,7 @@ const App = (props) => {
         changeProduct(productData);
         api.fetchEndpoint(`/products/${productId}/styles`)
           .then((stylesData) => {
+            console.log('this is styles data:', stylesData);
             changeStyles(stylesData.results);
           });
       })

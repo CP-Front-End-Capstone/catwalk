@@ -3,6 +3,15 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.css$/,
+        use: {
+          loader: 'css-loader',
+          options: {
+            modules: true,
+          },
+        },
+      },
+      {
         test: [/\.(js|jsx)?/],
         exclude: /node_modules/,
         use: {
