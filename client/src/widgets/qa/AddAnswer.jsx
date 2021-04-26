@@ -57,11 +57,25 @@ const addAnswer = (props) => {
       },
     })
       .then((res) => {
-        changeAnswerList(answerList.push(<Answer />));
         changeAnswer('');
         changeNickname('');
         changeEmail('');
         changePhotos([]);
+        axios({
+          method: 'GET',
+          url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${question.question_id}/answers`,
+          headers: {
+            Authorization: config.TOKEN,
+          },
+        })
+          .then((newList) => {
+            changeAnswerList(newList.data.results.map((ans) => (
+              <Answer answer={ans} key={ans.answer_id} />
+            )));
+          })
+          .catch((err) => {
+            console.log('Error getting new answer list', err);
+          });
       })
       .catch((err) => {
         console.log('ERROR: ', err);

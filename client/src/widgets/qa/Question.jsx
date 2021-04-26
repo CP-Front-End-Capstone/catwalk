@@ -57,10 +57,6 @@ const Question = (props) => {
     }
   }, [showAll]);
 
-  useEffect(() => {
-    changeShowAll(true);
-  }, [answerList]);
-
   return (
     <>
       <div className="row p-1">
