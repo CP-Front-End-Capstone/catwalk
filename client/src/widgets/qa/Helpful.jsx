@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import AddAnswer from './AddAnswer.jsx';
 import Report from './Report.jsx';
+import axios from 'axios';
+import config from '../../../../API/config.js';
 
 const Helpful = (props) => {
   const { input } = props;
@@ -11,11 +13,19 @@ const Helpful = (props) => {
     axios({
       method: 'PUT',
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${input.question_id}/helpful`,
-      data: newAnswer,
+      data: {
+        question_id: input.question_id,
+      },
       headers: {
         Authorization: config.TOKEN,
       },
     })
+      .then((res) => {
+        console.log('RES: ', res);
+      })
+      .catch((err) => {
+        console.log('ERR', err);
+      });
   };
   const handleAnswer = (e) => {
     e.preventDefault();
