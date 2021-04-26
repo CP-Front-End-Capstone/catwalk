@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useState } from 'react';
 import Modal from 'react-modal';
 
 const customStyles = {
@@ -20,14 +20,65 @@ Modal.setAppElement('#app');
 
 const addAnswer = (props) => {
   const { question, name, changeAnswerList } = props;
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const openModal = () => {
+    setIsOpen(true);
+  };
+  const onCancel = () => {
+    setIsOpen(false);
+  };
+  const onSubmit = () => {
+    setIsOpen(false);
+  };
 
   return (
-    <span
-      className="btn h6 font-weight-light"
-      onClick={openModal}
-    >
-      <u>Add Answer</u>
-    </span>
+    <>
+      <span
+        className="btn h6 font-weight-light"
+        onClick={openModal}
+      >
+        <u>Add Answer</u>
+      </span>
+      <Modal
+        isOpen={modalIsOpen}
+        // onAfterOpen={afterOpenModal}
+        // onRequestClose={onCancel}
+        style={customStyles}
+        contentLabel="Add Answer"
+      >
+        <h1 className="modal-title lead">Submit Your Answer:</h1>
+        <div>{name}:&nbsp;{question.question_body}</div>
+        <form>
+          <label htmlFor="answer">
+            *Your Answer:
+            <textarea name="answer" maxLength="1000" />
+          </label>
+          <br />
+          <label htmlFor="name">
+            *Your Name:
+            <input type="text" name="name" maxLength="60" />
+            <br />
+            (For privacy reasons, do not use your full name or email address)
+            <br />
+          </label>
+          <br />
+          <label htmlFor="email">
+            *Your Email:
+            <input type="email" name="email" maxLength="60" />
+            <br />
+            (For authentication reasons, you will not be emailed)
+            <br />
+          </label>
+          <br />
+          <label htmlFor="photos">
+            Photos: (optional)
+            <input type="file" name="photos" />
+          </label>
+        </form>
+        <button type="button" onClick={onCancel}>Cancel</button>
+        <button type="button" onClick={onSubmit}>Submit</button>
+      </Modal>
+    </>
   );
 };
 
