@@ -66,7 +66,6 @@ const Question = (props) => {
         <div className="col h6 text-right">
           <Helpful
             input={question}
-            name={name}
             key={question.id}
           />
           <AddAnswer
