@@ -63,7 +63,7 @@ const addAnswer = (props) => {
         changePhotos([]);
         axios({
           method: 'GET',
-          url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${question.question_id}/answers`,
+          url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${question.question_id}/answers?count=100`,
           headers: {
             Authorization: config.TOKEN,
           },
