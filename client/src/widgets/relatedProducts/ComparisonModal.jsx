@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
@@ -8,6 +9,7 @@ import { Checkmark } from 'react-checkmark';
 Modal.setAppElement('#app');
 
 function ComparisonModal({ updateModal, product, currentProduct }) {
+  console.log('Comparison modal product features: ', product);
   const customStyles = {
     content: {
       top: '50%',
@@ -33,21 +35,32 @@ function ComparisonModal({ updateModal, product, currentProduct }) {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td><Checkmark size="small" color="#223344" /></td>
-            <td>Very stylish</td>
-            <td><Checkmark size="small" color="#223344" /></td>
-          </tr>
-          <tr>
-            <td />
-            <td>Not very cool</td>
-            <td><Checkmark size="small" color="#223344" /></td>
-          </tr>
-          <tr>
-            <td><Checkmark size="small" color="#223344" /></td>
-            <td>Pretty decent fabric</td>
-            <td />
-          </tr>
+          {currentProduct.features.map((feature, index) => (
+            <>
+              <tr key={index}>
+                <td><Checkmark size="small" color="#223344" /></td>
+                <td>
+                  {feature.value}
+                  {feature.value ? ',' : null}
+                  {' '}
+                  {feature.feature}
+                </td>
+                <td>{product.features[index].feature === feature.feature ? <Checkmark size="small" color="#223344" /> : null}</td>
+              </tr>
+              {product.features.map((relatedFeature, itemIndex) => (
+                <tr key={itemIndex}>
+                  <td>{currentProduct.features[index].feature === relatedFeature.feature ? <Checkmark size="small" color="#223344" /> : null}</td>
+                  <td>
+                    {relatedFeature.value}
+                    {relatedFeature.value ? ',' : null}
+                    {' '}
+                    {relatedFeature.feature}
+                  </td>
+                  <td><Checkmark size="small" color="#223344" /></td>
+                </tr>
+              ))}
+            </>
+          ))}
         </tbody>
       </table>
 

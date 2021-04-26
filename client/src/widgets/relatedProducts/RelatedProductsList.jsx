@@ -22,9 +22,9 @@ function RelatedProductsList({
       <div className="row">
         <Carousel itemsToShow={3} itemsToScroll={1}>
           {products.map((product, index) => (
-            <div className="col-sm-12 col-lg-10">
+            <div className="col-sm-12 col-lg-10" key={product.id}>
               <div className="card-group">
-                <div className="card" key={product.id}>
+                <div className="card">
                   <RelatedProductsCard product={product} style={styles[index]} rating={rating} currentProduct={currentProduct} />
                 </div>
               </div>
