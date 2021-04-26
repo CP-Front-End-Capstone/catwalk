@@ -84,23 +84,23 @@ const ReviewBreakDown = () => {
             % of reviewers recommend this product
           </div>
           <button type="button" className="text-left btn-light small" onClick={() => { handleRatingFilter('5'); }}>
-            5 Stars
+            5 Stars {fiveStars}
             <HSBar height={10} data={[{ value: fiveStars, color: 'black' }, { value: 100 - fiveStars, color: 'grey' }]} />
           </button>
           <button type="button" className="text-left btn-light small" onClick={() => { handleRatingFilter('4'); }}>
-            4 Stars
+            4 Stars {fourStars}
             <HSBar height={10} data={[{ value: fourStars, color: 'black' }, { value: 100 - fourStars, color: 'grey' }]} />
           </button>
           <button type="button" className="text-left btn-light small" onClick={() => { handleRatingFilter('3'); }}>
-            3 Stars
+            3 Stars {threeStars}
             <HSBar height={10} data={[{ value: threeStars, color: 'black' }, { value: 100 - threeStars, color: 'grey' }]} />
           </button>
           <button type="button" className="text-left btn-light small" onClick={() => { handleRatingFilter('2'); }}>
-            2 Stars
+            2 Stars {twoStars}
             <HSBar height={10} data={[{ value: twoStars, color: 'black' }, { value: 100 - twoStars, color: 'grey' }]} />
           </button>
           <button type="button" className="text-left btn-light small" onClick={() => { handleRatingFilter('1'); }}>
-            1 Star
+            1 Star {oneStar}
             <HSBar height={10} data={[{ value: oneStar, color: 'black' }, { value: 100 - oneStar, color: 'grey' }]} />
           </button>
         </div>

@@ -14,7 +14,7 @@ const config = require('../../../../API/config.js');
 const IndividualReview = (props) => {
   const recommend = props.review.recommend && '✓ I recommend this product';
   const response = props.review.response && props.review.response;
-  const reviewsInfo = useContext(reviewContext);
+  const longBody = props.review.body.length > 250 && true;
 
   const images = props.review.photos.length > 0 && <ReviewPhotos photos={props.review.photos} />;
 
@@ -25,11 +25,21 @@ const IndividualReview = (props) => {
       },
     })
       .then(() => {
-        reviewsInfo.setHelpful(true);
+        // reviewsInfo.setHelpful(true);
+        console.log('put worked');
       })
       .catch((err) => {
-        console.log('error putting helpfulness to API', err);
+        console.log('error putting helpfulness to API', props.review.review_id, err);
       });
+  };
+
+  const [reviewBody, setReviewBody] = useState(props.review.body.length < 250 ? props.review.body
+    : (`${props.review.body.slice(0, 250)}...`));
+  const [viewMore, setViewMore] = useState('View More');
+
+  const handleViewMore = () => {
+    setReviewBody(props.review.body);
+    setViewMore(null);
   };
 
   return (
@@ -55,7 +65,12 @@ const IndividualReview = (props) => {
         </div>
       </div>
       <h5 className="row">{props.review.summary}</h5>
-      <div className="row border" style={{ padding: '5px' }}>{props.review.body}</div>
+      <div className="row border" style={{ padding: '5px' }}>
+        {reviewBody}
+        <a href="#" className="small" onClick={() => { handleViewMore(); }}>
+          {viewMore}
+        </a>
+      </div>
       <div className="row small">{recommend}</div>
       <div className="row">{response}</div>
       <div className="row">

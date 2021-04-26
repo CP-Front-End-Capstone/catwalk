@@ -13,6 +13,33 @@ const AddReview = () => {
   const ratings = {
     '1 star': 'Poor', '2 stars': 'Fair', '3 stars': 'Average', '4 stars': 'Good', '5 stars': 'Great',
   };
+  const recommend = null;
+  const rating = null;
+  const reviewSummary = null;
+  const reviewBody = null;
+  const images = [];
+  let reviewName = null;
+  const reviewerEmail = null;
+
+  const handleNameChange = (name) => {
+    reviewName = name;
+  };
+
+  const handleEmailChange = (email) => {
+    reviewerEmail = email;
+  };
+
+  const handleRecommend = (input) => {
+    recommend = input;
+  };
+
+  const handleReviewSummary = (input) => {
+    reviewSummary = input;
+  };
+
+  const handleReviewBody = (input) => {
+    reviewBody = input;
+  };
 
   const selectedRating = null;
 
@@ -40,6 +67,9 @@ const AddReview = () => {
           name="rating"
           starDimension="25px"
           starSpacing="2px"
+          isSelectable
+          changeRating
+          starHoverColor="black"
         />
         {selectedRating}
       </div>
@@ -76,7 +106,7 @@ const AddReview = () => {
       </div>
       <div className="row">
         <div>Reviewer Name:</div>
-        <input placeholder="This is how you will appear on your review" className="w-100 small" />
+        <input placeholder="This is how you will appear on your review" className="w-100 small" onChange={(e) => { handleNameChange(e.target.value); }} />
       </div>
       <div className="row">
         <div>Reviewer Email:</div>
