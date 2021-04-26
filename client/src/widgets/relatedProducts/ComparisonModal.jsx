@@ -25,6 +25,9 @@ function ComparisonModal({ updateModal, product, currentProduct }) {
   };
   return (
     <Modal isOpen onRequestClose={() => updateModal(false)} style={customStyles}>
+      <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={() => updateModal(false)}>
+        <span aria-hidden="true">&times;</span>
+      </button>
       <h1 className="modal-title lead">Comparing:</h1>
       <table className="table table-bordered table-hover">
         <thead className="thead-dark">
