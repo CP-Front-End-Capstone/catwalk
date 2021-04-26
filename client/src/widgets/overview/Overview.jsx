@@ -18,6 +18,7 @@ import ProductInfoTop from './ProductInfoTop.jsx';
 import ProductInfoBottom from './ProductInfoBottom.jsx';
 import Styles from './Styles.jsx';
 import AddToCart from './AddToCart.jsx';
+import ExpandedImageGallery from './ExpandedImageGallery.jsx';
 import { productContext } from '../../contexts/ProductContext.js';
 import { styleContext } from '../../contexts/StyleContext.js';
 
@@ -26,6 +27,7 @@ function Overview(props) {
   const [styles, changeStyles] = useState();
   const [currentStyle, setStyle] = useState();
   const [currentImage, setImage] = useState();
+  const [imageView, setImageView] = useState(false);
 
   useEffect(() => {
     api.fetchEndpoint(`/products/${productId}/styles`)
@@ -49,12 +51,30 @@ function Overview(props) {
   //     setStyles(response);
   //   });
   // };
-
+  if (imageView) {
+    return (
+      <div className="container ">
+        <styleContext.Provider value={{
+          styles, currentStyle, currentImage, setImage, setStyle, imageView, setImageView,
+        }}
+        >
+          <div className="row d-flex justify-content-between">
+            <div className="col">
+              <ExpandedImageGallery />
+            </div>
+          </div>
+          <div className="row">
+            <ProductInfoBottom />
+          </div>
+        </styleContext.Provider>
+      </div>
+    );
+  }
   if (currentStyle) {
     return (
       <div className="container ">
         <styleContext.Provider value={{
-          styles, currentStyle, currentImage, setImage, setStyle,
+          styles, currentStyle, currentImage, setImage, setStyle, imageView, setImageView,
         }}
         >
           <div className="row d-flex justify-content-between">

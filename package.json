@@ -35,6 +35,7 @@
     "react-dom": "^17.0.2",
     "react-elastic-carousel": "^0.11.5",
     "react-horizontal-stacked-bar-chart": "^8.15.2",
+    "react-inner-image-zoom": "^2.0.1",
     "react-modal": "^3.13.1",
     "react-router-dom": "^5.2.0",
     "react-stacked-horizontal-bar-chart": "^1.0.1",
