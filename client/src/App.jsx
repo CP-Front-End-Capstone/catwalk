@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default-member */
 /* eslint-disable max-len */
 /* eslint-disable react/jsx-no-undef */
 /* eslint-disable react/destructuring-assignment */
@@ -30,6 +31,7 @@ const App = (props) => {
         changeProduct(productData);
         api.fetchEndpoint(`/products/${productId}/styles`)
           .then((stylesData) => {
+            console.log('this is styles data:', stylesData);
             changeStyles(stylesData.results);
           });
       })
@@ -56,7 +58,7 @@ const App = (props) => {
           product, styles, productId, changeProductId, starAvg, changeStarAvg,
         }}
         >
-          {/* <Overview /> */}
+          <Overview />
           <RelatedProducts />
           <QandA />
           <ReviewsRatings />

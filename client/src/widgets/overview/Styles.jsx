@@ -17,15 +17,15 @@ import { productContext } from '../../contexts/ProductContext.js';
 import { styleContext } from '../../contexts/StyleContext.js';
 
 function Styles(props) {
-  const { styles } = useContext(productContext);
-  const { currentStyle, setStyle, setImage } = useContext(styleContext);
+  const {
+    styles, currentStyle, setStyle, setImage,
+  } = useContext(styleContext);
   const handleClick = (value, url) => {
     setStyle(value);
     setImage(url);
   };
 
-  if (styles) {
-    const firstStyle = styles[0];
+  if (currentStyle && styles) {
     return (
       <div className="container ">
         <div className="row">
