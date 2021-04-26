@@ -57,6 +57,10 @@ const Question = (props) => {
     }
   }, [showAll]);
 
+  useEffect(() => {
+    changeShowAll(true);
+  }, [answerList]);
+
   return (
     <>
       <div className="row p-1">
@@ -72,6 +76,7 @@ const Question = (props) => {
           <AddAnswer
             question={question}
             name={name}
+            answerList={answerList}
             changeAnswerList={changeAnswerList}
           />
         </div>

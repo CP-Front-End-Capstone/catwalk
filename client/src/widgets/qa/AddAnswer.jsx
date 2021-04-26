@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import axios from 'axios';
+const config = require('../../../../API/config.js');
+import Answer from './Answer.jsx';
 
 const customStyles = {
   content: {
@@ -20,7 +22,7 @@ const customStyles = {
 Modal.setAppElement('#app');
 
 const addAnswer = (props) => {
-  const { question, name, changeAnswerList } = props;
+  const { question, name, changeAnswerList, answerList } = props;
 
   const [modalIsOpen, setIsOpen] = useState(false);
   const [answer, changeAnswer] = useState('');
@@ -32,27 +34,59 @@ const addAnswer = (props) => {
   };
   const onCancel = (e) => {
     e.preventDefault();
+    changeAnswer('');
+    changeNickname('');
+    changeEmail('');
+    changePhotos([]);
     setIsOpen(false);
   };
   const onSubmit = (e) => {
     e.preventDefault();
-
+    const newAnswer = {
+      body: answer,
+      name: nickname,
+      email,
+      photos,
+    }
+    axios({
+      method: 'POST',
+      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${question.question_id}/answers`,
+      data: newAnswer,
+      headers: {
+        Authorization: config.TOKEN,
+      },
+    })
+      .then((res) => {
+        changeAnswerList(answerList.push(<Answer />));
+        changeAnswer('');
+        changeNickname('');
+        changeEmail('');
+        changePhotos([]);
+      })
+      .catch((err) => {
+        console.log('ERROR: ', err);
+      });
     setIsOpen(false);
   };
   const updateAnswer = (e) => {
     e.preventDefault();
+    changeAnswer(e.target.value);
   };
 
   const updateNickname = (e) => {
     e.preventDefault();
+    changeNickname(e.target.value);
   };
 
   const updateEmail = (e) => {
     e.preventDefault();
+    changeEmail(e.target.value);
   };
 
   const updatePhotos = (e) => {
     e.preventDefault();
+    console.log(e.target.value);
+    changePhotos(e.target.value);
   };
 
   return (
@@ -107,6 +141,19 @@ const addAnswer = (props) => {
 };
 
 export default addAnswer;
+// POST /qa/questions/:question_id/answers
+
+// Parameters
+
+// Parameter	Type	Description
+// question_id	integer	Required ID of the question to post the answer for
+// Body Parameters
+
+// Parameter	Type	Description
+// body	text	Text of question being asked
+// name	text	Username for question asker
+// email	text	Email address for question asker
+// photos	[text]	An array of urls corresponding to images to display
 
 // const AddAnswer = (props) => {
 //   const { question, name, changeAnswerList } = props;
