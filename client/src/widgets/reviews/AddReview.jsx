@@ -4,7 +4,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable import/extensions */
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import StarRatings from 'react-star-ratings';
 import { productContext } from '../../contexts/ProductContext.js';
 
@@ -13,39 +13,18 @@ const AddReview = () => {
   const ratings = {
     '1 star': 'Poor', '2 stars': 'Fair', '3 stars': 'Average', '4 stars': 'Good', '5 stars': 'Great',
   };
-  const recommend = null;
-  const rating = null;
-  const reviewSummary = null;
-  const reviewBody = null;
+  const [recommend, setRecommend] = useState(null);
+  const [starRating, setRating] = useState(null);
+  const [reviewSummary, setReviewSummary] = useState(null);
+  const [reviewBody, setReviewBody] = useState(null);
   const images = [];
-  let reviewName = null;
-  const reviewerEmail = null;
-
-  const handleNameChange = (name) => {
-    reviewName = name;
-  };
-
-  const handleEmailChange = (email) => {
-    reviewerEmail = email;
-  };
-
-  const handleRecommend = (input) => {
-    recommend = input;
-  };
+  const selectedRating = starRating && ratings[starRating];
+  const [reviewName, setReviewName] = useState(null);
+  const [reviewerEmail, setReviewerEmail] = useState(null);
 
   const handleReviewSummary = (input) => {
     reviewSummary = input;
   };
-
-  const handleReviewBody = (input) => {
-    reviewBody = input;
-  };
-
-  const selectedRating = null;
-
-  const handleRating = (rating) => (
-    selectedRating = ratings[rating]
-  );
 
   return (
     <div className="container">
@@ -68,7 +47,7 @@ const AddReview = () => {
           starDimension="25px"
           starSpacing="2px"
           isSelectable
-          changeRating
+          changeRating={(rating) => { setRating(rating); }}
           starHoverColor="black"
         />
         {selectedRating}
@@ -76,7 +55,7 @@ const AddReview = () => {
       <div className="row">
         Would you recommend this product?
         &nbsp;
-        <button type="button">Yes</button>
+        <button type="button" onChange={() => { setRecommend('Yes'); }}>Yes</button>
         &nbsp;
         <button type="button">No</button>
       </div>
@@ -97,20 +76,20 @@ const AddReview = () => {
           Upload up to 5 images of the product:
         </div>
         <div className="row small">
-          <button type="button" className="small" style={{ padding: '8px' }}>Choose Image</button>
-          <button type="button" className="small" style={{ padding: '8px' }}>Choose Image</button>
-          <button type="button" className="small" style={{ padding: '8px' }}>Choose Image</button>
-          <button type="button" className="small" style={{ padding: '8px' }}>Choose Image</button>
-          <button type="button" className="small" style={{ padding: '8px' }}>Choose Image</button>
+          <input type="file" className="small" style={{ padding: '8px' }} accept="image/png, image/jpeg" />
+          <input type="file" className="small" style={{ padding: '8px' }} />
+          <input type="file" className="small" style={{ padding: '8px' }} />
+          <input type="file" className="small" style={{ padding: '8px' }} />
+          <input type="file" className="small" style={{ padding: '8px' }} />
         </div>
       </div>
       <div className="row">
         <div>Reviewer Name:</div>
-        <input placeholder="This is how you will appear on your review" className="w-100 small" onChange={(e) => { handleNameChange(e.target.value); }} />
+        <input placeholder="This is how you will appear on your review" className="w-100 small" onChange={(e) => { setReviewName(e.target.value); }} />
       </div>
       <div className="row">
         <div>Reviewer Email:</div>
-        <input placeholder="This is only for our records and will not appear on review" className="w-100 small" />
+        <input placeholder="This is only for our records and will not appear on review" className="w-100 small" onChange={(e) => { setReviewerEmail(e.target.value); }} />
       </div>
 
     </div>
