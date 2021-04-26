@@ -3,6 +3,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import Modal from 'react-modal';
+import { Checkmark } from 'react-checkmark';
 
 Modal.setAppElement('#app');
 
@@ -34,19 +35,19 @@ function ComparisonModal({ updateModal, product, currentProduct }) {
         </thead>
         <tbody>
           <tr>
-            <td>true</td>
+            <td><Checkmark size="small" color="#223344" /></td>
             <td>Very stylish</td>
-            <td>true</td>
+            <td><Checkmark size="small" color="#223344" /></td>
           </tr>
           <tr>
-            <td>false</td>
+            <td />
             <td>Not very cool</td>
-            <td>true</td>
+            <td><Checkmark size="small" color="#223344" /></td>
           </tr>
           <tr>
-            <td>true</td>
+            <td><Checkmark size="small" color="#223344" /></td>
             <td>Pretty decent fabric</td>
-            <td>false</td>
+            <td />
           </tr>
         </tbody>
       </table>
