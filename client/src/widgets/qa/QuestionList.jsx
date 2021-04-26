@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import Question from './Question.jsx';
+import Question from './Question';
 import qaContext from '../../contexts/QaContext';
 
 const QuestionList = () => {
