@@ -63,7 +63,7 @@ const ReviewsList = () => {
           </div>
         </div>
       </h5>
-      <div className="row bg-light h-75 overflow-auto border">
+      <div className="row bg-light h-75 overflow-auto border" style={{ padding: '10px' }}>
         {displayedReviews.map((review) => (
           <ul key={review.review_id} className="container">
             <reviewContext.Provider value={reviewCount}>
