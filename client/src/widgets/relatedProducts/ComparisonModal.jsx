@@ -41,7 +41,6 @@ function ComparisonModal({ updateModal, product, currentProduct }) {
                 <td><Checkmark size="small" color="#223344" /></td>
                 <td>
                   {feature.value}
-                  {feature.value ? ',' : null}
                   {' '}
                   {feature.feature}
                 </td>
@@ -52,7 +51,6 @@ function ComparisonModal({ updateModal, product, currentProduct }) {
                   <td>{currentProduct.features[index].feature === relatedFeature.feature ? <Checkmark size="small" color="#223344" /> : null}</td>
                   <td>
                     {relatedFeature.value}
-                    {relatedFeature.value ? ',' : null}
                     {' '}
                     {relatedFeature.feature}
                   </td>
