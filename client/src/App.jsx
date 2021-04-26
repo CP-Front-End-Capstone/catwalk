@@ -58,7 +58,7 @@ const App = (props) => {
           product, styles, productId, changeProductId, starAvg, changeStarAvg,
         }}
         >
-          <Overview />
+          {/* <Overview /> */}
           <RelatedProducts />
           <QandA />
           <ReviewsRatings />
