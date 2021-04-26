@@ -8,7 +8,6 @@ import { Checkmark } from 'react-checkmark';
 Modal.setAppElement('#app');
 
 function ComparisonModal({ updateModal, product, currentProduct }) {
-  console.log('HELLO FROM COMPARISON: ', currentProduct);
   const customStyles = {
     content: {
       top: '50%',
