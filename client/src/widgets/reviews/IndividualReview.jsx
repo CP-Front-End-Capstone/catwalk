@@ -1,3 +1,5 @@
+/* eslint-disable import/extensions */
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/destructuring-assignment */
