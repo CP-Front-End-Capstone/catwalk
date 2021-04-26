@@ -8,6 +8,9 @@ const ReviewPhotos = (props) => (
         <div className="modal-dialog" role="document">
           <div className="modal-content">
             <div className="modal-body">
+              <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
               <img alt={photo.id} src={photo.url} width="470px" length="470px" data-toggle="modal" data-target="#imageModal" />
             </div>
           </div>
