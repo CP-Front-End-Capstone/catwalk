@@ -41,13 +41,8 @@ const ReviewsRatings = () => {
   if (reviewsMeta) {
     return (
       <div>
-<<<<<<< HEAD
-        <div className="container border">
-          <h3 className="col">Reviews & Ratings</h3>
-=======
         <div className="container border" style={{ padding: '20px' }}>
           <h3>Reviews & Ratings</h3>
->>>>>>> 972e8c631408d667e1b84735511c910565611eb6
           <div className="row">
             <div className="col-sm-4">
               <div className="container border" />
