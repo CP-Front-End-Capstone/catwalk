@@ -36,7 +36,7 @@ const ReviewsRatings = () => {
       .catch((err) => {
         console.log('error fetching review data', err);
       });
-  }, [productId, helpful]);
+  }, [productId]);
 
   if (reviewsMeta) {
     return (
@@ -45,7 +45,6 @@ const ReviewsRatings = () => {
           <h3>Reviews & Ratings</h3>
           <div className="row">
             <div className="col-sm-4">
-              <div className="container border" />
               <div className="container">
                 <div className="row">
                   <reviewContext.Provider value={{ reviewsMeta, reviewList }}>
@@ -56,7 +55,7 @@ const ReviewsRatings = () => {
               </div>
             </div>
             <div className="col">
-              <div className="row" style={{ height: '550px' }}>
+              <div className="row" style={{ height: '650px' }}>
                 <reviewContext.Provider value={{ reviewsMeta, reviewList, setHelpful }}>
                   <ReviewsList />
                 </reviewContext.Provider>
