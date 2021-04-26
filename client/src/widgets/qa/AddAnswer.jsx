@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import Modal from 'react-modal';
+import axios from 'axios';
 
 const customStyles = {
   content: {
@@ -20,15 +21,38 @@ Modal.setAppElement('#app');
 
 const addAnswer = (props) => {
   const { question, name, changeAnswerList } = props;
+
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [answer, changeAnswer] = useState('');
+  const [nickname, changeNickname] = useState('');
+  const [email, changeEmail] = useState();
+  const [photos, changePhotos] = useState([]);
   const openModal = () => {
     setIsOpen(true);
   };
-  const onCancel = () => {
+  const onCancel = (e) => {
+    e.preventDefault();
     setIsOpen(false);
   };
-  const onSubmit = () => {
+  const onSubmit = (e) => {
+    e.preventDefault();
+
     setIsOpen(false);
+  };
+  const updateAnswer = (e) => {
+    e.preventDefault();
+  };
+
+  const updateNickname = (e) => {
+    e.preventDefault();
+  };
+
+  const updateEmail = (e) => {
+    e.preventDefault();
+  };
+
+  const updatePhotos = (e) => {
+    e.preventDefault();
   };
 
   return (
@@ -48,15 +72,15 @@ const addAnswer = (props) => {
       >
         <h1 className="modal-title lead">Submit Your Answer:</h1>
         <div>{name}:&nbsp;{question.question_body}</div>
-        <form>
+        <form name={`addAnswer${question.question_id}`}>
           <label htmlFor="answer">
             *Your Answer:
-            <textarea name="answer" maxLength="1000" />
+            <textarea name="answer" maxLength="1000" onChange={updateAnswer} />
           </label>
           <br />
           <label htmlFor="name">
-            *Your Name:
-            <input type="text" name="name" maxLength="60" />
+            *Your Nickname:
+            <input type="text" name="name" maxLength="60" onChange={updateNickname} />
             <br />
             (For privacy reasons, do not use your full name or email address)
             <br />
@@ -64,7 +88,7 @@ const addAnswer = (props) => {
           <br />
           <label htmlFor="email">
             *Your Email:
-            <input type="email" name="email" maxLength="60" />
+            <input type="email" name="email" maxLength="60" onChange={updateEmail} />
             <br />
             (For authentication reasons, you will not be emailed)
             <br />
@@ -72,7 +96,7 @@ const addAnswer = (props) => {
           <br />
           <label htmlFor="photos">
             Photos: (optional)
-            <input type="file" name="photos" />
+            <input type="file" name="photos" onChange={updatePhotos} />
           </label>
         </form>
         <button type="button" onClick={onCancel}>Cancel</button>
