@@ -24,8 +24,6 @@ const App = (props) => {
   const [styles, changeStyles] = useState();
   const [starAvg, changeStarAvg] = useState();
 
-  console.log(starAvg);
-
   useEffect(() => {
     api.fetchEndpoint(`/products/${productId}`)
       .then((productData) => {

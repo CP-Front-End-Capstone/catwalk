@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable no-lone-blocks */
 /* eslint-disable no-console */
@@ -10,25 +11,21 @@ import Carousel from 'react-elastic-carousel';
 import RelatedProductsCard from './RelatedProductsCard.jsx';
 // import productContext from '../../contexts/ProductContext.js';
 
-function RelatedProductsList({ products, styles }) {
+function RelatedProductsList({
+  products, styles, rating, currentProduct,
+}) {
   // console.log('List of Products: ', products);
   // console.log('List of Styles: ', styles);
-  const breakPoints = [
-    { width: 500, itemsToShow: 1 },
-    { width: 768, itemsToShow: 2 },
-    { width: 1200, itemsToShow: 3 },
-    { width: 1500, itemsToShow: 4 },
-  ];
 
   return (
     <div className="container-fluid">
       <div className="row">
-        <Carousel breakPoints={breakPoints}>
+        <Carousel itemsToShow={3} itemsToScroll={1}>
           {products.map((product, index) => (
             <div className="col-sm-12 col-lg-10">
               <div className="card-group">
                 <div className="card" key={product.id}>
-                  <RelatedProductsCard product={product} style={styles[index]} />
+                  <RelatedProductsCard product={product} style={styles[index]} rating={rating} currentProduct={currentProduct} />
                 </div>
               </div>
             </div>

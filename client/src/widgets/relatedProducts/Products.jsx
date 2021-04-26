@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-console */
 /* eslint-disable import/named */
 /* eslint-disable import/extensions */
@@ -10,7 +11,6 @@ import MyOutfitList from './MyOutfitList.jsx';
 
 function RelatedProducts() {
   const context = useContext(productContext);
-  // console.log('Current object: ', context);
   const [products, setProducts] = useState([]);
   const [styles, setStyles] = useState([]);
 
@@ -46,13 +46,13 @@ function RelatedProducts() {
   if (products.length !== 0 && styles.length !== 0) {
     return (
       <div>
-        <div>
+        <div className="container-fluid">
           <h3 className="h3">Related Items:</h3>
-          <RelatedProductsList products={products} styles={styles} />
+          <RelatedProductsList products={products} styles={styles} rating={context.starAvg} currentProduct={context.product} />
         </div>
-        <div>
+        <div className="container-fluid">
           <h3 className="h3">My Outfit:</h3>
-          <MyOutfitList />
+          <MyOutfitList currentProduct={context.product} styles={context.styles} />
         </div>
       </div>
     );
