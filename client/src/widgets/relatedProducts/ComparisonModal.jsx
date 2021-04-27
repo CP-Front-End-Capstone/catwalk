@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
@@ -40,30 +41,31 @@ function ComparisonModal({ updateModal, product, currentProduct }) {
           {currentProduct.features.map((feature, index) => (
             <>
               <tr key={index}>
-                <td><Checkmark size="small" color="#223344" /></td>
-                <td>
-                  {feature.value}
-                  {' '}
+                <td>{feature.value}</td>
+                <td className="font-weight-bold">
                   {feature.feature}
                 </td>
-                <td>{product.features[index].feature === feature.feature ? <Checkmark size="small" color="#223344" /> : null}</td>
+                <td>{product.features[index].value}</td>
               </tr>
               {product.features.map((relatedFeature, itemIndex) => (
                 <tr key={itemIndex}>
-                  <td>{currentProduct.features[index].feature === relatedFeature.feature ? <Checkmark size="small" color="#223344" /> : null}</td>
-                  <td>
-                    {relatedFeature.value}
-                    {' '}
-                    {relatedFeature.feature}
-                  </td>
-                  <td><Checkmark size="small" color="#223344" /></td>
+                  {index === itemIndex ? null : (
+                    <>
+                      {' '}
+                      <td>{relatedFeature.value}</td>
+                      <td className="font-weight-bold">
+                        {relatedFeature.feature}
+                      </td>
+                      <td>{relatedFeature.value}</td>
+                    </>
+                  ) }
                 </tr>
               ))}
             </>
           ))}
         </tbody>
       </table>
-
+      {/* {feature.feature === relatedFeature.feature ? <Checkmark size="small" color="#223344" /> : null} */}
     </Modal>
   );
 }
