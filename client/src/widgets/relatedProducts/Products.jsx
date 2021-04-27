@@ -6,6 +6,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import api from '../../../../API/helper.js';
 import { productContext } from '../../contexts/ProductContext.js';
+import reviewContext from '../../contexts/ReviewContext.js';
 import RelatedProductsList from './RelatedProductsList.jsx';
 import MyOutfitList from './MyOutfitList.jsx';
 
@@ -13,6 +14,7 @@ function RelatedProducts() {
   const context = useContext(productContext);
   const [products, setProducts] = useState([]);
   const [styles, setStyles] = useState([]);
+  const [reviewsMeta, setReviewsMeta] = useState([]);
 
   const getProducts = (array) => {
     // fetch products object
@@ -24,12 +26,20 @@ function RelatedProducts() {
       api.fetchEndpoint(`/products/${id}/styles`)
     ));
 
+    const reviewsArray = array.map((id) => (
+      api.fetchEndpoint(`/reviews/meta/?product_id=${id}`)
+    ));
+
     Promise.all(productsArray).then((response) => {
       setProducts(response);
     });
 
     Promise.all(stylesArray).then((response) => {
       setStyles(response);
+    });
+
+    Promise.all(reviewsArray).then((response) => {
+      setReviewsMeta(response);
     });
   };
 
@@ -45,20 +55,22 @@ function RelatedProducts() {
 
   if (products.length !== 0 && styles.length !== 0) {
     return (
-      <div>
+      <div id="products">
         <div className="container-fluid">
-          <h3 className="h3">Related Items:</h3>
-          <RelatedProductsList products={products} styles={styles} rating={context.starAvg} currentProduct={context.product} />
+          <h3 className="h4">Related Items:</h3>
+          <reviewContext.Provider value={{ reviewsMeta }}>
+            <RelatedProductsList products={products} styles={styles} rating={context.starAvg} currentProduct={context.product} />
+          </reviewContext.Provider>
         </div>
         <div className="container-fluid">
-          <h3 className="h3">My Outfit:</h3>
+          <h3 className="h4">My Outfit:</h3>
           <MyOutfitList currentProduct={context.product} styles={context.styles} />
         </div>
       </div>
     );
   }
   return (
-    'Related Items Loading...'
+    ''
   );
 }
 
