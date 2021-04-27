@@ -44,12 +44,12 @@ const QandA = () => {
           count,
           changeCount,
           productName,
+          productId,
         }}
         >
           <Search />
           <QuestionList />
         </qaContext.Provider>
-        <button type="submit" className="col" onClick={handleClick}>Change Product</button>
       </div>
     );
   }

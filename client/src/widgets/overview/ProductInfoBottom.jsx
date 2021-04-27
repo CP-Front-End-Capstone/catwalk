@@ -9,12 +9,15 @@ import { productContext } from '../../contexts/ProductContext.js';
 function ProductInfoBottom(props) {
   const { product, styles } = useContext(productContext);
 
-  return (
-    <div>
-      <h4>{product.slogan}</h4>
-      <p>{product.description}</p>
-    </div>
-  );
+  if (styles) {
+    return (
+      <div>
+        <h4>{product.slogan}</h4>
+        <p>{product.description}</p>
+      </div>
+    );
+  }
+  return <h1>Product info loading...</h1>;
 }
 
 export default ProductInfoBottom;

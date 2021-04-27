@@ -1,5 +1,5 @@
-<<<<<<< HEAD
-=======
+/* eslint-disable import/no-named-as-default-member */
+/* eslint-disable max-len */
 /* eslint-disable react/jsx-no-undef */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable import/named */
@@ -8,7 +8,6 @@
 /* eslint-disable arrow-body-style */
 /* eslint-disable import/no-named-as-default */
 /* eslint-disable jsx-a11y/anchor-is-valid */
->>>>>>> 676eb8f2baf59d050487ca9395b7021ca3f5d764
 /* eslint-disable no-console */
 /* eslint-disable import/extensions */
 /* eslint-disable no-unused-vars */

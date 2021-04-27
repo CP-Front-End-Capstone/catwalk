@@ -10,16 +10,9 @@ import AddAnswer from './AddAnswer.jsx';
 
 const Question = (props) => {
   const { question, name } = props;
+  const [answers, changeAnswers] = useState([]);
   const [answerList, changeAnswerList] = useState([]);
   const [showAll, changeShowAll] = useState(false);
-  const answers = [];
-  for (const id in question.answers) {
-    answers.push(question.answers[id]);
-  }
-
-  answers.sort((a, b) => (
-    b.helpfulness - a.helpfulness
-  ));
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -27,11 +20,29 @@ const Question = (props) => {
   };
 
   useEffect(() => {
-    if (!showAll) {
+    const temp = [];
+    for (const id in question.answers) {
+      temp.push(question.answers[id]);
+    }
+    temp.sort((a, b) => (
+      b.helpfulness - a.helpfulness
+    ));
+    changeAnswers(temp);
+  }, [question]);
+
+  useEffect(() => {
+    if (!showAll && answers.length > 0) {
       if (answers.length > 2) {
         const temp = [];
         for (let i = 0; i < 2; i++) {
-          temp.push(<Answer answer={answers[i]} key={answers[i].id} />);
+          temp.push(
+            <Answer
+              answer={answers[i]}
+              key={answers[i].id}
+              answers={answers}
+              changeAnswers={changeAnswers}
+            />,
+          );
         }
         temp.push(
           <div key={question.question_id}>
@@ -47,15 +58,25 @@ const Question = (props) => {
         changeAnswerList(temp);
       } else if (answers.length > 0) {
         changeAnswerList(answers.map((answer) => (
-          <Answer answer={answer} key={answer.id} />
+          <Answer
+            answer={answer}
+            key={answer.id}
+            answers={answers}
+            changeAnswers={changeAnswers}
+          />
         )));
       }
     } else {
       changeAnswerList(answers.map((answer) => (
-        <Answer answer={answer} key={answer.id} />
+        <Answer
+          answer={answer}
+          key={answer.id}
+          answers={answers}
+          changeAnswers={changeAnswers}
+        />
       )));
     }
-  }, [showAll]);
+  }, [showAll, answers]);
 
   return (
     <>
@@ -66,12 +87,12 @@ const Question = (props) => {
         <div className="col h6 text-right">
           <Helpful
             input={question}
-            name={name}
             key={question.id}
           />
           <AddAnswer
             question={question}
             name={name}
+            answerList={answerList}
             changeAnswerList={changeAnswerList}
           />
         </div>
