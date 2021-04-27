@@ -17,7 +17,8 @@ const ReviewsRatings = () => {
   const selectedProduct = useContext(productContext);
 
   const [productId, setProductId] = useState(selectedProduct.productId);
-  const [reviewList, setReviewList] = useState({ results: [1, 2, 3] });
+  const [reviewList, setReviewList] = useState();
+  const [reviewsArray, setReviewsArray] = useState();
   const [reviewsMeta, setReviewsMeta] = useState();
   const [isMounted, setIsMounted] = useState();
   const [ratingFilter, setRatingFilter] = useState();
@@ -27,6 +28,7 @@ const ReviewsRatings = () => {
     api.fetchEndpoint(`/reviews/?product_id=${productId}&count=100&sort=relevant`)
       .then((reviewData) => {
         setReviewList(reviewData);
+        setReviewsArray(reviewData.results);
         api.fetchEndpoint(`/reviews/meta/?product_id=${productId}`)
           .then((reviewMeta) => {
             setReviewsMeta(reviewMeta);
@@ -46,7 +48,10 @@ const ReviewsRatings = () => {
             <div className="col-sm-4">
               <div className="container">
                 <div className="row">
-                  <reviewContext.Provider value={{ reviewsMeta, reviewList }}>
+                  <reviewContext.Provider value={{
+                    reviewsMeta, reviewList, reviewsArray, setReviewsArray,
+                  }}
+                  >
                     <ReviewBreakDown />
                     <ProductBreakDown />
                   </reviewContext.Provider>
@@ -55,7 +60,10 @@ const ReviewsRatings = () => {
             </div>
             <div className="col">
               <div className="row" style={{ height: '650px' }}>
-                <reviewContext.Provider value={{ reviewsMeta, reviewList, setHelpful }}>
+                <reviewContext.Provider value={{
+                  reviewsMeta, reviewList, reviewsArray, setReviewsArray,
+                }}
+                >
                   <ReviewsList />
                 </reviewContext.Provider>
               </div>
