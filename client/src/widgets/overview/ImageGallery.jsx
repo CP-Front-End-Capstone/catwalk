@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 /* eslint-disable react/jsx-no-duplicate-props */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable no-lone-blocks */
@@ -20,9 +21,9 @@ import { styleContext } from '../../contexts/StyleContext.js';
 
 function ImageGallery(props) {
   const {
-    styles, currentImage, currentStyle, setImageView,
+    styles, currentImage, currentStyle, setImageView, setCurrentPhotoIndex,
   } = useContext(styleContext);
-  const handleMainImageClick = (boolean) => {
+  const handleMainImageClick = (boolean, num) => {
     setImageView(boolean);
   };
 
@@ -34,7 +35,19 @@ function ImageGallery(props) {
         <div className="carousel-inner" role="listbox">
           {currentStyle.photos.map((photo, index) => (
             <div className={`carousel-item ${(index === 0) && 'active'}`} key={index}>
-              <img className="d-block w-100" src={photo.url} key={index} alt="Main image" onClick={() => { handleMainImageClick(true); }} />
+              <img
+                className="d-block w-100"
+                style={{
+                  minHeight: '690px',
+                  cursor: 'zoom-in',
+                }}
+                src={photo.url}
+                key={index}
+                alt="Main image"
+                onClick={(index) => {
+                  handleMainImageClick(true);
+                }}
+              />
             </div>
           ))}
         </div>
@@ -51,26 +64,29 @@ function ImageGallery(props) {
         {/* <!--/.Controls--> */}
 
         <ol
-          className="carousel-indicators flex-column"
+          className="carousel-indicators d-flex flex-column justify-content-between "
           style={{
-            height: 'auto',
-            maxWidth: '100 px',
+            position: 'absolute',
+            top: '10px',
+            left: '0px',
+            height: '600px',
+            maxWidth: '100px',
             width: '100px',
             border: 'none',
-            boxShadow: '1px 3px 5px 0px rgba(0,0,0,0.75)',
           }}
         >
           {currentStyle.photos.map((photo, index) => (
             <li data-target="#carousel-thumb" data-slide-to={index} className={index === 0 && 'active'}>
               <img
                 className="w-100"
-                src={photo.url}
+                src={photo.thumbnail_url}
                 className="img-fluid"
                 alt="tn"
                 style={
                 {
                   maxWidth: '100px',
-                  height: '50px',
+                  height: '75px',
+                  marginBottom: '20px',
                   overflow: 'hidden',
                   display: 'block',
                 }

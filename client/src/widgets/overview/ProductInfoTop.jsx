@@ -17,7 +17,7 @@ function ProductInfoTop(props) {
         <h1>{product.name}</h1>
         <h5>
           $
-          {currentStyle.original_price}
+          {currentStyle.sale_price === null ? currentStyle.original_price : currentStyle.sale_price}
         </h5>
       </div>
     );

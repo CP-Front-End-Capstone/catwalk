@@ -28,6 +28,7 @@ function Overview(props) {
   const [currentStyle, setStyle] = useState();
   const [currentImage, setImage] = useState();
   const [imageView, setImageView] = useState(false);
+  const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
 
   useEffect(() => {
     api.fetchEndpoint(`/products/${productId}/styles`)
@@ -55,7 +56,7 @@ function Overview(props) {
     return (
       <div className="container ">
         <styleContext.Provider value={{
-          styles, currentStyle, currentImage, setImage, setStyle, imageView, setImageView,
+          styles, currentStyle, currentImage, setImage, setStyle, imageView, setImageView, currentPhotoIndex, setCurrentPhotoIndex,
         }}
         >
           <div className="row d-flex justify-content-between">
@@ -74,7 +75,7 @@ function Overview(props) {
     return (
       <div className="container ">
         <styleContext.Provider value={{
-          styles, currentStyle, currentImage, setImage, setStyle, imageView, setImageView,
+          styles, currentStyle, currentImage, setImage, setStyle, imageView, setImageView, currentPhotoIndex, setCurrentPhotoIndex,
         }}
         >
           <div className="row d-flex justify-content-between">
