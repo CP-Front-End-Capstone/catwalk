@@ -13,8 +13,7 @@ import AddReview from './AddReview.jsx';
 const ReviewsList = () => {
   const reviewsInfo = useContext(reviewContext);
   const productId = reviewsInfo.reviewList.product;
-  const [reviewsList, setReviewsList] = useState(reviewsInfo.reviewList);
-  const [reviewsArray, setReviewsArray] = useState(reviewsList.results);
+  const { reviewsArray } = reviewsInfo;
   const [reviewCount, setReviewCount] = useState(2);
   const [sortBy, setSortBy] = useState('relevant');
 
@@ -31,7 +30,7 @@ const ReviewsList = () => {
   useEffect(() => (
     api.fetchEndpoint(`/reviews/?product_id=${productId}&count=100&sort=${sortBy}`)
       .then((reviewData) => {
-        setReviewsArray(reviewData.results);
+        reviewsInfo.setReviewsArray(reviewData.results);
       })
       .catch((err) => {
         console.log('error fetching review data', err);
@@ -84,9 +83,6 @@ const ReviewsList = () => {
             <div className="modal-content">
               <div className="modal-body">
                 <AddReview />
-              </div>
-              <div className="modal-footer">
-                <button type="button" className="btn btn-primary">Submit Review</button>
               </div>
             </div>
           </div>

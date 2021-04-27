@@ -4,6 +4,7 @@ import HSBar from 'react-horizontal-stacked-bar-chart';
 import StarRatings from 'react-star-ratings';
 import reviewContext from '../../contexts/ReviewContext';
 import { productContext } from '../../contexts/ProductContext';
+// import Styles from '../../../dist/styles.css';
 
 const ReviewBreakDown = () => {
   const reviewMeta = useContext(reviewContext);
@@ -33,22 +34,34 @@ const ReviewBreakDown = () => {
 
   passStars.changeStarAvg(formattedAvg);
 
+  const filterArray = (ratings) => {
+    const filteredReviews = reviewMeta.reviewList.results.filter((review) => (
+      ratings.indexOf(JSON.stringify(review.rating)) > -1));
+    reviewMeta.setReviewsArray(filteredReviews);
+  };
+
   const handleRatingFilter = (rating) => {
     const selectedArray = selectedRating.slice();
-    if (selectedRating.length === 5) {
+    if (selectedArray.length === 5) {
       setSelectedRating([rating]);
+      filterArray([rating]);
     } else if (selectedArray.indexOf(rating) > -1) {
       if (selectedArray.length > 1) {
-        selectedArray.splice(selectedArray.indexOf(rating), 1);
-        setSelectedRating(selectedArray);
+        const newSelected = selectedArray.splice(selectedArray.indexOf(rating), 1);
+        setSelectedRating(newSelected);
+        filterArray(newSelected);
       } else {
         setSelectedRating(['1', '2', '3', '4', '5']);
+        reviewMeta.setReviewsArray(reviewMeta.reviewList.results);
       }
     } else {
-      selectedArray.push(rating);
-      setSelectedRating(selectedArray);
+      const otherSelected = selectedArray.concat(rating);
+      setSelectedRating(otherSelected);
+      filterArray(otherSelected);
     }
   };
+
+  const currentFilter = selectedRating.length !== 5 && `Currently selected ratings: ${selectedRating}`;
 
   const fiveStars = (reviewMeta.reviewsMeta.ratings[5])
     ? ((reviewMeta.reviewsMeta.ratings[5] * 100) / largestCount) : 0;
@@ -85,25 +98,36 @@ const ReviewBreakDown = () => {
           </div>
           <button type="button" className="text-left btn-light small" onClick={() => { handleRatingFilter('5'); }}>
             5 Stars
+            {' '}
+            {reviewMeta.reviewsMeta.ratings[5]}
             <HSBar height={10} data={[{ value: fiveStars, color: 'black' }, { value: 100 - fiveStars, color: 'grey' }]} />
           </button>
           <button type="button" className="text-left btn-light small" onClick={() => { handleRatingFilter('4'); }}>
             4 Stars
+            {' '}
+            {reviewMeta.reviewsMeta.ratings[4]}
             <HSBar height={10} data={[{ value: fourStars, color: 'black' }, { value: 100 - fourStars, color: 'grey' }]} />
           </button>
           <button type="button" className="text-left btn-light small" onClick={() => { handleRatingFilter('3'); }}>
             3 Stars
+            {' '}
+            {reviewMeta.reviewsMeta.ratings[3]}
             <HSBar height={10} data={[{ value: threeStars, color: 'black' }, { value: 100 - threeStars, color: 'grey' }]} />
           </button>
           <button type="button" className="text-left btn-light small" onClick={() => { handleRatingFilter('2'); }}>
             2 Stars
+            {' '}
+            {reviewMeta.reviewsMeta.ratings[2]}
             <HSBar height={10} data={[{ value: twoStars, color: 'black' }, { value: 100 - twoStars, color: 'grey' }]} />
           </button>
           <button type="button" className="text-left btn-light small" onClick={() => { handleRatingFilter('1'); }}>
             1 Star
+            {' '}
+            {reviewMeta.reviewsMeta.ratings[1]}
             <HSBar height={10} data={[{ value: oneStar, color: 'black' }, { value: 100 - oneStar, color: 'grey' }]} />
           </button>
         </div>
+        <div className="row small">{currentFilter}</div>
       </div>
 
     );
