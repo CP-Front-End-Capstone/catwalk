@@ -36,8 +36,9 @@ const ReviewBreakDown = () => {
 
   const handleRatingFilter = (rating) => {
     const selectedArray = selectedRating.slice();
-    if (selectedRating.length === 5) {
+    if (selectedArray.length === 5) {
       setSelectedRating([rating]);
+      filterArray([rating]);
     } else if (selectedArray.indexOf(rating) > -1) {
       if (selectedArray.length > 1) {
         selectedArray.splice(selectedArray.indexOf(rating), 1);
@@ -50,6 +51,14 @@ const ReviewBreakDown = () => {
       setSelectedRating(selectedArray);
     }
   };
+
+  const filterArray = (ratings) => {
+    const filteredReviews = reviewMeta.reviewsArray.filter((review) => (
+      ratings.indexOf(JSON.stringify(review.rating)) > -1));
+    reviewMeta.setReviewsArray(filteredReviews);
+  };
+
+  const currentFilter = selectedRating.length !== 5 && `Currently selected ratings: ${selectedRating}`;
 
   const fiveStars = (reviewMeta.reviewsMeta.ratings[5])
     ? ((reviewMeta.reviewsMeta.ratings[5] * 100) / largestCount) : 0;
@@ -115,6 +124,7 @@ const ReviewBreakDown = () => {
             <HSBar height={10} data={[{ value: oneStar, color: 'black' }, { value: 100 - oneStar, color: 'grey' }]} />
           </button>
         </div>
+        <div className="row small">{currentFilter}</div>
       </div>
 
     );

@@ -14,7 +14,7 @@ const ReviewsList = () => {
   const reviewsInfo = useContext(reviewContext);
   const productId = reviewsInfo.reviewList.product;
   const [reviewsList, setReviewsList] = useState(reviewsInfo.reviewList);
-  const [reviewsArray, setReviewsArray] = useState(reviewsList.results);
+  const [reviewsArray, setReviewsArray] = useState(reviewsInfo.reviewsArray);
   const [reviewCount, setReviewCount] = useState(2);
   const [sortBy, setSortBy] = useState('relevant');
 
