@@ -1,3 +1,8 @@
+/* eslint-disable comma-dangle */
+/* eslint-disable quote-props */
+/* eslint-disable quotes */
+/* eslint-disable no-console */
+/* eslint-disable no-undef */
 const axios = require('axios');
 const config = require('./config.js');
 

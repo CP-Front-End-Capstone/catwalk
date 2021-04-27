@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 import { promisify } from 'util';
+=======
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+/* eslint-disable import/extensions */
+>>>>>>> 0f1387b8af5ed0b972800d1b79657d1c58acffc1
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Enzyme from 'enzyme';
