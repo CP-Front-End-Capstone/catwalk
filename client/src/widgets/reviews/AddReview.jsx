@@ -44,47 +44,170 @@ const AddReview = () => {
   };
 
   const handleSubmit = () => {
-    console.log(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/product_id=${productId}&rating=${rating}&summary=${reviewSummary}&body=${reviewBody}&recommend=${recommend}&name=${reviewName}&email=${reviewerEmail}&photos=${images}&characteristics=${characteristics}`);
+    console.log(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/product_id=${productId}&rating=${starRating}&summary=${reviewSummary}&body=${reviewBody}&recommend=${recommend}&name=${reviewName}&email=${reviewerEmail}&photos=${images}&characteristics=${characteristics}`);
   };
 
   const remainingBody = bodyCount < 50 ? `Review must be a minimum of 50 characters. ${50 - bodyCount} characters remaining.` : `Characters remaining ${1500 - bodyCount}`;
 
   const fit = reviewMeta.reviewsMeta.characteristics.Fit
   && (
-  <div className="row">
-    {' '}
-    Fit
-    <input type="radio" name="fit" />
-    <input type="radio" name="fit" />
-    <input type="radio" name="fit" />
-    <input type="radio" name="fit" />
-    <input type="radio" name="fit" />
+  <div className="row small">
+    <div className="col">Fit</div>
+    <div className="col small">
+      <div className="small">Runs Tight</div>
+      <input type="radio" name="fit" />
+    </div>
+    <div className="col small">
+      <div className="small">Slightly Tight</div>
+      <input type="radio" name="fit" />
+    </div>
+    <div className="col small">
+      <div className="small">Perfect</div>
+      <input type="radio" name="fit" />
+    </div>
+    <div className="col small">
+      <div className="small">Slightly Long</div>
+      <input type="radio" name="fit" />
+    </div>
+    <div className="col small">
+      <div className="small">Runs Long</div>
+      <input type="radio" name="fit" />
+    </div>
   </div>
   );
 
   const length = reviewMeta.reviewsMeta.characteristics.Length
   && (
-  <div className="row">
-    {' '}
-    Length
-    <input type="radio" name="length" />
-    <input type="radio" name="length" />
-    <input type="radio" name="length" />
-    <input type="radio" name="length" />
-    <input type="radio" name="length" />
+  <div className="row small">
+    <div className="col">Length</div>
+    <div className="col small">
+      <div className="small">Runs Short</div>
+      <input type="radio" name="length" />
+    </div>
+    <div className="col small">
+      <div className="small">Slightly Short</div>
+      <input type="radio" name="length" />
+    </div>
+    <div className="col small">
+      <div className="small">Perfect</div>
+      <input type="radio" name="length" />
+    </div>
+    <div className="col small">
+      <div className="small">Slightly Long</div>
+      <input type="radio" name="length" />
+    </div>
+    <div className="col small">
+      <div className="small">Runs Long</div>
+      <input type="radio" name="length" />
+    </div>
   </div>
   );
 
   const size = reviewMeta.reviewsMeta.characteristics.Size
   && (
-  <div className="row">
-    {' '}
-    Size
-    <input type="radio" name="length" />
-    <input type="radio" name="length" />
-    <input type="radio" name="length" />
-    <input type="radio" name="length" />
-    <input type="radio" name="length" />
+  <div className="row small">
+    <div className="col">Size</div>
+    <div className="col small">
+      <div className="small">A Size too Small</div>
+      <input type="radio" name="size" />
+    </div>
+    <div className="col small">
+      <div className="small">1/2 Size too Small</div>
+      <input type="radio" name="size" />
+    </div>
+    <div className="col small">
+      <div className="small">Perfect</div>
+      <input type="radio" name="size" />
+    </div>
+    <div className="col small">
+      <div className="small">1/2 Size too Big</div>
+      <input type="radio" name="size" />
+    </div>
+    <div className="col small">
+      <div className="small">A Size too Big</div>
+      <input type="radio" name="size" />
+    </div>
+  </div>
+  );
+
+  const comfort = reviewMeta.reviewsMeta.characteristics.Comfort
+  && (
+  <div className="row small">
+    <div className="col">Comfort</div>
+    <div className="col small">
+      <div className="small">Uncomfortable</div>
+      <input type="radio" name="comfort" />
+    </div>
+    <div className="col small">
+      <div className="small">Slightly Uncomfortable</div>
+      <input type="radio" name="comfort" />
+    </div>
+    <div className="col small">
+      <div className="small">Ok</div>
+      <input type="radio" name="comfort" />
+    </div>
+    <div className="col small">
+      <div className="small">Comfortable</div>
+      <input type="radio" name="comfort" />
+    </div>
+    <div className="col small">
+      <div className="small">Perfect</div>
+      <input type="radio" name="comfort" />
+    </div>
+  </div>
+  );
+
+  const width = reviewMeta.reviewsMeta.characteristics.Width
+  && (
+  <div className="row small">
+    <div className="col">Width</div>
+    <div className="col small">
+      <div className="small">Too Narrow</div>
+      <input type="radio" name="width" />
+    </div>
+    <div className="col small">
+      <div className="small">Slightly Narrow</div>
+      <input type="radio" name="width" />
+    </div>
+    <div className="col small">
+      <div className="small">Perfect</div>
+      <input type="radio" name="width" />
+    </div>
+    <div className="col small">
+      <div className="small">Slightly Wide</div>
+      <input type="radio" name="width" />
+    </div>
+    <div className="col small">
+      <div className="small">Too Wide</div>
+      <input type="radio" name="width" />
+    </div>
+  </div>
+  );
+
+  const quality = reviewMeta.reviewsMeta.characteristics.Quality
+  && (
+  <div className="row small">
+    <div className="col">Quality</div>
+    <div className="col small">
+      <div className="small">Poor</div>
+      <input type="radio" name="quality" />
+    </div>
+    <div className="col small">
+      <div className="small">Below Average</div>
+      <input type="radio" name="quality" />
+    </div>
+    <div className="col small">
+      <div className="small">As Expected</div>
+      <input type="radio" name="quality" />
+    </div>
+    <div className="col small">
+      <div className="small">Pretty Great</div>
+      <input type="radio" name="quality" />
+    </div>
+    <div className="col small">
+      <div className="small">Perfect</div>
+      <input type="radio" name="quality" />
+    </div>
   </div>
   );
 
@@ -126,12 +249,23 @@ const AddReview = () => {
       </div>
       <div className="container">
         Please rate the following about the product:
-        &nbsp;
         <div className="row">
-          {fit}
+          {size}
+        </div>
+        <div className="row">
+          {width}
+        </div>
+        <div className="row">
+          {comfort}
+        </div>
+        <div className="row">
+          {quality}
         </div>
         <div className="row">
           {length}
+        </div>
+        <div className="row">
+          {fit}
         </div>
       </div>
       <div className="row">
@@ -154,12 +288,12 @@ const AddReview = () => {
         <div>
           Upload up to 5 images of the product:
         </div>
-        <div className="row small">
-          <input type="file" className="small" style={{ padding: '8px' }} accept="image/png, image/jpeg" onChange={(file) => { handleFileChange(file); }} />
-          <input type="file" className="small" style={{ padding: '8px' }} accept="image/png, image/jpeg" />
-          <input type="file" className="small" style={{ padding: '8px' }} accept="image/png, image/jpeg" />
-          <input type="file" className="small" style={{ padding: '8px' }} accept="image/png, image/jpeg" />
-          <input type="file" className="small" style={{ padding: '8px' }} accept="image/png, image/jpeg" />
+        <div className="container small">
+          <input type="file" className="small" accept="image/png, image/jpeg" onChange={(file) => { handleFileChange(file); }} />
+          <input type="file" className="small" accept="image/png, image/jpeg" onChange={(file) => { handleFileChange(file); }}/>
+          <input type="file" className="small" accept="image/png, image/jpeg" onChange={(file) => { handleFileChange(file); }}/>
+          <input type="file" className="small" accept="image/png, image/jpeg" onChange={(file) => { handleFileChange(file); }}/>
+          <input type="file" className="small" accept="image/png, image/jpeg" onChange={(file) => { handleFileChange(file); }}/>
         </div>
       </div>
       <div className="row">
