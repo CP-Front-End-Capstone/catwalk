@@ -22,7 +22,7 @@ const customStyles = {
   },
 };
 
-Modal.setAppElement('#app');
+// Modal.setAppElement('#app');
 
 const addQuestion = (props) => {
   const {
