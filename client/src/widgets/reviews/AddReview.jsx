@@ -47,6 +47,10 @@ const AddReview = () => {
     console.log(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/product_id=${productId}&rating=${starRating}&summary=${reviewSummary}&body=${reviewBody}&recommend=${recommend}&name=${reviewName}&email=${reviewerEmail}&photos=${images}&characteristics=${characteristics}`);
   };
 
+  const handleCharacteristicClick = (characteristic, id, value) => {
+    characteristics.characteristic = { id, value };
+  };
+
   const remainingBody = bodyCount < 50 ? `Review must be a minimum of 50 characters. ${50 - bodyCount} characters remaining.` : `Characters remaining ${1000 - bodyCount}`;
 
   const fit = reviewMeta.reviewsMeta.characteristics.Fit
@@ -55,7 +59,7 @@ const AddReview = () => {
     <div className="col">Fit</div>
     <div className="col small">
       <div className="small">Runs Tight</div>
-      <input type="radio" name="fit" />
+      <input type="radio" name="fit" onClick={handleCharacteristicClick('Fit', reviewMeta.reviewsMeta.characteristics.Fit.id, 1)} />
     </div>
     <div className="col small">
       <div className="small">Slightly Tight</div>
@@ -290,10 +294,10 @@ const AddReview = () => {
         </div>
         <div className="container small">
           <input type="file" className="small" accept="image/png, image/jpeg" onChange={(file) => { handleFileChange(file); }} />
-          <input type="file" className="small" accept="image/png, image/jpeg" onChange={(file) => { handleFileChange(file); }}/>
-          <input type="file" className="small" accept="image/png, image/jpeg" onChange={(file) => { handleFileChange(file); }}/>
-          <input type="file" className="small" accept="image/png, image/jpeg" onChange={(file) => { handleFileChange(file); }}/>
-          <input type="file" className="small" accept="image/png, image/jpeg" onChange={(file) => { handleFileChange(file); }}/>
+          <input type="file" className="small" accept="image/png, image/jpeg" onChange={(file) => { handleFileChange(file); }} />
+          <input type="file" className="small" accept="image/png, image/jpeg" onChange={(file) => { handleFileChange(file); }} />
+          <input type="file" className="small" accept="image/png, image/jpeg" onChange={(file) => { handleFileChange(file); }} />
+          <input type="file" className="small" accept="image/png, image/jpeg" onChange={(file) => { handleFileChange(file); }} />
         </div>
       </div>
       <div className="row">

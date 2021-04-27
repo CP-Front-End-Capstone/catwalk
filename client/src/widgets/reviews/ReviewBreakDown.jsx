@@ -28,11 +28,12 @@ const ReviewBreakDown = () => {
     + (Number((reviewMeta.reviewsMeta.ratings[2])) * 2)
     + (Number((reviewMeta.reviewsMeta.ratings[1])))) / totalRatings;
 
-  const formattedAvg = Math.round(avgCalc * 10) / 10;
+  const formattedAvg = Math.round(avgCalc * 10) / 10 ? Math.round(avgCalc * 10) / 10 : 0;
 
   const passStars = useContext(productContext);
 
   passStars.changeStarAvg(formattedAvg);
+
 
   const filterArray = (ratings) => {
     const filteredReviews = reviewMeta.reviewList.results.filter((review) => (
