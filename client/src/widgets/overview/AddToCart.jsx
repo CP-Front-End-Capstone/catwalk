@@ -10,8 +10,9 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prefer-stateless-function */
 import React, { useContext, useState } from 'react';
+import axios from 'axios';
 import $ from 'jquery';
-import api from '../../../../API/helper';
+import config from '../../../../API/config';
 import { productContext } from '../../contexts/ProductContext.js';
 import { styleContext } from '../../contexts/StyleContext.js';
 
@@ -56,7 +57,16 @@ function AddToCart() {
     $('#dropdownMenu1').addClass('open');
   };
   const addToCartClick = (num) => {
-    api.postToCart(num)
+    axios({
+      method: 'post',
+      url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/cart',
+      headers: {
+        Authorization: config.TOKEN,
+      },
+      data: {
+        sku_id: num,
+      },
+    })
       .then((res) => {
         setSizeSelected(false);
         console.log('Successfully post to cart', res.data);

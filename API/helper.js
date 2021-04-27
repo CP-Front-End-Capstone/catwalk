@@ -20,34 +20,4 @@ const fetchEndpoint = (endpoint) => new Promise((resolve, reject) => {
     });
 });
 
-const postToCart = (number) => new Promise((resolve, reject) => {
-  axios({
-    method: 'post',
-    url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/cart',
-    headers: {
-      Authorization: config.TOKEN,
-    },
-    data: {
-      sku_id: number
-    },
-  })
-    .then((res) => {
-      resolve(res.data);
-    })
-    .catch((error) => {
-      reject(error);
-    });
-});
-
 module.exports.fetchEndpoint = fetchEndpoint;
-module.exports.postToCart = postToCart;
-// `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld${endpoint}`, {
-//     data: {
-//       sku_id: number
-//     },
-//   },
-//   {
-//     headers: {
-//       Authorization: config.TOKEN,
-//     },
-//   }
