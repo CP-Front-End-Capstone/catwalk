@@ -47,9 +47,9 @@ const ReviewBreakDown = () => {
       filterArray([rating]);
     } else if (selectedArray.indexOf(rating) > -1) {
       if (selectedArray.length > 1) {
-        const newSelected = selectedArray.splice(selectedArray.indexOf(rating), 1);
-        setSelectedRating(newSelected);
-        filterArray(newSelected);
+        selectedArray.splice(selectedArray.indexOf(rating), 1);
+        setSelectedRating(selectedArray);
+        filterArray(selectedArray);
       } else {
         setSelectedRating(['1', '2', '3', '4', '5']);
         reviewMeta.setReviewsArray(reviewMeta.reviewList.results);
