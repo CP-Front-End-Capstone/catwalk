@@ -41,7 +41,7 @@ const Helpful = (props) => {
     e.preventDefault();
     axios({
       method: 'PUT',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${input.id}/helpful`,
+      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/answers/${input.id}/helpful`,
       data: {
         answer_id: input.id,
       },
