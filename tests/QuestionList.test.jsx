@@ -1,3 +1,4 @@
+import { promisify } from 'util';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Enzyme from 'enzyme';
@@ -78,6 +79,6 @@ it('renders 4 more questions on click of "show more answered questions"', () => 
     </qaContext.Provider>,
   );
   // console.log(wrapper.find('#questionlist'));
-  wrapper.find('morequestions').simulate('click');
+  wrapper.find('#morequestions').simulate('click');
   expect(wrapper.find('#questionlist').children()).toHaveLength(8);
 });
