@@ -16,7 +16,7 @@ const AddReview = () => {
   const ratings = {
     1: 'Poor', 2: 'Fair', 3: 'Average', 4: 'Good', 5: 'Great',
   };
-  const productId = product.product.product_id;
+  const { productId } = product;
   const [recommend, setRecommend] = useState(null);
   const [starRating, setRating] = useState(0);
   const [reviewSummary, setReviewSummary] = useState(null);
@@ -56,8 +56,7 @@ const AddReview = () => {
         photos: images,
         characteristics,
 
-      },
-    );
+      });
   };
 
   const handleCharacteristicClick = (characteristic, id, value) => {
