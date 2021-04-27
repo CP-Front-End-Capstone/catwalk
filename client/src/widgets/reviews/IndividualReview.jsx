@@ -14,15 +14,21 @@ const IndividualReview = (props) => {
   const recommend = props.review.recommend && '✓ I recommend this product';
   const response = props.review.response && props.review.response;
   const longBody = props.review.body.length > 250 && true;
+  const [count, setCount] = useState(props.review.helpfulness);
 
   const handleHelpfulness = () => {
-    axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/${props.review.review_id}/helpful`, {
+    axios({
+      method: 'PUT',
+      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/${props.review.review_id}/helpful`,
+      data: {
+        review_id: props.review.review_id,
+      },
       headers: {
         Authorization: config.TOKEN,
       },
     })
       .then(() => {
-        // reviewsInfo.setHelpful(true);
+        setCount(count + 1);
         console.log('put worked');
       })
       .catch((err) => {
@@ -84,7 +90,7 @@ const IndividualReview = (props) => {
         </a>
         <div>
           (
-          {props.review.helpfulness}
+          {count}
           )
         </div>
         <a href="#" onClick={() => { handleHelpfulness(); }}>
