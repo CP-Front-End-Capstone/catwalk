@@ -28,14 +28,16 @@ const QuestionList = () => {
   };
 
   return (
-    <div className="h-75 overflow-auto" id="questionlist">
+    <div className="h-75 overflow-auto" >
       <Search
         changeQuestionList={changeQuestionList}
         questionList={questions}
       />
-      {questionList.map((question) => (
-        <Question question={question} name={productName} key={question.question_id} />
-      ))}
+      <div id="questionlist">
+        {questionList.map((question) => (
+          <Question question={question} name={productName} key={question.question_id} />
+        ))}
+      </div>
       <div className="row-3 p-1">
         <input
           type="button"
