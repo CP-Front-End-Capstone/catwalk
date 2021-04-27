@@ -76,7 +76,7 @@ const ReviewBreakDown = () => {
 
   if (recommendPercent) {
     return (
-      <div className="container" style={{ padding: '10px' }}>
+      <div className="container" style={{ padding: '10px' }} key={reviewMeta.reviewsMeta.product_id}>
         <div className="row">
           <h1>
             {formattedAvg}

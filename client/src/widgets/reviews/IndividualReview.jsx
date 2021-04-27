@@ -46,7 +46,7 @@ const IndividualReview = (props) => {
   };
 
   return (
-    <div className="container bg-white border">
+    <div className="container bg-white border" key={props.review.review_id}>
       <div className="row">
         <span className="col-sm">
 
