@@ -19,7 +19,7 @@ const customStyles = {
   },
 };
 
-Modal.setAppElement('#app');
+// Modal.setAppElement('#app');
 
 const addAnswer = (props) => {
   const { question, name, changeAnswerList, answerList } = props;
