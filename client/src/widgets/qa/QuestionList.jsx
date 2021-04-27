@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React, { useContext, useState, useEffect } from 'react';
 import Question from './Question.jsx';
 import AddQuestion from './AddQuestion.jsx';
@@ -23,10 +24,6 @@ const QuestionList = () => {
 
   const moreQuestions = () => {
     changeCount(count + 4);
-  };
-
-  const addQuestion = () => {
-
   };
 
   return (

@@ -44,6 +44,7 @@ const QandA = () => {
           count,
           changeCount,
           productName,
+          productId,
         }}
         >
           <Search />

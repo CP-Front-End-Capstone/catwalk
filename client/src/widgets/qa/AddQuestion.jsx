@@ -1,9 +1,11 @@
+/* eslint-disable camelcase */
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Modal from 'react-modal';
 import axios from 'axios';
 const config = require('../../../../API/config.js');
-import Answer from './Answer.jsx';
+import Question from './Question.jsx';
+import qaContext from '../../contexts/QaContext';
 
 const customStyles = {
   content: {
@@ -21,70 +23,59 @@ const customStyles = {
 
 Modal.setAppElement('#app');
 
-const addAnswer = (props) => {
-  const { name, changeQuestionList, questionList } = props;
+const addQuestion = (props) => {
+  const {
+    productName,
+    productId,
+  } = useContext(qaContext);
+  const { changeQuestionList, questionList } = props;
 
   const [modalIsOpen, setIsOpen] = useState(false);
   const [question, changeQuestion] = useState('');
   const [nickname, changeNickname] = useState('');
   const [email, changeEmail] = useState('');
-  const [photos, changePhotos] = useState([]);
+
   const openModal = () => {
     setIsOpen(true);
   };
   const onCancel = (e) => {
     e.preventDefault();
-    changeAnswer('');
+    changeQuestion('');
     changeNickname('');
     changeEmail('');
-    changePhotos([]);
     setIsOpen(false);
   };
   const onSubmit = (e) => {
     e.preventDefault();
-    const newAnswer = {
-      body: answer,
+    const newQuestion = {
+      body: question,
       name: nickname,
       email,
-      photos,
-    }
+      product_id: parseInt(productId, 10),
+    };
+    // console.log(productId, typeof productId);
     axios({
       method: 'POST',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${question.question_id}/answers`,
-      data: newAnswer,
+      url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions',
+      data: newQuestion,
       headers: {
         Authorization: config.TOKEN,
       },
     })
       .then((res) => {
-        changeAnswer('');
+        changeQuestion('');
         changeNickname('');
         changeEmail('');
-        changePhotos([]);
-        axios({
-          method: 'GET',
-          url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${question.question_id}/answers?count=100`,
-          headers: {
-            Authorization: config.TOKEN,
-          },
-        })
-          .then((newList) => {
-            changeAnswerList(newList.data.results.map((ans) => (
-              <Answer answer={ans} key={ans.answer_id} />
-            )));
-          })
-          .catch((err) => {
-            console.log('Error getting new answer list', err);
-          });
+        // console.log('RES: ', res);
       })
       .catch((err) => {
         console.log('ERROR: ', err);
       });
     setIsOpen(false);
   };
-  const updateAnswer = (e) => {
+  const updateQuestion = (e) => {
     e.preventDefault();
-    changeAnswer(e.target.value);
+    changeQuestion(e.target.value);
   };
 
   const updateNickname = (e) => {
@@ -96,7 +87,6 @@ const addAnswer = (props) => {
     e.preventDefault();
     changeEmail(e.target.value);
   };
-
 
   return (
     <>
@@ -110,14 +100,14 @@ const addAnswer = (props) => {
       <Modal
         isOpen={modalIsOpen}
         style={customStyles}
-        contentLabel="Add Answer"
+        contentLabel="Add Question"
       >
-        <h1 className="modal-title lead"><u>Ask you question</u></h1>
-        <div>About the PRODUCT NAME</div>
-        <form name={`addQuestion`}>
-          <label htmlFor="answer">
-            *Your Answer:
-            <textarea name="answer" maxLength="1000" onChange={updateAnswer} />
+        <h1 className="modal-title lead"><u>Ask your question</u></h1>
+        <div>About the {productName}</div>
+        <form name={`addquestion${productId}`}>
+          <label htmlFor="question">
+            *Your Question:
+            <textarea name="question" maxLength="1000" onChange={updateQuestion} />
           </label>
           <br />
           <label htmlFor="name">
@@ -144,4 +134,4 @@ const addAnswer = (props) => {
   );
 };
 
-export default addAnswer;
+export default addQuestion;
