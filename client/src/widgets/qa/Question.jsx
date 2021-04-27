@@ -31,7 +31,14 @@ const Question = (props) => {
       if (answers.length > 2) {
         const temp = [];
         for (let i = 0; i < 2; i++) {
-          temp.push(<Answer answer={answers[i]} key={answers[i].id} />);
+          temp.push(
+            <Answer
+              answer={answers[i]}
+              key={answers[i].id}
+              answerList={answerList}
+              changeAnswerList={changeAnswerList}
+            />
+          );
         }
         temp.push(
           <div key={question.question_id}>
@@ -47,12 +54,22 @@ const Question = (props) => {
         changeAnswerList(temp);
       } else if (answers.length > 0) {
         changeAnswerList(answers.map((answer) => (
-          <Answer answer={answer} key={answer.id} />
+          <Answer
+            answer={answer}
+            key={answer.id}
+            answerList={answerList}
+            changeAnswerList={changeAnswerList}
+          />
         )));
       }
     } else {
       changeAnswerList(answers.map((answer) => (
-        <Answer answer={answer} key={answer.id} />
+        <Answer
+          answer={answer}
+          key={answer.id}
+          answerList={answerList}
+          changeAnswerList={changeAnswerList}
+        />
       )));
     }
   }, [showAll]);
@@ -66,12 +83,12 @@ const Question = (props) => {
         <div className="col h6 text-right">
           <Helpful
             input={question}
-            name={name}
             key={question.id}
           />
           <AddAnswer
             question={question}
             name={name}
+            answerList={answerList}
             changeAnswerList={changeAnswerList}
           />
         </div>
