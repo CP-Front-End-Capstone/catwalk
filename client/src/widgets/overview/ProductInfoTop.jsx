@@ -9,9 +9,9 @@ import Stars from './Stars.jsx';
 
 function ProductInfoTop(props) {
   const { product } = useContext(productContext);
-  const { styles, currentStyle } = useContext(styleContext);
+  const { currentStyle, revMeta } = useContext(styleContext);
 
-  if (styles && product) {
+  if (currentStyle && revMeta) {
     return (
       <div>
         <Stars />

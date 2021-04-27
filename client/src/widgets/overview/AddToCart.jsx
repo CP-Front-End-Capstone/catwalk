@@ -69,7 +69,7 @@ function AddToCart() {
   if (noStock) {
     return (
       <div className="container mx-auto">
-        <div className="row d-flex justify-content-around">
+        <div className="row d-flex justify-content-between">
           <div className="dropdown">
             <button
               className="btn btn-primary dropdown-toggle btn-large"
@@ -114,7 +114,7 @@ function AddToCart() {
   if (sizeSelected) {
     return (
       <div className="container mx-auto">
-        <div className="row d-flex justify-content-around">
+        <div className="row d-flex justify-content-between">
           <div className="dropdown">
             <button
               className="btn btn-primary dropdown-toggle btn-large"

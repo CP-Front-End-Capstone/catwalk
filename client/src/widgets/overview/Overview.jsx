@@ -12,6 +12,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prefer-stateless-function */
 import React, { useContext, useState, useEffect } from 'react';
+import axios from 'axios';
 import api from '../../../../API/helper';
 import ImageGallery from './ImageGallery.jsx';
 import ProductInfoTop from './ProductInfoTop.jsx';
@@ -29,6 +30,7 @@ function Overview(props) {
   const [currentImage, setImage] = useState();
   const [imageView, setImageView] = useState(false);
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
+  const [revMeta, setRevMeta] = useState();
 
   useEffect(() => {
     api.fetchEndpoint(`/products/${productId}/styles`)
@@ -37,11 +39,15 @@ function Overview(props) {
         changeStyles(stylesData.results);
         setStyle(stylesData.results[0]);
         setImage(stylesData.results[0].photos[0].url);
+        api.fetchEndpoint(`/reviews/meta/?product_id=${productId}`)
+          .then((reviewsMeta) => {
+            setRevMeta(reviewsMeta);
+          });
       })
       .catch((error) => {
         console.log('Error fetching data', error);
       });
-  }, []);
+  }, [productId]);
 
   // const getProducts = (array) => {
   //   const stylesArray = array.map((id) => (
@@ -75,7 +81,7 @@ function Overview(props) {
     return (
       <div className="container ">
         <styleContext.Provider value={{
-          styles, currentStyle, currentImage, setImage, setStyle, imageView, setImageView, currentPhotoIndex, setCurrentPhotoIndex,
+          styles, currentStyle, currentImage, setImage, setStyle, imageView, setImageView, currentPhotoIndex, setCurrentPhotoIndex, revMeta,
         }}
         >
           <div className="row d-flex justify-content-between">
