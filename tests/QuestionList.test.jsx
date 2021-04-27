@@ -30,3 +30,54 @@ it('renders question list with 4 questions', () => {
   // console.log(wrapper.find('#questionlist'));
   expect(wrapper.find('#questionlist').children()).toHaveLength(4);
 });
+
+it('renders 4 questions on load', () => {
+  const productId = questionsData.product_id;
+  const productName = 'product name';
+  const questions = questionsData.results;
+  const changeQuestions = () => {};
+  const count = 4;
+  const changeCount = () => {};
+
+  const wrapper = Enzyme.mount(
+    <qaContext.Provider value={{
+      questions,
+      changeQuestions,
+      count,
+      changeCount,
+      productName,
+      productId,
+    }}
+    >
+      <QuestionList />
+    </qaContext.Provider>,
+  );
+  // console.log(wrapper.find('#questionlist'));
+  expect(wrapper.find('#questionlist').children()).toHaveLength(4);
+});
+
+it('renders 4 more questions on click of "show more answered questions"', () => {
+  const productId = questionsData.product_id;
+  const productName = 'product name';
+  const questions = questionsData.results;
+  const changeQuestions = () => {};
+  const count = 4;
+  const changeCount = () => {};
+
+  const wrapper = Enzyme.mount(
+    <qaContext.Provider value={{
+      questions,
+      changeQuestions,
+      count,
+      changeCount,
+      productName,
+      productId,
+    }}
+    >
+      <QuestionList />
+    </qaContext.Provider>,
+  );
+  // console.log(wrapper.find('#questionlist'));
+  wrapper.find('morequestions').simulate('click');
+  expect(wrapper.find('#questionlist').children()).toHaveLength(8);
+});
