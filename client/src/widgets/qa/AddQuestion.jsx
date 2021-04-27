@@ -2,6 +2,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useContext } from 'react';
 import Modal from 'react-modal';
+import api from '../../../../API/helper.js';
 import axios from 'axios';
 const config = require('../../../../API/config.js');
 import Question from './Question.jsx';
@@ -53,7 +54,7 @@ const addQuestion = (props) => {
       email,
       product_id: parseInt(productId, 10),
     };
-    // console.log(productId, typeof productId);
+
     axios({
       method: 'POST',
       url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions',
@@ -66,7 +67,13 @@ const addQuestion = (props) => {
         changeQuestion('');
         changeNickname('');
         changeEmail('');
-        // console.log('RES: ', res);
+        api.fetchEndpoint(`/qa/questions?product_id=${productId}&count=100`)
+          .then((questionsData) => {
+            changeQuestionList(questionsData.results);
+          })
+          .catch((error) => {
+            console.log('Error fetching questions:', error);
+          });
       })
       .catch((err) => {
         console.log('ERROR: ', err);
