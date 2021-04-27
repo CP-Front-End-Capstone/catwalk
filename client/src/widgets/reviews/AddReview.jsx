@@ -261,9 +261,9 @@ const AddReview = () => {
       <div className="row">
         Would you recommend this product?
         &nbsp;
-        <button type="button" className="btn btn-link small" onChange={() => { setRecommend('Yes'); }}>Yes</button>
+        <button type="button" className="btn btn-link small" onClick={() => { setRecommend('Yes'); }}>Yes</button>
         &nbsp;
-        <button type="button" className="btn btn-link small" onChange={() => { setRecommend('No'); }}>No</button>
+        <button type="button" className="btn btn-link small" onClick={() => { setRecommend('No'); }}>No</button>
       </div>
       <div className="container">
         Please rate the following about the product:
