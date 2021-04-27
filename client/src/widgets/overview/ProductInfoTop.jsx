@@ -5,6 +5,7 @@
 import React, { useContext } from 'react';
 import { productContext } from '../../contexts/ProductContext.js';
 import { styleContext } from '../../contexts/StyleContext.js';
+import Stars from './Stars.jsx';
 
 function ProductInfoTop(props) {
   const { product } = useContext(productContext);
@@ -13,6 +14,7 @@ function ProductInfoTop(props) {
   if (styles && product) {
     return (
       <div>
+        <Stars />
         <h4>{product.category}</h4>
         <h1>{product.name}</h1>
         <h5>
