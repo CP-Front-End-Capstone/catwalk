@@ -25,9 +25,9 @@ const addAnswer = (props) => {
   const { name, changeQuestionList, questionList } = props;
 
   const [modalIsOpen, setIsOpen] = useState(false);
-  const [answer, changeAnswer] = useState('');
+  const [question, changeQuestion] = useState('');
   const [nickname, changeNickname] = useState('');
-  const [email, changeEmail] = useState();
+  const [email, changeEmail] = useState('');
   const [photos, changePhotos] = useState([]);
   const openModal = () => {
     setIsOpen(true);
