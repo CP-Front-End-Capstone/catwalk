@@ -3,6 +3,13 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(png|jpeg|gif|svg)$/i,
+        use: [{
+          loader: 'file-loader',
+          options: {},
+        }],
+      },
+      {
         test: /\.css$/,
         use: {
           loader: 'css-loader',

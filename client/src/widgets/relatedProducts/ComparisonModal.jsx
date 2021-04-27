@@ -10,6 +10,8 @@ import { Checkmark } from 'react-checkmark';
 Modal.setAppElement('#app');
 
 function ComparisonModal({ updateModal, product, currentProduct }) {
+  console.log('Hello from Modal (product): ', product);
+  console.log('Hello from Modal (currentProduct): ', currentProduct);
   const customStyles = {
     content: {
       top: '50%',
@@ -45,22 +47,19 @@ function ComparisonModal({ updateModal, product, currentProduct }) {
                 <td className="font-weight-bold">
                   {feature.feature}
                 </td>
-                <td>{product.features[index].value}</td>
+                <td>{(product.features[index] && product.features[index].feature === feature.feature) ? product.features[index].value : null}</td>
               </tr>
-              {product.features.map((relatedFeature, itemIndex) => (
-                <tr key={itemIndex}>
-                  {index === itemIndex ? null : (
-                    <>
-                      {' '}
-                      <td>{relatedFeature.value}</td>
-                      <td className="font-weight-bold">
-                        {relatedFeature.feature}
-                      </td>
-                      <td>{relatedFeature.value}</td>
-                    </>
-                  ) }
-                </tr>
-              ))}
+            </>
+          ))}
+          {product.features.map((relatedFeature, itemIndex) => (
+            <>
+              <tr key={itemIndex}>
+                <td>{(currentProduct.features[itemIndex] && currentProduct.features[itemIndex].feature === relatedFeature.feature) ? currentProduct.features[itemIndex].value : null}</td>
+                <td className="font-weight-bold">
+                  {(currentProduct.features[itemIndex] && currentProduct.features[itemIndex].feature === relatedFeature.feature) ? null : relatedFeature.feature}
+                </td>
+                <td>{(currentProduct.features[itemIndex] && currentProduct.features[itemIndex].feature === relatedFeature.feature) ? null : relatedFeature.value}</td>
+              </tr>
             </>
           ))}
         </tbody>

@@ -70,7 +70,7 @@ function RelatedProducts() {
     );
   }
   return (
-    'Related Items Loading...'
+    ''
   );
 }
 
