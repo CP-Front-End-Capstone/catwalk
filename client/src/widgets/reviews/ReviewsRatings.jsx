@@ -55,7 +55,7 @@ const ReviewsRatings = () => {
             </div>
             <div className="col">
               <div className="row" style={{ height: '650px' }}>
-                <reviewContext.Provider value={{ reviewsMeta, reviewList, setHelpful }}>
+                <reviewContext.Provider value={{ reviewsMeta, reviewList}}>
                   <ReviewsList />
                 </reviewContext.Provider>
               </div>

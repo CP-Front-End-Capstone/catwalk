@@ -85,9 +85,6 @@ const ReviewsList = () => {
               <div className="modal-body">
                 <AddReview />
               </div>
-              <div className="modal-footer">
-                <button type="button" className="btn btn-primary">Submit Review</button>
-              </div>
             </div>
           </div>
         </div>

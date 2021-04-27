@@ -6,7 +6,6 @@ import React, { useContext, useState } from 'react';
 import StarRatings from 'react-star-ratings';
 import dateFormat from 'dateformat';
 import axios from 'axios';
-import reviewContext from '../../contexts/ReviewContext';
 import ReviewPhotos from './ReviewPhotos.jsx';
 
 const config = require('../../../../API/config.js');
@@ -15,8 +14,6 @@ const IndividualReview = (props) => {
   const recommend = props.review.recommend && '✓ I recommend this product';
   const response = props.review.response && props.review.response;
   const longBody = props.review.body.length > 250 && true;
-
-  const images = props.review.photos.length > 0 && <ReviewPhotos photos={props.review.photos} />;
 
   const handleHelpfulness = () => {
     axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/${props.review.review_id}/helpful`, {
@@ -75,7 +72,7 @@ const IndividualReview = (props) => {
       <div className="row">{response}</div>
       <div className="row">
         {' '}
-        {images}
+        <ReviewPhotos photos={props.review.photos} />
         {' '}
       </div>
       <div className="row small">

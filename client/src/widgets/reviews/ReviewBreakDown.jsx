@@ -4,6 +4,7 @@ import HSBar from 'react-horizontal-stacked-bar-chart';
 import StarRatings from 'react-star-ratings';
 import reviewContext from '../../contexts/ReviewContext';
 import { productContext } from '../../contexts/ProductContext';
+// import Styles from '../../../dist/styles.css';
 
 const ReviewBreakDown = () => {
   const reviewMeta = useContext(reviewContext);
@@ -84,23 +85,33 @@ const ReviewBreakDown = () => {
             % of reviewers recommend this product
           </div>
           <button type="button" className="text-left btn-light small" onClick={() => { handleRatingFilter('5'); }}>
-            5 Stars {fiveStars}
+            5 Stars
+            {' '}
+            {reviewMeta.reviewsMeta.ratings[5]}
             <HSBar height={10} data={[{ value: fiveStars, color: 'black' }, { value: 100 - fiveStars, color: 'grey' }]} />
           </button>
           <button type="button" className="text-left btn-light small" onClick={() => { handleRatingFilter('4'); }}>
-            4 Stars {fourStars}
+            4 Stars
+            {' '}
+            {reviewMeta.reviewsMeta.ratings[4]}
             <HSBar height={10} data={[{ value: fourStars, color: 'black' }, { value: 100 - fourStars, color: 'grey' }]} />
           </button>
           <button type="button" className="text-left btn-light small" onClick={() => { handleRatingFilter('3'); }}>
-            3 Stars {threeStars}
+            3 Stars
+            {' '}
+            {reviewMeta.reviewsMeta.ratings[3]}
             <HSBar height={10} data={[{ value: threeStars, color: 'black' }, { value: 100 - threeStars, color: 'grey' }]} />
           </button>
           <button type="button" className="text-left btn-light small" onClick={() => { handleRatingFilter('2'); }}>
-            2 Stars {twoStars}
+            2 Stars
+            {' '}
+            {reviewMeta.reviewsMeta.ratings[2]}
             <HSBar height={10} data={[{ value: twoStars, color: 'black' }, { value: 100 - twoStars, color: 'grey' }]} />
           </button>
           <button type="button" className="text-left btn-light small" onClick={() => { handleRatingFilter('1'); }}>
-            1 Star {oneStar}
+            1 Star
+            {' '}
+            {reviewMeta.reviewsMeta.ratings[1]}
             <HSBar height={10} data={[{ value: oneStar, color: 'black' }, { value: 100 - oneStar, color: 'grey' }]} />
           </button>
         </div>
