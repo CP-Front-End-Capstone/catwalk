@@ -27,5 +27,6 @@ it('renders without crashing', () => {
       <QuestionList />
     </qaContext.Provider>,
   );
-  console.log(wrapper);
+
+  expect(wrapper.find('ul').children()).to.have.lengthOf(items.length);
 });
