@@ -1,10 +1,8 @@
-<<<<<<< HEAD
-import { promisify } from 'util';
-=======
+
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/extensions */
->>>>>>> 0f1387b8af5ed0b972800d1b79657d1c58acffc1
+import { promisify } from 'util';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Enzyme from 'enzyme';
@@ -85,6 +83,11 @@ it('renders 4 more questions on click of "show more answered questions"', () => 
     </qaContext.Provider>,
   );
   // console.log(wrapper.find('#questionlist'));
-  wrapper.find('#morequestions').simulate('click');
-  expect(wrapper.find('#questionlist').children()).toHaveLength(8);
+  const clickMoreQuestions = promisify(() => {
+    wrapper.find('#morequestions').simulate('click');
+  });
+  clickMoreQuestions()
+    .then(() => {
+      expect(wrapper.find('#questionlist').children()).toHaveLength(8);
+    });
 });
