@@ -34,6 +34,14 @@ const ReviewBreakDown = () => {
 
   passStars.changeStarAvg(formattedAvg);
 
+  const filterArray = (ratings) => {
+    const filteredReviews = reviewMeta.reviewList.results.filter((review) => (
+      ratings.indexOf(JSON.stringify(review.rating)) > -1));
+      console.log(filteredReviews);
+      console.log(ratings);
+    reviewMeta.setReviewsArray(filteredReviews);
+  };
+
   const handleRatingFilter = (rating) => {
     const selectedArray = selectedRating.slice();
     if (selectedArray.length === 5) {
@@ -41,22 +49,19 @@ const ReviewBreakDown = () => {
       filterArray([rating]);
     } else if (selectedArray.indexOf(rating) > -1) {
       if (selectedArray.length > 1) {
-        selectedArray.splice(selectedArray.indexOf(rating), 1);
-        setSelectedRating(selectedArray);
+        const newSelected = selectedArray.splice(selectedArray.indexOf(rating), 1);
+        setSelectedRating(newSelected);
+        filterArray(newSelected);
       } else {
         setSelectedRating(['1', '2', '3', '4', '5']);
+        reviewMeta.setReviewsArray(reviewMeta.reviewList.results);
       }
     } else {
-      selectedArray.push(rating);
-      setSelectedRating(selectedArray);
+      const otherSelected = selectedArray.concat(rating);
+      setSelectedRating(otherSelected);
     }
   };
 
-  const filterArray = (ratings) => {
-    const filteredReviews = reviewMeta.reviewsArray.filter((review) => (
-      ratings.indexOf(JSON.stringify(review.rating)) > -1));
-    reviewMeta.setReviewsArray(filteredReviews);
-  };
 
   const currentFilter = selectedRating.length !== 5 && `Currently selected ratings: ${selectedRating}`;
 

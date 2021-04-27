@@ -13,14 +13,15 @@ import AddReview from './AddReview.jsx';
 const ReviewsList = () => {
   const reviewsInfo = useContext(reviewContext);
   const productId = reviewsInfo.reviewList.product;
-  const [reviewsList, setReviewsList] = useState(reviewsInfo.reviewList);
-  const [reviewsArray, setReviewsArray] = useState(reviewsInfo.reviewsArray);
+  const { reviewsArray } = reviewsInfo;
   const [reviewCount, setReviewCount] = useState(2);
   const [sortBy, setSortBy] = useState('relevant');
 
   const handleMoreReviews = (count) => {
     setReviewCount(count);
   };
+
+  console.log('this is reviews list reviews Array', reviewsArray);
 
   const displayedReviews = reviewsArray.slice(0, reviewCount);
 
@@ -31,7 +32,7 @@ const ReviewsList = () => {
   useEffect(() => (
     api.fetchEndpoint(`/reviews/?product_id=${productId}&count=100&sort=${sortBy}`)
       .then((reviewData) => {
-        setReviewsArray(reviewData.results);
+        reviewsInfo.setReviewsArray(reviewData.results);
       })
       .catch((err) => {
         console.log('error fetching review data', err);

@@ -24,6 +24,8 @@ const ReviewsRatings = () => {
   const [ratingFilter, setRatingFilter] = useState();
   const [helpful, setHelpful] = useState();
 
+  console.log('this is reviews array on overarching', reviewsArray);
+
   useEffect(() => {
     api.fetchEndpoint(`/reviews/?product_id=${productId}&count=100&sort=relevant`)
       .then((reviewData) => {
