@@ -59,6 +59,7 @@ const ReviewBreakDown = () => {
     } else {
       const otherSelected = selectedArray.concat(rating);
       setSelectedRating(otherSelected);
+      filterArray(otherSelected);
     }
   };
 

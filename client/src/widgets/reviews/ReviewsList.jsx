@@ -21,8 +21,6 @@ const ReviewsList = () => {
     setReviewCount(count);
   };
 
-  console.log('this is reviews list reviews Array', reviewsArray);
-
   const displayedReviews = reviewsArray.slice(0, reviewCount);
 
   const handleSortBy = (selection) => {
