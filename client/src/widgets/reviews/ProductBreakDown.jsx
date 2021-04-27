@@ -72,19 +72,22 @@ const ProductBreakdown = () => {
     </div>
   );
 
-  return (
-    <div className="container" style={{ padding: '10px' }}>
-      <div className="row">
-        <div className="container border" style={{ padding: '20px' }}>
-          {fitValue}
-          {lengthValue}
-          {comfortValue}
-          {widthValue}
-          {qualityValue}
+  if (reviewMeta.reviewList.results.length > 0) {
+    return (
+      <div className="container" style={{ padding: '10px' }}>
+        <div className="row">
+          <div className="container border" style={{ padding: '20px' }}>
+            {fitValue}
+            {lengthValue}
+            {comfortValue}
+            {widthValue}
+            {qualityValue}
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
+  return '';
 };
 
 export default ProductBreakdown;
