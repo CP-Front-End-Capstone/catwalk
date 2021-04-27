@@ -14,8 +14,6 @@ function RelatedProductsCard({
   product, style, rating, currentProduct, review,
 }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-
-  console.log('Hello from product card: ', review);
   return (
     // if (style.results[0].photos[0].thumbnail_url)
     <div>
