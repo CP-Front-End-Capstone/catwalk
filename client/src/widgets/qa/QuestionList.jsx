@@ -1,5 +1,7 @@
+/* eslint-disable camelcase */
 import React, { useContext, useState, useEffect } from 'react';
 import Question from './Question.jsx';
+import AddQuestion from './AddQuestion.jsx';
 import qaContext from '../../contexts/QaContext';
 
 const QuestionList = () => {
@@ -24,12 +26,8 @@ const QuestionList = () => {
     changeCount(count + 4);
   };
 
-  const addQuestion = () => {
-
-  };
-
   return (
-    <div className="h-75 overflow-auto">
+    <div className="h-75 overflow-auto" id="questionlist">
       {questionList.map((question) => (
         <Question question={question} name={productName} key={question.question_id} />
       ))}
@@ -40,11 +38,10 @@ const QuestionList = () => {
           value="MORE ANSWERED QUESTIONS"
           onClick={moreQuestions}
         />
-        <input
-          type="button"
-          className="btn btn-outline-secondary"
-          value="ADD A QUESTION +"
-          onClick={addQuestion}
+        <AddQuestion
+          name={productName}
+          changeQuestionList={changeQuestionList}
+          questionList={questionList}
         />
       </div>
     </div>

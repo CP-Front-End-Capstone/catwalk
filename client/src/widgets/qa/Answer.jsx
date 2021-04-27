@@ -6,7 +6,7 @@ import Report from './Report.jsx';
 import Helpful from './Helpful.jsx';
 
 const Answer = (props) => {
-  const { answer } = props;
+  const { answer, answers, changeAnswers } = props;
   const { body, date, answerer_name } = answer;
   return (
     <>
@@ -22,7 +22,7 @@ const Answer = (props) => {
             by {answerer_name} {(new Date(date)).toDateString().slice(4)} |
           </span>
           <Helpful input={answer} />
-          <Report />
+          <Report answer={answer} answers={answers} changeAnswers={changeAnswers} />
         </div>
       </div>
     </>
