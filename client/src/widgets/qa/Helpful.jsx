@@ -9,6 +9,7 @@ import config from '../../../../API/config.js';
 const Helpful = (props) => {
   const { input } = props;
   const [count, changeCount] = useState(0);
+  const [clicked, changedclicked] = useState(false);
 
   useEffect(() => {
     if (input.hasOwnProperty('question_id')) {
@@ -32,6 +33,7 @@ const Helpful = (props) => {
     })
       .then((res) => {
         changeCount(count + 1);
+        changedclicked(true);
       })
       .catch((err) => {
         console.log('ERR', err);
@@ -51,6 +53,7 @@ const Helpful = (props) => {
     })
       .then((res) => {
         changeCount(count + 1);
+        changedclicked(true);
       })
       .catch((err) => {
         console.log('ERR', err);
@@ -58,18 +61,31 @@ const Helpful = (props) => {
   };
 
   if (input.hasOwnProperty('question_id')) {
-    return ( // Helpful Question
-      <span onClick ={handleQuestion} className="btn h6 text-right font-weight-light">
+    if (!clicked) {
+      return ( // Helpful Question
+        <span onClick ={handleQuestion} className="btn h6 text-right font-weight-light">
+          &nbsp;Helpful?&nbsp;
+          <u>Yes</u>&nbsp;({count})&nbsp;|&nbsp;
+        </span>
+      );
+    }
+    return (
+        <span className="btn h6 text-right font-weight-light">
+          &nbsp;Helpful?&nbsp;({count})&nbsp;|&nbsp;
+        </span>
+    );
+  }
+  if (!clicked) {
+    return ( // Helpful Answer
+      <span onClick ={handleAnswer} className="btn h6 text-left font-weight-light">
         &nbsp;Helpful?&nbsp;
         <u>Yes</u>&nbsp;({count})&nbsp;|&nbsp;
       </span>
     );
   }
-
-  return ( // Helpful Answer
-    <span onClick ={handleAnswer} className="btn h6 text-left font-weight-light">
-      &nbsp;Helpful?&nbsp;
-      <u>Yes</u>&nbsp;({count})&nbsp;|&nbsp;
+  return (
+    <span className="btn h6 text-right font-weight-light">
+      &nbsp;Helpful?&nbsp;({count})&nbsp;|&nbsp;
     </span>
   );
 };
