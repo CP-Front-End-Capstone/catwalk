@@ -8,6 +8,16 @@ import config from '../../../../API/config.js';
 
 const Helpful = (props) => {
   const { input } = props;
+  const [count, changeCount] = useState(0);
+
+  useEffect(() => {
+    if (input.hasOwnProperty('question_id')) {
+      changeCount(input.question_helpfulness);
+    } else {
+      changeCount(input.helpfulness);
+    }
+  }, [input]);
+
   const handleQuestion = (e) => {
     e.preventDefault();
     axios({
@@ -21,7 +31,7 @@ const Helpful = (props) => {
       },
     })
       .then((res) => {
-        console.log('RES: ', res);
+        changeCount(count + 1);
       })
       .catch((err) => {
         console.log('ERR', err);
@@ -29,10 +39,25 @@ const Helpful = (props) => {
   };
   const handleAnswer = (e) => {
     e.preventDefault();
-
+    axios({
+      method: 'PUT',
+      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${input.id}/helpful`,
+      data: {
+        answer_id: input.id,
+      },
+      headers: {
+        Authorization: config.TOKEN,
+      },
+    })
+      .then((res) => {
+        changeCount(count + 1);
+      })
+      .catch((err) => {
+        console.log('ERR', err);
+      });
   };
+
   if (input.hasOwnProperty('question_id')) {
-    const count = input.question_helpfulness;
     return ( // Helpful Question
       <span onClick ={handleQuestion} className="btn h6 text-right font-weight-light">
         &nbsp;Helpful?&nbsp;
@@ -40,7 +65,7 @@ const Helpful = (props) => {
       </span>
     );
   }
-  const count = input.helpfulness;
+
   return ( // Helpful Answer
     <span onClick ={handleAnswer} className="btn h6 text-left font-weight-light">
       &nbsp;Helpful?&nbsp;
