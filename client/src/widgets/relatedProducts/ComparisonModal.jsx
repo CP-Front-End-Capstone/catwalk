@@ -7,7 +7,7 @@ import React, { useState } from 'react';
 import Modal from 'react-modal';
 import { Checkmark } from 'react-checkmark';
 
-Modal.setAppElement('#app');
+// Modal.setAppElement('#app');
 
 function ComparisonModal({ updateModal, product, currentProduct }) {
   console.log(product);

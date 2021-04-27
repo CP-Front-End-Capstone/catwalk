@@ -55,7 +55,7 @@ function RelatedProducts() {
 
   if (products.length !== 0 && styles.length !== 0) {
     return (
-      <div>
+      <div id="products">
         <div className="container-fluid">
           <h3 className="h4">Related Items:</h3>
           <reviewContext.Provider value={{ reviewsMeta }}>
