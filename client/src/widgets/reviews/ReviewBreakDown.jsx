@@ -3,8 +3,6 @@ import React, { useContext, useState } from 'react';
 import HSBar from 'react-horizontal-stacked-bar-chart';
 import StarRatings from 'react-star-ratings';
 import reviewContext from '../../contexts/ReviewContext';
-import { productContext } from '../../contexts/ProductContext';
-// import Styles from '../../../dist/styles.css';
 
 const ReviewBreakDown = () => {
   const reviewMeta = useContext(reviewContext);
@@ -30,9 +28,9 @@ const ReviewBreakDown = () => {
 
   const formattedAvg = Math.round(avgCalc * 10) / 10 ? Math.round(avgCalc * 10) / 10 : 0;
 
-  const passStars = useContext(productContext);
+  // const passStars = useContext(productContext);
 
-  passStars.changeStarAvg(formattedAvg);
+  // passStars.changeStarAvg(formattedAvg);
 
   const filterArray = (ratings) => {
     const filteredReviews = reviewMeta.reviewList.results.filter((review) => (

@@ -67,6 +67,35 @@ const AddReview = () => {
 
   const remainingBody = bodyCount < 50 ? `Review must be a minimum of 50 characters. ${50 - bodyCount} characters remaining.` : `Characters remaining ${1000 - bodyCount}`;
 
+  const createCharacteristic = (name) => {
+    const charact = reviewMeta.reviewsMeta.characteristics[name] && (
+    <div className="row small">
+      <div className="col">{name}</div>
+      <div className="col small">
+        <div className="small">Runs Tight</div>
+        <input type="radio" name="fit" onClick={handleCharacteristicClick('Fit', reviewMeta.reviewsMeta.characteristics.Fit.id, 1)} />
+      </div>
+      <div className="col small">
+        <div className="small">Slightly Tight</div>
+        <input type="radio" name="fit" />
+      </div>
+      <div className="col small">
+        <div className="small">Perfect</div>
+        <input type="radio" name="fit" />
+      </div>
+      <div className="col small">
+        <div className="small">Slightly Long</div>
+        <input type="radio" name="fit" />
+      </div>
+      <div className="col small">
+        <div className="small">Runs Long</div>
+        <input type="radio" name="fit" />
+      </div>
+    </div>
+    );
+    return charact;
+  };
+
   const fit = reviewMeta.reviewsMeta.characteristics.Fit
   && (
   <div className="row small">
