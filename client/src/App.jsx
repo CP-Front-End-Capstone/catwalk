@@ -31,7 +31,6 @@ const App = (props) => {
         changeProduct(productData);
         api.fetchEndpoint(`/products/${productId}/styles`)
           .then((stylesData) => {
-            console.log('this is styles data:', stylesData);
             changeStyles(stylesData.results);
           });
       })
@@ -58,10 +57,10 @@ const App = (props) => {
           product, styles, productId, changeProductId, starAvg, changeStarAvg,
         }}
         >
-          <Overview />
-          <RelatedProducts />
+          {/* <Overview /> */}
+          {/* <RelatedProducts /> */}
           <QandA />
-          <ReviewsRatings />
+          {/* <ReviewsRatings /> */}
         </productContext.Provider>
       </div>
     </div>

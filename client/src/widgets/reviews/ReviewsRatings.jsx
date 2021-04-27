@@ -65,7 +65,7 @@ const ReviewsRatings = () => {
       </div>
     );
   }
-  return 'Reviews are Loading ...';
+  return <div>Reviews are Loading ...</div>;
 };
 
 export default ReviewsRatings;
