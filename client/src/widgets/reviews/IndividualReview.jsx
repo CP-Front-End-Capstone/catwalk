@@ -18,7 +18,8 @@ const IndividualReview = (props) => {
   const longBody = props.review.body.length > 250 && true;
   const [count, setCount] = useState(props.review.helpfulness);
 
-  const handleHelpfulness = () => {
+  const handleHelpfulness = (e) => {
+    e.preventDefault();
     axios({
       method: 'PUT',
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/${props.review.review_id}/helpful`,
@@ -31,7 +32,6 @@ const IndividualReview = (props) => {
     })
       .then(() => {
         setCount(count + 1);
-        console.log('put worked');
       })
       .catch((err) => {
         console.log('error putting helpfulness to API', props.review.review_id, err);
@@ -42,13 +42,14 @@ const IndividualReview = (props) => {
     : (`${props.review.body.slice(0, 250)}...`));
   const [viewMore, setViewMore] = useState(longBody && 'View More');
 
-  const handleViewMore = () => {
+  const handleViewMore = (e) => {
+    e.preventDefault();
     setReviewBody(props.review.body);
     setViewMore(null);
   };
 
   return (
-    <div className="container bg-white border">
+    <div className="container bg-white border" key={props.review.review_id}>
       <div className="row">
         <span className="col-sm">
 
@@ -72,7 +73,7 @@ const IndividualReview = (props) => {
       <h5 className="row">{props.review.summary}</h5>
       <div className="row border" style={{ padding: '5px' }}>
         {reviewBody}
-        <a href="#" className="small" onClick={() => { handleViewMore(); }}>
+        <a href="#" className="small" onClick={(e) => { handleViewMore(e); }}>
           {viewMore}
         </a>
       </div>
@@ -85,7 +86,7 @@ const IndividualReview = (props) => {
       </div>
       <div className="row small">
         What this review helpful?
-        <a href="#" onClick={() => { handleHelpfulness(); }}>
+        <a href="#" onClick={(e) => { handleHelpfulness(e); }}>
         &nbsp;
           Yes
         &nbsp;
