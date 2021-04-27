@@ -22,7 +22,7 @@ const customStyles = {
 Modal.setAppElement('#app');
 
 const addAnswer = (props) => {
-  const { question, name, changeAnswerList, answerList } = props;
+  const { name, changeQuestionList, questionList } = props;
 
   const [modalIsOpen, setIsOpen] = useState(false);
   const [answer, changeAnswer] = useState('');

@@ -41,7 +41,11 @@ const QuestionList = () => {
           value="MORE ANSWERED QUESTIONS"
           onClick={moreQuestions}
         />
-        <AddQuestion />
+        <AddQuestion
+          name={productName}
+          changeQuestionList={changeQuestionList}
+          questionList={questionList}
+        />
       </div>
     </div>
   );
