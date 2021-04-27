@@ -37,8 +37,6 @@ const ReviewBreakDown = () => {
   const filterArray = (ratings) => {
     const filteredReviews = reviewMeta.reviewList.results.filter((review) => (
       ratings.indexOf(JSON.stringify(review.rating)) > -1));
-      console.log(filteredReviews);
-      console.log(ratings);
     reviewMeta.setReviewsArray(filteredReviews);
   };
 
@@ -62,7 +60,6 @@ const ReviewBreakDown = () => {
       filterArray(otherSelected);
     }
   };
-
 
   const currentFilter = selectedRating.length !== 5 && `Currently selected ratings: ${selectedRating}`;
 
