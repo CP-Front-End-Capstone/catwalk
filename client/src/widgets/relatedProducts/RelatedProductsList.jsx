@@ -16,7 +16,6 @@ function RelatedProductsList({
 }) {
   const reviewMeta = useContext(reviewContext);
   console.log(reviewMeta);
-  console.log('related list: ', products);
   // const [ratingAvg, setRatingAvg] = useState();
 
   // const relatedReviews = (review) => {
