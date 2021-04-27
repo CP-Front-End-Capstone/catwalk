@@ -44,14 +44,27 @@ const AddReview = () => {
   };
 
   const handleSubmit = () => {
-    console.log(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/product_id=${productId}&rating=${starRating}&summary=${reviewSummary}&body=${reviewBody}&recommend=${recommend}&name=${reviewName}&email=${reviewerEmail}&photos=${images}&characteristics=${characteristics}`);
+    console.log('this is what was submitted',
+      {
+        productid: productId,
+        rating: starRating,
+        summary: reviewSummary,
+        body: reviewBody,
+        recommend,
+        name: reviewName,
+        email: reviewerEmail,
+        photos: images,
+        characteristics,
+
+      },
+    );
   };
 
   const handleCharacteristicClick = (characteristic, id, value) => {
     characteristics.characteristic = { id, value };
   };
 
-  const uploadImages = images.length < 5 && <input type="file" className="small" accept="image/png, image/jpeg" onChange={(file) => { handleFileChange(file); }} />
+  const uploadImages = images.length < 5 && <input type="file" className="small" accept="image/png, image/jpeg" onChange={(file) => { handleFileChange(file); }} />;
 
   const remainingBody = bodyCount < 50 ? `Review must be a minimum of 50 characters. ${50 - bodyCount} characters remaining.` : `Characters remaining ${1000 - bodyCount}`;
 
