@@ -6,7 +6,7 @@ import QuestionList from '../client/src/widgets/qa/QuestionList.jsx';
 import qaContext from '../client/src/contexts/QaContext.js';
 import questionsData from './questionsData.js';
 
-it('renders without crashing', () => {
+it('renders question list with 4 questions', () => {
   const productId = questionsData.product_id;
   const productName = 'product name';
   const questions = questionsData.results;
@@ -27,6 +27,6 @@ it('renders without crashing', () => {
       <QuestionList />
     </qaContext.Provider>,
   );
-
-  expect(wrapper.find('ul').children()).to.have.lengthOf(items.length);
+  // console.log(wrapper.find('#questionlist'));
+  expect(wrapper.find('#questionlist').children()).toHaveLength(4);
 });
