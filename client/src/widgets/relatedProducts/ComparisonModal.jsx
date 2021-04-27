@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
@@ -5,9 +7,10 @@ import React, { useState } from 'react';
 import Modal from 'react-modal';
 import { Checkmark } from 'react-checkmark';
 
-Modal.setAppElement('#app');
+// Modal.setAppElement('#app');
 
 function ComparisonModal({ updateModal, product, currentProduct }) {
+  console.log(product);
   const customStyles = {
     content: {
       top: '50%',
@@ -16,13 +19,16 @@ function ComparisonModal({ updateModal, product, currentProduct }) {
       bottom: 'auto',
       marginRight: '-50%',
       transform: 'translate(-50%, -50%)',
-      width: '500px',
-      height: '300px',
+      width: '600px',
+      height: '400px',
       border: '1px solid black',
     },
   };
   return (
     <Modal isOpen onRequestClose={() => updateModal(false)} style={customStyles}>
+      <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={() => updateModal(false)}>
+        <span aria-hidden="true">&times;</span>
+      </button>
       <h1 className="modal-title lead">Comparing:</h1>
       <table className="table table-bordered table-hover">
         <thead className="thead-dark">
@@ -33,24 +39,34 @@ function ComparisonModal({ updateModal, product, currentProduct }) {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td><Checkmark size="small" color="#223344" /></td>
-            <td>Very stylish</td>
-            <td><Checkmark size="small" color="#223344" /></td>
-          </tr>
-          <tr>
-            <td />
-            <td>Not very cool</td>
-            <td><Checkmark size="small" color="#223344" /></td>
-          </tr>
-          <tr>
-            <td><Checkmark size="small" color="#223344" /></td>
-            <td>Pretty decent fabric</td>
-            <td />
-          </tr>
+          {currentProduct.features.map((feature, index) => (
+            <>
+              <tr key={index}>
+                <td>{feature.value}</td>
+                <td className="font-weight-bold">
+                  {feature.feature}
+                </td>
+                <td>{(product.features[index] && product.features[index].feature === feature.feature) ? product.features[index].value : null}</td>
+              </tr>
+            </>
+          ))}
+          {product.features.map((relatedFeature, itemIndex) => (
+            <>
+              {(currentProduct.features[itemIndex] && currentProduct.features[itemIndex].feature === relatedFeature.feature) ? null
+                : (
+                  <tr key={itemIndex}>
+                    <td />
+                    <td className="font-weight-bold">
+                      {relatedFeature.feature}
+                    </td>
+                    <td>{relatedFeature.value === null ? <Checkmark size="small" color="#223344" /> : relatedFeature.value}</td>
+                  </tr>
+                )}
+            </>
+          ))}
         </tbody>
       </table>
-
+      {/* {feature.feature === relatedFeature.feature ? <Checkmark size="small" color="#223344" /> : null} */}
     </Modal>
   );
 }
