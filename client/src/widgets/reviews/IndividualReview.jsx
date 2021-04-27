@@ -1,4 +1,8 @@
 /* eslint-disable import/extensions */
+<<<<<<< HEAD
+=======
+/* eslint-disable no-unused-vars */
+>>>>>>> 0f1387b8af5ed0b972800d1b79657d1c58acffc1
 /* eslint-disable no-console */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/destructuring-assignment */
