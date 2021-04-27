@@ -34,7 +34,6 @@ const ReviewBreakDown = () => {
 
   passStars.changeStarAvg(formattedAvg);
 
-
   const filterArray = (ratings) => {
     const filteredReviews = reviewMeta.reviewList.results.filter((review) => (
       ratings.indexOf(JSON.stringify(review.rating)) > -1));
@@ -132,6 +131,9 @@ const ReviewBreakDown = () => {
       </div>
 
     );
+  }
+  if (formattedAvg === 0) {
+    return 'There are no reviews at this time. Be first to review!';
   }
   return 'Review Breakdown is loading';
 };
