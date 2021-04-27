@@ -5,8 +5,6 @@ const ReviewPhotos = (props) => (
     const photoId = photo.id;
     const photoUrl = photo.url;
 
-    console.log(photoUrl);
-
     return (
 
       <div key={photoId}>
