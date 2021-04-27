@@ -21,7 +21,7 @@ const AddReview = () => {
   const [starRating, setRating] = useState(0);
   const [reviewSummary, setReviewSummary] = useState(null);
   const [reviewBody, setReviewBody] = useState(null);
-  const [images, setImages] = useState(null);
+  const [images, setImages] = useState([]);
   const selectedRating = starRating > 0 && ratings[starRating];
   const characteristics = {};
   const [reviewName, setReviewName] = useState(null);
@@ -47,6 +47,12 @@ const AddReview = () => {
     console.log(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/product_id=${productId}&rating=${starRating}&summary=${reviewSummary}&body=${reviewBody}&recommend=${recommend}&name=${reviewName}&email=${reviewerEmail}&photos=${images}&characteristics=${characteristics}`);
   };
 
+  const handleCharacteristicClick = (characteristic, id, value) => {
+    characteristics.characteristic = { id, value };
+  };
+
+  const uploadImages = images.length < 5 && <input type="file" className="small" accept="image/png, image/jpeg" onChange={(file) => { handleFileChange(file); }} />
+
   const remainingBody = bodyCount < 50 ? `Review must be a minimum of 50 characters. ${50 - bodyCount} characters remaining.` : `Characters remaining ${1000 - bodyCount}`;
 
   const fit = reviewMeta.reviewsMeta.characteristics.Fit
@@ -55,7 +61,7 @@ const AddReview = () => {
     <div className="col">Fit</div>
     <div className="col small">
       <div className="small">Runs Tight</div>
-      <input type="radio" name="fit" />
+      <input type="radio" name="fit" onClick={handleCharacteristicClick('Fit', reviewMeta.reviewsMeta.characteristics.Fit.id, 1)} />
     </div>
     <div className="col small">
       <div className="small">Slightly Tight</div>
@@ -289,11 +295,7 @@ const AddReview = () => {
           Upload up to 5 images of the product:
         </div>
         <div className="container small">
-          <input type="file" className="small" accept="image/png, image/jpeg" onChange={(file) => { handleFileChange(file); }} />
-          <input type="file" className="small" accept="image/png, image/jpeg" onChange={(file) => { handleFileChange(file); }}/>
-          <input type="file" className="small" accept="image/png, image/jpeg" onChange={(file) => { handleFileChange(file); }}/>
-          <input type="file" className="small" accept="image/png, image/jpeg" onChange={(file) => { handleFileChange(file); }}/>
-          <input type="file" className="small" accept="image/png, image/jpeg" onChange={(file) => { handleFileChange(file); }}/>
+          {uploadImages}
         </div>
       </div>
       <div className="row">

@@ -28,7 +28,7 @@ const ReviewBreakDown = () => {
     + (Number((reviewMeta.reviewsMeta.ratings[2])) * 2)
     + (Number((reviewMeta.reviewsMeta.ratings[1])))) / totalRatings;
 
-  const formattedAvg = Math.round(avgCalc * 10) / 10;
+  const formattedAvg = Math.round(avgCalc * 10) / 10 ? Math.round(avgCalc * 10) / 10 : 0;
 
   const passStars = useContext(productContext);
 
@@ -76,7 +76,7 @@ const ReviewBreakDown = () => {
 
   if (recommendPercent) {
     return (
-      <div className="container" style={{ padding: '10px' }}>
+      <div className="container" style={{ padding: '10px' }} key={reviewMeta.reviewsMeta.product_id}>
         <div className="row">
           <h1>
             {formattedAvg}
@@ -131,6 +131,9 @@ const ReviewBreakDown = () => {
       </div>
 
     );
+  }
+  if (formattedAvg === 0) {
+    return 'There are no reviews at this time. Be first to review!';
   }
   return 'Review Breakdown is loading';
 };

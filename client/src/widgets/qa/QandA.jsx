@@ -47,7 +47,6 @@ const QandA = () => {
           productId,
         }}
         >
-          <Search />
           <QuestionList />
         </qaContext.Provider>
       </div>
