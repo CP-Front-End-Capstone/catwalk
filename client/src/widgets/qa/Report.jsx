@@ -1,9 +1,11 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable react/prop-types */
 import React from 'react';
 import axios from 'axios';
 import config from '../../../../API/config.js';
 
 const Report = (props) => {
-  const { answer, answerList, changeAnswerList } = props;
+  const { answer, answers, changeAnswers } = props;
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -18,9 +20,14 @@ const Report = (props) => {
       },
     })
       .then((res) => {
-        answerList.forEach((answer, index) => {
-          console.log(answer, index);
-        });
+        const temp = answers.slice();
+        for (let i = 0; i < temp.length; i++) {
+          if (temp[i].id === answer.id) {
+            temp.splice(i, 1);
+            break;
+          }
+        }
+        changeAnswers(temp);
       })
       .catch((err) => {
         console.log('ERR', err);
