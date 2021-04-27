@@ -10,16 +10,9 @@ import AddAnswer from './AddAnswer.jsx';
 
 const Question = (props) => {
   const { question, name } = props;
+  const [answers, changeAnswers] = useState([]);
   const [answerList, changeAnswerList] = useState([]);
   const [showAll, changeShowAll] = useState(false);
-  const answers = [];
-  for (const id in question.answers) {
-    answers.push(question.answers[id]);
-  }
-
-  answers.sort((a, b) => (
-    b.helpfulness - a.helpfulness
-  ));
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -27,7 +20,18 @@ const Question = (props) => {
   };
 
   useEffect(() => {
-    if (!showAll) {
+    const temp = [];
+    for (const id in question.answers) {
+      temp.push(question.answers[id]);
+    }
+    temp.sort((a, b) => (
+      b.helpfulness - a.helpfulness
+    ));
+    changeAnswers(temp);
+  }, [question]);
+
+  useEffect(() => {
+    if (!showAll && answers.length > 0) {
       if (answers.length > 2) {
         const temp = [];
         for (let i = 0; i < 2; i++) {
@@ -35,9 +39,9 @@ const Question = (props) => {
             <Answer
               answer={answers[i]}
               key={answers[i].id}
-              answerList={answerList}
-              changeAnswerList={changeAnswerList}
-            />
+              answers={answers}
+              changeAnswers={changeAnswers}
+            />,
           );
         }
         temp.push(
@@ -57,8 +61,8 @@ const Question = (props) => {
           <Answer
             answer={answer}
             key={answer.id}
-            answerList={answerList}
-            changeAnswerList={changeAnswerList}
+            answers={answers}
+            changeAnswers={changeAnswers}
           />
         )));
       }
@@ -67,12 +71,12 @@ const Question = (props) => {
         <Answer
           answer={answer}
           key={answer.id}
-          answerList={answerList}
-          changeAnswerList={changeAnswerList}
+          answers={answers}
+          changeAnswers={changeAnswers}
         />
       )));
     }
-  }, [showAll]);
+  }, [showAll, answers]);
 
   return (
     <>
