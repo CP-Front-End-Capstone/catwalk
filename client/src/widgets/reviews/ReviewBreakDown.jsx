@@ -1,9 +1,10 @@
 /* eslint-disable import/extensions */
 import React, { useContext, useState } from 'react';
 import HSBar from 'react-horizontal-stacked-bar-chart';
-import StarRatings from 'react-star-ratings';
+// import StarRatings from 'react-star-ratings';
 import reviewContext from '../../contexts/ReviewContext';
 import { productContext } from '../../contexts/ProductContext.js';
+import Stars from '../../Stars.jsx';
 
 const ReviewBreakDown = () => {
   const review = useContext(reviewContext);
@@ -29,10 +30,6 @@ const ReviewBreakDown = () => {
     + (Number((product.reviewsMeta.ratings[1])))) / totalRatings;
 
   const formattedAvg = Math.round(avgCalc * 10) / 10 ? Math.round(avgCalc * 10) / 10 : 0;
-
-  // const passStars = useContext(productContext);
-
-  // passStars.changeStarAvg(formattedAvg);
 
   const filterArray = (ratings) => {
     const filteredReviews = review.reviewList.results.filter((rev) => (
@@ -79,15 +76,7 @@ const ReviewBreakDown = () => {
       <div className="container" style={{ padding: '10px' }} key={product.reviewsMeta.product_id}>
         <div className="row">
           <h1>
-            {formattedAvg}
-            {' '}
-            <StarRatings
-              rating={formattedAvg}
-              starRatedColor="black"
-              numberOfStars={5}
-              name="rating"
-              starDimension="30px"
-            />
+            <Stars />
           </h1>
         </div>
 
