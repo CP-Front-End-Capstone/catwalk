@@ -39,21 +39,19 @@ function RelatedProductsList({
   // };
 
   return (
-    <div className="container-fluid">
+    <div className="container">
       <div className="row">
         <Carousel itemsToShow={3} itemsToScroll={1}>
           {products.map((product, index) => (
-            <div className="col-sm-12 col-lg-10" key={product.id}>
-              <div className="card-group">
-                <div className="card">
-                  <RelatedProductsCard
-                    product={product}
-                    currentProduct={currentProduct}
-                    style={styles[index]}
-                    rating={rating}
-                    review={rating}
-                  />
-                </div>
+            <div className="card-deck p-3">
+              <div className="card w-25">
+                <RelatedProductsCard
+                  product={product}
+                  currentProduct={currentProduct}
+                  style={styles[index]}
+                  rating={rating}
+                  review={rating}
+                />
               </div>
             </div>
           ))}

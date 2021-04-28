@@ -13,7 +13,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import Carousel from 'react-elastic-carousel';
 import InnerImageZoom from 'react-inner-image-zoom';
-import '../../../../node_modules/react-inner-image-zoom/lib/InnerImageZoom/styles.css';
+// import '../../../../node_modules/react-inner-image-zoom/lib/InnerImageZoom/styles.css';
 import { productContext } from '../../contexts/ProductContext.js';
 import { styleContext } from '../../contexts/StyleContext.js';
 
