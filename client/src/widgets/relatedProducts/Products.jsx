@@ -56,14 +56,14 @@ function RelatedProducts() {
   if (products.length !== 0 && styles.length !== 0) {
     return (
       <div id="products">
-        <div className="container-fluid">
+        <div className="container">
           <h3 className="h4">Related Items:</h3>
           <reviewContext.Provider value={{ reviewsMeta }}>
             <RelatedProductsList products={products} styles={styles} rating={context.starAvg} currentProduct={context.product} />
           </reviewContext.Provider>
         </div>
-        <div className="container-fluid">
-          <h3 className="h4">My Outfit:</h3>
+        <div className="container">
+          <h3 className="h4">Your Outfit:</h3>
           <MyOutfitList currentProduct={context.product} styles={context.styles} />
         </div>
       </div>

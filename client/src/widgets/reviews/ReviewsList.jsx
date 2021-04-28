@@ -69,7 +69,7 @@ const ReviewsList = () => {
           {' '}
         </div>
         <div className="col-right">
-          <ReviewSearch/>
+          <ReviewSearch />
         </div>
       </h5>
       <div className="row bg-light h-75 overflow-auto border" style={{ padding: '10px' }}>

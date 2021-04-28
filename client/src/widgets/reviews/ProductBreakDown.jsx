@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
 import { StackedHorizontalBarChart } from 'react-stacked-horizontal-bar-chart';
 import reviewContext from '../../contexts/ReviewContext';
+import { productContext } from '../../contexts/ProductContext.js';
 
 const ProductBreakdown = () => {
   const reviewMeta = useContext(reviewContext);
-  const productDesc = reviewMeta.reviewsMeta.characteristics;
+  const review = useContext(productContext);
+  const productDesc = review.reviewsMeta.characteristics;
 
   const fitValue = (productDesc.Fit) && (
     <div className="container">
