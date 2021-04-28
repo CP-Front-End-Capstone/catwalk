@@ -172,7 +172,7 @@ function AddToCart() {
   }
   return (
     <div className="container mx-auto">
-      <div className="row mx-lg-5 d-inline-block bg-primary">
+      <div className="d-flex justify-content-md-around">
         <div
           className="dropdown"
         >
