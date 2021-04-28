@@ -52,7 +52,7 @@ const AddReview = () => {
       method: 'POST',
       url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews',
       data: {
-        product_id: productId,
+        product_id: Number(productId),
         rating: starRating,
         summary: reviewSummary,
         body: reviewBody,
@@ -69,7 +69,7 @@ const AddReview = () => {
       .then(() => {
         console.log('this is what was submitted',
           {
-            product_id: productId,
+            product_id: Number(productId),
             rating: starRating,
             summary: reviewSummary,
             body: reviewBody,
@@ -86,8 +86,22 @@ const AddReview = () => {
       });
   };
 
-  const handleCharacteristicClick = (characteristic, id, value) => {
-    characteristics[characteristic] = { id, value };
+  console.log('this is what was submitted',
+    {
+      product_id: Number(productId),
+      rating: starRating,
+      summary: reviewSummary,
+      body: reviewBody,
+      recommend,
+      name: reviewName,
+      email: reviewerEmail,
+      photos: images,
+      characteristics,
+
+    });
+
+  const handleCharacteristicClick = (id, value) => {
+    characteristics[id] = value;
   };
 
   const uploadImages = images.length < 5 && <input type="file" className="small" accept="image/png, image/jpeg" onChange={(file) => { handleFileChange(file); }} />;
@@ -109,23 +123,23 @@ const AddReview = () => {
       <div className="col">{name}</div>
       <div className="col small">
         <div className="small">{characteristicObj[name][0]}</div>
-        <input type="radio" name={name} onClick={handleCharacteristicClick(name, reviewMeta.reviewsMeta.characteristics[name].id, 1)} />
+        <input type="radio" name={name} onClick={() => { handleCharacteristicClick(reviewMeta.reviewsMeta.characteristics[name].id, 1); }} />
       </div>
       <div className="col small">
         <div className="small">{characteristicObj[name][1]}</div>
-        <input type="radio" name={name} onClick={handleCharacteristicClick(name, reviewMeta.reviewsMeta.characteristics[name].id, 2)} />
+        <input type="radio" name={name} onClick={() => {handleCharacteristicClick(reviewMeta.reviewsMeta.characteristics[name].id, 2); } } />
       </div>
       <div className="col small">
         <div className="small">{characteristicObj[name][2]}</div>
-        <input type="radio" name={name} onClick={handleCharacteristicClick(name, reviewMeta.reviewsMeta.characteristics[name].id, 3)} />
+        <input type="radio" name={name} onClick={() => {handleCharacteristicClick(reviewMeta.reviewsMeta.characteristics[name].id, 3)}} />
       </div>
       <div className="col small">
         <div className="small">{characteristicObj[name][3]}</div>
-        <input type="radio" name={name} onClick={handleCharacteristicClick(name, reviewMeta.reviewsMeta.characteristics[name].id, 4)} />
+        <input type="radio" name={name} onClick={() => {handleCharacteristicClick(reviewMeta.reviewsMeta.characteristics[name].id, 4)}} />
       </div>
       <div className="col small">
         <div className="small">{characteristicObj[name][4]}</div>
-        <input type="radio" name={name} onClick={handleCharacteristicClick(name, reviewMeta.reviewsMeta.characteristics[name].id, 5)} />
+        <input type="radio" name={name} onClick={() => {handleCharacteristicClick(reviewMeta.reviewsMeta.characteristics[name].id, 5)}} />
       </div>
     </div>
     );
@@ -164,9 +178,9 @@ const AddReview = () => {
       <div className="row">
         Would you recommend this product?
         &nbsp;
-        <button type="button" className="btn btn-link small" onClick={() => { setRecommend('Yes'); }}>Yes</button>
+        <button type="button" className="btn btn-link small" onClick={() => { setRecommend(true); }}>Yes</button>
         &nbsp;
-        <button type="button" className="btn btn-link small" onClick={() => { setRecommend('No'); }}>No</button>
+        <button type="button" className="btn btn-link small" onClick={() => { setRecommend(false); }}>No</button>
       </div>
       <div className="container">
         Please rate the following about the product:
