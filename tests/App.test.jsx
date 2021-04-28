@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable import/extensions */
@@ -12,12 +13,21 @@
 // console.log("INNERHTML:",body.innerHtml);
 
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { shallow } from 'enzyme';
+import config from './testconfig.js';
 import App from '../client/src/App.jsx';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  console.log(true);
-  ReactDOM.unmountComponentAtNode(div);
+// it('renders without crashing', () => {
+//   const div = document.createElement('div');
+//   ReactDOM.render(<App />, div);
+//   console.log(true);
+//   ReactDOM.unmountComponentAtNode(div);
+// });
+
+const wrapper = shallow(<App />);
+
+describe('App Component', () => {
+  it('renders without exploding', () => {
+    expect(wrapper).toHaveLength(1);
+  });
 });
