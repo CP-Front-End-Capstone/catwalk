@@ -10,6 +10,7 @@ import reviewContext from '../../contexts/ReviewContext';
 import api from '../../../../API/helper';
 import ReviewBreakDown from './ReviewBreakDown.jsx';
 import AddReview from './AddReview.jsx';
+import ReviewSearch from './ReviewSearch.jsx';
 
 const ReviewsList = () => {
   const reviewsInfo = useContext(reviewContext);
@@ -43,9 +44,11 @@ const ReviewsList = () => {
   return (
     <div className="container">
       <h5 className="row">
-        {displayedReviews.length}
-        {' '}
-        reviews, sorted by&nbsp;
+        <div>
+          {displayedReviews.length}
+          {' '}
+          reviews, sorted by&nbsp;
+        </div>
         <div className="dropdown">
           <u
             className="dropdown-toggle"
@@ -61,6 +64,12 @@ const ReviewsList = () => {
             <a className="dropdown-item" href="#!" onClick={() => { handleSortBy('relevant'); }}>Relevant</a>
             <a className="dropdown-item" href="#!" onClick={() => { handleSortBy('helpful'); }}>Helpful</a>
           </div>
+        </div>
+        <div className="col">
+          {' '}
+        </div>
+        <div className="col-right">
+          <ReviewSearch/>
         </div>
       </h5>
       <div className="row bg-light h-75 overflow-auto border" style={{ padding: '10px' }}>
