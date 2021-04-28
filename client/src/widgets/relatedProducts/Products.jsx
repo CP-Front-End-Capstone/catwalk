@@ -63,7 +63,7 @@ function RelatedProducts() {
           </reviewContext.Provider>
         </div>
         <div className="container-fluid">
-          <h3 className="h4">My Outfit:</h3>
+          <h3 className="h4">Your Outfit:</h3>
           <MyOutfitList currentProduct={context.product} styles={context.styles} />
         </div>
       </div>
