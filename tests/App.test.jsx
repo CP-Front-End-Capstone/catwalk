@@ -26,7 +26,7 @@ import App from '../client/src/App.jsx';
 
 const wrapper = shallow(<App />);
 
-describe('(Component) MyComponent', () => {
+describe('App Component', () => {
   it('renders without exploding', () => {
     expect(wrapper).toHaveLength(1);
   });
