@@ -23,14 +23,6 @@ const ReviewBreakDown = () => {
   ));
   const largestCount = Math.max(...numbersArray);
 
-  const avgCalc = ((Number((product.reviewsMeta.ratings[5])) * 5)
-    + (Number((product.reviewsMeta.ratings[4])) * 4)
-    + (Number((product.reviewsMeta.ratings[3])) * 3)
-    + (Number((product.reviewsMeta.ratings[2])) * 2)
-    + (Number((product.reviewsMeta.ratings[1])))) / totalRatings;
-
-  const formattedAvg = Math.round(avgCalc * 10) / 10 ? Math.round(avgCalc * 10) / 10 : 0;
-
   const filterArray = (ratings) => {
     const filteredReviews = review.reviewList.results.filter((rev) => (
       ratings.indexOf(JSON.stringify(rev.rating)) > -1));
@@ -121,7 +113,7 @@ const ReviewBreakDown = () => {
 
     );
   }
-  if (formattedAvg === 0) {
+  if (!totalRatings) {
     return 'There are no reviews at this time. Be first to review!';
   }
   return 'Review Breakdown is loading';

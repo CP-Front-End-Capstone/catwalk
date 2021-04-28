@@ -20,12 +20,10 @@ import Overview from './widgets/overview/Overview.jsx';
 import RelatedProducts from './widgets/relatedProducts/Products.jsx';
 
 const App = (props) => {
-  const [productId, changeProductId] = useState('18078');
+  const [productId, changeProductId] = useState('18083');
   const [product, changeProduct] = useState();
   const [styles, changeStyles] = useState();
   const [reviewsMeta, setReviewsMeta] = useState();
-
-  // const [starAvg, changeStarAvg] = useState();
 
   useEffect(() => {
     api.fetchEndpoint(`/products/${productId}`)
@@ -44,6 +42,7 @@ const App = (props) => {
         console.log('Error fetching data', error);
       });
   }, [productId]);
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">

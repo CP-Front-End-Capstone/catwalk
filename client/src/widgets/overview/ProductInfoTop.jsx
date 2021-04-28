@@ -8,13 +8,14 @@ import { styleContext } from '../../contexts/StyleContext.js';
 import Stars from '../../Stars.jsx';
 
 function ProductInfoTop(props) {
-  const { product } = useContext(productContext);
+  const product = useContext(productContext);
   const { currentStyle, revMeta } = useContext(styleContext);
 
-  if (currentStyle && revMeta) {
+  if (currentStyle && product.reviewsMeta) {
+    const stars = Object.keys(product.reviewsMeta.ratings).length > 0 ? <Stars /> : 'There are no reviews at this time';
     return (
       <div>
-        <Stars />
+        {stars}
         <h4>{product.category}</h4>
         <h1>{product.name}</h1>
         <h5>
