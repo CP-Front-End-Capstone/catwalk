@@ -7,7 +7,13 @@ const Search = (props) => {
 
   const handleChange = (e) => {
     e.preventDefault();
-    changeQuery(e.target.value);
+    if (e.target.value.length === 39) { // new query
+      changeQuery(e.target.value.slice(38));
+    } else if (e.target.value.length === 37) { // protection from backspace on new query
+      document.getElementById('search').value = 'Have a question? Search for answers...';
+    } else { //continued new query
+      changeQuery(e.target.value);
+    }
   };
 
   useEffect(() => {
@@ -29,17 +35,7 @@ const Search = (props) => {
           className="form-control"
           onChange={handleChange}
           value={query !== '' ? query : 'Have a question? Search for answers...'}
-          // readOnly=""
-          onFocus={() => {
-            if (query === '') {
-              document.getElementById('search').value = '';
-            }
-          }}
-          onBlur={() => {
-            if (query === '') {
-              document.getElementById('search').value = 'Have a question? Search for answers...';
-            }
-          }}
+          // ternary reset query on full delete by user
         />
       </div>
       <div className="col-1">
