@@ -11,7 +11,7 @@ const Search = (props) => {
       changeQuery(e.target.value.slice(38));
     } else if (e.target.value.length === 37) { // protection from backspace on new query
       document.getElementById('search').value = 'Have a question? Search for answers...';
-    } else { //continued new query
+    } else { // continued new query
       changeQuery(e.target.value);
     }
   };

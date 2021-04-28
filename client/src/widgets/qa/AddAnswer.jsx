@@ -48,39 +48,7 @@ const addAnswer = (props) => {
       email,
       photos,
     }
-    axios({
-      method: 'POST',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${question.question_id}/answers`,
-      data: newAnswer,
-      headers: {
-        Authorization: config.TOKEN,
-      },
-    })
-      .then((res) => {
-        changeAnswer('');
-        changeNickname('');
-        changeEmail('');
-        changePhotos([]);
-        axios({
-          method: 'GET',
-          url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${question.question_id}/answers?count=100`,
-          headers: {
-            Authorization: config.TOKEN,
-          },
-        })
-          .then((newList) => {
-            changeAnswerList(newList.data.results.map((ans) => (
-              <Answer answer={ans} key={ans.answer_id} />
-            )));
-          })
-          .catch((err) => {
-            console.log('Error getting new answer list', err);
-          });
-      })
-      .catch((err) => {
-        console.log('ERROR: ', err);
-      });
-    setIsOpen(false);
+    if (validate(newAnswer))
   };
   const updateAnswer = (e) => {
     e.preventDefault();
@@ -153,5 +121,12 @@ const addAnswer = (props) => {
     </>
   );
 };
+
+const validate = (answer) => {
+  if( answer.body === '' || answer.name === '' ) {
+    return false;
+  }
+  return true;
+}
 
 export default addAnswer;
