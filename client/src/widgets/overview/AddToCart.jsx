@@ -168,7 +168,7 @@ function AddToCart() {
   }
   return (
     <div className="container mx-auto">
-      <div className="row d-flex justify-content-between">
+      <div className="row mx-lg-5 d-inline-block bg-primary">
         <div className="dropdown">
           <button
             className="btn btn-primary dropdown-toggle btn-large"

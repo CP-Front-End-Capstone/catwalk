@@ -38,6 +38,7 @@ const App = (props) => {
         console.log('Error fetching data', error);
       });
   }, [productId]);
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
