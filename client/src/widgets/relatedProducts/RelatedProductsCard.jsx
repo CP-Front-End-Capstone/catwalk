@@ -12,7 +12,7 @@ import StarRatings from 'react-star-ratings';
 import ComparisonModal from './ComparisonModal.jsx';
 
 function RelatedProductsCard({
-  product, style, rating, currentProduct, review,
+  product, style, rating, currentProduct,
 }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   return (
@@ -39,14 +39,25 @@ function RelatedProductsCard({
           </h6>
         </div>
         <div className="card-subtitle">
-          <StarRatings
-            rating={review}
-            starRatedColor="black"
-            numberOfStars={5}
-            name="rating"
-            starDimension="15px"
-            starSpacing="2px"
-          />
+          {rating ? (
+            <StarRatings
+              rating={rating}
+              starRatedColor="black"
+              numberOfStars={5}
+              name="rating"
+              starDimension="15px"
+              starSpacing="2px"
+            />
+          ) : (
+            <StarRatings
+              rating={0}
+              starRatedColor="black"
+              numberOfStars={5}
+              name="rating"
+              starDimension="15px"
+              starSpacing="2px"
+            />
+          )}
         </div>
       </div>
     </div>
