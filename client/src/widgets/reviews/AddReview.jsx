@@ -7,8 +7,11 @@
 /* eslint-disable import/extensions */
 import React, { useContext, useState } from 'react';
 import StarRatings from 'react-star-ratings';
+import axios from 'axios';
 import { productContext } from '../../contexts/ProductContext.js';
 import reviewContext from '../../contexts/ReviewContext';
+
+const config = require('../../../../API/config.js');
 
 const AddReview = () => {
   const product = useContext(productContext);
@@ -43,10 +46,13 @@ const AddReview = () => {
     setBodyCount(input.length);
   };
 
-  const handleSubmit = () => {
-    console.log('this is what was submitted',
-      {
-        productid: productId,
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios({
+      method: 'POST',
+      url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews',
+      data: {
+        product_id: productId,
         rating: starRating,
         summary: reviewSummary,
         body: reviewBody,
@@ -55,208 +61,76 @@ const AddReview = () => {
         email: reviewerEmail,
         photos: images,
         characteristics,
+      },
+      headers: {
+        Authorization: config.TOKEN,
+      },
+    })
+      .then(() => {
+        console.log('this is what was submitted',
+          {
+            product_id: productId,
+            rating: starRating,
+            summary: reviewSummary,
+            body: reviewBody,
+            recommend,
+            name: reviewName,
+            email: reviewerEmail,
+            photos: images,
+            characteristics,
 
+          });
+      })
+      .catch((err) => {
+        console.log('error posting review to API', err);
       });
   };
 
   const handleCharacteristicClick = (characteristic, id, value) => {
-    characteristics.characteristic = { id, value };
+    characteristics[characteristic] = { id, value };
   };
 
   const uploadImages = images.length < 5 && <input type="file" className="small" accept="image/png, image/jpeg" onChange={(file) => { handleFileChange(file); }} />;
 
   const remainingBody = bodyCount < 50 ? `Review must be a minimum of 50 characters. ${50 - bodyCount} characters remaining.` : `Characters remaining ${1000 - bodyCount}`;
 
+  const characteristicObj = {
+    Fit: ['Runs Tight', 'Slightly Tight', 'Perfect', 'Slightly Long', 'Runs Long'],
+    Length: ['Runs Short', 'Slightly Short', 'Perfect', 'Slightly Long', 'Runs Long'],
+    Quality: ['Poor', 'Below Average', 'What I Expected', 'Pretty Great', 'Perfect'],
+    Comfort: ['Uncomfortable', 'Slightly Uncomfortable', 'Ok', 'Comfortable', 'Perfect'],
+    Width: ['Too narrow', 'Slight Narrow', 'Perfect', 'Slightly Wide', 'Too Wide'],
+    Size: ['A Size too Small', '1/2 Size too Small', 'Perfect', '1/2 Size too Big', 'A Size too Big'],
+  };
+
   const createCharacteristic = (name) => {
     const charact = reviewMeta.reviewsMeta.characteristics[name] && (
     <div className="row small">
       <div className="col">{name}</div>
       <div className="col small">
-        <div className="small">Runs Tight</div>
-        <input type="radio" name="fit" onClick={handleCharacteristicClick('Fit', reviewMeta.reviewsMeta.characteristics.Fit.id, 1)} />
+        <div className="small">{characteristicObj[name][0]}</div>
+        <input type="radio" name={name} onClick={handleCharacteristicClick(name, reviewMeta.reviewsMeta.characteristics[name].id, 1)} />
       </div>
       <div className="col small">
-        <div className="small">Slightly Tight</div>
-        <input type="radio" name="fit" />
+        <div className="small">{characteristicObj[name][1]}</div>
+        <input type="radio" name={name} onClick={handleCharacteristicClick(name, reviewMeta.reviewsMeta.characteristics[name].id, 2)} />
       </div>
       <div className="col small">
-        <div className="small">Perfect</div>
-        <input type="radio" name="fit" />
+        <div className="small">{characteristicObj[name][2]}</div>
+        <input type="radio" name={name} onClick={handleCharacteristicClick(name, reviewMeta.reviewsMeta.characteristics[name].id, 3)} />
       </div>
       <div className="col small">
-        <div className="small">Slightly Long</div>
-        <input type="radio" name="fit" />
+        <div className="small">{characteristicObj[name][3]}</div>
+        <input type="radio" name={name} onClick={handleCharacteristicClick(name, reviewMeta.reviewsMeta.characteristics[name].id, 4)} />
       </div>
       <div className="col small">
-        <div className="small">Runs Long</div>
-        <input type="radio" name="fit" />
+        <div className="small">{characteristicObj[name][4]}</div>
+        <input type="radio" name={name} onClick={handleCharacteristicClick(name, reviewMeta.reviewsMeta.characteristics[name].id, 5)} />
       </div>
     </div>
     );
     return charact;
   };
-
-  const fit = reviewMeta.reviewsMeta.characteristics.Fit
-  && (
-  <div className="row small">
-    <div className="col">Fit</div>
-    <div className="col small">
-      <div className="small">Runs Tight</div>
-      <input type="radio" name="fit" onClick={handleCharacteristicClick('Fit', reviewMeta.reviewsMeta.characteristics.Fit.id, 1)} />
-    </div>
-    <div className="col small">
-      <div className="small">Slightly Tight</div>
-      <input type="radio" name="fit" />
-    </div>
-    <div className="col small">
-      <div className="small">Perfect</div>
-      <input type="radio" name="fit" />
-    </div>
-    <div className="col small">
-      <div className="small">Slightly Long</div>
-      <input type="radio" name="fit" />
-    </div>
-    <div className="col small">
-      <div className="small">Runs Long</div>
-      <input type="radio" name="fit" />
-    </div>
-  </div>
-  );
-
-  const length = reviewMeta.reviewsMeta.characteristics.Length
-  && (
-  <div className="row small">
-    <div className="col">Length</div>
-    <div className="col small">
-      <div className="small">Runs Short</div>
-      <input type="radio" name="length" />
-    </div>
-    <div className="col small">
-      <div className="small">Slightly Short</div>
-      <input type="radio" name="length" />
-    </div>
-    <div className="col small">
-      <div className="small">Perfect</div>
-      <input type="radio" name="length" />
-    </div>
-    <div className="col small">
-      <div className="small">Slightly Long</div>
-      <input type="radio" name="length" />
-    </div>
-    <div className="col small">
-      <div className="small">Runs Long</div>
-      <input type="radio" name="length" />
-    </div>
-  </div>
-  );
-
-  const size = reviewMeta.reviewsMeta.characteristics.Size
-  && (
-  <div className="row small">
-    <div className="col">Size</div>
-    <div className="col small">
-      <div className="small">A Size too Small</div>
-      <input type="radio" name="size" />
-    </div>
-    <div className="col small">
-      <div className="small">1/2 Size too Small</div>
-      <input type="radio" name="size" />
-    </div>
-    <div className="col small">
-      <div className="small">Perfect</div>
-      <input type="radio" name="size" />
-    </div>
-    <div className="col small">
-      <div className="small">1/2 Size too Big</div>
-      <input type="radio" name="size" />
-    </div>
-    <div className="col small">
-      <div className="small">A Size too Big</div>
-      <input type="radio" name="size" />
-    </div>
-  </div>
-  );
-
-  const comfort = reviewMeta.reviewsMeta.characteristics.Comfort
-  && (
-  <div className="row small">
-    <div className="col">Comfort</div>
-    <div className="col small">
-      <div className="small">Uncomfortable</div>
-      <input type="radio" name="comfort" />
-    </div>
-    <div className="col small">
-      <div className="small">Slightly Uncomfortable</div>
-      <input type="radio" name="comfort" />
-    </div>
-    <div className="col small">
-      <div className="small">Ok</div>
-      <input type="radio" name="comfort" />
-    </div>
-    <div className="col small">
-      <div className="small">Comfortable</div>
-      <input type="radio" name="comfort" />
-    </div>
-    <div className="col small">
-      <div className="small">Perfect</div>
-      <input type="radio" name="comfort" />
-    </div>
-  </div>
-  );
-
-  const width = reviewMeta.reviewsMeta.characteristics.Width
-  && (
-  <div className="row small">
-    <div className="col">Width</div>
-    <div className="col small">
-      <div className="small">Too Narrow</div>
-      <input type="radio" name="width" />
-    </div>
-    <div className="col small">
-      <div className="small">Slightly Narrow</div>
-      <input type="radio" name="width" />
-    </div>
-    <div className="col small">
-      <div className="small">Perfect</div>
-      <input type="radio" name="width" />
-    </div>
-    <div className="col small">
-      <div className="small">Slightly Wide</div>
-      <input type="radio" name="width" />
-    </div>
-    <div className="col small">
-      <div className="small">Too Wide</div>
-      <input type="radio" name="width" />
-    </div>
-  </div>
-  );
-
-  const quality = reviewMeta.reviewsMeta.characteristics.Quality
-  && (
-  <div className="row small">
-    <div className="col">Quality</div>
-    <div className="col small">
-      <div className="small">Poor</div>
-      <input type="radio" name="quality" />
-    </div>
-    <div className="col small">
-      <div className="small">Below Average</div>
-      <input type="radio" name="quality" />
-    </div>
-    <div className="col small">
-      <div className="small">As Expected</div>
-      <input type="radio" name="quality" />
-    </div>
-    <div className="col small">
-      <div className="small">Pretty Great</div>
-      <input type="radio" name="quality" />
-    </div>
-    <div className="col small">
-      <div className="small">Perfect</div>
-      <input type="radio" name="quality" />
-    </div>
-  </div>
-  );
 
   return (
     <div className="container">
@@ -297,22 +171,22 @@ const AddReview = () => {
       <div className="container">
         Please rate the following about the product:
         <div className="row">
-          {size}
+          {createCharacteristic('Size')}
         </div>
         <div className="row">
-          {width}
+          {createCharacteristic('Width')}
         </div>
         <div className="row">
-          {comfort}
+          {createCharacteristic('Comfort')}
         </div>
         <div className="row">
-          {quality}
+          {createCharacteristic('Quality')}
         </div>
         <div className="row">
-          {length}
+          {createCharacteristic('Length')}
         </div>
         <div className="row">
-          {fit}
+          {createCharacteristic('Fit')}
         </div>
       </div>
       <div className="row">
@@ -348,7 +222,7 @@ const AddReview = () => {
         <input placeholder="This is only for our records and will not appear on review" className="w-100 small" onChange={(e) => { setReviewerEmail(e.target.value); }} />
       </div>
       <div className="modal-footer">
-        <button type="button" className="btn btn-primary" onClick={handleSubmit}>Submit Review</button>
+        <button type="button" className="btn btn-primary" onClick={(e) => { handleSubmit(e); }}>Submit Review</button>
       </div>
 
     </div>
