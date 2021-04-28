@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon server/index.js",
     "react-dev": "webpack --config ./webpack.config.js --mode development --watch",
-    "test": "jest"
+    "test": "jest",
+    "testQL": "jest -t 'QuestionList.test.jsx'"
   },
   "repository": {
     "type": "git",
@@ -84,6 +85,9 @@
     ],
     "setupFilesAfterEnv": [
       "./node_modules/jest-enzyme/lib/index.js"
-    ]
+    ],
+    "moduleNameMapper": {
+      "\\.(css|less)$": "identity-obj-proxy"
+    }
   }
 }
