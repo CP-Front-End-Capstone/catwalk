@@ -20,7 +20,7 @@ import Overview from './widgets/overview/Overview.jsx';
 import RelatedProducts from './widgets/relatedProducts/Products.jsx';
 
 const App = (props) => {
-  const [productId, changeProductId] = useState('18083');
+  const [productId, changeProductId] = useState('18078');
   const [product, changeProduct] = useState();
   const [styles, changeStyles] = useState();
   const [reviewsMeta, setReviewsMeta] = useState();

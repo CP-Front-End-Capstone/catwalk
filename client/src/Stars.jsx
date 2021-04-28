@@ -12,7 +12,7 @@ import api from '../../API/helper';
 const Stars = (props) => {
   const product = useContext(productContext);
 
-  if (product.reviewsMeta) {
+  if (product.reviewsMeta && Object.keys(product.reviewsMeta.ratings).length > 0) {
     const totalRatings = Number(product.reviewsMeta.recommended.true)
     + Number(product.reviewsMeta.recommended.false);
 
@@ -48,7 +48,11 @@ const Stars = (props) => {
       </div>
     );
   }
-  return <h1>Loading Stars</h1>;
+  return (
+    <h1>
+      &nbsp;
+    </h1>
+  );
 };
 
 export default Stars;

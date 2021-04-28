@@ -12,10 +12,9 @@ function ProductInfoTop(props) {
   const { currentStyle, revMeta } = useContext(styleContext);
 
   if (currentStyle && product.reviewsMeta) {
-    const stars = Object.keys(product.reviewsMeta.ratings).length > 0 ? <Stars /> : 'There are no reviews at this time';
     return (
       <div>
-        {stars}
+        <Stars />
         <h4>{product.category}</h4>
         <h1>{product.name}</h1>
         <h5>
