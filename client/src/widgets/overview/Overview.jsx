@@ -83,8 +83,8 @@ function Overview(props) {
           styles, currentStyle, currentImage, setImage, setStyle, imageView, setImageView, currentPhotoIndex, setCurrentPhotoIndex, revMeta,
         }}
         >
-          <div className="row d-flex justify-content-between">
-            <div className="col">
+          <div className="row mx-md-n5">
+            <div className="col px-md-5">
               <ImageGallery />
             </div>
             <div className="col d-flex align-content-around flex-wrap">

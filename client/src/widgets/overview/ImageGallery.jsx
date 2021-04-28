@@ -38,7 +38,9 @@ function ImageGallery(props) {
               <img
                 className="d-block w-100"
                 style={{
-                  minHeight: '690px',
+                  minHeight: '500px',
+                  maxHeight: '500px',
+                  maxWidth: '500px',
                   cursor: 'zoom-in',
                 }}
                 src={photo.url}
@@ -69,7 +71,7 @@ function ImageGallery(props) {
             position: 'absolute',
             top: '10px',
             left: '0px',
-            height: '600px',
+            height: '400px',
             maxWidth: '100px',
             width: '100px',
             border: 'none',
@@ -85,8 +87,8 @@ function ImageGallery(props) {
                 style={
                 {
                   maxWidth: '100px',
-                  height: '75px',
-                  marginBottom: '20px',
+                  height: '50px',
+                  marginBottom: '10px',
                   overflow: 'hidden',
                   display: 'block',
                 }

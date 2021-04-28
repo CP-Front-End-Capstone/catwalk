@@ -35,15 +35,22 @@ function Styles(props) {
             {currentStyle.name}
           </h5>
         </div>
-        <div className="row d-flex align-content-around flex-wrap row-cols-4">
-          {styles.map((style) => (
+        <div className="row row-cols-4">
+          {styles.map((style1) => (
 
             <img
-              className="img-thumbnail m-1"
-              key={style.style_id}
-              src={style.photos[0].thumbnail_url}
+              className="col"
+              style={
+                {
+                  maxWidth: '100px',
+                  height: '75px',
+                  marginBottom: '10px',
+                }
+              }
+              key={style1.style_id}
+              src={style1.photos[0].thumbnail_url}
               alt="Thumbnail image"
-              onClick={() => { handleClick(style, style.photos[0].url); }}
+              onClick={() => { handleClick(style1, style1.photos[0].url); }}
             />
 
           ))}
