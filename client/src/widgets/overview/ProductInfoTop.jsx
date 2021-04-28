@@ -5,13 +5,13 @@
 import React, { useContext } from 'react';
 import { productContext } from '../../contexts/ProductContext.js';
 import { styleContext } from '../../contexts/StyleContext.js';
-import Stars from './Stars.jsx';
+import Stars from '../../Stars.jsx';
 
 function ProductInfoTop(props) {
-  const { product } = useContext(productContext);
+  const product = useContext(productContext);
   const { currentStyle, revMeta } = useContext(styleContext);
 
-  if (currentStyle && revMeta) {
+  if (currentStyle && product.reviewsMeta) {
     return (
       <div>
         <Stars />
