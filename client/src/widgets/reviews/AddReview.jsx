@@ -15,7 +15,6 @@ const config = require('../../../../API/config.js');
 
 const AddReview = () => {
   const product = useContext(productContext);
-  const reviewMeta = useContext(reviewContext);
   const ratings = {
     1: 'Poor', 2: 'Fair', 3: 'Average', 4: 'Good', 5: 'Great',
   };
@@ -104,28 +103,28 @@ const AddReview = () => {
   };
 
   const createCharacteristic = (name) => {
-    const charact = reviewMeta.reviewsMeta.characteristics[name] && (
+    const charact = product.reviewsMeta.characteristics[name] && (
     <div className="row small">
       <div className="col">{name}</div>
       <div className="col small">
         <div className="small">{characteristicObj[name][0]}</div>
-        <input type="radio" name={name} onClick={() => { handleCharacteristicClick(reviewMeta.reviewsMeta.characteristics[name].id, 1); }} />
+        <input type="radio" name={name} onClick={() => { handleCharacteristicClick(product.reviewsMeta.characteristics[name].id, 1); }} />
       </div>
       <div className="col small">
         <div className="small">{characteristicObj[name][1]}</div>
-        <input type="radio" name={name} onClick={() => {handleCharacteristicClick(reviewMeta.reviewsMeta.characteristics[name].id, 2); } } />
+        <input type="radio" name={name} onClick={() => { handleCharacteristicClick(product.reviewsMeta.characteristics[name].id, 2); }} />
       </div>
       <div className="col small">
         <div className="small">{characteristicObj[name][2]}</div>
-        <input type="radio" name={name} onClick={() => {handleCharacteristicClick(reviewMeta.reviewsMeta.characteristics[name].id, 3)}} />
+        <input type="radio" name={name} onClick={() => { handleCharacteristicClick(product.reviewsMeta.characteristics[name].id, 3); }} />
       </div>
       <div className="col small">
         <div className="small">{characteristicObj[name][3]}</div>
-        <input type="radio" name={name} onClick={() => {handleCharacteristicClick(reviewMeta.reviewsMeta.characteristics[name].id, 4)}} />
+        <input type="radio" name={name} onClick={() => { handleCharacteristicClick(product.reviewsMeta.characteristics[name].id, 4); }} />
       </div>
       <div className="col small">
         <div className="small">{characteristicObj[name][4]}</div>
-        <input type="radio" name={name} onClick={() => {handleCharacteristicClick(reviewMeta.reviewsMeta.characteristics[name].id, 5)}} />
+        <input type="radio" name={name} onClick={() => { handleCharacteristicClick(product.reviewsMeta.characteristics[name].id, 5); }} />
       </div>
     </div>
     );
