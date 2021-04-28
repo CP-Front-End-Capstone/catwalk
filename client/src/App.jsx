@@ -23,6 +23,8 @@ const App = (props) => {
   const [productId, changeProductId] = useState('18078');
   const [product, changeProduct] = useState();
   const [styles, changeStyles] = useState();
+  const [reviewsMeta, setReviewsMeta] = useState();
+
   // const [starAvg, changeStarAvg] = useState();
 
   useEffect(() => {
@@ -32,6 +34,10 @@ const App = (props) => {
         api.fetchEndpoint(`/products/${productId}/styles`)
           .then((stylesData) => {
             changeStyles(stylesData.results);
+            api.fetchEndpoint(`/reviews/meta/?product_id=${productId}`)
+              .then((reviewMeta) => {
+                setReviewsMeta(reviewMeta);
+              });
           });
       })
       .catch((error) => {
@@ -54,7 +60,7 @@ const App = (props) => {
       </nav>
       <div>
         <productContext.Provider value={{
-          product, styles, productId, changeProductId,
+          product, styles, productId, changeProductId, reviewsMeta,
         }}
         >
           <Overview />
