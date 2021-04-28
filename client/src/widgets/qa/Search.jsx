@@ -28,8 +28,8 @@ const Search = (props) => {
 
   return (
     <div className="row p-1">
-      <div className="col-11">
-        <input 
+      <div className="col">
+        <input
           type="text"
           id="search"
           className="form-control"
@@ -37,9 +37,6 @@ const Search = (props) => {
           value={query !== '' ? query : 'Have a question? Search for answers...'}
           // ternary reset query on full delete by user
         />
-      </div>
-      <div className="col-1">
-        Q
       </div>
     </div>
   )

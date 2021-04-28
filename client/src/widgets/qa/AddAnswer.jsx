@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Modal from 'react-modal';
 import axios from 'axios';
 import Answer from './Answer.jsx';
+import validate from './helpers.js';
 
 const config = require('../../../../API/config.js');
 
@@ -24,7 +25,9 @@ const customStyles = {
 
 const addAnswer = (props) => {
   const {
-    question, name, changeAnswerList, answerList,
+    question,
+    name,
+    changeAnswerList,
   } = props;
 
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -60,7 +63,7 @@ const addAnswer = (props) => {
           Authorization: config.TOKEN,
         },
       })
-        .then((res) => {
+        .then(() => {
           changeAnswer('');
           changeNickname('');
           changeEmail('');
@@ -107,7 +110,8 @@ const addAnswer = (props) => {
   const updatePhotos = (e) => {
     e.preventDefault();
     console.log(e.target.value);
-    changePhotos(e.target.value);
+    changePhotos(photos.concat(e.target.files));
+    console.log(e.target.files);
   };
 
   return (
@@ -155,7 +159,8 @@ const addAnswer = (props) => {
           <br />
           <label htmlFor="photos">
             Photos: (optional)
-            <input type="file" name="photos" onChange={updatePhotos} required />
+            <input type="file" name="photos" onChange={updatePhotos} required multiple />
+            <div id={`thumbnails${question.question_id}`} />
           </label>
         </form>
         <button type="button" onClick={onCancel}>Cancel</button>
@@ -163,13 +168,6 @@ const addAnswer = (props) => {
       </Modal>
     </>
   );
-};
-
-const validate = (answer) => {
-  if (answer.body === '' || answer.name === '') {
-    return false;
-  }
-  return true;
 };
 
 export default addAnswer;
