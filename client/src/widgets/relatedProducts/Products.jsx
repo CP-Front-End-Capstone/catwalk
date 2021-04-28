@@ -57,13 +57,13 @@ function RelatedProducts() {
     return (
       <div id="products">
         <div className="container">
-          <h3 className="h4 lead">Related Items:</h3>
+          <h4 className="h4 lead">Related Items:</h4>
           <reviewContext.Provider value={{ reviewsMeta }}>
             <RelatedProductsList products={products} styles={styles} rating={context.starAvg} currentProduct={context.product} />
           </reviewContext.Provider>
         </div>
         <div className="container">
-          <h3 className="h4 lead">Your Outfit:</h3>
+          <h4 className="h4 lead">Your Outfit:</h4>
           <MyOutfitList currentProduct={context.product} styles={context.styles} />
         </div>
       </div>

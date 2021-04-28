@@ -10,8 +10,8 @@ function ProductCard({ currentProduct, style, updateFit }) {
     <div className="card w-25">
       <img className="card-img-top" src={style.photos[0].thumbnail_url ? style.photos[0].thumbnail_url : 'https://images.unsplash.com/photo-1519857609704-61e751edba25?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80'} width={296} height={400} />
       <div className="card-img-overlay">
-        <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={() => updateFit(false)}>
-          <span aria-hidden="true">&times;</span>
+        <button type="button" className="close" onClick={() => updateFit(false)}>
+          <span className="far fa-times-circle" />
         </button>
       </div>
       <div className="card-body">
