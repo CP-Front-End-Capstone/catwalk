@@ -1,3 +1,6 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-console */
+/* eslint-disable import/extensions */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReviewsRatings from '../client/src/widgets/reviews/ReviewsRatings.jsx';
