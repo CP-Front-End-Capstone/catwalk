@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-duplicate-props */
 /* eslint-disable no-console */
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-expressions */
@@ -54,7 +55,10 @@ function AddToCart() {
     setQuanSelected(num);
   };
   const handleCantAddToCartClick = (e) => {
-    $('#dropdownMenu1').addClass('open');
+    $('#dropTop').slideToggle('fast');
+    $('#popItLikeItsHot').popover({
+      selector: '.has-popover',
+    });
   };
   const addToCartClick = (num) => {
     axios({
@@ -169,20 +173,26 @@ function AddToCart() {
   return (
     <div className="container mx-auto">
       <div className="row mx-lg-5 d-inline-block bg-primary">
-        <div className="dropdown">
+        <div
+          className="dropdown"
+        >
           <button
             className="btn btn-primary dropdown-toggle btn-large"
             type="button"
-            id="dropdownMenu1"
             data-toggle="dropdown"
             data-target="#sizeDropdown"
+            id="popItLikeItsHot"
+            data-container="body"
+            data-toggle="popover"
+            data-placement="top"
+            data-content="Please select size"
             aria-haspopup="true"
             aria-expanded="false"
             aria-controls="sizeDropdown"
           >
             {skuArray[0].size}
           </button>
-          <div className="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <div className="dropdown-menu" id="dropTop" aria-labelledby="dropdownMenu1">
             {skuArray.map((curStyle, index) => (
               <button className="dropdown-item" type="button" key={index} onClick={() => { handleSizeClick(true, curStyle.size, index, skuArray2[index]); }} href="#!">{curStyle.size}</button>
             ))}
