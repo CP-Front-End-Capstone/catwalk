@@ -6,8 +6,9 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import { Checkmark } from 'react-checkmark';
+import uuid from 'react-uuid';
 
-// Modal.setAppElement('#app');
+Modal.setAppElement('#app');
 
 function ComparisonModal({ updateModal, product, currentProduct }) {
   console.log(product);
@@ -41,7 +42,7 @@ function ComparisonModal({ updateModal, product, currentProduct }) {
         <tbody>
           {currentProduct.features.map((feature, index) => (
             <>
-              <tr key={index}>
+              <tr key={uuid()}>
                 <td>{feature.value}</td>
                 <td className="font-weight-bold">
                   {feature.feature}
@@ -54,7 +55,7 @@ function ComparisonModal({ updateModal, product, currentProduct }) {
             <>
               {(currentProduct.features[itemIndex] && currentProduct.features[itemIndex].feature === relatedFeature.feature) ? null
                 : (
-                  <tr key={itemIndex}>
+                  <tr key={uuid()}>
                     <td />
                     <td className="font-weight-bold">
                       {relatedFeature.feature}
