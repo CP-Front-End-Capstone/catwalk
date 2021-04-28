@@ -8,7 +8,8 @@ const ReviewSearch = () => {
 
   const searchArray = (input) => {
     const searchedReviews = reviews.reviewList.results.filter((review) => (
-      review.body.contains(input)));
+      review.body.includes(input)));
+      console.log(searchedReviews);
     reviews.setReviewsArray(searchedReviews);
   };
 
@@ -17,8 +18,11 @@ const ReviewSearch = () => {
 
     setSearchValue(e.target.value);
 
-    if (searchValue.length > 3) {
+    if ((e.target.value).length > 3) {
+      console.log('this is the searchValue', searchValue);
       searchArray(searchValue);
+    } else {
+      reviews.setReviewsArray(reviews.reviewList.results);
     }
   };
 

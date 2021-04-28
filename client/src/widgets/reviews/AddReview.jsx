@@ -86,20 +86,6 @@ const AddReview = () => {
       });
   };
 
-  console.log('this is what was submitted',
-    {
-      product_id: Number(productId),
-      rating: starRating,
-      summary: reviewSummary,
-      body: reviewBody,
-      recommend,
-      name: reviewName,
-      email: reviewerEmail,
-      photos: images,
-      characteristics,
-
-    });
-
   const handleCharacteristicClick = (id, value) => {
     characteristics[id] = value;
   };
