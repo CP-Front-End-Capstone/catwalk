@@ -53,15 +53,15 @@ const ReviewBreakDown = () => {
   const currentFilter = selectedRating.length !== 5 && `Currently selected ratings: ${selectedRating}`;
 
   const fiveStars = (product.reviewsMeta.ratings[5])
-    ? ((product.reviewsMeta.ratings[5] * 100) / largestCount) : 0;
+    ? ((product.reviewsMeta.ratings[5] * 100) / totalRatings) : 0;
   const fourStars = (product.reviewsMeta.ratings[4])
-    ? ((product.reviewsMeta.ratings[4] * 100) / largestCount) : 0;
+    ? ((product.reviewsMeta.ratings[4] * 100) / totalRatings) : 0;
   const threeStars = (product.reviewsMeta.ratings[3])
-    ? ((product.reviewsMeta.ratings[3] * 100) / largestCount) : 0;
+    ? ((product.reviewsMeta.ratings[3] * 100) / totalRatings) : 0;
   const twoStars = (product.reviewsMeta.ratings[2])
-    ? ((product.reviewsMeta.ratings[2] * 100) / largestCount) : 0;
+    ? ((product.reviewsMeta.ratings[2] * 100) / totalRatings) : 0;
   const oneStar = (product.reviewsMeta.ratings[1])
-    ? ((product.reviewsMeta.ratings[1] * 100) / largestCount) : 0;
+    ? ((product.reviewsMeta.ratings[1] * 100) / totalRatings) : 0;
 
   if (recommendPercent) {
     return (
