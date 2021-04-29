@@ -22,6 +22,7 @@ const AddReview = () => {
   };
   const { productId } = product;
   const [recommend, setRecommend] = useState(null);
+  const [recommended, setRecommended] = useState(null);
   const [starRating, setRating] = useState(0);
   const [reviewSummary, setReviewSummary] = useState(null);
   const [reviewBody, setReviewBody] = useState(null);
@@ -33,11 +34,16 @@ const AddReview = () => {
   const [summaryCount, setSummaryCount] = useState(60);
   const [bodyCount, setBodyCount] = useState(0);
 
-  const mandatoryArray = [starRating, recommend, characteristics, reviewSummary,
+  const mandatoryArray = [starRating, recommended, reviewSummary,
     reviewBody, reviewName, reviewerEmail];
 
   const handleFileChange = (input) => {
     console.log(input);
+  };
+
+  const handleRecommend = (input) => {
+    setRecommend(input);
+    setRecommended(true);
   };
 
   const handleReviewSummary = (input) => {
@@ -89,6 +95,7 @@ const AddReview = () => {
 
   const handleCharacteristicClick = (id, value) => {
     characteristics[id] = value;
+    console.log(characteristics);
   };
 
   const uploadImages = images.length < 5 && <input type="file" className="small" accept="image/png, image/jpeg" onChange={(file) => { handleFileChange(file); }} />;
@@ -165,9 +172,15 @@ const AddReview = () => {
       <div className="row">
         Would you recommend this product? *
         &nbsp;
-        <button type="button" className="btn btn-link small" onClick={() => { setRecommend(true); }}>Yes</button>
-        &nbsp;
-        <button type="button" className="btn btn-link small" onClick={() => { setRecommend(false); }}>No</button>
+        <div>
+          Yes
+          &nbsp;
+          <input type="radio" name="recommend" onClick={() => { handleRecommend(true); }} />
+        </div>
+        <div>
+        &nbsp; &nbsp; No &nbsp;
+          <input type="radio" name="recommend" onClick={() => { handleRecommend(false); }} />
+        </div>
       </div>
       <div className="container">
         Please rate the following about the product: *
@@ -223,7 +236,7 @@ const AddReview = () => {
         <input placeholder="This is only for our records and will not appear on review" className="w-100 small" onChange={(e) => { setReviewerEmail(e.target.value); }} />
       </div>
       <div className="modal-footer">
-        <button type="button" className="btn btn-primary" onClick={(e) => { handleSubmit(e); }}>Submit Review</button>
+        <button type="button" data-dismiss="modal" className="btn btn-primary" onClick={(e) => { handleSubmit(e); }}>Submit Review</button>
       </div>
 
     </div>
