@@ -10,13 +10,6 @@ const ReviewBreakDown = () => {
   const review = useContext(reviewContext);
   const product = useContext(productContext);
   const [selectedRating, setSelectedRating] = useState(['1', '2', '3', '4', '5']);
-
-  const totalRatings = Number(product.reviewsMeta.recommended.true)
-  + Number(product.reviewsMeta.recommended.false);
-
-  const recommendPercent = Math.round(((Number(product.reviewsMeta.recommended.true) * 100)
-  / (totalRatings)) * 10) / 10;
-
   // const ratingsCountArray = (Object.values(product.reviewsMeta.ratings));
   // const numbersArray = ratingsCountArray.map((number) => (
   //   Number(number)
@@ -52,6 +45,20 @@ const ReviewBreakDown = () => {
 
   const currentFilter = selectedRating.length !== 5 && `Currently selected ratings: ${selectedRating}`;
 
+  const five = (product.reviewsMeta.ratings[5])
+    ? (product.reviewsMeta.ratings[5]) : 0;
+  const four = (product.reviewsMeta.ratings[4])
+    ? (product.reviewsMeta.ratings[4]) : 0;
+  const three = (product.reviewsMeta.ratings[3])
+    ? (product.reviewsMeta.ratings[3]) : 0;
+  const two = (product.reviewsMeta.ratings[2])
+    ? (product.reviewsMeta.ratings[2]) : 0;
+  const one = (product.reviewsMeta.ratings[1])
+    ? (product.reviewsMeta.ratings[1]) : 0;
+
+  const totalRatings = Number(five) + Number(four)
+  + Number(three) + Number(two) + Number(one);
+
   const fiveStars = (product.reviewsMeta.ratings[5])
     ? ((product.reviewsMeta.ratings[5] * 100) / totalRatings) : 0;
   const fourStars = (product.reviewsMeta.ratings[4])
@@ -63,16 +70,9 @@ const ReviewBreakDown = () => {
   const oneStar = (product.reviewsMeta.ratings[1])
     ? ((product.reviewsMeta.ratings[1] * 100) / totalRatings) : 0;
 
-  const five = (product.reviewsMeta.ratings[5])
-    ? ((product.reviewsMeta.ratings[5] * 100) / totalRatings) : 0;
-  const four = (product.reviewsMeta.ratings[4])
-    ? ((product.reviewsMeta.ratings[4] * 100) / totalRatings) : 0;
-  const three = (product.reviewsMeta.ratings[3])
-    ? ((product.reviewsMeta.ratings[3] * 100) / totalRatings) : 0;
-  const two = (product.reviewsMeta.ratings[2])
-    ? ((product.reviewsMeta.ratings[2] * 100) / totalRatings) : 0;
-  const one = (product.reviewsMeta.ratings[1])
-    ? ((product.reviewsMeta.ratings[1] * 100) / totalRatings) : 0;
+  const recommendPercent = product.reviewsMeta.recommended.true
+    ? Math.round(((Number(product.reviewsMeta.recommended.true) * 100)
+    / (totalRatings)) * 10) / 10 : 0;
 
   if (recommendPercent) {
     return (
