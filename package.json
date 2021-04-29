@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon server/index.js",
     "react-dev": "webpack --config ./webpack.config.js --mode development --watch",
-    "test": "jest"
+    "test": "jest --collectCoverage"
   },
   "repository": {
     "type": "git",
@@ -22,7 +22,6 @@
   "dependencies": {
     "@brainhubeu/react-carousel": "^2.0.3",
     "axios": "^0.21.1",
-    "bar-charts": "^1.0.3",
     "bootstrap": "^4.6.0",
     "dateformat": "^4.5.1",
     "express": "^4.17.1",
@@ -39,11 +38,7 @@
     "react-inner-image-zoom": "^2.0.1",
     "react-modal": "^3.13.1",
     "react-router-dom": "^5.2.0",
-    "react-slick": "^0.28.1",
-    "react-stacked-horizontal-bar-chart": "^1.0.1",
-    "react-star-ratings": "^2.3.0",
-    "react-uuid": "^1.0.2",
-    "styled-components": "^5.2.3"
+    "react-star-ratings": "^2.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.13.15",
