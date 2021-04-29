@@ -62,7 +62,7 @@ const ProductBreakdown = () => {
     </div>
   );
   const widthValue = (productDesc.Width) && (
-    <div>
+    <div className="container">
       <div className="text-center font-weight-bold small" style={{ padding: '5px' }}>Width</div>
       <div className="small">
         <StackedHorizontalBarChart
