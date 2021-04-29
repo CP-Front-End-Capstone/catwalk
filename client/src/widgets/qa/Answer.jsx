@@ -15,6 +15,13 @@ const Answer = (props) => {
           A: <span className="h6 font-weight-light">{body}</span>
         </div>
       </div>
+      <div className="row">
+        {answer.photos.map((photo) => (
+          <span className="col" key={photo}>
+            <img src={photo} className="img-fluid img-thumbnail" alt="thumbnail" />
+          </span>
+        ))}
+      </div>
       <div className="row text-left p-1">
         <div className="col h6 font-weight-light">
           <span className="text-muted">
