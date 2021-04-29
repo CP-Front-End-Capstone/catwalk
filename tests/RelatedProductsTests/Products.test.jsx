@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/extensions */
 /* eslint-disable no-undef */
@@ -20,20 +21,25 @@ describe('Related Products Component', () => {
 describe('Related Products List', () => {
   let wrapper;
   beforeEach(() => {
-    wrapper = shallow(
-      <productContext.Provider value={relatedProductsData.products}>
-        <RelatedProductsList />
-      </productContext.Provider>,
+    const { products } = relatedProductsData;
+    const { styles } = relatedProductsData;
+    const { rating } = relatedProductsData;
+    const calculateAverage = () => {};
+    wrapper = mount(
+      <RelatedProductsList
+        products={products}
+        styles={styles}
+        rating={rating}
+        calculateAverage={calculateAverage}
+      />,
     );
   });
 
-  it('renders without crashing', () => {
-    // console.log(wrapper);
-    expect(wrapper.exists()).toBe(true);
+  it('Renders Related Products Component', () => {
+    expect(wrapper).toHaveLength(1);
   });
 
   it('renders related products list with 4 questions', () => {
-    // console.log(wrapper.find('#questionlist'));
-    expect(wrapper.children()).toHaveLength(4);
+    expect(wrapper.find('#productsList').children()).toHaveLength(4);
   });
 });
