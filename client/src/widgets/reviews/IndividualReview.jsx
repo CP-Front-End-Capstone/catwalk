@@ -1,13 +1,15 @@
+/* eslint-disable no-alert */
 /* eslint-disable import/extensions */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import StarRatings from 'react-star-ratings';
 import dateFormat from 'dateformat';
 import axios from 'axios';
+import reviewContext from '../../contexts/ReviewContext';
 import ReviewPhotos from './ReviewPhotos.jsx';
 
 const config = require('../../../../API/config.js');
@@ -17,6 +19,9 @@ const IndividualReview = (props) => {
   const response = props.review.response && props.review.response;
   const longBody = props.review.body.length > 250 && true;
   const [count, setCount] = useState(props.review.helpfulness);
+  const reviews = useContext(reviewContext);
+
+  const [yes, setYes] = useState('Yes');
 
   const handleHelpfulness = (e) => {
     e.preventDefault();
@@ -32,9 +37,30 @@ const IndividualReview = (props) => {
     })
       .then(() => {
         setCount(count + 1);
+        setYes(null);
       })
       .catch((err) => {
         console.log('error putting helpfulness to API', props.review.review_id, err);
+      });
+  };
+
+  const handleReport = (e) => {
+    e.preventDefault();
+    axios({
+      method: 'PUT',
+      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/${props.review.review_id}/report`,
+      data: {
+        review_id: props.review.review_id,
+      },
+      headers: {
+        Authorization: config.TOKEN,
+      },
+    })
+      .then(() => {
+        alert('This review has been reported and will no longer be displayed to users');
+      })
+      .catch((err) => {
+        console.log('error putting report API', props.review.review_id, err);
       });
   };
 
@@ -70,25 +96,25 @@ const IndividualReview = (props) => {
           {dateFormat(props.review.date, 'mmmm dS, yyyy', true)}
         </div>
       </div>
-      <h5 className="row">{props.review.summary}</h5>
-      <div className="row border" style={{ padding: '5px' }}>
+      <h5 className="row" style={{ padding: '5px' }}>{props.review.summary}</h5>
+      <div className="row border small" style={{ padding: '5px' }}>
         {reviewBody}
-        <a href="#" className="small" onClick={(e) => { handleViewMore(e); }}>
+        <a href="#" onClick={(e) => { handleViewMore(e); }}>
           {viewMore}
         </a>
       </div>
-      <div className="row small">{recommend}</div>
-      <div className="row">{response}</div>
+      <div className="row small" style={{ padding: '5px' }}>{recommend}</div>
+      <div className="row bg-secondary">{response}</div>
       <div className="row">
         {' '}
         <ReviewPhotos photos={props.review.photos} />
         {' '}
       </div>
-      <div className="row small">
-        What this review helpful?
+      <div className="row small footer" style={{ padding: '5px' }} >
+        Was this review helpful?
         <a href="#" onClick={(e) => { handleHelpfulness(e); }}>
         &nbsp;
-          Yes
+          {yes}
         &nbsp;
         </a>
         <div>
@@ -96,7 +122,7 @@ const IndividualReview = (props) => {
           {count}
           )
         </div>
-        <a href="#" onClick={() => { handleHelpfulness(); }}>
+        <a href="#" onClick={(e) => { handleReport(e); }}>
          &nbsp;
           Report
         </a>

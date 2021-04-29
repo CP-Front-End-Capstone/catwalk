@@ -65,50 +65,91 @@ const ReviewBreakDown = () => {
 
   if (recommendPercent) {
     return (
-      <div className="container" style={{ padding: '10px' }} key={product.reviewsMeta.product_id}>
+      <div className="container" style={{ padding: '0px' }} key={product.reviewsMeta.product_id}>
         <div className="row">
           <h1>
             <Stars />
           </h1>
         </div>
-
-        <div className="container border" style={{ padding: '20px' }}>
-          <div className="font-weight-bold small">
-            {recommendPercent}
-            % of reviewers recommend this product
+        <div className="container" style={{ padding: '10px', width: '100%' }}>
+          <div className="row">
+            <div className="font-weight-bold" style={{ padding: '2px' }}>
+              {recommendPercent}
+              % of reviewers recommend this product
+            </div>
+            <button type="button" className="text-left btn-light small" onClick={() => { handleRatingFilter('5'); }}>
+              <div className="row" style={{ padding: '8px' }}>
+                <div className="col-2 text-left font-weight-bold" style={{ padding: '1px' }}>
+                  5 Stars
+                  {' '}
+                </div>
+                <div className="col-9 text-right" style={{ padding: '1px' }}>
+                  <HSBar height={10} data={[{ value: fiveStars, color: 'green' }, { value: 100 - fiveStars, color: 'grey' }]} />
+                </div>
+                <div className="col-1 text-center" style={{ padding: '1px' }}>
+                  {product.reviewsMeta.ratings[5]}
+                </div>
+              </div>
+            </button>
+            <button type="button" className="text-left btn-light small" onClick={() => { handleRatingFilter('4'); }}>
+              <div className="row" style={{ padding: '8px' }}>
+                <div className="col-2 text-left font-weight-bold" style={{ padding: '1px' }}>
+                  4 Stars
+                  {' '}
+                </div>
+                <div className="col-9 text-right" style={{ padding: '1px' }}>
+                  <HSBar height={10} data={[{ value: fourStars, color: 'green' }, { value: 100 - fourStars, color: 'grey' }]} />
+                </div>
+                <div className="col-1 text-center" style={{ padding: '1px' }}>
+                  {product.reviewsMeta.ratings[4]}
+                </div>
+              </div>
+            </button>
+            <button type="button" className="text-left btn-light small" onClick={() => { handleRatingFilter('4'); }}>
+              <div className="row" style={{ padding: '8px' }}>
+                <div className="col-2 text-left font-weight-bold" style={{ padding: '1px' }}>
+                  3 Stars
+                  {' '}
+                </div>
+                <div className="col-9 text-right" style={{ padding: '1px' }}>
+                  <HSBar height={10} data={[{ value: threeStars, color: 'green' }, { value: 100 - threeStars, color: 'grey' }]} />
+                </div>
+                <div className="col-1 text-center" style={{ padding: '1px' }}>
+                  {product.reviewsMeta.ratings[3]}
+                </div>
+              </div>
+            </button>
+            <button type="button" className="text-left btn-light small" onClick={() => { handleRatingFilter('4'); }}>
+              <div className="row" style={{ padding: '8px' }}>
+                <div className="col-2 text-left font-weight-bold" style={{ padding: '1px' }}>
+                  2 Stars
+                  {' '}
+                </div>
+                <div className="col-9 text-right" style={{ padding: '1px' }}>
+                  <HSBar height={10} data={[{ value: twoStars, color: 'green' }, { value: 100 - twoStars, color: 'grey' }]} />
+                </div>
+                <div className="col-1 text-center" style={{ padding: '1px' }}>
+                  {product.reviewsMeta.ratings[2]}
+                </div>
+              </div>
+            </button>
+            <button type="button" className="text-left btn-light small" onClick={() => { handleRatingFilter('5'); }}>
+              <div className="row" style={{ padding: '8px' }}>
+                <div className="col-2 text-left font-weight-bold" style={{ padding: '1px' }}>
+                  1 Star &nbsp;
+                  {' '}
+                </div>
+                <div className="col-9 text-right" style={{ padding: '1px' }}>
+                  <HSBar height={10} data={[{ value: oneStar, color: 'green' }, { value: 100 - oneStar, color: 'grey' }]} />
+                </div>
+                <div className="col-1 text-center" style={{ padding: '1px' }}>
+                  {product.reviewsMeta.ratings[1]}
+                </div>
+              </div>
+            </button>
           </div>
-          <button type="button" className="text-left btn-light small" onClick={() => { handleRatingFilter('5'); }}>
-            5 Stars
-            {' '}
-            {product.reviewsMeta.ratings[5]}
-            <HSBar height={10} data={[{ value: fiveStars, color: 'black' }, { value: 100 - fiveStars, color: 'grey' }]} />
-          </button>
-          <button type="button" className="text-left btn-light small" onClick={() => { handleRatingFilter('4'); }}>
-            4 Stars
-            {' '}
-            {product.reviewsMeta.ratings[4]}
-            <HSBar height={10} data={[{ value: fourStars, color: 'black' }, { value: 100 - fourStars, color: 'grey' }]} />
-          </button>
-          <button type="button" className="text-left btn-light small" onClick={() => { handleRatingFilter('3'); }}>
-            3 Stars
-            {' '}
-            {product.reviewsMeta.ratings[3]}
-            <HSBar height={10} data={[{ value: threeStars, color: 'black' }, { value: 100 - threeStars, color: 'grey' }]} />
-          </button>
-          <button type="button" className="text-left btn-light small" onClick={() => { handleRatingFilter('2'); }}>
-            2 Stars
-            {' '}
-            {product.reviewsMeta.ratings[2]}
-            <HSBar height={10} data={[{ value: twoStars, color: 'black' }, { value: 100 - twoStars, color: 'grey' }]} />
-          </button>
-          <button type="button" className="text-left btn-light small" onClick={() => { handleRatingFilter('1'); }}>
-            1 Star
-            {' '}
-            {product.reviewsMeta.ratings[1]}
-            <HSBar height={10} data={[{ value: oneStar, color: 'black' }, { value: 100 - oneStar, color: 'grey' }]} />
-          </button>
+          <div className="row small">{currentFilter}</div>
         </div>
-        <div className="row small">{currentFilter}</div>
       </div>
 
     );
