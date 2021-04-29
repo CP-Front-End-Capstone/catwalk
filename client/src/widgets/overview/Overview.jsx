@@ -23,6 +23,7 @@ import { productContext } from '../../contexts/ProductContext.js';
 import { styleContext } from '../../contexts/StyleContext.js';
 
 function Overview(props) {
+  const context = useContext(productContext);
   const { product, productId } = useContext(productContext);
   const [styles, changeStyles] = useState();
   const [currentStyle, setStyle] = useState();
