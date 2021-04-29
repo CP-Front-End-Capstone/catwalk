@@ -96,22 +96,22 @@ const IndividualReview = (props) => {
           {dateFormat(props.review.date, 'mmmm dS, yyyy', true)}
         </div>
       </div>
-      <h5 className="row">{props.review.summary}</h5>
-      <div className="row border" style={{ padding: '5px' }}>
+      <h5 className="row" style={{ padding: '5px' }}>{props.review.summary}</h5>
+      <div className="row border small" style={{ padding: '5px' }}>
         {reviewBody}
-        <a href="#" className="small" onClick={(e) => { handleViewMore(e); }}>
+        <a href="#" onClick={(e) => { handleViewMore(e); }}>
           {viewMore}
         </a>
       </div>
-      <div className="row small">{recommend}</div>
+      <div className="row small" style={{ padding: '5px' }}>{recommend}</div>
       <div className="row bg-secondary">{response}</div>
       <div className="row">
         {' '}
         <ReviewPhotos photos={props.review.photos} />
         {' '}
       </div>
-      <div className="row small">
-        What this review helpful?
+      <div className="row small footer" style={{ padding: '5px' }} >
+        Was this review helpful?
         <a href="#" onClick={(e) => { handleHelpfulness(e); }}>
         &nbsp;
           {yes}

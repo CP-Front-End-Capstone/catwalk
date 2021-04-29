@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import React, { useContext } from 'react';
 import { StackedHorizontalBarChart } from 'react-stacked-horizontal-bar-chart';
 import reviewContext from '../../contexts/ReviewContext';
@@ -78,7 +79,7 @@ const ProductBreakdown = () => {
     return (
       <div className="container" style={{ padding: '10px' }}>
         <div className="row">
-          <div className="container border" style={{ padding: '20px' }}>
+          <div className="container" style={{ padding: '10px' }}>
             {fitValue}
             {lengthValue}
             {comfortValue}
