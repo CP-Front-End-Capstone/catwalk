@@ -13,7 +13,7 @@ import RelatedProductsList from '../../client/src/widgets/relatedProducts/Relate
 
 describe('Related Products Component', () => {
   const wrapper = shallow(<RelatedProducts />);
-  it('renders without crashing', () => {
+  it('Renders Products Component', () => {
     expect(wrapper).toHaveLength(1);
   });
 });
@@ -43,3 +43,10 @@ describe('Related Products List', () => {
     expect(wrapper.find('#productsList').children()).toHaveLength(4);
   });
 });
+
+// describe('Related Products Card,' () => {
+//   let wrapper;
+//   beforeEach(() => {
+//     const blah blah
+//   })
+// });
