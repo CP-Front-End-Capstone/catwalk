@@ -6,6 +6,7 @@
   "scripts": {
     "start": "nodemon server/index.js",
     "react-dev": "webpack --config ./webpack.config.js --mode development --watch",
+    "testCC": "jest --collectCoverage",
     "test": "jest"
   },
   "repository": {
@@ -88,6 +89,9 @@
     },
     "setupFilesAfterEnv": [
       "./node_modules/jest-enzyme/lib/index.js"
-    ]
+    ],
+    "moduleNameMapper": {
+      "\\.(css|less)$": "identity-obj-proxy"
+    }
   }
 }

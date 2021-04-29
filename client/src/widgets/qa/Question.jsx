@@ -92,7 +92,6 @@ const Question = (props) => {
           <AddAnswer
             question={question}
             name={name}
-            answerList={answerList}
             changeAnswerList={changeAnswerList}
           />
         </div>
