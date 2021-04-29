@@ -3,7 +3,7 @@ const checkEmail = (email) => {
   return re.test(String(email).toLowerCase());
 };
 
-const validate = (input) => {
+export const validate = (input) => {
   if (input.body === '' || input.name === '') {
     return false;
   }
@@ -13,4 +13,21 @@ const validate = (input) => {
   return true;
 };
 
-export default validate;
+export const orderAnswers = (answers) => {
+  const temp = [];
+  const sellerAns = [];
+  Object.keys(answers).forEach((key) => {
+    if (answers[key].answerer_name === 'Seller') {
+      sellerAns.push(answers[key]);
+    } else {
+      temp.push(answers[key]);
+    }
+  });
+  sellerAns.sort((a, b) => (
+    b.helpfulness - a.helpfulness
+  ));
+  temp.sort((a, b) => (
+    b.helpfulness - a.helpfulness
+  ));
+  return sellerAns.concat(temp);
+};

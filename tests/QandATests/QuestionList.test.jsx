@@ -5,9 +5,9 @@ import { promisify } from 'util';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Enzyme from 'enzyme';
-import config from './testconfig.js';
-import QuestionList from '../client/src/widgets/qa/QuestionList.jsx';
-import qaContext from '../client/src/contexts/QaContext.js';
+import config from '../testconfig.js';
+import QuestionList from '../../client/src/widgets/qa/QuestionList.jsx';
+import qaContext from '../../client/src/contexts/QaContext.js';
 import questionsData from './questionsData.js';
 
 describe('<QuestionList />', () => {

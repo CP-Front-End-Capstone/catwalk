@@ -2,12 +2,12 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useContext } from 'react';
 import Modal from 'react-modal';
-import api from '../../../../API/helper.js';
 import axios from 'axios';
-const config = require('../../../../API/config.js');
+import api from '../../../../API/helper.js';
+import config from '../../../../API/config.js';
 import Question from './Question.jsx';
 import qaContext from '../../contexts/QaContext';
-import validate from './helpers.js';
+import { validate } from './helpers.js';
 
 const customStyles = {
   content: {

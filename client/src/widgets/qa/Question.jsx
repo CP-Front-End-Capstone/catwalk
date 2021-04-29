@@ -7,6 +7,7 @@ import React, { useState, useEffect } from 'react';
 import Answer from './Answer.jsx';
 import Helpful from './Helpful.jsx';
 import AddAnswer from './AddAnswer.jsx';
+import { orderAnswers } from './helpers.js';
 
 const Question = (props) => {
   const { question, name } = props;
@@ -20,14 +21,9 @@ const Question = (props) => {
   };
 
   useEffect(() => {
-    const temp = [];
-    for (const id in question.answers) {
-      temp.push(question.answers[id]);
-    }
-    temp.sort((a, b) => (
-      b.helpfulness - a.helpfulness
-    ));
-    changeAnswers(temp);
+    changeAnswers(
+      orderAnswers(question.answers),
+    );
   }, [question]);
 
   useEffect(() => {
