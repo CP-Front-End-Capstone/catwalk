@@ -2,7 +2,7 @@
 /* eslint-disable no-console */
 /* eslint-disable import/extensions */
 import React from 'react';
-import { shallow } from 'enzyme';
+import Enzyme, { shallow, mount } from 'enzyme';
 import config from './testconfig.js';
 import ReviewsRatings from '../client/src/widgets/reviews/ReviewsRatings.jsx';
 import { productContext } from '../client/src/contexts/ProductContext.js';
@@ -51,15 +51,5 @@ describe('Reviews and Ratings Widget', () => {
         ;
       </productContext.Provider>,
     );
-  });
-  it('renders widget title', () => {
-    const wrapper = shallow(
-      <productContext.Provider value={{ reviewsMeta, productId }}>
-        <ReviewsRatings />
-        ;
-      </productContext.Provider>,
-    );
-    const title = <h3>Reviews & Ratings</h3>;
-    expect(wrapper.contains(title)).toEqual(true);
   });
 });
