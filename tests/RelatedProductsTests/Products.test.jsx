@@ -22,13 +22,12 @@ describe('Related Products List', () => {
   beforeEach(() => {
     const products = relatedProductsData;
     wrapper = mount(
-      <productContext.Provider value={{ products }}>
-        <RelatedProductsList />
-      </productContext.Provider>,
+      <RelatedProductsList products={products} />,
     );
   });
 
   it('renders without crashing', () => {
-    expect(wrapper).toMatchSnapshot();
+    // console.log(wrapper);
+    expect(wrapper).toHaveLength(4);
   });
 });

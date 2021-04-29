@@ -15,7 +15,6 @@ import RelatedProductsCard from './RelatedProductsCard.jsx';
 function RelatedProductsList({
   products, styles, rating, currentProduct, calculateAverage,
 }) {
-  console.log(products);
   return (
     <div className="container">
       <div className="row">
