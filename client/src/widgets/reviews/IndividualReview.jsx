@@ -21,6 +21,8 @@ const IndividualReview = (props) => {
   const [count, setCount] = useState(props.review.helpfulness);
   const reviews = useContext(reviewContext);
 
+  const [yes, setYes] = useState('Yes')
+
   const handleHelpfulness = (e) => {
     e.preventDefault();
     axios({
@@ -35,6 +37,7 @@ const IndividualReview = (props) => {
     })
       .then(() => {
         setCount(count + 1);
+        setYes(null);
       })
       .catch((err) => {
         console.log('error putting helpfulness to API', props.review.review_id, err);
@@ -111,7 +114,7 @@ const IndividualReview = (props) => {
         What this review helpful?
         <a href="#" onClick={(e) => { handleHelpfulness(e); }}>
         &nbsp;
-          Yes
+          {yes}
         &nbsp;
         </a>
         <div>
