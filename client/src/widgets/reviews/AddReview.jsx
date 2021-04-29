@@ -33,7 +33,8 @@ const AddReview = () => {
   const [summaryCount, setSummaryCount] = useState(60);
   const [bodyCount, setBodyCount] = useState(0);
 
-  const mandatoryArray = [starRating, recommend, characteristics, reviewSummary, reviewBody, reviewName, reviewerEmail];
+  const mandatoryArray = [starRating, recommend, characteristics, reviewSummary,
+    reviewBody, reviewName, reviewerEmail];
 
   const handleFileChange = (input) => {
     console.log(input);
@@ -60,7 +61,7 @@ const AddReview = () => {
     if (bodyCount < 50 || bodyCount > 1000 || summaryCount > 60) {
       return alert('This review violates character counts. Please correct and re-submit.');
     }
-    axios({
+    return axios({
       method: 'POST',
       url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews',
       data: {

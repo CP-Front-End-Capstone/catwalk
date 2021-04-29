@@ -21,7 +21,7 @@ const IndividualReview = (props) => {
   const [count, setCount] = useState(props.review.helpfulness);
   const reviews = useContext(reviewContext);
 
-  const [yes, setYes] = useState('Yes')
+  const [yes, setYes] = useState('Yes');
 
   const handleHelpfulness = (e) => {
     e.preventDefault();
@@ -104,7 +104,7 @@ const IndividualReview = (props) => {
         </a>
       </div>
       <div className="row small">{recommend}</div>
-      <div className="row">{response}</div>
+      <div className="row bg-secondary">{response}</div>
       <div className="row">
         {' '}
         <ReviewPhotos photos={props.review.photos} />

@@ -2,13 +2,18 @@
 /* eslint-disable no-console */
 /* eslint-disable import/extensions */
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { shallow } from 'enzyme';
+import config from './testconfig.js';
 import ReviewsRatings from '../client/src/widgets/reviews/ReviewsRatings.jsx';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<ReviewsRatings />, div);
-  console.log(div.getElementbyId('reviews'));
-  // expect().to.be('h-75 overflow-auto');
-  ReactDOM.unmountComponentAtNode(div);
+describe('Reviews and Ratings Widget', () => {
+  it('renders without crashing', () => {
+    shallow(<ReviewsRatings />);
+  });
+  it('renders widget title', () => {
+    const wrapper = shallow(<ReviewsRatings />);
+    const title = <h3>Reviews & Ratings</h3>;
+    expect(wrapper.contains(title)).toEqual(true);
+  });
+
 });

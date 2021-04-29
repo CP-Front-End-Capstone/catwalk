@@ -74,7 +74,7 @@ const ReviewsList = () => {
       </h5>
       <div className="row bg-light h-75 overflow-auto border" style={{ padding: '10px' }}>
         {displayedReviews.map((review) => (
-          <li key={review.review_id} className="container list-unstyled">
+          <li key={review.review_id} className="container list-unstyled" style={{ padding: '5px' }}>
             <reviewContext.Provider value={reviewCount}>
               <IndividualReview review={review} />
             </reviewContext.Provider>
