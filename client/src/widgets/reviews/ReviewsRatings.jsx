@@ -14,9 +14,7 @@ import AddReview from './AddReview.jsx';
 import api from '../../../../API/helper';
 
 const ReviewsRatings = () => {
-  const selectedProduct = useContext(productContext);
-
-  const [productId, setProductId] = useState(selectedProduct.productId);
+  const { reviewsMeta, productId } = useContext(productContext);
   const [reviewList, setReviewList] = useState();
   const [reviewsArray, setReviewsArray] = useState();
   const [isMounted, setIsMounted] = useState();
@@ -34,7 +32,7 @@ const ReviewsRatings = () => {
       });
   }, [productId]);
 
-  if (selectedProduct.reviewsMeta) {
+  if (reviewsMeta) {
     return (
       <div id="reviews">
         <div className="container" style={{ padding: '20px' }}>
@@ -56,7 +54,7 @@ const ReviewsRatings = () => {
             <div className="col">
               <div className="row" style={{ height: '650px' }}>
                 <reviewContext.Provider value={{
-                  reviewList, reviewsArray, setReviewsArray,
+                  reviewList, reviewsArray, setReviewsArray, setReviewList,
                 }}
                 >
                   <ReviewsList />

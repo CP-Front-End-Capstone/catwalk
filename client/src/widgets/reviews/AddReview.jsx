@@ -1,3 +1,5 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable no-alert */
 /* eslint-disable no-console */
 /* eslint-disable no-return-assign */
 /* eslint-disable no-const-assign */
@@ -20,6 +22,7 @@ const AddReview = () => {
   };
   const { productId } = product;
   const [recommend, setRecommend] = useState(null);
+  const [recommended, setRecommended] = useState(null);
   const [starRating, setRating] = useState(0);
   const [reviewSummary, setReviewSummary] = useState(null);
   const [reviewBody, setReviewBody] = useState(null);
@@ -31,8 +34,16 @@ const AddReview = () => {
   const [summaryCount, setSummaryCount] = useState(60);
   const [bodyCount, setBodyCount] = useState(0);
 
+  const mandatoryArray = [starRating, recommended, reviewSummary,
+    reviewBody, reviewName, reviewerEmail];
+
   const handleFileChange = (input) => {
     console.log(input);
+  };
+
+  const handleRecommend = (input) => {
+    setRecommend(input);
+    setRecommended(true);
   };
 
   const handleReviewSummary = (input) => {
@@ -47,7 +58,16 @@ const AddReview = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios({
+
+    for (let i = 0; i < mandatoryArray.length; i++) {
+      if (!mandatoryArray[i]) {
+        return alert('Please fill in all required fields marked by *');
+      }
+    }
+    if (bodyCount < 50 || bodyCount > 1000 || summaryCount > 60) {
+      return alert('This review violates character counts. Please correct and re-submit.');
+    }
+    return axios({
       method: 'POST',
       url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews',
       data: {
@@ -66,19 +86,7 @@ const AddReview = () => {
       },
     })
       .then(() => {
-        console.log('this is what was submitted',
-          {
-            product_id: Number(productId),
-            rating: starRating,
-            summary: reviewSummary,
-            body: reviewBody,
-            recommend,
-            name: reviewName,
-            email: reviewerEmail,
-            photos: images,
-            characteristics,
-
-          });
+        console.log('post successful');
       })
       .catch((err) => {
         console.log('error posting review to API', err);
@@ -87,6 +95,7 @@ const AddReview = () => {
 
   const handleCharacteristicClick = (id, value) => {
     characteristics[id] = value;
+    console.log(characteristics);
   };
 
   const uploadImages = images.length < 5 && <input type="file" className="small" accept="image/png, image/jpeg" onChange={(file) => { handleFileChange(file); }} />;
@@ -143,7 +152,7 @@ const AddReview = () => {
         {product.product.name}
       </h5>
       <div className="row">
-        Overall Rating
+        Overall Rating *
         &nbsp;
         <StarRatings
           starRatedColor="black"
@@ -161,14 +170,20 @@ const AddReview = () => {
         {selectedRating}
       </div>
       <div className="row">
-        Would you recommend this product?
+        Would you recommend this product? *
         &nbsp;
-        <button type="button" className="btn btn-link small" onClick={() => { setRecommend(true); }}>Yes</button>
-        &nbsp;
-        <button type="button" className="btn btn-link small" onClick={() => { setRecommend(false); }}>No</button>
+        <div>
+          Yes
+          &nbsp;
+          <input type="radio" name="recommend" onClick={() => { handleRecommend(true); }} />
+        </div>
+        <div>
+        &nbsp; &nbsp; No &nbsp;
+          <input type="radio" name="recommend" onClick={() => { handleRecommend(false); }} />
+        </div>
       </div>
       <div className="container">
-        Please rate the following about the product:
+        Please rate the following about the product: *
         <div className="row">
           {createCharacteristic('Size')}
         </div>
@@ -189,7 +204,7 @@ const AddReview = () => {
         </div>
       </div>
       <div className="row">
-        <div>Review Summary:</div>
+        <div>Review Summary: *</div>
         <input placeholder="Please write a brief summary of your review here" className="w-100 small" onChange={(e) => { handleReviewSummary(e.target.value); }} />
         <div className="small text-right">
           Characters Remaining
@@ -198,7 +213,7 @@ const AddReview = () => {
         </div>
       </div>
       <div className="row">
-        <div>Review Body:</div>
+        <div>Review Body: *</div>
         <input placeholder="Please write your full review here" className="w-100 small" onChange={(e) => { handleReviewBody(e.target.value); }} />
         <div className="small text-right">
           {remainingBody}
@@ -213,15 +228,15 @@ const AddReview = () => {
         </div>
       </div>
       <div className="row">
-        <div>Reviewer Name:</div>
+        <div>Reviewer Name: *</div>
         <input placeholder="This is how you will appear on your review" className="w-100 small" onChange={(e) => { setReviewName(e.target.value); }} />
       </div>
       <div className="row">
-        <div>Reviewer Email:</div>
+        <div>Reviewer Email: *</div>
         <input placeholder="This is only for our records and will not appear on review" className="w-100 small" onChange={(e) => { setReviewerEmail(e.target.value); }} />
       </div>
       <div className="modal-footer">
-        <button type="button" className="btn btn-primary" onClick={(e) => { handleSubmit(e); }}>Submit Review</button>
+        <button type="button" data-dismiss="modal" className="btn btn-primary" onClick={(e) => { handleSubmit(e); }}>Submit Review</button>
       </div>
 
     </div>
