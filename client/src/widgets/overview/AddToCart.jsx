@@ -55,6 +55,7 @@ function AddToCart() {
     setQuanSelected(num);
   };
   const handleCantAddToCartClick = (e) => {
+    e.preventDefault();
     $('#dropTop').slideToggle('fast');
     $('#popItLikeItsHot').popover({
       selector: '.has-popover',
@@ -183,10 +184,6 @@ function AddToCart() {
             data-target="#sizeDropdown"
             id="popItLikeItsHot"
             data-container="body"
-            data-toggle="popover"
-            data-placement="top"
-            data-content="Please select size"
-            aria-haspopup="true"
             aria-expanded="false"
             aria-controls="sizeDropdown"
           >

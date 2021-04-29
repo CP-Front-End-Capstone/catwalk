@@ -29,34 +29,19 @@ function Overview(props) {
   const [currentImage, setImage] = useState();
   const [imageView, setImageView] = useState(false);
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
-  const [revMeta, setRevMeta] = useState();
 
   useEffect(() => {
     api.fetchEndpoint(`/products/${productId}/styles`)
       .then((stylesData) => {
-        console.log('this is styles data:', stylesData);
         changeStyles(stylesData.results);
         setStyle(stylesData.results[0]);
         setImage(stylesData.results[0].photos[0].url);
-        api.fetchEndpoint(`/reviews/meta/?product_id=${productId}`)
-          .then((reviewsMeta) => {
-            setRevMeta(reviewsMeta);
-          });
       })
       .catch((error) => {
         console.log('Error fetching data', error);
       });
   }, [productId]);
 
-  // const getProducts = (array) => {
-  //   const stylesArray = array.map((id) => (
-  //     api.fetchEndpoint(`/products/${id}/styles`)
-  //   ));
-
-  //   Promise.all(stylesArray).then((response) => {
-  //     setStyles(response);
-  //   });
-  // };
   if (imageView) {
     return (
       <div className="container " id="overview">
@@ -80,7 +65,7 @@ function Overview(props) {
     return (
       <div className="container" id="overview">
         <styleContext.Provider value={{
-          styles, currentStyle, currentImage, setImage, setStyle, imageView, setImageView, currentPhotoIndex, setCurrentPhotoIndex, revMeta,
+          styles, currentStyle, currentImage, setImage, setStyle, imageView, setImageView, currentPhotoIndex, setCurrentPhotoIndex,
         }}
         >
           <div className="row mx-md-n5">
