@@ -1,13 +1,15 @@
+/* eslint-disable no-alert */
 /* eslint-disable import/extensions */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import StarRatings from 'react-star-ratings';
 import dateFormat from 'dateformat';
 import axios from 'axios';
+import reviewContext from '../../contexts/ReviewContext';
 import ReviewPhotos from './ReviewPhotos.jsx';
 
 const config = require('../../../../API/config.js');
@@ -17,6 +19,7 @@ const IndividualReview = (props) => {
   const response = props.review.response && props.review.response;
   const longBody = props.review.body.length > 250 && true;
   const [count, setCount] = useState(props.review.helpfulness);
+  const reviews = useContext(reviewContext);
 
   const handleHelpfulness = (e) => {
     e.preventDefault();
@@ -35,6 +38,26 @@ const IndividualReview = (props) => {
       })
       .catch((err) => {
         console.log('error putting helpfulness to API', props.review.review_id, err);
+      });
+  };
+
+  const handleReport = (e) => {
+    e.preventDefault();
+    axios({
+      method: 'PUT',
+      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/${props.review.review_id}/report`,
+      data: {
+        review_id: props.review.review_id,
+      },
+      headers: {
+        Authorization: config.TOKEN,
+      },
+    })
+      .then(() => {
+        alert('This review has been reported and will no longer be displayed to users');
+      })
+      .catch((err) => {
+        console.log('error putting report API', props.review.review_id, err);
       });
   };
 
@@ -96,7 +119,7 @@ const IndividualReview = (props) => {
           {count}
           )
         </div>
-        <a href="#" onClick={() => { handleHelpfulness(); }}>
+        <a href="#" onClick={(e) => { handleReport(e); }}>
          &nbsp;
           Report
         </a>

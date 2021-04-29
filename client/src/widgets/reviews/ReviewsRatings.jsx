@@ -56,7 +56,7 @@ const ReviewsRatings = () => {
             <div className="col">
               <div className="row" style={{ height: '650px' }}>
                 <reviewContext.Provider value={{
-                  reviewList, reviewsArray, setReviewsArray,
+                  reviewList, reviewsArray, setReviewsArray, setReviewList,
                 }}
                 >
                   <ReviewsList />
