@@ -8,7 +8,9 @@ const ReviewPhotos = (props) => (
     return (
 
       <div key={photoId}>
+        &nbsp;
         <img alt={photoId} src={photoUrl} width="50px" length="50px" data-toggle="modal" data-target={`#modal${photoId}`} />
+        &nbsp;
         <div className="modal" id={`modal${photoId}`} tabIndex="-1" role="dialog" aria-hidden="true">
           <div className="modal-dialog" role="document">
             <div className="modal-content">
