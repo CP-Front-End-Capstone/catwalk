@@ -37,8 +37,11 @@ const AddReview = () => {
   const mandatoryArray = [starRating, recommended, reviewSummary,
     reviewBody, reviewName, reviewerEmail];
 
-  const handleFileChange = (input) => {
-    console.log(input);
+  const handleFileChange = (e) => {
+    e.preventDefault();
+    console.log(e.target.value);
+    setImages([...images, e.target.value]);
+    console.log(images);
   };
 
   const handleRecommend = (input) => {
@@ -98,7 +101,7 @@ const AddReview = () => {
     console.log(characteristics);
   };
 
-  const uploadImages = images.length < 5 && <input type="file" className="small" accept="image/png, image/jpeg" onChange={(file) => { handleFileChange(file); }} />;
+  const uploadImages = images.length < 5 && <input type="file" className="small" accept="image/png, image/jpeg" onChange={(e) => { handleFileChange(e); }} />;
 
   const remainingBody = bodyCount < 50 ? `Review must be a minimum of 50 characters. ${50 - bodyCount} characters remaining.` : `Characters remaining ${1000 - bodyCount}`;
 
