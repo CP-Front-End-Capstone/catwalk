@@ -10,7 +10,6 @@ import Carousel from 'react-elastic-carousel';
 import uuid from 'react-uuid';
 import reviewContext from '../../contexts/ReviewContext';
 import RelatedProductsCard from './RelatedProductsCard.jsx';
-// import productContext from '../../contexts/ProductContext.js';
 
 function RelatedProductsList({
   products, styles, rating, currentProduct, calculateAverage,

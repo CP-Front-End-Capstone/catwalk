@@ -29,24 +29,3 @@ function MyOutfitList({ currentProduct, styles }) {
 }
 
 export default MyOutfitList;
-
-{ /* <div className="container-fluid">
-      <div className="row">
-        <Carousel itemPosition={consts.START} itemsToShow={1}>
-          <div className="col-sm-3">
-            <div className="card-group">
-              <div className="card w-50">
-                <MyOutfitCard currentFit={outfit} updateFit={setOutfit} />
-              </div>
-            </div>
-          </div>
-          <div className="col-sm-3">
-            <div className="card-group">
-              <div className="card w-50">
-                {outfit ? <ProductCard currentProduct={currentProduct} style={styles[0]} /> : null}
-              </div>
-            </div>
-          </div>
-        </Carousel>
-      </div>
-    </div>  */ }
