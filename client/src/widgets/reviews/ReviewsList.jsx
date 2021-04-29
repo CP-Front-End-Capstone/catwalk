@@ -72,7 +72,7 @@ const ReviewsList = () => {
           <ReviewSearch />
         </div>
       </h5>
-      <div className="row bg-light h-75 overflow-auto border" style={{ padding: '10px' }}>
+      <div className="row bg-light h-75 overflow-auto border" style={{ padding: '10px' }} id="individualreview">
         {displayedReviews.map((review) => (
           <ul className="list-unstyled w-100" key={review.review_id}>
             <li key={review.review_id} className="container list-unstyled" style={{ padding: '5px' }}>

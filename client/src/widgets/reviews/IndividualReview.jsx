@@ -110,7 +110,7 @@ const IndividualReview = (props) => {
         <ReviewPhotos photos={props.review.photos} />
         {' '}
       </div>
-      <div className="row small footer" style={{ padding: '5px' }} >
+      <div className="row small footer" style={{ padding: '5px' }}>
         Was this review helpful?
         <a href="#" onClick={(e) => { handleHelpfulness(e); }}>
         &nbsp;
