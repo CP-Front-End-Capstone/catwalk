@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import React, { useContext } from 'react';
 import { StackedHorizontalBarChart } from 'react-stacked-horizontal-bar-chart';
 import reviewContext from '../../contexts/ReviewContext';
@@ -10,7 +11,7 @@ const ProductBreakdown = () => {
 
   const fitValue = (productDesc.Fit) && (
     <div className="container">
-      <div className="text-center" style={{ padding: '5px' }}>Fit</div>
+      <div className="text-center font-weight-bold small" style={{ padding: '5px' }}>Fit</div>
       <div className="small">
         <StackedHorizontalBarChart
           rangesPoints={[0, 5]}
@@ -23,7 +24,7 @@ const ProductBreakdown = () => {
   );
   const lengthValue = (productDesc.Length) && (
     <div className="container">
-      <div className="text-center" style={{ padding: '5px' }}>Length</div>
+      <div className="text-center font-weight-bold small" style={{ padding: '5px' }}>Length</div>
       <div className="small">
         <StackedHorizontalBarChart
           rangesPoints={[0, 5]}
@@ -36,7 +37,7 @@ const ProductBreakdown = () => {
   );
   const comfortValue = (productDesc.Comfort) && (
     <div className="container">
-      <div className="text-center" style={{ padding: '5px' }}>Comfort</div>
+      <div className="text-center font-weight-bold small" style={{ padding: '5px' }}>Comfort</div>
       <div className="small">
         <StackedHorizontalBarChart
           rangesPoints={[0, 5]}
@@ -49,7 +50,7 @@ const ProductBreakdown = () => {
   );
   const qualityValue = (productDesc.Quality) && (
     <div className="container">
-      <div className="text-center" style={{ padding: '5px' }}>Quality</div>
+      <div className="text-center font-weight-bold small" style={{ padding: '5px' }}>Quality</div>
       <div className="small">
         <StackedHorizontalBarChart
           rangesPoints={[0, 5]}
@@ -62,7 +63,7 @@ const ProductBreakdown = () => {
   );
   const widthValue = (productDesc.Width) && (
     <div>
-      <div className="text-center" style={{ padding: '5px' }}>Width</div>
+      <div className="text-center font-weight-bold small" style={{ padding: '5px' }}>Width</div>
       <div className="small">
         <StackedHorizontalBarChart
           rangesPoints={[0, 5]}
@@ -78,7 +79,7 @@ const ProductBreakdown = () => {
     return (
       <div className="container" style={{ padding: '10px' }}>
         <div className="row">
-          <div className="container border" style={{ padding: '20px' }}>
+          <div className="container" style={{ padding: '10px' }}>
             {fitValue}
             {lengthValue}
             {comfortValue}
