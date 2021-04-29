@@ -63,6 +63,17 @@ const ReviewBreakDown = () => {
   const oneStar = (product.reviewsMeta.ratings[1])
     ? ((product.reviewsMeta.ratings[1] * 100) / totalRatings) : 0;
 
+  const five = (product.reviewsMeta.ratings[5])
+    ? ((product.reviewsMeta.ratings[5] * 100) / totalRatings) : 0;
+  const four = (product.reviewsMeta.ratings[4])
+    ? ((product.reviewsMeta.ratings[4] * 100) / totalRatings) : 0;
+  const three = (product.reviewsMeta.ratings[3])
+    ? ((product.reviewsMeta.ratings[3] * 100) / totalRatings) : 0;
+  const two = (product.reviewsMeta.ratings[2])
+    ? ((product.reviewsMeta.ratings[2] * 100) / totalRatings) : 0;
+  const one = (product.reviewsMeta.ratings[1])
+    ? ((product.reviewsMeta.ratings[1] * 100) / totalRatings) : 0;
+
   if (recommendPercent) {
     return (
       <div className="container" style={{ padding: '0px' }} key={product.reviewsMeta.product_id}>
@@ -87,7 +98,7 @@ const ReviewBreakDown = () => {
                   <HSBar height={10} data={[{ value: fiveStars, color: 'green' }, { value: 100 - fiveStars, color: 'grey' }]} />
                 </div>
                 <div className="col-1 text-center" style={{ padding: '1px' }}>
-                  {product.reviewsMeta.ratings[5]}
+                  {five}
                 </div>
               </div>
             </button>
@@ -101,7 +112,7 @@ const ReviewBreakDown = () => {
                   <HSBar height={10} data={[{ value: fourStars, color: 'green' }, { value: 100 - fourStars, color: 'grey' }]} />
                 </div>
                 <div className="col-1 text-center" style={{ padding: '1px' }}>
-                  {product.reviewsMeta.ratings[4]}
+                  {four}
                 </div>
               </div>
             </button>
@@ -115,7 +126,7 @@ const ReviewBreakDown = () => {
                   <HSBar height={10} data={[{ value: threeStars, color: 'green' }, { value: 100 - threeStars, color: 'grey' }]} />
                 </div>
                 <div className="col-1 text-center" style={{ padding: '1px' }}>
-                  {product.reviewsMeta.ratings[3]}
+                  {three}
                 </div>
               </div>
             </button>
@@ -129,7 +140,7 @@ const ReviewBreakDown = () => {
                   <HSBar height={10} data={[{ value: twoStars, color: 'green' }, { value: 100 - twoStars, color: 'grey' }]} />
                 </div>
                 <div className="col-1 text-center" style={{ padding: '1px' }}>
-                  {product.reviewsMeta.ratings[2]}
+                  {two}
                 </div>
               </div>
             </button>
@@ -143,7 +154,7 @@ const ReviewBreakDown = () => {
                   <HSBar height={10} data={[{ value: oneStar, color: 'green' }, { value: 100 - oneStar, color: 'grey' }]} />
                 </div>
                 <div className="col-1 text-center" style={{ padding: '1px' }}>
-                  {product.reviewsMeta.ratings[1]}
+                  {one}
                 </div>
               </div>
             </button>
