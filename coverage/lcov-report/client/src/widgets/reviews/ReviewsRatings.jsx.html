@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">15.79% </span>
+                <span class="strong">18.75% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>3/19</span>
+                <span class='fraction'>3/16</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">20% </span>
+                <span class="strong">25% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/5</span>
+                <span class='fraction'>1/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">15.79% </span>
+                <span class="strong">18.75% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>3/19</span>
+                <span class='fraction'>3/16</span>
             </div>
         
             
@@ -131,12 +131,7 @@
 <a name='L72'></a><a href='#L72'>72</a>
 <a name='L73'></a><a href='#L73'>73</a>
 <a name='L74'></a><a href='#L74'>74</a>
-<a name='L75'></a><a href='#L75'>75</a>
-<a name='L76'></a><a href='#L76'>76</a>
-<a name='L77'></a><a href='#L77'>77</a>
-<a name='L78'></a><a href='#L78'>78</a>
-<a name='L79'></a><a href='#L79'>79</a>
-<a name='L80'></a><a href='#L80'>80</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L75'></a><a href='#L75'>75</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -151,7 +146,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
@@ -160,17 +155,12 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -236,7 +226,6 @@ const ReviewsRatings = () =&gt; {
   const [productId, setProductId] = useState(selectedProduct.productId);
   const [reviewList, setReviewList] = <span class="cstat-no" title="statement not covered" >useState();</span>
   const [reviewsArray, setReviewsArray] = <span class="cstat-no" title="statement not covered" >useState();</span>
-  const [reviewsMeta, setReviewsMeta] = <span class="cstat-no" title="statement not covered" >useState();</span>
   const [isMounted, setIsMounted] = <span class="cstat-no" title="statement not covered" >useState();</span>
   const [ratingFilter, setRatingFilter] = <span class="cstat-no" title="statement not covered" >useState();</span>
   const [helpful, setHelpful] = <span class="cstat-no" title="statement not covered" >useState();</span>
@@ -246,27 +235,23 @@ const ReviewsRatings = () =&gt; {
       .then(<span class="fstat-no" title="function not covered" >(r</span>eviewData) =&gt; {
 <span class="cstat-no" title="statement not covered" >        setReviewList(reviewData);</span>
 <span class="cstat-no" title="statement not covered" >        setReviewsArray(reviewData.results);</span>
-<span class="cstat-no" title="statement not covered" >        api.fetchEndpoint(`/reviews/meta/?product_id=${productId}`)</span>
-          .then(<span class="fstat-no" title="function not covered" >(r</span>eviewMeta) =&gt; {
-<span class="cstat-no" title="statement not covered" >            setReviewsMeta(reviewMeta);</span>
-          });
       })
       .catch(<span class="fstat-no" title="function not covered" >(e</span>rr) =&gt; {
 <span class="cstat-no" title="statement not covered" >        console.log('error fetching review data', err);</span>
       });
   }, [productId]);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  if (reviewsMeta) {</span>
+<span class="cstat-no" title="statement not covered" >  if (selectedProduct.reviewsMeta) {</span>
 <span class="cstat-no" title="statement not covered" >    return (</span>
       &lt;div id="reviews"&gt;
-        &lt;div className="container border" style={{ padding: '20px' }}&gt;
+        &lt;div className="container" style={{ padding: '20px' }}&gt;
           &lt;h3&gt;Reviews &amp; Ratings&lt;/h3&gt;
           &lt;div className="row"&gt;
             &lt;div className="col-sm-4"&gt;
               &lt;div className="container"&gt;
                 &lt;div className="row"&gt;
                   &lt;reviewContext.Provider value={{
-                    reviewsMeta, reviewList, reviewsArray, setReviewsArray,
+                    reviewList, reviewsArray, setReviewsArray,
                   }}
                   &gt;
                     &lt;ReviewBreakDown /&gt;
@@ -278,7 +263,7 @@ const ReviewsRatings = () =&gt; {
             &lt;div className="col"&gt;
               &lt;div className="row" style={{ height: '650px' }}&gt;
                 &lt;reviewContext.Provider value={{
-                  reviewsMeta, reviewList, reviewsArray, setReviewsArray,
+                  reviewList, reviewsArray, setReviewsArray,
                 }}
                 &gt;
                   &lt;ReviewsList /&gt;
@@ -301,7 +286,7 @@ export default ReviewsRatings;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Wed Apr 28 2021 18:59:47 GMT-0600 (Mountain Daylight Time)
+                at Wed Apr 28 2021 19:37:07 GMT-0600 (Mountain Daylight Time)
             </div>
         </div>
         <script src="../../../../prettify.js"></script>
