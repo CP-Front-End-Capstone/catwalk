@@ -8,8 +8,8 @@ const ReviewSearch = () => {
 
   const searchArray = (input) => {
     const searchedReviews = reviews.reviewList.results.filter((review) => (
-      review.body.includes(input)) ||
-      review.summary.includes(input));
+      review.body.includes(input))
+      || review.summary.includes(input));
     reviews.setReviewsArray(searchedReviews);
   };
 
