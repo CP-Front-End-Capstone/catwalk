@@ -17,11 +17,11 @@ const ReviewBreakDown = () => {
   const recommendPercent = Math.round(((Number(product.reviewsMeta.recommended.true) * 100)
   / (totalRatings)) * 10) / 10;
 
-  const ratingsCountArray = (Object.values(product.reviewsMeta.ratings));
-  const numbersArray = ratingsCountArray.map((number) => (
-    Number(number)
-  ));
-  const largestCount = Math.max(...numbersArray);
+  // const ratingsCountArray = (Object.values(product.reviewsMeta.ratings));
+  // const numbersArray = ratingsCountArray.map((number) => (
+  //   Number(number)
+  // ));
+  // const largestCount = Math.max(...numbersArray);
 
   const filterArray = (ratings) => {
     const filteredReviews = review.reviewList.results.filter((rev) => (
