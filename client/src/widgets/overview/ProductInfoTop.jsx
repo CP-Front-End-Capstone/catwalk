@@ -8,7 +8,7 @@ import { styleContext } from '../../contexts/StyleContext.js';
 import Stars from '../../Stars.jsx';
 
 function ProductInfoTop(props) {
-  const { reviewsMeta } = useContext(productContext);
+  const { reviewsMeta, product } = useContext(productContext);
   const { currentStyle, revMeta } = useContext(styleContext);
 
   if (currentStyle && reviewsMeta) {
