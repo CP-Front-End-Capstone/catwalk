@@ -15,22 +15,24 @@ function RelatedProductsList({
   products, styles, rating, currentProduct, calculateAverage,
 }) {
   return (
-    <div className="container">
-      <div className="row">
-        <Carousel itemsToShow={3} itemsToScroll={1}>
-          {products.map((product, index) => (
-            <div className="card-deck p-3" key={uuid()}>
-              <div className="card w-25">
-                <RelatedProductsCard
-                  product={product}
-                  currentProduct={currentProduct}
-                  style={styles[index]}
-                  rating={calculateAverage(rating[index])}
-                />
+    <div id="productsList">
+      <div className="container">
+        <div className="row">
+          <Carousel itemsToShow={3} itemsToScroll={1}>
+            {products.map((product, index) => (
+              <div className="card-deck p-3" key={uuid()}>
+                <div className="card w-25">
+                  <RelatedProductsCard
+                    product={product}
+                    currentProduct={currentProduct}
+                    style={styles[index]}
+                    rating={calculateAverage(rating[index])}
+                  />
+                </div>
               </div>
-            </div>
-          ))}
-        </Carousel>
+            ))}
+          </Carousel>
+        </div>
       </div>
     </div>
   );
