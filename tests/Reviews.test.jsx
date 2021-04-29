@@ -15,5 +15,4 @@ describe('Reviews and Ratings Widget', () => {
     const title = <h3>Reviews & Ratings</h3>;
     expect(wrapper.contains(title)).toEqual(true);
   });
-
 });
