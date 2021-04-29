@@ -8,7 +8,7 @@ import Modal from 'react-modal';
 import { Checkmark } from 'react-checkmark';
 import uuid from 'react-uuid';
 
-Modal.setAppElement('#app');
+// Modal.setAppElement('#app');
 
 function ComparisonModal({ updateModal, product, currentProduct }) {
   const customStyles = {
