@@ -33,8 +33,6 @@ const Stars = (props) => {
     const totalRatings = Number(fiveStars) + Number(fourStars)
     + Number(threeStars) + Number(twoStars) + Number(oneStar);
 
-    console.log(totalRatings);
-
     const avgCalc = (((Number(fiveStars)) * 5)
       + (Number(fourStars) * 4)
       + (Number(threeStars) * 3)
