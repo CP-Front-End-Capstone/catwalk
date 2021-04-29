@@ -1,3 +1,5 @@
+/* eslint-disable consistent-return */
+/* eslint-disable array-callback-return */
 /* eslint-disable max-len */
 /* eslint-disable no-console */
 /* eslint-disable import/named */
@@ -6,7 +8,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import api from '../../../../API/helper.js';
 import { productContext } from '../../contexts/ProductContext.js';
-import reviewContext from '../../contexts/ReviewContext.js';
 import RelatedProductsList from './RelatedProductsList.jsx';
 import MyOutfitList from './MyOutfitList.jsx';
 
@@ -14,7 +15,23 @@ function RelatedProducts() {
   const context = useContext(productContext);
   const [products, setProducts] = useState([]);
   const [styles, setStyles] = useState([]);
-  const [reviewsMeta, setReviewsMeta] = useState([]);
+  const [reviewsMeta, setReviewsMeta] = useState(0);
+
+  const calculateAverage = (review) => {
+    if (review && Object.keys(review.ratings).length >= 0) {
+      const totalRatings = Number(review.recommended.true)
+        + Number(review.recommended.false);
+
+      const avgCalc = ((Number((review.ratings[5])) * 5)
+          + (Number((review.ratings[4])) * 4)
+          + (Number((review.ratings[3])) * 3)
+          + (Number((review.ratings[2])) * 2)
+          + (Number((review.ratings[1])))) / totalRatings;
+
+      const formattedAvg = Math.round(avgCalc * 10) / 10;
+      return (formattedAvg);
+    }
+  };
 
   const getProducts = (array) => {
     // fetch products object
@@ -57,13 +74,11 @@ function RelatedProducts() {
     return (
       <div id="products">
         <div className="container">
-          <h3 className="h4">Related Items:</h3>
-          <reviewContext.Provider value={{ reviewsMeta }}>
-            <RelatedProductsList products={products} styles={styles} rating={context.starAvg} currentProduct={context.product} />
-          </reviewContext.Provider>
+          <h4 className="h4 lead">Related Items:</h4>
+          <RelatedProductsList products={products} styles={styles} rating={reviewsMeta} currentProduct={context.product} calculateAverage={calculateAverage} />
         </div>
         <div className="container">
-          <h3 className="h4">Your Outfit:</h3>
+          <h4 className="h4 lead">Your Outfit:</h4>
           <MyOutfitList currentProduct={context.product} styles={context.styles} />
         </div>
       </div>

@@ -7,53 +7,28 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useContext, useEffect } from 'react';
 import Carousel from 'react-elastic-carousel';
+import uuid from 'react-uuid';
 import reviewContext from '../../contexts/ReviewContext';
 import RelatedProductsCard from './RelatedProductsCard.jsx';
 // import productContext from '../../contexts/ProductContext.js';
 
 function RelatedProductsList({
-  products, styles, rating, currentProduct,
+  products, styles, rating, currentProduct, calculateAverage,
 }) {
-  const reviewMeta = useContext(reviewContext);
-  console.log(reviewMeta);
-  // const [ratingAvg, setRatingAvg] = useState();
-
-  // const relatedReviews = (review) => {
-  //   const totalRatings = Number(review.recommended.true)
-  //   + Number(review.recommended.false);
-
-  //   const ratingsCountArray = (Object.values(review.ratings));
-  //   const numbersArray = ratingsCountArray.map((number) => (
-  //     Number(number)
-  //   ));
-
-  //   const avgCalc = ((Number((review.ratings[5])) * 5)
-  //     + (Number((review.ratings[4])) * 4)
-  //     + (Number((review.ratings[3])) * 3)
-  //     + (Number((review.ratings[2])) * 2)
-  //     + (Number((review.ratings[1])))) / totalRatings;
-
-  //   const formattedAvg = Math.round(avgCalc * 10) / 10;
-
-  //   setRatingAvg(formattedAvg);
-  // };
-
+  console.log(rating);
   return (
-    <div className="container-fluid">
+    <div className="container">
       <div className="row">
         <Carousel itemsToShow={3} itemsToScroll={1}>
           {products.map((product, index) => (
-            <div className="col-sm-12 col-lg-10" key={product.id}>
-              <div className="card-group">
-                <div className="card">
-                  <RelatedProductsCard
-                    product={product}
-                    currentProduct={currentProduct}
-                    style={styles[index]}
-                    rating={rating}
-                    review={rating}
-                  />
-                </div>
+            <div className="card-deck p-3" key={uuid()}>
+              <div className="card w-25">
+                <RelatedProductsCard
+                  product={product}
+                  currentProduct={currentProduct}
+                  style={styles[index]}
+                  rating={calculateAverage(rating[index])}
+                />
               </div>
             </div>
           ))}

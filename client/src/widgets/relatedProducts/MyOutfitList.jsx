@@ -14,19 +14,13 @@ function MyOutfitList({ currentProduct, styles }) {
 
   return (
     <Carousel itemsToShow={2} itemsToScroll={1}>
-      <div className="container-fluid">
+      <div className="container">
         <div className="row">
-          <div className="col-sm-3">
-            <div className="card-group">
-              <div className="card">
-                <MyOutfitCard updateFit={setOutfit} />
-              </div>
-            </div>
+          <div className="card-deck p-3">
+            <MyOutfitCard updateFit={setOutfit} />
           </div>
-          <div className="col-sm-3">
-            <div className="card-group">
-              {outfit ? <ProductCard currentProduct={currentProduct} style={styles[0]} updateFit={setOutfit} /> : null}
-            </div>
+          <div className="card-deck p-3">
+            {outfit ? <ProductCard currentProduct={currentProduct} style={styles[0]} updateFit={setOutfit} /> : null}
           </div>
         </div>
       </div>
