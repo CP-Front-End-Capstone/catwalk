@@ -111,9 +111,11 @@ const addAnswer = (props) => {
 
   const updatePhotos = (e) => {
     e.preventDefault();
-    changePhotos(
-      photos.concat(URL.createObjectURL(e.target.files[0])),
-    );
+    if (photos.length < 5) {
+      changePhotos(
+        photos.concat(e.target.files[0]),
+      );
+    }
   };
 
   return (
@@ -168,7 +170,7 @@ const addAnswer = (props) => {
             <div className="row">
               {photos.map((photo) => (
                 <span className="col" key={photo}>
-                  <img src={photo} className="img-fluid img-thumbnail" alt="thumbnail" />
+                  <img src={URL.createObjectURL(photo)} className="img-fluid img-thumbnail" alt="thumbnail" />
                 </span>
               ))}
             </div>
