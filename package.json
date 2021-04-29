@@ -22,6 +22,9 @@
   "homepage": "https://github.com/CP-Front-End-Capstone/catwalk#readme",
   "dependencies": {
     "@brainhubeu/react-carousel": "^2.0.3",
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@fortawesome/react-fontawesome": "^0.1.14",
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "dateformat": "^4.5.1",

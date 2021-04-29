@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-tag-spacing */
+/* eslint-disable import/extensions */
 /* eslint-disable camelcase */
 import React, { useContext, useState, useEffect } from 'react';
 import Question from './Question.jsx';

@@ -23,20 +23,27 @@ import { productContext } from '../../contexts/ProductContext.js';
 import { styleContext } from '../../contexts/StyleContext.js';
 
 function Overview(props) {
-  const context = useContext(productContext);
   const { product, productId } = useContext(productContext);
   const [styles, changeStyles] = useState();
   const [currentStyle, setStyle] = useState();
   const [currentImage, setImage] = useState();
   const [imageView, setImageView] = useState(false);
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
+  const [photosLength, setPhotosLength] = useState();
+  const [revMeta, setRevMeta] = useState();
 
   useEffect(() => {
     api.fetchEndpoint(`/products/${productId}/styles`)
       .then((stylesData) => {
+        console.log('this is styles data:', stylesData);
         changeStyles(stylesData.results);
         setStyle(stylesData.results[0]);
         setImage(stylesData.results[0].photos[0].url);
+        setPhotosLength(stylesData.results[0].photos.length);
+        api.fetchEndpoint(`/reviews/meta/?product_id=${productId}`)
+          .then((reviewsMeta) => {
+            setRevMeta(reviewsMeta);
+          });
       })
       .catch((error) => {
         console.log('Error fetching data', error);
@@ -47,7 +54,7 @@ function Overview(props) {
     return (
       <div className="container " id="overview">
         <styleContext.Provider value={{
-          styles, currentStyle, currentImage, setImage, setStyle, imageView, setImageView, currentPhotoIndex, setCurrentPhotoIndex,
+          styles, currentStyle, currentImage, setImage, setStyle, imageView, setImageView, currentPhotoIndex, setCurrentPhotoIndex, photosLength,
         }}
         >
           <div className="row d-flex justify-content-between">
@@ -66,11 +73,11 @@ function Overview(props) {
     return (
       <div className="container" id="overview">
         <styleContext.Provider value={{
-          styles, currentStyle, currentImage, setImage, setStyle, imageView, setImageView, currentPhotoIndex, setCurrentPhotoIndex,
+          styles, currentStyle, currentImage, setImage, setStyle, imageView, setImageView, currentPhotoIndex, setCurrentPhotoIndex, photosLength,
         }}
         >
-          <div className="row mx-md-n5">
-            <div className="col px-md-5">
+          <div className="row d-flex justify-content-between">
+            <div className="col">
               <ImageGallery />
             </div>
             <div className="col d-flex align-content-around flex-wrap">
