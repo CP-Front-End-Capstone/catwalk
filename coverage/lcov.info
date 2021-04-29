@@ -2,7 +2,11 @@ TN:
 SF:API/config.js
 FNF:0
 FNH:0
+<<<<<<< HEAD
 DA:1,5
+=======
+DA:1,3
+>>>>>>> main
 LF:1
 LH:1
 BRF:0
@@ -20,6 +24,7 @@ FNDA:0,(anonymous_0)
 FNDA:0,(anonymous_1)
 FNDA:0,(anonymous_2)
 FNDA:0,(anonymous_3)
+<<<<<<< HEAD
 DA:6,5
 DA:7,5
 DA:9,5
@@ -27,12 +32,22 @@ DA:10,0
 DA:16,0
 DA:19,0
 DA:23,5
+=======
+DA:6,3
+DA:7,3
+DA:9,3
+DA:10,0
+DA:16,0
+DA:19,0
+DA:23,3
+>>>>>>> main
 LF:7
 LH:4
 BRF:0
 BRH:0
 end_of_record
 TN:
+<<<<<<< HEAD
 SF:client/src/App.jsx
 FN:22,(anonymous_0)
 FN:28,(anonymous_1)
@@ -101,6 +116,12 @@ SF:client/src/contexts/ProductContext.js
 FNF:0
 FNH:0
 DA:10,4
+=======
+SF:client/src/contexts/ProductContext.js
+FNF:0
+FNH:0
+DA:10,2
+>>>>>>> main
 LF:1
 LH:1
 BRF:0
@@ -116,7 +137,11 @@ FNH:0
 FNDA:0,(anonymous_0)
 FNDA:0,(anonymous_1)
 FNDA:0,(anonymous_2)
+<<<<<<< HEAD
 DA:3,2
+=======
+DA:3,1
+>>>>>>> main
 LF:1
 LH:1
 BRF:0
@@ -126,6 +151,7 @@ TN:
 SF:client/src/contexts/ReviewContext.js
 FNF:0
 FNH:0
+<<<<<<< HEAD
 DA:3,3
 LF:1
 LH:1
@@ -137,12 +163,16 @@ SF:client/src/contexts/StyleContext.js
 FNF:0
 FNH:0
 DA:5,2
+=======
+DA:3,2
+>>>>>>> main
 LF:1
 LH:1
 BRF:0
 BRH:0
 end_of_record
 TN:
+<<<<<<< HEAD
 SF:client/src/widgets/overview/AddToCart.jsx
 FN:20,AddToCart
 FN:31,(anonymous_1)
@@ -461,6 +491,24 @@ FN:90,(anonymous_10)
 FN:95,(anonymous_11)
 FN:100,(anonymous_12)
 FNF:13
+=======
+SF:client/src/widgets/qa/AddAnswer.jsx
+FN:26,(anonymous_0)
+FN:38,(anonymous_1)
+FN:41,(anonymous_2)
+FN:49,(anonymous_3)
+FN:66,(anonymous_4)
+FN:78,(anonymous_5)
+FN:79,(anonymous_6)
+FN:83,(anonymous_7)
+FN:87,(anonymous_8)
+FN:95,(anonymous_9)
+FN:100,(anonymous_10)
+FN:105,(anonymous_11)
+FN:110,(anonymous_12)
+FN:113,(anonymous_13)
+FNF:14
+>>>>>>> main
 FNH:1
 FNDA:36,(anonymous_0)
 FNDA:0,(anonymous_1)
@@ -475,6 +523,7 @@ FNDA:0,(anonymous_9)
 FNDA:0,(anonymous_10)
 FNDA:0,(anonymous_11)
 FNDA:0,(anonymous_12)
+<<<<<<< HEAD
 DA:5,2
 DA:8,2
 DA:24,2
@@ -512,6 +561,42 @@ DA:86,0
 DA:87,0
 DA:90,36
 DA:91,0
+=======
+FNDA:0,(anonymous_13)
+DA:8,1
+DA:10,1
+DA:26,1
+DA:31,36
+DA:33,36
+DA:34,36
+DA:35,36
+DA:36,36
+DA:37,36
+DA:38,36
+DA:39,0
+DA:41,36
+DA:42,0
+DA:43,0
+DA:44,0
+DA:45,0
+DA:46,0
+DA:47,0
+DA:49,36
+DA:50,0
+DA:51,0
+DA:57,0
+DA:58,0
+DA:67,0
+DA:68,0
+DA:69,0
+DA:70,0
+DA:71,0
+DA:79,0
+DA:80,0
+DA:84,0
+DA:88,0
+DA:90,0
+>>>>>>> main
 DA:92,0
 DA:95,36
 DA:96,0
@@ -519,15 +604,34 @@ DA:97,0
 DA:100,36
 DA:101,0
 DA:102,0
+<<<<<<< HEAD
 DA:103,0
 DA:106,36
 LF:46
 LH:17
 BRF:0
+=======
+DA:105,36
+DA:106,0
+DA:107,0
+DA:110,36
+DA:111,0
+DA:112,0
+DA:113,0
+DA:114,0
+DA:115,0
+DA:120,36
+LF:50
+LH:17
+BRDA:57,0,0,0
+BRDA:57,0,1,0
+BRF:2
+>>>>>>> main
 BRH:0
 end_of_record
 TN:
 SF:client/src/widgets/qa/AddQuestion.jsx
+<<<<<<< HEAD
 FN:27,(anonymous_0)
 FN:39,(anonymous_1)
 FN:42,(anonymous_2)
@@ -539,6 +643,19 @@ FN:78,(anonymous_7)
 FN:83,(anonymous_8)
 FN:88,(anonymous_9)
 FN:93,(anonymous_10)
+=======
+FN:28,(anonymous_0)
+FN:40,(anonymous_1)
+FN:43,(anonymous_2)
+FN:50,(anonymous_3)
+FN:67,(anonymous_4)
+FN:72,(anonymous_5)
+FN:75,(anonymous_6)
+FN:79,(anonymous_7)
+FN:87,(anonymous_8)
+FN:92,(anonymous_9)
+FN:97,(anonymous_10)
+>>>>>>> main
 FNF:11
 FNH:1
 FNDA:6,(anonymous_0)
@@ -552,6 +669,7 @@ FNDA:0,(anonymous_7)
 FNDA:0,(anonymous_8)
 FNDA:0,(anonymous_9)
 FNDA:0,(anonymous_10)
+<<<<<<< HEAD
 DA:7,2
 DA:11,2
 DA:27,2
@@ -565,10 +683,25 @@ DA:39,6
 DA:40,0
 DA:42,6
 DA:43,0
+=======
+DA:7,1
+DA:12,1
+DA:28,1
+DA:32,6
+DA:33,6
+DA:35,6
+DA:36,6
+DA:37,6
+DA:38,6
+DA:40,6
+DA:41,0
+DA:43,6
+>>>>>>> main
 DA:44,0
 DA:45,0
 DA:46,0
 DA:47,0
+<<<<<<< HEAD
 DA:49,6
 DA:50,0
 DA:51,0
@@ -594,6 +727,38 @@ DA:98,6
 LF:39
 LH:16
 BRF:0
+=======
+DA:48,0
+DA:50,6
+DA:51,0
+DA:52,0
+DA:58,0
+DA:59,0
+DA:68,0
+DA:69,0
+DA:70,0
+DA:71,0
+DA:73,0
+DA:76,0
+DA:80,0
+DA:82,0
+DA:84,0
+DA:87,6
+DA:88,0
+DA:89,0
+DA:92,6
+DA:93,0
+DA:94,0
+DA:97,6
+DA:98,0
+DA:99,0
+DA:102,6
+LF:41
+LH:16
+BRDA:58,0,0,0
+BRDA:58,0,1,0
+BRF:2
+>>>>>>> main
 BRH:0
 end_of_record
 TN:
@@ -602,7 +767,11 @@ FN:8,(anonymous_0)
 FNF:1
 FNH:1
 FNDA:18,(anonymous_0)
+<<<<<<< HEAD
 DA:8,2
+=======
+DA:8,1
+>>>>>>> main
 DA:9,18
 DA:10,18
 DA:11,18
@@ -631,7 +800,11 @@ FNDA:0,(anonymous_4)
 FNDA:0,(anonymous_5)
 FNDA:0,(anonymous_6)
 FNDA:0,(anonymous_7)
+<<<<<<< HEAD
 DA:9,2
+=======
+DA:9,1
+>>>>>>> main
 DA:10,72
 DA:11,72
 DA:12,72
@@ -672,6 +845,7 @@ BRF:8
 BRH:6
 end_of_record
 TN:
+<<<<<<< HEAD
 SF:client/src/widgets/qa/QandA.jsx
 FN:8,(anonymous_0)
 FN:14,(anonymous_1)
@@ -714,6 +888,8 @@ BRF:4
 BRH:0
 end_of_record
 TN:
+=======
+>>>>>>> main
 SF:client/src/widgets/qa/Question.jsx
 FN:11,(anonymous_0)
 FN:17,(anonymous_1)
@@ -731,7 +907,11 @@ FNDA:6,(anonymous_3)
 FNDA:24,(anonymous_4)
 FNDA:18,(anonymous_5)
 FNDA:0,(anonymous_6)
+<<<<<<< HEAD
 DA:11,2
+=======
+DA:11,1
+>>>>>>> main
 DA:12,36
 DA:13,36
 DA:14,36
@@ -787,7 +967,11 @@ FNDA:3,(anonymous_1)
 FNDA:3,(anonymous_2)
 FNDA:1,(anonymous_3)
 FNDA:12,(anonymous_4)
+<<<<<<< HEAD
 DA:8,2
+=======
+DA:8,1
+>>>>>>> main
 DA:14,6
 DA:15,6
 DA:17,6
@@ -816,7 +1000,11 @@ FNDA:18,(anonymous_0)
 FNDA:0,(anonymous_1)
 FNDA:0,(anonymous_2)
 FNDA:0,(anonymous_3)
+<<<<<<< HEAD
 DA:7,2
+=======
+DA:7,1
+>>>>>>> main
 DA:8,18
 DA:10,18
 DA:11,0
@@ -840,24 +1028,35 @@ TN:
 SF:client/src/widgets/qa/Search.jsx
 FN:4,(anonymous_0)
 FN:8,(anonymous_1)
+<<<<<<< HEAD
 FN:13,(anonymous_2)
 FN:15,(anonymous_3)
 FN:33,(anonymous_4)
 FN:38,(anonymous_5)
 FNF:6
+=======
+FN:19,(anonymous_2)
+FN:21,(anonymous_3)
+FNF:4
+>>>>>>> main
 FNH:2
 FNDA:6,(anonymous_0)
 FNDA:0,(anonymous_1)
 FNDA:3,(anonymous_2)
 FNDA:0,(anonymous_3)
+<<<<<<< HEAD
 FNDA:0,(anonymous_4)
 FNDA:0,(anonymous_5)
 DA:4,2
+=======
+DA:4,1
+>>>>>>> main
 DA:5,6
 DA:6,6
 DA:8,6
 DA:9,0
 DA:10,0
+<<<<<<< HEAD
 DA:13,6
 DA:14,3
 DA:15,0
@@ -878,10 +1077,63 @@ BRDA:34,2,0,0
 BRDA:34,2,1,0
 BRDA:39,3,0,0
 BRDA:39,3,1,0
+=======
+DA:11,0
+DA:12,0
+DA:13,0
+DA:15,0
+DA:19,6
+DA:20,3
+DA:21,0
+DA:22,0
+DA:25,3
+DA:29,6
+LF:16
+LH:8
+BRDA:10,0,0,0
+BRDA:10,0,1,0
+BRDA:12,1,0,0
+BRDA:12,1,1,0
+BRDA:20,2,0,0
+BRDA:20,2,1,3
+BRDA:37,3,0,0
+BRDA:37,3,1,6
+>>>>>>> main
 BRF:8
 BRH:2
 end_of_record
 TN:
+<<<<<<< HEAD
+=======
+SF:client/src/widgets/qa/helpers.js
+FN:1,(anonymous_0)
+FN:6,(anonymous_1)
+FNF:2
+FNH:0
+FNDA:0,(anonymous_0)
+FNDA:0,(anonymous_1)
+DA:1,1
+DA:2,0
+DA:3,0
+DA:6,1
+DA:7,0
+DA:8,0
+DA:10,0
+DA:11,0
+DA:13,0
+LF:9
+LH:2
+BRDA:7,0,0,0
+BRDA:7,0,1,0
+BRDA:7,1,0,0
+BRDA:7,1,1,0
+BRDA:10,2,0,0
+BRDA:10,2,1,0
+BRF:6
+BRH:0
+end_of_record
+TN:
+>>>>>>> main
 SF:client/src/widgets/relatedProducts/ComparisonModal.jsx
 FN:13,ComparisonModal
 FN:29,(anonymous_1)
@@ -1067,6 +1319,7 @@ end_of_record
 TN:
 SF:client/src/widgets/reviews/AddReview.jsx
 FN:16,(anonymous_0)
+<<<<<<< HEAD
 FN:34,(anonymous_1)
 FN:38,(anonymous_2)
 FN:43,(anonymous_3)
@@ -1089,6 +1342,30 @@ FN:202,(anonymous_19)
 FN:217,(anonymous_20)
 FN:221,(anonymous_21)
 FN:224,(anonymous_22)
+=======
+FN:35,(anonymous_1)
+FN:39,(anonymous_2)
+FN:44,(anonymous_3)
+FN:49,(anonymous_4)
+FN:69,(anonymous_5)
+FN:84,(anonymous_6)
+FN:89,(anonymous_7)
+FN:93,(anonymous_8)
+FN:106,(anonymous_9)
+FN:112,(anonymous_10)
+FN:116,(anonymous_11)
+FN:120,(anonymous_12)
+FN:124,(anonymous_13)
+FN:128,(anonymous_14)
+FN:157,(anonymous_15)
+FN:167,(anonymous_16)
+FN:169,(anonymous_17)
+FN:194,(anonymous_18)
+FN:203,(anonymous_19)
+FN:218,(anonymous_20)
+FN:222,(anonymous_21)
+FN:225,(anonymous_22)
+>>>>>>> main
 FNF:23
 FNH:0
 FNDA:0,(anonymous_0)
@@ -1114,11 +1391,19 @@ FNDA:0,(anonymous_19)
 FNDA:0,(anonymous_20)
 FNDA:0,(anonymous_21)
 FNDA:0,(anonymous_22)
+<<<<<<< HEAD
 DA:14,2
 DA:16,2
 DA:17,0
 DA:18,0
 DA:21,0
+=======
+DA:14,1
+DA:16,1
+DA:17,0
+DA:18,0
+DA:19,0
+>>>>>>> main
 DA:22,0
 DA:23,0
 DA:24,0
@@ -1130,6 +1415,7 @@ DA:29,0
 DA:30,0
 DA:31,0
 DA:32,0
+<<<<<<< HEAD
 DA:34,0
 DA:35,0
 DA:38,0
@@ -1175,6 +1461,54 @@ BRDA:94,2,0,0
 BRDA:94,2,1,0
 BRDA:106,3,0,0
 BRDA:106,3,1,0
+=======
+DA:33,0
+DA:35,0
+DA:36,0
+DA:39,0
+DA:40,0
+DA:41,0
+DA:44,0
+DA:45,0
+DA:46,0
+DA:49,0
+DA:50,0
+DA:51,0
+DA:70,0
+DA:85,0
+DA:89,0
+DA:90,0
+DA:93,0
+DA:95,0
+DA:97,0
+DA:106,0
+DA:107,0
+DA:112,0
+DA:116,0
+DA:120,0
+DA:124,0
+DA:128,0
+DA:132,0
+DA:135,0
+DA:157,0
+DA:167,0
+DA:169,0
+DA:194,0
+DA:203,0
+DA:218,0
+DA:222,0
+DA:225,0
+LF:52
+LH:2
+BRDA:28,0,0,0
+BRDA:28,0,1,0
+BRDA:93,1,0,0
+BRDA:93,1,1,0
+BRDA:95,2,0,0
+BRDA:95,2,1,0
+BRDA:107,3,0,0
+BRDA:107,3,1,0
+>>>>>>> main
 BRF:8
 BRH:0
 end_of_record
@@ -1198,8 +1532,13 @@ FNDA:0,(anonymous_4)
 FNDA:0,(anonymous_5)
 FNDA:0,(anonymous_6)
 FNDA:0,(anonymous_7)
+<<<<<<< HEAD
 DA:13,2
 DA:15,2
+=======
+DA:13,1
+DA:15,1
+>>>>>>> main
 DA:16,0
 DA:17,0
 DA:18,0
@@ -1236,6 +1575,7 @@ BRH:0
 end_of_record
 TN:
 SF:client/src/widgets/reviews/ProductBreakDown.jsx
+<<<<<<< HEAD
 FN:6,(anonymous_0)
 FNF:1
 FNH:0
@@ -1266,11 +1606,43 @@ BRDA:63,4,0,0
 BRDA:63,4,1,0
 BRDA:77,5,0,0
 BRDA:77,5,1,0
+=======
+FN:5,(anonymous_0)
+FNF:1
+FNH:0
+FNDA:0,(anonymous_0)
+DA:5,1
+DA:6,0
+DA:7,0
+DA:9,0
+DA:22,0
+DA:35,0
+DA:48,0
+DA:61,0
+DA:75,0
+DA:76,0
+DA:90,0
+LF:11
+LH:1
+BRDA:9,0,0,0
+BRDA:9,0,1,0
+BRDA:22,1,0,0
+BRDA:22,1,1,0
+BRDA:35,2,0,0
+BRDA:35,2,1,0
+BRDA:48,3,0,0
+BRDA:48,3,1,0
+BRDA:61,4,0,0
+BRDA:61,4,1,0
+BRDA:75,5,0,0
+BRDA:75,5,1,0
+>>>>>>> main
 BRF:12
 BRH:0
 end_of_record
 TN:
 SF:client/src/widgets/reviews/ReviewBreakDown.jsx
+<<<<<<< HEAD
 FN:9,(anonymous_0)
 FN:21,(anonymous_1)
 FN:26,(anonymous_2)
@@ -1281,6 +1653,18 @@ FN:86,(anonymous_6)
 FN:92,(anonymous_7)
 FN:98,(anonymous_8)
 FN:104,(anonymous_9)
+=======
+FN:7,(anonymous_0)
+FN:18,(anonymous_1)
+FN:35,(anonymous_2)
+FN:36,(anonymous_3)
+FN:41,(anonymous_4)
+FN:97,(anonymous_5)
+FN:103,(anonymous_6)
+FN:109,(anonymous_7)
+FN:115,(anonymous_8)
+FN:121,(anonymous_9)
+>>>>>>> main
 FNF:10
 FNH:0
 FNDA:0,(anonymous_0)
@@ -1293,6 +1677,7 @@ FNDA:0,(anonymous_6)
 FNDA:0,(anonymous_7)
 FNDA:0,(anonymous_8)
 FNDA:0,(anonymous_9)
+<<<<<<< HEAD
 DA:9,2
 DA:10,0
 DA:11,0
@@ -1310,10 +1695,24 @@ DA:29,0
 DA:32,0
 DA:33,0
 DA:34,0
+=======
+DA:7,1
+DA:8,0
+DA:9,0
+DA:11,0
+DA:14,0
+DA:17,0
+DA:18,0
+DA:19,0
+DA:21,0
+DA:23,0
+DA:29,0
+>>>>>>> main
 DA:35,0
 DA:36,0
 DA:37,0
 DA:38,0
+<<<<<<< HEAD
 DA:39,0
 DA:40,0
 DA:41,0
@@ -1363,6 +1762,66 @@ BRDA:66,9,1,0
 BRDA:116,10,0,0
 BRDA:116,10,1,0
 BRF:22
+=======
+DA:41,0
+DA:42,0
+DA:43,0
+DA:44,0
+DA:45,0
+DA:46,0
+DA:47,0
+DA:48,0
+DA:49,0
+DA:50,0
+DA:52,0
+DA:53,0
+DA:56,0
+DA:57,0
+DA:58,0
+DA:62,0
+DA:64,0
+DA:66,0
+DA:68,0
+DA:70,0
+DA:72,0
+DA:75,0
+DA:76,0
+DA:97,0
+DA:103,0
+DA:109,0
+DA:115,0
+DA:121,0
+DA:133,0
+DA:134,0
+DA:136,0
+LF:46
+LH:1
+BRDA:29,0,0,0
+BRDA:29,0,1,0
+BRDA:43,1,0,0
+BRDA:43,1,1,0
+BRDA:46,2,0,0
+BRDA:46,2,1,0
+BRDA:47,3,0,0
+BRDA:47,3,1,0
+BRDA:62,4,0,0
+BRDA:62,4,1,0
+BRDA:64,5,0,0
+BRDA:64,5,1,0
+BRDA:66,6,0,0
+BRDA:66,6,1,0
+BRDA:68,7,0,0
+BRDA:68,7,1,0
+BRDA:70,8,0,0
+BRDA:70,8,1,0
+BRDA:72,9,0,0
+BRDA:72,9,1,0
+BRDA:75,10,0,0
+BRDA:75,10,1,0
+BRDA:133,11,0,0
+BRDA:133,11,1,0
+BRF:24
+>>>>>>> main
 BRH:0
 end_of_record
 TN:
@@ -1373,7 +1832,11 @@ FNF:2
 FNH:0
 FNDA:0,(anonymous_0)
 FNDA:0,(anonymous_1)
+<<<<<<< HEAD
 DA:3,2
+=======
+DA:3,1
+>>>>>>> main
 DA:4,0
 DA:5,0
 DA:6,0
@@ -1397,7 +1860,11 @@ FNDA:0,(anonymous_1)
 FNDA:0,(anonymous_2)
 FNDA:0,(anonymous_3)
 FNDA:0,(anonymous_4)
+<<<<<<< HEAD
 DA:5,2
+=======
+DA:5,1
+>>>>>>> main
 DA:6,0
 DA:7,0
 DA:9,0
@@ -1445,7 +1912,11 @@ FNDA:0,(anonymous_7)
 FNDA:0,(anonymous_8)
 FNDA:0,(anonymous_9)
 FNDA:0,(anonymous_10)
+<<<<<<< HEAD
 DA:15,2
+=======
+DA:15,1
+>>>>>>> main
 DA:16,0
 DA:17,0
 DA:18,0
@@ -1476,16 +1947,29 @@ end_of_record
 TN:
 SF:client/src/widgets/reviews/ReviewsRatings.jsx
 FN:16,(anonymous_0)
+<<<<<<< HEAD
 FN:26,(anonymous_1)
 FN:28,(anonymous_2)
 FN:32,(anonymous_3)
 FNF:4
+=======
+FN:27,(anonymous_1)
+FN:29,(anonymous_2)
+FN:33,(anonymous_3)
+FN:37,(anonymous_4)
+FNF:5
+>>>>>>> main
 FNH:1
 FNDA:3,(anonymous_0)
 FNDA:0,(anonymous_1)
 FNDA:0,(anonymous_2)
 FNDA:0,(anonymous_3)
+<<<<<<< HEAD
 DA:16,2
+=======
+FNDA:0,(anonymous_4)
+DA:16,1
+>>>>>>> main
 DA:17,3
 DA:19,2
 DA:20,0
@@ -1493,6 +1977,7 @@ DA:21,0
 DA:22,0
 DA:23,0
 DA:24,0
+<<<<<<< HEAD
 DA:26,0
 DA:27,0
 DA:29,0
@@ -1505,6 +1990,23 @@ LF:16
 LH:3
 BRDA:37,0,0,0
 BRDA:37,0,1,0
+=======
+DA:25,0
+DA:27,0
+DA:28,0
+DA:30,0
+DA:31,0
+DA:32,0
+DA:34,0
+DA:38,0
+DA:42,0
+DA:43,0
+DA:76,0
+LF:19
+LH:3
+BRDA:42,0,0,0
+BRDA:42,0,1,0
+>>>>>>> main
 BRF:2
 BRH:0
 end_of_record
@@ -1522,9 +2024,15 @@ TN:
 SF:tests/testconfig.js
 FNF:0
 FNH:0
+<<<<<<< HEAD
 DA:2,4
 DA:3,4
 DA:5,4
+=======
+DA:2,2
+DA:3,2
+DA:5,2
+>>>>>>> main
 LF:3
 LH:3
 BRF:0

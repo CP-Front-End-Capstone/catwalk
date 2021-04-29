@@ -7,6 +7,7 @@ import axios from 'axios';
 const config = require('../../../../API/config.js');
 import Question from './Question.jsx';
 import qaContext from '../../contexts/QaContext';
+import validate from './helpers.js';
 
 const customStyles = {
   content: {
@@ -54,31 +55,34 @@ const addQuestion = (props) => {
       email,
       product_id: parseInt(productId, 10),
     };
-
-    axios({
-      method: 'POST',
-      url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions',
-      data: newQuestion,
-      headers: {
-        Authorization: config.TOKEN,
-      },
-    })
-      .then((res) => {
-        changeQuestion('');
-        changeNickname('');
-        changeEmail('');
-        api.fetchEndpoint(`/qa/questions?product_id=${productId}&count=100`)
-          .then((questionsData) => {
-            changeQuestionList(questionsData.results);
-          })
-          .catch((error) => {
-            console.log('Error fetching questions:', error);
-          });
+    if (validate(newQuestion)) {
+      axios({
+        method: 'POST',
+        url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions',
+        data: newQuestion,
+        headers: {
+          Authorization: config.TOKEN,
+        },
       })
-      .catch((err) => {
-        console.log('ERROR: ', err);
-      });
-    setIsOpen(false);
+        .then((res) => {
+          changeQuestion('');
+          changeNickname('');
+          changeEmail('');
+          api.fetchEndpoint(`/qa/questions?product_id=${productId}&count=100`)
+            .then((questionsData) => {
+              changeQuestionList(questionsData.results);
+            })
+            .catch((error) => {
+              console.log('Error fetching questions:', error);
+            });
+        })
+        .catch((err) => {
+          console.log('ERROR: ', err);
+        });
+      setIsOpen(false);
+    } else {
+      window.alert('Invalid input');
+    }
   };
   const updateQuestion = (e) => {
     e.preventDefault();

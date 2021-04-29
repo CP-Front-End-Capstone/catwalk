@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for client/src/widgets/relatedProducts/MyOutfitCard.jsx</title>
+    <title>Code coverage report for client/src/widgets/qa/helpers.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">client/src/widgets/relatedProducts</a> MyOutfitCard.jsx</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">client/src/widgets/qa</a> helpers.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">22.22% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>2/9</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>0/6</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">22.22% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>2/9</span>
             </div>
         
             
@@ -73,53 +73,38 @@
 <a name='L14'></a><a href='#L14'>14</a>
 <a name='L15'></a><a href='#L15'>15</a>
 <a name='L16'></a><a href='#L16'>16</a>
-<a name='L17'></a><a href='#L17'>17</a>
-<a name='L18'></a><a href='#L18'>18</a>
-<a name='L19'></a><a href='#L19'>19</a>
-<a name='L20'></a><a href='#L20'>20</a>
-<a name='L21'></a><a href='#L21'>21</a>
-<a name='L22'></a><a href='#L22'>22</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L17'></a><a href='#L17'>17</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
-/* eslint-disable import/extensions */
-/* eslint-disable no-console */
-/* eslint-disable jsx-a11y/alt-text */
-import React from 'react';
-// import ProductCard from './ProductCard.jsx';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const checkEmail = <span class="fstat-no" title="function not covered" >(e</span>mail) =&gt; {
+  const re = <span class="cstat-no" title="statement not covered" >/^(([^&lt;&gt;()[\]\\.,;:\s@"]+(\.[^&lt;&gt;()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;</span>
+<span class="cstat-no" title="statement not covered" >  return re.test(String(email).toLowerCase());</span>
+};
 &nbsp;
-function <span class="fstat-no" title="function not covered" >MyOutfitCard(</span>{ updateFit }) {
-<span class="cstat-no" title="statement not covered" >  return (</span>
-    &lt;div&gt;
-      &lt;img className="card-img-top" src="https://via.placeholder.com/350x400?text=Add+To+Outfit+Now" width={300} height={400} /&gt;
-      &lt;div className="card-body"&gt;
-        &lt;h5 className="card-title"&gt;Click to add to your outfit&lt;/h5&gt;
-        &lt;button type="button" className="btn btn-primary btn-lg" onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >updateFit(true)}</span>&gt;Add to Outfit&lt;/button&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  );
-}
+const validate = <span class="fstat-no" title="function not covered" >(i</span>nput) =&gt; {
+<span class="cstat-no" title="statement not covered" >  if (input.body === '' || input.name === '') {</span>
+<span class="cstat-no" title="statement not covered" >    return false;</span>
+  }
+<span class="cstat-no" title="statement not covered" >  if (!checkEmail(input.email)) {</span>
+<span class="cstat-no" title="statement not covered" >    return false;</span>
+  }
+<span class="cstat-no" title="statement not covered" >  return true;</span>
+};
 &nbsp;
-export default MyOutfitCard;
+export default validate;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -127,11 +112,7 @@ export default MyOutfitCard;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-<<<<<<< HEAD
-                at Wed Apr 28 2021 21:01:26 GMT-0400 (Eastern Daylight Time)
-=======
                 at Wed Apr 28 2021 18:59:47 GMT-0600 (Mountain Daylight Time)
->>>>>>> main
             </div>
         </div>
         <script src="../../../../prettify.js"></script>

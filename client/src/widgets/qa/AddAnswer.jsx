@@ -2,8 +2,10 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import axios from 'axios';
-const config = require('../../../../API/config.js');
 import Answer from './Answer.jsx';
+import validate from './helpers.js';
+
+const config = require('../../../../API/config.js');
 
 const customStyles = {
   content: {
@@ -22,7 +24,11 @@ const customStyles = {
 // Modal.setAppElement('#app');
 
 const addAnswer = (props) => {
-  const { question, name, changeAnswerList, answerList } = props;
+  const {
+    question,
+    name,
+    changeAnswerList,
+  } = props;
 
   const [modalIsOpen, setIsOpen] = useState(false);
   const [answer, changeAnswer] = useState('');
@@ -47,40 +53,44 @@ const addAnswer = (props) => {
       name: nickname,
       email,
       photos,
-    }
-    axios({
-      method: 'POST',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${question.question_id}/answers`,
-      data: newAnswer,
-      headers: {
-        Authorization: config.TOKEN,
-      },
-    })
-      .then((res) => {
-        changeAnswer('');
-        changeNickname('');
-        changeEmail('');
-        changePhotos([]);
-        axios({
-          method: 'GET',
-          url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${question.question_id}/answers?count=100`,
-          headers: {
-            Authorization: config.TOKEN,
-          },
-        })
-          .then((newList) => {
-            changeAnswerList(newList.data.results.map((ans) => (
-              <Answer answer={ans} key={ans.answer_id} />
-            )));
-          })
-          .catch((err) => {
-            console.log('Error getting new answer list', err);
-          });
+    };
+    if (validate(newAnswer)) {
+      axios({
+        method: 'POST',
+        url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${question.question_id}/answers`,
+        data: newAnswer,
+        headers: {
+          Authorization: config.TOKEN,
+        },
       })
-      .catch((err) => {
-        console.log('ERROR: ', err);
-      });
-    setIsOpen(false);
+        .then(() => {
+          changeAnswer('');
+          changeNickname('');
+          changeEmail('');
+          changePhotos([]);
+          axios({
+            method: 'GET',
+            url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${question.question_id}/answers?count=100`,
+            headers: {
+              Authorization: config.TOKEN,
+            },
+          })
+            .then((newList) => {
+              changeAnswerList(newList.data.results.map((ans) => (
+                <Answer answer={ans} key={ans.answer_id} />
+              )));
+            })
+            .catch((err) => {
+              console.log('Error getting new answer list', err);
+            });
+        })
+        .catch((err) => {
+          console.log('ERROR: ', err);
+        });
+      setIsOpen(false);
+    } else {
+      window.alert('Invalid input');
+    }
   };
   const updateAnswer = (e) => {
     e.preventDefault();
@@ -100,7 +110,11 @@ const addAnswer = (props) => {
   const updatePhotos = (e) => {
     e.preventDefault();
     console.log(e.target.value);
-    changePhotos(e.target.value);
+    e.target.files.forEach((file) => {
+      changePhotos(photos.concat(e.target.file));
+      console.log(file);
+    });
+    
   };
 
   return (
@@ -119,16 +133,20 @@ const addAnswer = (props) => {
         contentLabel="Add Answer"
       >
         <h1 className="modal-title lead">Submit Your Answer:</h1>
-        <div>{name}:&nbsp;{question.question_body}</div>
+        <div>
+          {name}
+          :&nbsp;
+          {question.question_body}
+        </div>
         <form name={`addAnswer${question.question_id}`}>
           <label htmlFor="answer">
             *Your Answer:
-            <textarea name="answer" maxLength="1000" onChange={updateAnswer} />
+            <textarea name="answer" maxLength="1000" onChange={updateAnswer} required />
           </label>
           <br />
           <label htmlFor="name">
             *Your Nickname:
-            <input type="text" name="name" maxLength="60" onChange={updateNickname} />
+            <input type="text" name="name" maxLength="60" onChange={updateNickname} required />
             <br />
             (For privacy reasons, do not use your full name or email address)
             <br />
@@ -136,7 +154,7 @@ const addAnswer = (props) => {
           <br />
           <label htmlFor="email">
             *Your Email:
-            <input type="email" name="email" maxLength="60" onChange={updateEmail} />
+            <input type="email" name="email" maxLength="60" onChange={updateEmail} required />
             <br />
             (For authentication reasons, you will not be emailed)
             <br />
@@ -144,7 +162,8 @@ const addAnswer = (props) => {
           <br />
           <label htmlFor="photos">
             Photos: (optional)
-            <input type="file" name="photos" onChange={updatePhotos} />
+            <input type="file" name="photos" onChange={updatePhotos} required multiple />
+            <div id={`thumbnails${question.question_id}`} />
           </label>
         </form>
         <button type="button" onClick={onCancel}>Cancel</button>
