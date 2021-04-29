@@ -6,8 +6,8 @@
   "scripts": {
     "start": "nodemon server/index.js",
     "react-dev": "webpack --config ./webpack.config.js --mode development --watch",
-    "test": "jest",
-    "testQL": "jest -t 'QuestionList.test.jsx'"
+    "testCC": "jest --collectCoverage",
+    "test": "jest"
   },
   "repository": {
     "type": "git",

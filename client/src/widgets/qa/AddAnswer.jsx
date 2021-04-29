@@ -110,8 +110,11 @@ const addAnswer = (props) => {
   const updatePhotos = (e) => {
     e.preventDefault();
     console.log(e.target.value);
-    changePhotos(photos.concat(e.target.files));
-    console.log(e.target.files);
+    e.target.files.forEach((file) => {
+      changePhotos(photos.concat(e.target.file));
+      console.log(file);
+    });
+    
   };
 
   return (
