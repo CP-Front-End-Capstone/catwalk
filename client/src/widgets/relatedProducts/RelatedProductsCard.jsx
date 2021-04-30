@@ -9,7 +9,6 @@
 import React, { useState } from 'react';
 import StarRatings from 'react-star-ratings';
 import ComparisonModal from './ComparisonModal.jsx';
-import StylesGallery from './StylesGallery.jsx';
 
 function RelatedProductsCard({
   product, style, rating, currentProduct,
@@ -21,7 +20,6 @@ function RelatedProductsCard({
       {modalIsOpen ? <ComparisonModal updateModal={setModalIsOpen} product={product} currentProduct={currentProduct} /> : null}
       <div className="card-img-overlay">
         <button type="button" className=" btn btn-primary float-right" onClick={() => setModalIsOpen(true)}>
-          {/* {style ? <StylesGallery style={style} /> : null} */}
           <span className="fas fa-star" />
         </button>
       </div>
@@ -32,7 +30,6 @@ function RelatedProductsCard({
         </div>
         <div className="card-text">
           <h6>
-            {/* <StylesGallery style={style}/> */}
             {style.results[0].sale_price ? 'Sale: ' : 'Original Price: '}
             $
             {style.results[0].sale_price ? style.results[0].sale_price : style.results[0].original_price}

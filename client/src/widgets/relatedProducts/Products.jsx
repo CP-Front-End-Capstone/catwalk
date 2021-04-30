@@ -15,7 +15,7 @@ function RelatedProducts() {
   const context = useContext(productContext);
   const [products, setProducts] = useState([]);
   const [styles, setStyles] = useState([]);
-  const [currentProduct, setCurrentProduct] = useState();
+  const [clickedProduct, setClickedProduct] = useState();
   const [reviewsMeta, setReviewsMeta] = useState(0);
 
   const getProducts = (array) => {
@@ -60,11 +60,21 @@ function RelatedProducts() {
       <div id="products">
         <div className="container">
           <h4 className="h4 lead">Related Items:</h4>
-          <RelatedProductsList products={products} styles={styles} rating={reviewsMeta} currentProduct={context.product} />
+          <RelatedProductsList
+            products={products}
+            styles={styles}
+            rating={reviewsMeta}
+            currentProduct={context.product}
+            setClickedProduct={setClickedProduct}
+          />
         </div>
         <div className="container">
           <h4 className="h4 lead">Your Outfit:</h4>
-          <MyOutfitList overviewProduct={context.product} styles={context.styles} />
+          <MyOutfitList
+            overviewProduct={context.product}
+            styles={context.styles}
+            clickedProduct={clickedProduct}
+          />
         </div>
       </div>
     );

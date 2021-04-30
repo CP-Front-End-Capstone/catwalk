@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable max-len */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable no-lone-blocks */
@@ -5,14 +7,14 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/extensions */
 /* eslint-disable react/prop-types */
-import React, { useState, useContext, useEffect } from 'react';
+import React from 'react';
 import Carousel from 'react-elastic-carousel';
 import uuid from 'react-uuid';
 import RelatedProductsCard from './RelatedProductsCard.jsx';
 import avgRating from '../../utils/index.js';
 
 function RelatedProductsList({
-  products, styles, rating, currentProduct,
+  products, styles, rating, currentProduct, setClickedProduct,
 }) {
   if (rating !== undefined) {
     return (
