@@ -29,6 +29,6 @@ describe('<Overview />', () => {
   });
 
   it('has an Image Gallery', () => {
-    expect(wrapper.contains(<ImageGallery />)).toEqual(true);
+    expect(wrapper.children(<ImageGallery />)).toEqual(true);
   });
 });
