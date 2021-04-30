@@ -11,7 +11,11 @@ import RelatedProducts from '../../client/src/widgets/relatedProducts/Products.j
 import RelatedProductsList from '../../client/src/widgets/relatedProducts/RelatedProductsList.jsx';
 import RelatedProductsCard from '../../client/src/widgets/relatedProducts/RelatedProductsCard.jsx';
 import ComparisonModal from '../../client/src/widgets/relatedProducts/ComparisonModal.jsx';
+import MyOutfitList from '../../client/src/widgets/relatedProducts/MyOutfitList.jsx';
+import MyOutfitCard from '../../client/src/widgets/relatedProducts/MyOutfitCard.jsx';
+import ProductCard from '../../client/src/widgets/relatedProducts/ProductCard.jsx';
 
+// PRODUCTS.JSX TESTS
 describe('Related Products Component', () => {
   const wrapper = shallow(<RelatedProducts />);
   it('Renders Products Component', () => {
@@ -19,6 +23,7 @@ describe('Related Products Component', () => {
   });
 });
 
+// RELATED PRODUCTS LIST TESTS
 describe('Related Products List', () => {
   let listWrapper;
   beforeEach(() => {
@@ -45,6 +50,7 @@ describe('Related Products List', () => {
   });
 });
 
+// RELATED PRODUCTS CARD TESTS
 describe('Related Products Card', () => {
   let cardWrapper;
   beforeEach(() => {
@@ -65,6 +71,7 @@ describe('Related Products Card', () => {
   });
 });
 
+// COMPARISON MODAL TESTS
 describe('Comparison Modal', () => {
   let comparisonWrapper;
   beforeEach(() => {
@@ -81,5 +88,62 @@ describe('Comparison Modal', () => {
 
   it('Renders Comparison Modal', () => {
     expect(comparisonWrapper).toHaveLength(1);
+  });
+});
+
+// MY OUTFIT LIST TESTS
+describe('My Outfit List', () => {
+  let outfitWrapper;
+  beforeEach(() => {
+    const { products } = relatedProductsData;
+    const { styles } = relatedProductsData;
+    outfitWrapper = mount(
+      <MyOutfitList
+        overviewProduct={products[0]}
+        styles={products[0]}
+      />,
+    );
+  });
+
+  it('Renders My Outfit list', () => {
+    expect(outfitWrapper).toHaveLength(1);
+  });
+});
+
+// MY OUTFIT CARD
+describe('My Outfit Card', () => {
+  let outfitCardWrapper;
+  beforeEach(() => {
+    const updateFit = () => {};
+    outfitCardWrapper = mount(
+      <MyOutfitCard
+        updateFit={updateFit}
+      />,
+    );
+  });
+
+  it('Renders My Outfit list', () => {
+    expect(outfitCardWrapper).toHaveLength(1);
+  });
+});
+
+// PRODUCT CARD
+describe('My Outfit Product Card', () => {
+  let productCardWrapper;
+  beforeEach(() => {
+    const updateFit = () => {};
+    const { products } = relatedProductsData;
+    const { styles } = relatedProductsData;
+    productCardWrapper = mount(
+      <ProductCard
+        overviewProduct={products[0]}
+        style={styles[0]}
+        updateFit={updateFit}
+      />,
+    );
+  });
+
+  it('Renders Product Card', () => {
+    expect(productCardWrapper).toHaveLength(1);
   });
 });
