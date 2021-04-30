@@ -8,20 +8,17 @@
 import React, { useState, useContext, useEffect } from 'react';
 import Carousel from 'react-elastic-carousel';
 import uuid from 'react-uuid';
-import reviewContext from '../../contexts/ReviewContext';
 import RelatedProductsCard from './RelatedProductsCard.jsx';
-// import productContext from '../../contexts/ProductContext.js';
 
 function RelatedProductsList({
   products, styles, rating, currentProduct, calculateAverage,
 }) {
-  console.log(rating);
   return (
     <div className="container">
       <div className="row">
         <Carousel itemsToShow={3} itemsToScroll={1}>
           {products.map((product, index) => (
-            <div className="card-deck p-3" key={uuid()}>
+            <div id="productsList" className="card-deck p-3" key={uuid()}>
               <div className="card w-25">
                 <RelatedProductsCard
                   product={product}

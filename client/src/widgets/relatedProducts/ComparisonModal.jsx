@@ -11,7 +11,6 @@ import uuid from 'react-uuid';
 // Modal.setAppElement('#app');
 
 function ComparisonModal({ updateModal, product, currentProduct }) {
-  console.log(product);
   const customStyles = {
     content: {
       top: '50%',
@@ -41,21 +40,21 @@ function ComparisonModal({ updateModal, product, currentProduct }) {
         </thead>
         <tbody>
           {currentProduct.features.map((feature, index) => (
-            <>
-              <tr key={uuid()}>
+            <React.Fragment key={uuid()}>
+              <tr>
                 <td>{feature.value}</td>
                 <td className="font-weight-bold">
                   {feature.feature}
                 </td>
                 <td>{(product.features[index] && product.features[index].feature === feature.feature) ? product.features[index].value : null}</td>
               </tr>
-            </>
+            </React.Fragment>
           ))}
           {product.features.map((relatedFeature, itemIndex) => (
-            <>
+            <React.Fragment key={uuid()}>
               {(currentProduct.features[itemIndex] && currentProduct.features[itemIndex].feature === relatedFeature.feature) ? null
                 : (
-                  <tr key={uuid()}>
+                  <tr>
                     <td />
                     <td className="font-weight-bold">
                       {relatedFeature.feature}
@@ -63,11 +62,10 @@ function ComparisonModal({ updateModal, product, currentProduct }) {
                     <td>{relatedFeature.value === null ? <Checkmark size="small" color="#223344" /> : relatedFeature.value}</td>
                   </tr>
                 )}
-            </>
+            </React.Fragment>
           ))}
         </tbody>
       </table>
-      {/* {feature.feature === relatedFeature.feature ? <Checkmark size="small" color="#223344" /> : null} */}
     </Modal>
   );
 }
