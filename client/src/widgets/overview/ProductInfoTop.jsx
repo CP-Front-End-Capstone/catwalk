@@ -16,7 +16,7 @@ function ProductInfoTop(props) {
       <div>
         <div className="d-flex justify-content-between">
           <Stars />
-          <a href="#reviews">Read all reviews</a>
+          <a className="row" href="#reviews">Read all reviews</a>
         </div>
         <h4>{product.category}</h4>
         <h1 className="display-4">{product.name}</h1>
