@@ -18,7 +18,7 @@ function RelatedProductsList({
     return (
       <div className="container">
         <div className="row">
-          <Carousel itemsToShow={3} itemsToScroll={1}>
+          <Carousel className="styling-example" itemsToShow={3} itemsToScroll={1}>
             {products.map((product, index) => (
               <div id="productsList" className="card-deck p-3" key={uuid()}>
                 <div className="card w-25">

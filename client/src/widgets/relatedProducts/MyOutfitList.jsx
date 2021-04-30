@@ -13,7 +13,7 @@ function MyOutfitList({ currentProduct, styles }) {
   const [outfit, setOutfit] = useState(false);
 
   return (
-    <Carousel itemsToShow={2} itemsToScroll={1}>
+    <Carousel className="styling-example" itemsToShow={2} itemsToScroll={1}>
       <div className="container">
         <div className="row">
           <div className="card-deck p-3">
