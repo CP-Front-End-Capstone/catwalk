@@ -15,6 +15,7 @@ function RelatedProducts() {
   const context = useContext(productContext);
   const [products, setProducts] = useState([]);
   const [styles, setStyles] = useState([]);
+  const [currentProduct, setCurrentProduct] = useState();
   const [reviewsMeta, setReviewsMeta] = useState(0);
 
   const getProducts = (array) => {
@@ -63,7 +64,7 @@ function RelatedProducts() {
         </div>
         <div className="container">
           <h4 className="h4 lead">Your Outfit:</h4>
-          <MyOutfitList currentProduct={context.product} styles={context.styles} />
+          <MyOutfitList overviewProduct={context.product} styles={context.styles} />
         </div>
       </div>
     );
