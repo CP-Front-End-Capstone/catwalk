@@ -30,6 +30,7 @@ function Overview(props) {
   const [imageView, setImageView] = useState(false);
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
   const [photosLength, setPhotosLength] = useState();
+  const [curStyleInd, setCurStyleInd] = useState(0);
   const [revMeta, setRevMeta] = useState();
 
   useEffect(() => {
@@ -73,7 +74,18 @@ function Overview(props) {
     return (
       <div className="container" id="overview">
         <styleContext.Provider value={{
-          styles, currentStyle, currentImage, setImage, setStyle, imageView, setImageView, currentPhotoIndex, setCurrentPhotoIndex, photosLength,
+          styles,
+          currentStyle,
+          currentImage,
+          setImage,
+          setStyle,
+          imageView,
+          setImageView,
+          currentPhotoIndex,
+          setCurrentPhotoIndex,
+          photosLength,
+          curStyleInd,
+          setCurStyleInd,
         }}
         >
           <div className="row d-flex justify-content-between">

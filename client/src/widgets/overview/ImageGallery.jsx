@@ -94,8 +94,8 @@ function ImageGallery(props) {
                 style={
                   index === currentPhotoIndex
                     ? {
-                      maxWidth: '100px',
-                      height: '75px',
+                      maxWidth: '75px',
+                      height: '50px',
                       marginBottom: '20px',
                       overflow: 'hidden',
                       display: 'block',
@@ -103,8 +103,8 @@ function ImageGallery(props) {
                     }
 
                     : {
-                      maxWidth: '100px',
-                      height: '75px',
+                      maxWidth: '75px',
+                      height: '50px',
                       marginBottom: '20px',
                       overflow: 'hidden',
                       display: 'block',

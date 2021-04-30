@@ -1,3 +1,5 @@
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable react/jsx-no-duplicate-props */
 /* eslint-disable import/named */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable no-undef */
@@ -18,11 +20,18 @@ import { styleContext } from '../../contexts/StyleContext.js';
 
 function Styles(props) {
   const {
-    styles, currentStyle, setStyle, setImage,
+    styles,
+    currentStyle,
+    setStyle,
+    setImage,
+    curStyleInd,
+    setCurStyleInd,
   } = useContext(styleContext);
-  const handleClick = (value, url) => {
+
+  const handleClick = (value, url, num) => {
     setStyle(value);
     setImage(url);
+    setCurStyleInd(num);
   };
 
   if (currentStyle && styles) {
@@ -36,21 +45,29 @@ function Styles(props) {
           </h5>
         </div>
         <div className="row row-cols-4">
-          {styles.map((style1) => (
+          {styles.map((style1, index) => (
 
             <img
-              className="col"
+              key={index}
+              className="img-thumbnail col"
               style={
-                {
-                  maxWidth: '100px',
-                  height: '75px',
-                  marginBottom: '10px',
-                }
+                index === curStyleInd
+                  ? {
+                    height: '65px',
+                    width: '40px',
+                    border: '4px solid #F57B6A',
+                    marginBottom: '10px',
+                  }
+                  : {
+                    height: '65px',
+                    width: '40px',
+                    marginBottom: '10px',
+                  }
               }
               key={style1.style_id}
               src={style1.photos[0].thumbnail_url}
               alt="Thumbnail image"
-              onClick={() => { handleClick(style1, style1.photos[0].url); }}
+              onClick={() => { handleClick(style1, style1.photos[0].url, index); }}
             />
 
           ))}

@@ -16,7 +16,7 @@ function ProductInfoBottom(props) {
     return (
       <div>
         <div>
-          <h4>{product.slogan}</h4>
+          <h4 className="display-4">{product.slogan}</h4>
         </div>
         <div className="row d-flex justify-content-around">
           <p className="w-50">{product.description}</p>
