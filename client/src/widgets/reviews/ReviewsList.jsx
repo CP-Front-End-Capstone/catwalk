@@ -17,7 +17,6 @@ const ReviewsList = () => {
   const productId = reviewsInfo.reviewList.product;
   const { reviewsArray } = reviewsInfo;
   const [reviewCount, setReviewCount] = useState(2);
-  const [sortBy, setSortBy] = useState('relevant');
 
   const handleMoreReviews = (count) => {
     setReviewCount(count);
@@ -26,18 +25,18 @@ const ReviewsList = () => {
   const displayedReviews = reviewsArray.slice(0, reviewCount);
 
   const handleSortBy = (selection) => {
-    setSortBy(selection);
+    reviewsInfo.setSortBy(selection);
   };
 
-  useEffect(() => (
-    api.fetchEndpoint(`/reviews/?product_id=${productId}&count=100&sort=${sortBy}`)
-      .then((reviewData) => {
-        reviewsInfo.setReviewsArray(reviewData.results);
-      })
-      .catch((err) => {
-        console.log('error fetching review data', err);
-      })
-  ), [sortBy]);
+  // useEffect(() => (
+  //   api.fetchEndpoint(`/reviews/?product_id=${productId}&count=100&sort=${sortBy}`)
+  //     .then((reviewData) => {
+  //       reviewsInfo.setReviewsArray(reviewData.results);
+  //     })
+  //     .catch((err) => {
+  //       console.log('error fetching review data', err);
+  //     })
+  // ), [sortBy]);
 
   const moreReviews = reviewCount > reviewsArray.length ? '' : <button type="button" onClick={() => { handleMoreReviews(reviewCount + 2); }}>More Reviews</button>;
 
@@ -57,7 +56,7 @@ const ReviewsList = () => {
             aria-haspopup="true"
             aria-expanded="false"
           >
-            {sortBy}
+            {reviewsInfo.sortBy}
           </u>
           <div className="dropdown-menu" aria-labelledby="dropdownMenu1">
             <a className="dropdown-item" href="#!" onClick={() => { handleSortBy('newest'); }}>Newest</a>
@@ -74,13 +73,7 @@ const ReviewsList = () => {
       </h5>
       <div className="row bg-light h-75 overflow-auto border" style={{ padding: '10px' }} id="individualreview">
         {displayedReviews.map((review) => (
-          <ul className="list-unstyled w-100" key={review.review_id}>
-            <li key={review.review_id} className="container list-unstyled" style={{ padding: '5px' }}>
-              <reviewContext.Provider value={reviewCount}>
-                <IndividualReview review={review} />
-              </reviewContext.Provider>
-            </li>
-          </ul>
+          <IndividualReview review={review} />
         ))}
       </div>
       <div className="row" style={{ padding: '10px' }}>
