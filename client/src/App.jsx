@@ -20,10 +20,11 @@ import Overview from './widgets/overview/Overview.jsx';
 import RelatedProducts from './widgets/relatedProducts/Products.jsx';
 
 const App = (props) => {
-  const [productId, changeProductId] = useState('18081');
+  const [productId, changeProductId] = useState('18078');
   const [product, changeProduct] = useState();
   const [styles, changeStyles] = useState();
   const [reviewsMeta, setReviewsMeta] = useState();
+  const [totalReviews, setTotalReviews] = useState(0);
 
   useEffect(() => {
     api.fetchEndpoint(`/products/${productId}`)
@@ -42,6 +43,11 @@ const App = (props) => {
         console.log('Error fetching data', error);
       });
   }, [productId]);
+
+  const getTotalReviews = (reviewsArray) => {
+    setTotalReviews(reviewsArray.length);
+    console.log('this is total reviews', totalReviews);
+  };
 
   return (
     <div>
@@ -65,7 +71,7 @@ const App = (props) => {
           <Overview />
           <RelatedProducts />
           <QandA />
-          <ReviewsRatings />
+          <ReviewsRatings getTotalReviews={getTotalReviews} />
         </productContext.Provider>
       </div>
     </div>

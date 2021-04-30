@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable import/extensions */
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
@@ -13,7 +14,7 @@ import ProductBreakDown from './ProductBreakDown.jsx';
 import AddReview from './AddReview.jsx';
 import api from '../../../../API/helper';
 
-const ReviewsRatings = () => {
+const ReviewsRatings = (props) => {
   const { reviewsMeta, productId } = useContext(productContext);
   const [reviewList, setReviewList] = useState();
   const [reviewsArray, setReviewsArray] = useState();
@@ -32,7 +33,8 @@ const ReviewsRatings = () => {
       });
   }, [productId]);
 
-  if (reviewsMeta) {
+  if (reviewsMeta && reviewList) {
+    props.getTotalReviews(reviewsArray);
     return (
       <div id="reviews">
         <div className="container" style={{ padding: '20px' }}>
