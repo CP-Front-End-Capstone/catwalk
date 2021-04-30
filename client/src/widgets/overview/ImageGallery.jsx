@@ -87,6 +87,7 @@ function ImageGallery(props) {
               <img
                 className="w-100"
                 src={photo.thumbnail_url}
+                key={index}
                 className="img-fluid"
                 alt="thumbnail"
                 onClick={() => handleTnImageClick(index)}

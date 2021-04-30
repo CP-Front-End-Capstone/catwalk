@@ -16,7 +16,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import Carousel from 'react-elastic-carousel';
 import InnerImageZoom from 'react-inner-image-zoom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { Image } from '@fortawesome/free-solid-svg-icons';
+import { faImage } from '@fortawesome/free-solid-svg-icons';
 import '../../../../node_modules/react-inner-image-zoom/lib/InnerImageZoom/styles.css';
 import { productContext } from '../../contexts/ProductContext.js';
 import { styleContext } from '../../contexts/StyleContext.js';
@@ -73,11 +73,11 @@ function ExpandedImageGallery(props) {
                 style={{
                   maxHeight: '600px',
                   maxWidth: '700px',
+                  marginBottom: '20px',
                 }}
                 src={photo.url}
                 key={index}
                 zoomScale={2.5}
-                onClick={() => { setExpImageClicked(true); }}
                 afterZoomOut={() => { toDefaultImageClick(false); }}
                 alt="Product image"
               />
@@ -111,8 +111,16 @@ function ExpandedImageGallery(props) {
           {currentStyle.photos.map((photo, index) => (
             <li data-target="#carousel-thumb" data-slide-to={index} key={index} className={index === currentPhotoIndex ? 'active' : 'inactive'}>
               <FontAwesomeIcon
-                icon={Image}
-                onClick={() => handleIconClick(index)}
+                icon={faImage}
+                listItem
+                key={index}
+                style={{
+                  height: '75px',
+                  width: '75px',
+                  marginBottom: '10px',
+                  overflow: 'hidden',
+                  display: 'block',
+                }}
               />
             </li>
           ))}
