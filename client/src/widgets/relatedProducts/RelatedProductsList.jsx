@@ -14,7 +14,6 @@ import avgRating from '../../utils/index.js';
 function RelatedProductsList({
   products, styles, rating, currentProduct,
 }) {
-  console.log(rating[0]);
   if (rating !== undefined) {
     return (
       <div className="container">
