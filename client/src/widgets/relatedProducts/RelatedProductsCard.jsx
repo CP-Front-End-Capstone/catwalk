@@ -39,7 +39,7 @@ function RelatedProductsCard({
           {rating ? (
             <StarRatings
               rating={rating}
-              starRatedColor="black"
+              starRatedColor="gold"
               numberOfStars={5}
               name="rating"
               starDimension="15px"
@@ -48,7 +48,7 @@ function RelatedProductsCard({
           ) : (
             <StarRatings
               rating={0}
-              starRatedColor="black"
+              starRatedColor="gold"
               numberOfStars={5}
               name="rating"
               starDimension="15px"

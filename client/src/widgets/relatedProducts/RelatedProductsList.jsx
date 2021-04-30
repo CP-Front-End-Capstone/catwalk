@@ -9,29 +9,34 @@ import React, { useState, useContext, useEffect } from 'react';
 import Carousel from 'react-elastic-carousel';
 import uuid from 'react-uuid';
 import RelatedProductsCard from './RelatedProductsCard.jsx';
+import avgRating from '../../utils/index.js';
 
 function RelatedProductsList({
-  products, styles, rating, currentProduct, calculateAverage,
+  products, styles, rating, currentProduct,
 }) {
-  return (
-    <div className="container">
-      <div className="row">
-        <Carousel itemsToShow={3} itemsToScroll={1}>
-          {products.map((product, index) => (
-            <div id="productsList" className="card-deck p-3" key={uuid()}>
-              <div className="card w-25">
-                <RelatedProductsCard
-                  product={product}
-                  currentProduct={currentProduct}
-                  style={styles[index]}
-                  rating={calculateAverage(rating[index])}
-                />
+  console.log(rating[0]);
+  if (rating !== undefined) {
+    return (
+      <div className="container">
+        <div className="row">
+          <Carousel itemsToShow={3} itemsToScroll={1}>
+            {products.map((product, index) => (
+              <div id="productsList" className="card-deck p-3" key={uuid()}>
+                <div className="card w-25">
+                  <RelatedProductsCard
+                    product={product}
+                    currentProduct={currentProduct}
+                    style={styles[index]}
+                    rating={avgRating(rating[index])}
+                  />
+                </div>
               </div>
-            </div>
-          ))}
-        </Carousel>
+            ))}
+          </Carousel>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
+  return ('');
 }
 export default RelatedProductsList;

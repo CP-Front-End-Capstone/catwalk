@@ -17,22 +17,6 @@ function RelatedProducts() {
   const [styles, setStyles] = useState([]);
   const [reviewsMeta, setReviewsMeta] = useState(0);
 
-  const calculateAverage = (review) => {
-    if (review && Object.keys(review.ratings).length >= 0) {
-      const totalRatings = Number(review.recommended.true)
-        + Number(review.recommended.false);
-
-      const avgCalc = ((Number((review.ratings[5])) * 5)
-          + (Number((review.ratings[4])) * 4)
-          + (Number((review.ratings[3])) * 3)
-          + (Number((review.ratings[2])) * 2)
-          + (Number((review.ratings[1])))) / totalRatings;
-
-      const formattedAvg = Math.round(avgCalc * 10) / 10;
-      return (formattedAvg);
-    }
-  };
-
   const getProducts = (array) => {
     // fetch products object
     const productsArray = array.map((id) => (
@@ -70,12 +54,12 @@ function RelatedProducts() {
       });
   }, []);
 
-  if (products.length !== 0 && styles.length !== 0) {
+  if (reviewsMeta && products.length !== 0 && styles.length !== 0) {
     return (
       <div id="products">
         <div className="container">
           <h4 className="h4 lead">Related Items:</h4>
-          <RelatedProductsList products={products} styles={styles} rating={reviewsMeta} currentProduct={context.product} calculateAverage={calculateAverage} />
+          <RelatedProductsList products={products} styles={styles} rating={reviewsMeta} currentProduct={context.product} />
         </div>
         <div className="container">
           <h4 className="h4 lead">Your Outfit:</h4>
