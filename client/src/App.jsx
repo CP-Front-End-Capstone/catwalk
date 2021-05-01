@@ -37,7 +37,6 @@ const App = (props) => {
     api.fetchEndpoint(`/products/${productId}`)
       .then((productData) => {
         changeProduct(productData);
-        console.log(productData);
         api.fetchEndpoint(`/products/${productId}/styles`)
           .then((stylesData) => {
             changeStyles(stylesData.results);

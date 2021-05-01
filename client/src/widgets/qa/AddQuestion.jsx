@@ -8,6 +8,7 @@ import config from '../../../../API/config.js';
 import Question from './Question.jsx';
 import qaContext from '../../contexts/QaContext';
 import { validate } from './helpers.js';
+import { productContext } from '../../contexts/ProductContext';
 
 const customStyles = {
   content: {
@@ -27,6 +28,10 @@ const customStyles = {
 
 const addQuestion = (props) => {
   const {
+    trackClicks,
+    dateGenerator,
+  } = useContext(productContext);
+  const {
     productName,
     productId,
   } = useContext(qaContext);
@@ -39,6 +44,7 @@ const addQuestion = (props) => {
 
   const openModal = () => {
     setIsOpen(true);
+    trackClicks('Open Add Question', 'QandA', dateGenerator());
   };
   const onCancel = (e) => {
     e.preventDefault();
@@ -46,6 +52,7 @@ const addQuestion = (props) => {
     changeNickname('');
     changeEmail('');
     setIsOpen(false);
+    trackClicks('Cancel Add Question', 'QandA', dateGenerator());
   };
   const onSubmit = (e) => {
     e.preventDefault();
@@ -65,6 +72,7 @@ const addQuestion = (props) => {
         },
       })
         .then((res) => {
+          trackClicks('Submit Add Question', 'QandA', dateGenerator());
           changeQuestion('');
           changeNickname('');
           changeEmail('');
