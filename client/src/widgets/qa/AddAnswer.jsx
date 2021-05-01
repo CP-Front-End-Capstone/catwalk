@@ -79,7 +79,6 @@ const addAnswer = (props) => {
             .then((newList) => {
               const answerList = orderAnswers(newList.data.results);
               // changeAnswers(answerList);
-              console.log(newList.data.results);
               changeAnswerList(
                 answerList.map((ans) => (
                   <Answer
