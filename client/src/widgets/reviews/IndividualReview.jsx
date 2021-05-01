@@ -100,8 +100,8 @@ const IndividualReview = (props) => {
           </div>
           <h5 className="row" style={{ padding: '5px' }}>{props.review.summary}</h5>
           <div className="row border small" style={{ padding: '5px' }}>
-            {reviewBody}
-            <a href="#" onClick={(e) => { handleViewMore(e); }}>
+            <div id="reviewbody">{reviewBody}</div>
+            <a id="viewmorebody" href="#" onClick={(e) => { handleViewMore(e); }}>
               {viewMore}
             </a>
           </div>

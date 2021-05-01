@@ -28,17 +28,7 @@ const ReviewsList = () => {
     reviewsInfo.setSortBy(selection);
   };
 
-  // useEffect(() => (
-  //   api.fetchEndpoint(`/reviews/?product_id=${productId}&count=100&sort=${sortBy}`)
-  //     .then((reviewData) => {
-  //       reviewsInfo.setReviewsArray(reviewData.results);
-  //     })
-  //     .catch((err) => {
-  //       console.log('error fetching review data', err);
-  //     })
-  // ), [sortBy]);
-
-  const moreReviews = reviewCount > reviewsArray.length ? '' : <button type="button" onClick={() => { handleMoreReviews(reviewCount + 2); }}>More Reviews</button>;
+  const moreReviews = reviewCount > reviewsArray.length ? '' : <button id="viewmore" type="button" onClick={() => { handleMoreReviews(reviewCount + 2); }}>More Reviews</button>;
 
   return (
     <div className="container" style={{ padding: '40px' }}>
