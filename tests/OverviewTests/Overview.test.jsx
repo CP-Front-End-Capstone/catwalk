@@ -28,7 +28,11 @@ describe('<Overview />', () => {
     expect(wrapper).toHaveLength(1);
   });
 
-  it('has an Image Gallery', () => {
-    expect(wrapper.children(<ImageGallery />)).toEqual(true);
+  test('render without error', () => {
+    expect(wrapper.exists()).toBe(true);
+  });
+
+  test('has correct number of children components', () => {
+    expect(wrapper.find('#styleList').children()).toHaveLength(6);
   });
 });
