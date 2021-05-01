@@ -9,6 +9,8 @@ import Stars from '../../Stars.jsx';
 const ReviewBreakDown = () => {
   const review = useContext(reviewContext);
   const product = useContext(productContext);
+  const { trackClicks } = product;
+  const { dateGenerator } = product;
   const [selectedRating, setSelectedRating] = useState(['1', '2', '3', '4', '5']);
   // const ratingsCountArray = (Object.values(product.reviewsMeta.ratings));
   // const numbersArray = ratingsCountArray.map((number) => (
@@ -23,6 +25,7 @@ const ReviewBreakDown = () => {
   };
 
   const handleRatingFilter = (rating) => {
+    trackClicks('ratings breakdown', 'reviews and ratings', dateGenerator());
     const selectedArray = selectedRating.slice();
     if (selectedArray.length === 5) {
       setSelectedRating([rating]);
