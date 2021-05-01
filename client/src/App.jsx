@@ -50,7 +50,6 @@ const App = (props) => {
 
   const getTotalReviews = (reviewsArray) => {
     setTotalReviews(reviewsArray.length);
-    console.log('this is total reviews', totalReviews);
   };
 
   const trackClicks = (element, widget, time) => {
