@@ -16,7 +16,7 @@ function ProductInfoBottom(props) {
     return (
       <div>
         <div>
-          <h4>{product.slogan}</h4>
+          <h4 className="display-4">{product.slogan}</h4>
         </div>
         <div className="row d-flex justify-content-around">
           <p className="w-50">{product.description}</p>
@@ -28,7 +28,7 @@ function ProductInfoBottom(props) {
             </a>
           </div>
           <div>
-            <a data-pin-do="embedPin" href="https://www.pinterest.com/pin/99360735500167749/">Save on Pinterest</a>
+            <a data-pin-do="embedPin" href="https://www.pinterest.com/pin/99360735500167749/">Pin it!</a>
           </div>
 
         </div>

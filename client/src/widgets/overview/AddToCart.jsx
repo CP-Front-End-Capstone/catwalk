@@ -25,7 +25,7 @@ function AddToCart() {
   const [sizeSelected, setSizeSelected] = useState(false);
   const [curSize, setCurSize] = useState('');
   const [sizeIndex, setSizeIndex] = useState(0);
-  const [noStock, setNoStock] = useState(false);
+  const [noStock, setNoStock] = useState(skuArray2[0] === 'null');
   const [quanSelected, setQuanSelected] = useState(1);
   const [curSku, setCurSku] = useState(0);
   const quanList = (num) => {
@@ -55,11 +55,10 @@ function AddToCart() {
     setQuanSelected(num);
   };
   const handleCantAddToCartClick = (e) => {
+    e.preventDefault();
     $('#dropTop').slideToggle('fast');
-    $('#popItLikeItsHot').popover({
-      selector: '.has-popover',
-    });
   };
+
   const addToCartClick = (num) => {
     axios({
       method: 'post',
@@ -85,6 +84,7 @@ function AddToCart() {
       <div className="container mx-auto">
         <div className="row d-flex justify-content-between">
           <div className="dropdown">
+
             <button
               className="btn btn-primary dropdown-toggle btn-large"
               type="button"
@@ -95,13 +95,11 @@ function AddToCart() {
               aria-expanded="false"
               aria-controls="sizeDropdown"
             >
-              {skuArray[0].size}
+              Out of Stock
             </button>
-            <div className="dropdown-menu" aria-labelledby="dropdownMenu1">
-              {skuArray.map((curStyle, index) => (
-                <button className="dropdown-item" type="button" key={index} onClick={() => { handleSizeClick(true, curStyle.size, index, skuArray2[index]); }} href="#!">{curStyle.size}</button>
-              ))}
-            </div>
+
+            <div className="dropdown-menu" aria-labelledby="dropdownMenu1" />
+
           </div>
           <div className="dropdown">
             <button
@@ -114,13 +112,11 @@ function AddToCart() {
             >
               Out of Stock
             </button>
-            <div className="dropdown-menu" aria-labelledby="dropdownMenu1">
-              <a className="dropdown-item" key={index} href="#!">Out of Stock</a>
-            </div>
+            <div className="dropdown-menu" aria-labelledby="dropdownMenu1" />
           </div>
         </div>
         <div className="row mt-4">
-          <button type="button" className="btn btn-primary" onClick={(e) => { handleCantAddToCartClick(e); }} aria-controls="sizeDropdown">Add To Cart</button>
+          <button type="button" className="btn btn-primary d-none" aria-controls="sizeDropdown">Add To Cart</button>
         </div>
       </div>
     );
@@ -172,7 +168,7 @@ function AddToCart() {
   }
   return (
     <div className="container mx-auto">
-      <div className="d-flex justify-content-md-around">
+      <div className="d-flex flex-row justify-content-md-between">
         <div
           className="dropdown"
         >
@@ -183,18 +179,25 @@ function AddToCart() {
             data-target="#sizeDropdown"
             id="popItLikeItsHot"
             data-container="body"
-            data-toggle="popover"
-            data-placement="top"
-            data-content="Please select size"
-            aria-haspopup="true"
             aria-expanded="false"
             aria-controls="sizeDropdown"
           >
-            {skuArray[0].size}
+            Select Size
           </button>
           <div className="dropdown-menu" id="dropTop" aria-labelledby="dropdownMenu1">
             {skuArray.map((curStyle, index) => (
-              <button className="dropdown-item" type="button" key={index} onClick={() => { handleSizeClick(true, curStyle.size, index, skuArray2[index]); }} href="#!">{curStyle.size}</button>
+              <button
+                className="dropdown-item"
+                type="button"
+                key={index}
+                onClick={() => {
+                  handleSizeClick(true, curStyle.size, index, skuArray2[index]);
+                  $('#dropTop').slideToggle('fast');
+                }}
+                href="#!"
+              >
+                {curStyle.size}
+              </button>
             ))}
           </div>
         </div>
@@ -216,7 +219,7 @@ function AddToCart() {
           </div>
         </div>
       </div>
-      <div className="row mt-4">
+      <div className="d-flex justify-content-md-center">
         <button type="button" className="btn btn-primary" onClick={(e) => { handleCantAddToCartClick(e); }} aria-controls="sizeDropdown">Add To Cart</button>
       </div>
     </div>

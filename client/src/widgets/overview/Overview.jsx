@@ -29,6 +29,8 @@ function Overview(props) {
   const [currentImage, setImage] = useState();
   const [imageView, setImageView] = useState(false);
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
+  const [photosLength, setPhotosLength] = useState();
+  const [curStyleInd, setCurStyleInd] = useState(0);
   const [revMeta, setRevMeta] = useState();
 
   useEffect(() => {
@@ -38,6 +40,7 @@ function Overview(props) {
         changeStyles(stylesData.results);
         setStyle(stylesData.results[0]);
         setImage(stylesData.results[0].photos[0].url);
+        setPhotosLength(stylesData.results[0].photos.length);
         api.fetchEndpoint(`/reviews/meta/?product_id=${productId}`)
           .then((reviewsMeta) => {
             setRevMeta(reviewsMeta);
@@ -48,20 +51,11 @@ function Overview(props) {
       });
   }, [productId]);
 
-  // const getProducts = (array) => {
-  //   const stylesArray = array.map((id) => (
-  //     api.fetchEndpoint(`/products/${id}/styles`)
-  //   ));
-
-  //   Promise.all(stylesArray).then((response) => {
-  //     setStyles(response);
-  //   });
-  // };
   if (imageView) {
     return (
       <div className="container " id="overview">
         <styleContext.Provider value={{
-          styles, currentStyle, currentImage, setImage, setStyle, imageView, setImageView, currentPhotoIndex, setCurrentPhotoIndex,
+          styles, currentStyle, currentImage, setImage, setStyle, imageView, setImageView, currentPhotoIndex, setCurrentPhotoIndex, photosLength,
         }}
         >
           <div className="row d-flex justify-content-between">
@@ -80,7 +74,18 @@ function Overview(props) {
     return (
       <div className="container" id="overview">
         <styleContext.Provider value={{
-          styles, currentStyle, currentImage, setImage, setStyle, imageView, setImageView, currentPhotoIndex, setCurrentPhotoIndex, revMeta,
+          styles,
+          currentStyle,
+          currentImage,
+          setImage,
+          setStyle,
+          imageView,
+          setImageView,
+          currentPhotoIndex,
+          setCurrentPhotoIndex,
+          photosLength,
+          curStyleInd,
+          setCurStyleInd,
         }}
         >
           <div className="row d-flex justify-content-between">
