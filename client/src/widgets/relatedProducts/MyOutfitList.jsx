@@ -1,3 +1,4 @@
+/* eslint-disable react/no-children-prop */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable max-len */
@@ -15,10 +16,9 @@ function MyOutfitList({ overviewProduct, styles }) {
   const [outfit, setOutfit] = useState([]);
   const [outfitStyle, setOutfitStyle] = useState([]);
   const [showFit, updateFit] = useState(true);
-  console.log('Your styles: ', styles);
 
   return (
-    <Carousel className="styling-example" itemsToShow={2} itemsToScroll={1}>
+    <Carousel className="styling-example" itemsToScroll={1} itemsToShow={1}>
       <div className="container">
         <div className="row">
           <div className="card-deck p-2">
@@ -32,12 +32,14 @@ function MyOutfitList({ overviewProduct, styles }) {
             />
           </div>
           <div className="card-deck p-2">
-            {outfit.length >= 0 ? outfit.map((fit, index) => (
+            {outfit.length > 0 ? outfit.map((fit, index) => (
               <ProductCard
                 overviewProduct={fit}
                 outfit={outfit}
                 setOutfit={setOutfit}
-                style={outfitStyle[index]}
+                outfitStyle={outfitStyle}
+                setOutfitStyle={setOutfitStyle}
+                style={outfitStyle[index] ? outfitStyle[index] : styles[0]}
                 updateFit={updateFit}
                 key={index}
               />

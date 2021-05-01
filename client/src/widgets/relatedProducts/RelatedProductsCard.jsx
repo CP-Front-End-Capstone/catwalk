@@ -14,10 +14,9 @@ import StarRatings from 'react-star-ratings';
 import ComparisonModal from './ComparisonModal.jsx';
 
 function RelatedProductsCard({
-  product, style, rating, currentProduct, changeProductId, updateProduct,
+  product, style, rating, currentProduct, updateProduct,
 }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  console.log('Hello from products card: ', style);
   return (
     <div className="box-shadow-hover">
       <img

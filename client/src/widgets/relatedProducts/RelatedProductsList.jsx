@@ -16,7 +16,6 @@ import avgRating from '../../utils/index.js';
 function RelatedProductsList({
   products, styles, rating, currentProduct, changeProductId,
 }) {
-  console.log('Styles: ', styles);
   const updateProduct = (id) => {
     changeProductId(id);
   };

@@ -9,10 +9,12 @@ function MyOutfitCard({
   overviewProduct, updateFit, outfit, styles, outfitStyle, setOutfitStyle,
 }) {
   const updateList = (newProduct, newStyle) => {
-    const product = [...outfit, newProduct];
-    const style = [...outfitStyle, newStyle];
-    updateFit(product);
-    setOutfitStyle(style);
+    if (!outfit.includes(newProduct) && !outfit.includes(newStyle)) {
+      const product = [...outfit, newProduct];
+      const style = [...outfitStyle, newStyle];
+      updateFit(product);
+      setOutfitStyle(style);
+    }
   };
 
   return (
