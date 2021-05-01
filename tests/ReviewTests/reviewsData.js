@@ -34,6 +34,7 @@ const reviewsData = {
     },
   },
   productId: '18078',
+  product: 'Camo Onesie',
   reviewList: {
     product: '18078',
     page: 0,

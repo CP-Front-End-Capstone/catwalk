@@ -9,82 +9,43 @@ const ProductBreakdown = () => {
   const review = useContext(productContext);
   const productDesc = review.reviewsMeta.characteristics;
 
-  const fitValue = (productDesc.Fit) && (
-    <div className="container">
-      <div className="text-center font-weight-bold small" style={{ padding: '5px' }}>Fit</div>
-      <div className="small">
-        <StackedHorizontalBarChart
-          rangesPoints={[0, 5]}
-          backgroundColors={['#d3d3d3']}
-          points={[{ value: Number(productDesc.Fit.value) }]}
-          edges={['Too small', 'Too large']}
-        />
-      </div>
-    </div>
-  );
-  const lengthValue = (productDesc.Length) && (
-    <div className="container">
-      <div className="text-center font-weight-bold small" style={{ padding: '5px' }}>Length</div>
-      <div className="small">
-        <StackedHorizontalBarChart
-          rangesPoints={[0, 5]}
-          backgroundColors={['#d3d3d3']}
-          points={[{ value: Number(productDesc.Length.value) }]}
-          edges={['Too short', 'Too long']}
-        />
-      </div>
-    </div>
-  );
-  const comfortValue = (productDesc.Comfort) && (
-    <div className="container">
-      <div className="text-center font-weight-bold small" style={{ padding: '5px' }}>Comfort</div>
-      <div className="small">
-        <StackedHorizontalBarChart
-          rangesPoints={[0, 5]}
-          backgroundColors={['#d3d3d3']}
-          points={[{ value: Number(productDesc.Comfort.value) }]}
-          edges={['Poor', 'Perfect']}
-        />
-      </div>
-    </div>
-  );
-  const qualityValue = (productDesc.Quality) && (
-    <div className="container">
-      <div className="text-center font-weight-bold small" style={{ padding: '5px' }}>Quality</div>
-      <div className="small">
-        <StackedHorizontalBarChart
-          rangesPoints={[0, 5]}
-          backgroundColors={['#d3d3d3']}
-          points={[{ value: Number(productDesc.Quality.value) }]}
-          edges={['Low', 'High']}
-        />
-      </div>
-    </div>
-  );
-  const widthValue = (productDesc.Width) && (
-    <div className="container">
-      <div className="text-center font-weight-bold small" style={{ padding: '5px' }}>Width</div>
-      <div className="small">
-        <StackedHorizontalBarChart
-          rangesPoints={[0, 5]}
-          backgroundColors={['#d3d3d3']}
-          points={[{ value: Number(productDesc.Width.value) }]}
-          edges={['Narrow', 'Wide']}
-        />
-      </div>
-    </div>
-  );
+  const characteristicObj = {
+    Fit: ['Runs Tight', 'Runs Long'],
+    Length: ['Runs Short', 'Runs Long'],
+    Quality: ['Poor', 'Perfect'],
+    Comfort: ['Uncomfortable', 'Perfect'],
+    Width: ['Too narrow', 'Too Wide'],
+    Size: ['A Size too Small', 'A Size too Big'],
+  };
+
+  const createCharacteristic = (characteristic) => {
+    if (productDesc[characteristic]) {
+      return (
+        <div className="container">
+          <div className="text-center font-weight-bold small" style={{ padding: '5px' }}>{characteristic}</div>
+          <div className="small">
+            <StackedHorizontalBarChart
+              rangesPoints={[0, 5]}
+              backgroundColors={['#d3d3d3']}
+              points={[{ value: Number(productDesc[characteristic].value) }]}
+              edges={[characteristicObj[characteristic][0], characteristicObj[characteristic][1]]}
+            />
+          </div>
+        </div>
+      );
+    }
+  };
 
   if (reviewMeta.reviewList.results.length > 0) {
     return (
       <div className="container" style={{ padding: '10px' }}>
         <div className="row">
-          <div className="container" style={{ padding: '10px' }}>
-            {fitValue}
-            {lengthValue}
-            {comfortValue}
-            {widthValue}
-            {qualityValue}
+          <div id="characteristics" className="container" style={{ padding: '10px' }}>
+            {createCharacteristic('Fit')}
+            {createCharacteristic('Length')}
+            {createCharacteristic('Comfort')}
+            {createCharacteristic('Width')}
+            {createCharacteristic('Quality')}
           </div>
         </div>
       </div>
