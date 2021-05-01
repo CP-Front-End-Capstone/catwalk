@@ -3,12 +3,10 @@
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React from 'react';
 import Modal from 'react-modal';
 import { Checkmark } from 'react-checkmark';
 import uuid from 'react-uuid';
-
-// Modal.setAppElement('#app');
 
 function ComparisonModal({ updateModal, product, currentProduct }) {
   const customStyles = {
@@ -25,7 +23,7 @@ function ComparisonModal({ updateModal, product, currentProduct }) {
     },
   };
   return (
-    <Modal isOpen onRequestClose={() => updateModal(false)} style={customStyles}>
+    <Modal isOpen onRequestClose={() => updateModal(false)} style={customStyles} ariaHideApp={false}>
       <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={() => updateModal(false)}>
         <span aria-hidden="true">&times;</span>
       </button>
