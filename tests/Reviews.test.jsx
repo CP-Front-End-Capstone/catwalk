@@ -37,12 +37,14 @@ describe('Reviews List', () => {
     const { reviewsMeta } = reviewsData;
     const { reviewList } = reviewsData;
     const { reviewsArray } = reviewList.results;
+    const sortBy = 'relevant';
     const setReviewList = () => {};
     const setReviewsArray = () => {};
+    const setSortBy = () => {};
     wrapper = mount(
       <productContext.Provider value={{ reviewsMeta, productId }}>
         <reviewContext.Provider value={{
-          reviewList, reviewsArray, setReviewList, setReviewsArray,
+          reviewList, reviewsArray, setReviewList, setReviewsArray, sortBy, setSortBy,
         }}
         >
           <ReviewsList />
