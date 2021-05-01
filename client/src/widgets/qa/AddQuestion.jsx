@@ -112,6 +112,7 @@ const addQuestion = (props) => {
         isOpen={modalIsOpen}
         style={customStyles}
         contentLabel="Add Question"
+        ariaHideApp={false}
       >
         <h1 className="modal-title lead"><u>Ask your question</u></h1>
         <div>About the {productName}</div>
