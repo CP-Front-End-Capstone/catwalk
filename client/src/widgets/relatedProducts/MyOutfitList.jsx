@@ -9,18 +9,18 @@ import Carousel from 'react-elastic-carousel';
 import MyOutfitCard from './MyOutfitCard.jsx';
 import ProductCard from './ProductCard.jsx';
 
-function MyOutfitList({ currentProduct, styles }) {
+function MyOutfitList({ overviewProduct, styles }) {
   const [outfit, setOutfit] = useState(false);
 
   return (
-    <Carousel itemsToShow={2} itemsToScroll={1}>
+    <Carousel className="styling-example" itemsToShow={2} itemsToScroll={1}>
       <div className="container">
         <div className="row">
           <div className="card-deck p-3">
             <MyOutfitCard updateFit={setOutfit} />
           </div>
           <div className="card-deck p-3">
-            {outfit ? <ProductCard currentProduct={currentProduct} style={styles[0]} updateFit={setOutfit} /> : null}
+            {outfit ? <ProductCard overviewProduct={overviewProduct} style={styles[0]} updateFit={setOutfit} /> : null}
           </div>
         </div>
       </div>

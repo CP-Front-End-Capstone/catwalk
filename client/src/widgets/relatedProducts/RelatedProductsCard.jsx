@@ -15,7 +15,7 @@ function RelatedProductsCard({
 }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   return (
-    <div>
+    <div className="box-shadow-hover">
       <img className="card-img-top" src={style.results[0].photos[0].thumbnail_url ? style.results[0].photos[0].thumbnail_url : 'https://images.unsplash.com/photo-1519857609704-61e751edba25?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80'} alt={product.name} width={300} height={400} />
       {modalIsOpen ? <ComparisonModal updateModal={setModalIsOpen} product={product} currentProduct={currentProduct} /> : null}
       <div className="card-img-overlay">
@@ -39,7 +39,7 @@ function RelatedProductsCard({
           {rating ? (
             <StarRatings
               rating={rating}
-              starRatedColor="black"
+              starRatedColor="gold"
               numberOfStars={5}
               name="rating"
               starDimension="15px"
@@ -48,7 +48,7 @@ function RelatedProductsCard({
           ) : (
             <StarRatings
               rating={0}
-              starRatedColor="black"
+              starRatedColor="gold"
               numberOfStars={5}
               name="rating"
               starDimension="15px"
