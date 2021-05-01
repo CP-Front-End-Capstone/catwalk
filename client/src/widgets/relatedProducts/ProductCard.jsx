@@ -8,7 +8,7 @@
 import React from 'react';
 
 function ProductCard({
-  overviewProduct, style, updateFit, outfit, setOutfit, outfitStyle, setOutfitStyle,
+  overviewProduct, style, updateFit, outfit, setOutfit, outfitStyle, setOutfitStyle, context,
 }) {
   const deleteFromList = (product, currentStyle) => {
     const newOutfit = outfit.filter((fit) => fit !== product);
@@ -16,6 +16,7 @@ function ProductCard({
     setOutfit(newOutfit);
     setOutfitStyle(newStyle);
     updateFit(false);
+    context.trackClicks('Product Image Close Button', 'Your Outfit', context.dateGenerator());
   };
   return (
     <div className="card w-25 box-shadow-hover">

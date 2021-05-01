@@ -75,6 +75,7 @@ function RelatedProducts() {
           <MyOutfitList
             overviewProduct={context.product}
             styles={context.styles}
+            context={context}
           />
         </div>
       </div>

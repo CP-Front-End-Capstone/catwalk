@@ -12,7 +12,7 @@ import Carousel from 'react-elastic-carousel';
 import MyOutfitCard from './MyOutfitCard.jsx';
 import ProductCard from './ProductCard.jsx';
 
-function MyOutfitList({ overviewProduct, styles }) {
+function MyOutfitList({ overviewProduct, styles, context }) {
   const [outfit, setOutfit] = useState([]);
   const [outfitStyle, setOutfitStyle] = useState([]);
   const [showFit, updateFit] = useState(true);
@@ -35,6 +35,7 @@ function MyOutfitList({ overviewProduct, styles }) {
               styles={styles}
               outfitStyle={outfitStyle}
               setOutfitStyle={setOutfitStyle}
+              context={context}
             />
           </div>
           <div className="card-deck p-2">
@@ -47,6 +48,7 @@ function MyOutfitList({ overviewProduct, styles }) {
                 setOutfitStyle={setOutfitStyle}
                 style={outfitStyle[index] ? outfitStyle[index] : styles[0]}
                 updateFit={updateFit}
+                context={context}
                 key={index}
               />
             )) : null}

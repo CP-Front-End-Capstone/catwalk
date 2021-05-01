@@ -6,7 +6,7 @@
 import React from 'react';
 
 function MyOutfitCard({
-  overviewProduct, updateFit, outfit, styles, outfitStyle, setOutfitStyle,
+  overviewProduct, updateFit, outfit, styles, outfitStyle, setOutfitStyle, context,
 }) {
   const updateList = (newProduct, newStyle) => {
     if (!outfit.includes(newProduct) && !outfit.includes(newStyle)) {
@@ -14,6 +14,7 @@ function MyOutfitCard({
       const style = [...outfitStyle, newStyle];
       updateFit(product);
       setOutfitStyle(style);
+      context.trackClicks('Add to Outfit Button', 'Your Outfit', context.dateGenerator());
     }
   };
 
