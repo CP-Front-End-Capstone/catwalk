@@ -38,13 +38,11 @@ function Styles(props) {
     return (
       <div className="container ">
         <div className="row">
-          <h5>
-            Style
-            :&nbsp;
-            {currentStyle.name}
+          <h5 id="styleName">
+            {`Style: ${currentStyle.name}`}
           </h5>
         </div>
-        <div className="row row-cols-4">
+        <div className="row row-cols-4" id="styleList">
           {styles.map((style1, index) => (
 
             <img

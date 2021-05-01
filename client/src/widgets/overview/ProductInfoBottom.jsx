@@ -16,10 +16,10 @@ function ProductInfoBottom(props) {
     return (
       <div>
         <div>
-          <h4 className="display-4">{product.slogan}</h4>
+          <h4 className="display-4" id="productSlogan">{product.slogan}</h4>
         </div>
         <div className="row d-flex justify-content-around">
-          <p className="w-50">{product.description}</p>
+          <p className="w-50" id="productDescription">{product.description}</p>
 
           <a href="https://${twitter.com/intent/tweet?button_hashtag=share&ref_src=twsrc%5Etfw" className="twitter-hashtag-button" data-show-count="false">Tweet #share</a>
           <div className="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="large">

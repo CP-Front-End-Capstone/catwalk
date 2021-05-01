@@ -1,3 +1,4 @@
+/* eslint-disable no-lone-blocks */
 /* eslint-disable react/jsx-no-duplicate-props */
 /* eslint-disable no-console */
 /* eslint-disable no-undef */
@@ -16,6 +17,7 @@ import $ from 'jquery';
 import config from '../../../../API/config';
 import { productContext } from '../../contexts/ProductContext.js';
 import { styleContext } from '../../contexts/StyleContext.js';
+import NoStock from './NoStock.jsx';
 
 function AddToCart() {
   const { productId } = useContext(productContext);
@@ -28,6 +30,7 @@ function AddToCart() {
   const [noStock, setNoStock] = useState(skuArray2[0] === 'null');
   const [quanSelected, setQuanSelected] = useState(1);
   const [curSku, setCurSku] = useState(0);
+
   const quanList = (num) => {
     const resultArr = [];
     if (num > 15) {
@@ -41,6 +44,7 @@ function AddToCart() {
     }
     return resultArr;
   };
+
   const [quanArray, setQuanArray] = useState(skuArray ? skuArray.map((sku) => (
     quanList(sku.quantity)
   )) : setNoStock(true));
@@ -51,9 +55,11 @@ function AddToCart() {
     setSizeIndex(num);
     setCurSku(numb);
   };
+
   const handleQuantityClick = (num) => {
     setQuanSelected(num);
   };
+
   const handleCantAddToCartClick = (e) => {
     e.preventDefault();
     $('#dropTop').slideToggle('fast');
@@ -79,151 +85,83 @@ function AddToCart() {
       });
   };
 
-  if (noStock) {
-    return (
+  { return noStock
+    ? <NoStock />
+    : (
       <div className="container mx-auto">
-        <div className="row d-flex justify-content-between">
-          <div className="dropdown">
-
+        <div className="d-flex flex-row justify-content-md-between">
+          <div
+            className="dropdown"
+          >
             <button
               className="btn btn-primary dropdown-toggle btn-large"
               type="button"
-              id="dropdownMenu1"
               data-toggle="dropdown"
               data-target="#sizeDropdown"
-              aria-haspopup="true"
+              id="popItLikeItsHot"
+              data-container="body"
               aria-expanded="false"
               aria-controls="sizeDropdown"
             >
-              Out of Stock
+              {sizeSelected ? curSize : 'Select Size'}
             </button>
-
-            <div className="dropdown-menu" aria-labelledby="dropdownMenu1" />
-
+            <div className="dropdown-menu" id="dropTop" aria-labelledby="dropdownMenu1">
+              {skuArray.map((curStyle, index) => (
+                <button
+                  className="dropdown-item"
+                  type="button"
+                  id="sizeButton"
+                  key={index}
+                  onClick={sizeSelected
+                    ? () => { handleSizeClick(true, curStyle.size, index, skuArray2[index]); }
+                    : () => {
+                      handleSizeClick(true, curStyle.size, index, skuArray2[index]);
+                      $('#dropTop').slideToggle('fast');
+                    }}
+                  href="#!"
+                >
+                  {curStyle.size}
+                </button>
+              ))}
+            </div>
           </div>
           <div className="dropdown">
             <button
-              className="btn btn-primary dropdown-toggle btn-large disabled"
+              className={`btn btn-primary dropdown-toggle btn-large ${!sizeSelected && 'disabled'}`}
               type="button"
               id="dropdownMenu2"
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
             >
-              Out of Stock
-            </button>
-            <div className="dropdown-menu" aria-labelledby="dropdownMenu1" />
-          </div>
-        </div>
-        <div className="row mt-4">
-          <button type="button" className="btn btn-primary d-none" aria-controls="sizeDropdown">Add To Cart</button>
-        </div>
-      </div>
-    );
-  }
-  if (sizeSelected) {
-    return (
-      <div className="container mx-auto">
-        <div className="row d-flex justify-content-between">
-          <div className="dropdown">
-            <button
-              className="btn btn-primary dropdown-toggle btn-large"
-              type="button"
-              id="dropdownMenu3"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              {curSize}
+              {sizeSelected ? quanSelected : '____'}
             </button>
             <div className="dropdown-menu" aria-labelledby="dropdownMenu1">
-              {skuArray.map((curStyle, index) => (
-                <a className="dropdown-item" key={index} onClick={() => { handleSizeClick(true, curStyle.size, index, skuArray2[index]); }} href="#!" selected>{curStyle.size}</a>
-              ))}
-            </div>
-          </div>
-          <div className="dropdown">
-            <button
-              className="btn btn-primary dropdown-toggle "
-              type="button"
-              id="dropdownMenu4"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              {quanSelected}
-            </button>
-            <div className="dropdown-menu" aria-labelledby="dropdownMenu1">
-              {quanArray[sizeIndex].map((eachQuant) => (
-                <button className="dropdown-item" type="button" onClick={() => { handleQuantityClick(eachQuant); }} href="#!">{eachQuant}</button>
-              ))}
+              {sizeSelected
+                ? quanArray[sizeIndex].map((eachQuant) => (
+                  <button className="dropdown-item" type="button" onClick={() => { handleQuantityClick(eachQuant); }} href="#!">{eachQuant}</button>
+                )) : skuArray.map((curStyle, index) => (
+                  <a className="dropdown-item" key={index} href="#!">{quanArray[index]}</a>
+                ))}
             </div>
           </div>
         </div>
-        <div className="row mt-4">
-          <button type="button" className="btn btn-primary" onClick={() => { addToCartClick(curSku); }}>Add To Cart</button>
-        </div>
-      </div>
-    );
-  }
-  return (
-    <div className="container mx-auto">
-      <div className="d-flex flex-row justify-content-md-between">
-        <div
-          className="dropdown"
-        >
+        <div className="d-flex justify-content-md-center">
           <button
-            className="btn btn-primary dropdown-toggle btn-large"
             type="button"
-            data-toggle="dropdown"
-            data-target="#sizeDropdown"
-            id="popItLikeItsHot"
-            data-container="body"
-            aria-expanded="false"
+            className="btn btn-primary"
+            id="addToCartButton"
+            onClick={sizeSelected
+              ? () => { addToCartClick(curSku); }
+              : (e) => { handleCantAddToCartClick(e); }}
             aria-controls="sizeDropdown"
           >
-            Select Size
+            Add To Cart
           </button>
-          <div className="dropdown-menu" id="dropTop" aria-labelledby="dropdownMenu1">
-            {skuArray.map((curStyle, index) => (
-              <button
-                className="dropdown-item"
-                type="button"
-                key={index}
-                onClick={() => {
-                  handleSizeClick(true, curStyle.size, index, skuArray2[index]);
-                  $('#dropTop').slideToggle('fast');
-                }}
-                href="#!"
-              >
-                {curStyle.size}
-              </button>
-            ))}
-          </div>
-        </div>
-        <div className="dropdown">
-          <button
-            className="btn btn-primary dropdown-toggle btn-large disabled"
-            type="button"
-            id="dropdownMenu2"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            -
-          </button>
-          <div className="dropdown-menu" aria-labelledby="dropdownMenu1">
-            {skuArray.map((curStyle, index) => (
-              <a className="dropdown-item" key={index} href="#!">{quanArray[index]}</a>
-            ))}
-          </div>
         </div>
       </div>
-      <div className="d-flex justify-content-md-center">
-        <button type="button" className="btn btn-primary" onClick={(e) => { handleCantAddToCartClick(e); }} aria-controls="sizeDropdown">Add To Cart</button>
-      </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default AddToCart;
