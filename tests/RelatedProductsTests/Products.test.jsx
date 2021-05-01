@@ -144,7 +144,6 @@ describe('My Outfit Product Card', () => {
   });
 
   it('Renders Product Card', () => {
-    console.log(productCardWrapper.debug());
     expect(productCardWrapper).toHaveLength(0);
   });
 });
