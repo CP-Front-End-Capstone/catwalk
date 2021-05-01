@@ -1,7 +1,12 @@
 /* eslint-disable react/prop-types */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { productContext } from '../../contexts/ProductContext';
 
 const Search = (props) => {
+  const {
+    trackClicks,
+    dateGenerator,
+  } = useContext(productContext);
   const { questionList, changeQuestionList } = props;
   const [query, changeQuery] = useState('');
 
@@ -34,12 +39,13 @@ const Search = (props) => {
           id="search"
           className="form-control"
           onChange={handleChange}
+          onFocus={() => { trackClicks('Search', 'QandA', dateGenerator()); }}
           value={query !== '' ? query : 'Have a question? Search for answers...'}
           // ternary reset query on full delete by user
         />
       </div>
     </div>
-  )
+  );
 };
 
 export default Search;
