@@ -11,6 +11,11 @@ import config from '../testconfig';
 import ProductInfoTop from '../../client/src/widgets/overview/ProductInfoTop';
 
 describe('<ProductInfoTop />', () => {
+  test('Renders proper message if state is not set', () => {
+    const shallower = shallow(<ProductInfoTop />);
+    expect(shallower.find('#infoLoad').text()).toBe('Product info loading...');
+  });
+
   let wrapper;
   beforeEach(() => {
     wrapper = mount(

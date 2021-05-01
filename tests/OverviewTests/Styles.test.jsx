@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable react/jsx-no-undef */
 /* eslint-disable import/extensions */
 /* eslint-disable no-unused-vars */
@@ -38,10 +39,14 @@ describe('<Styles />', () => {
   });
 
   test('displays current style name', () => {
-    expect(wrapper.find('#styleName').text()).toBe('Style:  Forest Green & Black');
+    expect(wrapper.find('#styleName').text()).toBe('Style: Forest Green & Black');
   });
 
   test('displays correct number of styles', () => {
     expect(wrapper.find('#styleList').children()).toHaveLength(6);
+  });
+
+  test('displays correct number of styles', () => {
+    expect(wrapper.find('#styleList').children().containsAllMatchingElements(<img />)).toHaveLength(6);
   });
 });

@@ -39,7 +39,7 @@ function Styles(props) {
       <div className="container ">
         <div className="row">
           <h5 id="styleName">
-            {`Style:&nbsp;${currentStyle.name}`}
+            {`Style: ${currentStyle.name}`}
           </h5>
         </div>
         <div className="row row-cols-4" id="styleList">

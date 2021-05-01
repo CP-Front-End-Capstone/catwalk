@@ -23,8 +23,7 @@ function ProductInfoTop(props) {
         {currentStyle.sale_price === null
           ? (
             <p id="originalPrice">
-              $&nbsp;
-              {currentStyle.original_price}
+              {`$ ${currentStyle.original_price}`}
             </p>
           )
           : (
@@ -45,7 +44,7 @@ function ProductInfoTop(props) {
       </div>
     );
   }
-  return <h1>Product info loading...</h1>;
+  return <h1 id="infoLoad">Product info loading...</h1>;
 }
 
 export default ProductInfoTop;

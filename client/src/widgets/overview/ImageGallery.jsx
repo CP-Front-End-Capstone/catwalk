@@ -39,7 +39,7 @@ function ImageGallery(props) {
         {/* <!--Slides--> */}
         <div className="carousel-inner" role="listbox">
           {currentStyle.photos.map((photo, index) => (
-            <div className={index === currentPhotoIndex ? 'carousel-item active' : 'carousel-item'} key={index}>
+            <div className={index === currentPhotoIndex ? 'carousel-item active' : 'carousel-item'} key={index} id="carouselImages">
               <img
                 className="d-block w-100"
                 style={{
@@ -76,7 +76,8 @@ function ImageGallery(props) {
             <span className="sr-only">Previous</span>
           </a>
           <ol
-            className="carousel-indicators d-flex flex-column justify-content-between "
+            className="carousel-indicators d-flex flex-column justify-content-between"
+            id="thumbnails"
             style={{
               position: 'absolute',
               top: '10px',
@@ -128,7 +129,7 @@ function ImageGallery(props) {
 
     );
   }
-  return <h1>Loading image...</h1>;
+  return <h1 id="loadingImage">Loading image...</h1>;
 }
 
 export default ImageGallery;

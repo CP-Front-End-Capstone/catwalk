@@ -31,4 +31,8 @@ describe('<Overview />', () => {
   test('render without error', () => {
     expect(wrapper.exists()).toBe(true);
   });
+
+  test('has correct number of children components', () => {
+    expect(wrapper.find('#styleList').children()).toHaveLength(6);
+  });
 });

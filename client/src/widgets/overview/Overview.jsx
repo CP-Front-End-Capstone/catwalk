@@ -55,7 +55,18 @@ function Overview(props) {
     return (
       <div className="container " id="overview">
         <styleContext.Provider value={{
-          styles, currentStyle, currentImage, setImage, setStyle, imageView, setImageView, currentPhotoIndex, setCurrentPhotoIndex, photosLength,
+          styles,
+          currentStyle,
+          currentImage,
+          setImage,
+          setStyle,
+          imageView,
+          setImageView,
+          currentPhotoIndex,
+          setCurrentPhotoIndex,
+          photosLength,
+          curStyleInd,
+          setCurStyleInd,
         }}
         >
           <div className="row d-flex justify-content-between">
