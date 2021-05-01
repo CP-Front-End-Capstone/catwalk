@@ -10,7 +10,7 @@ import QuestionList from '../../client/src/widgets/qa/QuestionList.jsx';
 import qaContext from '../../client/src/contexts/QaContext.js';
 import questionsData from './questionsData.js';
 
-describe('<QuestionList />', () => {
+describe('QuestionList component', () => {
   let wrapper;
   beforeEach(() => {
     const productId = questionsData.product_id;
@@ -51,5 +51,54 @@ describe('<QuestionList />', () => {
       .then(() => {
         expect(wrapper.find('#questionlist').children()).toHaveLength(8);
       });
+  });
+});
+
+describe('Question component', () => {
+  let wrapper;
+  beforEach(() => {
+
+  });
+});
+
+describe('Answer component', () => {
+  let wrapper;
+  beforEach(() => {
+
+  });
+});
+
+describe('Helpful component', () => {
+  let wrapper;
+  beforEach(() => {
+
+  });
+});
+
+describe('Report component', () => {
+  let wrapper;
+  beforEach(() => {
+
+  });
+});
+
+describe('Add Question component', () => {
+  let wrapper;
+  beforEach(() => {
+
+  });
+});
+
+describe('Add Answer component', () => {
+  let wrapper;
+  beforEach(() => {
+
+  });
+});
+
+describe('Search component', () => {
+  let wrapper;
+  beforEach(() => {
+
   });
 });

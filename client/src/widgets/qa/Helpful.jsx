@@ -41,9 +41,10 @@ const Helpful = (props) => {
   };
   const handleAnswer = (e) => {
     e.preventDefault();
+    const id = input.id !== undefined ? input.id : input.answer_id;
     axios({
       method: 'PUT',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/answers/${input.id}/helpful`,
+      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/answers/${id}/helpful`,
       data: {
         answer_id: input.id,
       },

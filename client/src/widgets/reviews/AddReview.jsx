@@ -21,6 +21,8 @@ const AddReview = () => {
     1: 'Poor', 2: 'Fair', 3: 'Average', 4: 'Good', 5: 'Great',
   };
   const { productId } = product;
+  const { trackClicks } = product;
+  const { dateGenerator } = product;
   const [recommend, setRecommend] = useState(null);
   const [recommended, setRecommended] = useState(null);
   const [starRating, setRating] = useState(0);
@@ -61,6 +63,7 @@ const AddReview = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    trackClicks('submit review', 'reviews and ratings', dateGenerator());
 
     for (let i = 0; i < mandatoryArray.length; i++) {
       if (!mandatoryArray[i]) {

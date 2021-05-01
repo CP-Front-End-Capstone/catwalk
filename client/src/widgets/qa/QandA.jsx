@@ -1,4 +1,6 @@
-import React, { useState, useEffect, useContext, createContext } from 'react';
+import React, {
+  useState, useEffect, useContext, createContext,
+} from 'react';
 import api from '../../../../API/helper';
 import { productContext } from '../../contexts/ProductContext';
 import qaContext from '../../contexts/QaContext';

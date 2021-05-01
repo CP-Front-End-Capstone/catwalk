@@ -21,7 +21,7 @@ const customStyles = {
   },
 };
 
-Modal.setAppElement('#app');
+// Modal.setAppElement('#app');
 
 const addAnswer = (props) => {
   const {
@@ -138,6 +138,7 @@ const addAnswer = (props) => {
         isOpen={modalIsOpen}
         style={customStyles}
         contentLabel="Add Answer"
+        ariaHideApp={false}
       >
         <h1 className="modal-title lead">Submit Your Answer:</h1>
         <div>
