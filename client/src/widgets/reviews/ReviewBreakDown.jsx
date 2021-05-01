@@ -120,7 +120,7 @@ const ReviewBreakDown = () => {
                   </div>
                 </div>
               </button>
-              <button type="button" className="text-left btn-light small" onClick={() => { handleRatingFilter('4'); }}>
+              <button type="button" className="text-left btn-light small" onClick={() => { handleRatingFilter('3'); }}>
                 <div className="row" style={{ padding: '8px' }}>
                   <div className="col-2 text-left font-weight-bold" style={{ padding: '1px' }}>
                     3 Stars
@@ -134,7 +134,7 @@ const ReviewBreakDown = () => {
                   </div>
                 </div>
               </button>
-              <button type="button" className="text-left btn-light small" onClick={() => { handleRatingFilter('4'); }}>
+              <button type="button" className="text-left btn-light small" onClick={() => { handleRatingFilter('2'); }}>
                 <div className="row" style={{ padding: '8px' }}>
                   <div className="col-2 text-left font-weight-bold" style={{ padding: '1px' }}>
                     2 Stars
@@ -148,7 +148,7 @@ const ReviewBreakDown = () => {
                   </div>
                 </div>
               </button>
-              <button type="button" className="text-left btn-light small" onClick={() => { handleRatingFilter('5'); }}>
+              <button type="button" className="text-left btn-light small" onClick={() => { handleRatingFilter('1'); }}>
                 <div className="row" style={{ padding: '8px' }}>
                   <div className="col-2 text-left font-weight-bold" style={{ padding: '1px' }}>
                     1 Star &nbsp;
