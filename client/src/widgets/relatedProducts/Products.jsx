@@ -13,9 +13,10 @@ import MyOutfitList from './MyOutfitList.jsx';
 
 function RelatedProducts() {
   const context = useContext(productContext);
+  const { trackClicks } = context;
+  const { dateGenerator } = context;
   const [products, setProducts] = useState([]);
   const [styles, setStyles] = useState([]);
-  const [clickedProduct, setClickedProduct] = useState();
   const [reviewsMeta, setReviewsMeta] = useState(0);
 
   const getProducts = (array) => {
@@ -53,7 +54,7 @@ function RelatedProducts() {
       .catch((error) => {
         console.log('Error fetching related items: ', error);
       });
-  }, []);
+  }, [context.productId]);
 
   if (reviewsMeta && products.length !== 0 && styles.length !== 0) {
     return (
@@ -66,6 +67,7 @@ function RelatedProducts() {
             rating={reviewsMeta}
             currentProduct={context.product}
             changeProductId={context.changeProductId}
+            context={context}
           />
         </div>
         <div className="container">
@@ -73,6 +75,7 @@ function RelatedProducts() {
           <MyOutfitList
             overviewProduct={context.product}
             styles={context.styles}
+            context={context}
           />
         </div>
       </div>

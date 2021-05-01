@@ -14,21 +14,27 @@ import RelatedProductsCard from './RelatedProductsCard.jsx';
 import avgRating from '../../utils/index.js';
 
 function RelatedProductsList({
-  products, styles, rating, currentProduct, changeProductId,
+  products, styles, rating, currentProduct, changeProductId, context,
 }) {
-  if (rating !== undefined) {
+  const updateProduct = (id) => {
+    changeProductId(id);
+    context.trackClicks('Product Image', 'Related Products', context.dateGenerator());
+  };
+  if (rating !== undefined && products.length !== 0) {
     return (
       <div className="container">
         <div className="row">
           <Carousel className="styling-example" itemsToShow={3} itemsToScroll={1}>
             {products.map((product, index) => (
               <div id="productsList" className="card-deck p-3" key={uuid()}>
-                <div className="card w-25" onClick={() => console.log(changeProductId(product.id))}>
+                <div className="card w-25">
                   <RelatedProductsCard
                     product={product}
                     currentProduct={currentProduct}
-                    style={styles[index]}
-                    rating={avgRating(rating[index])}
+                    style={styles[index] ? styles[index] : styles[0]}
+                    rating={rating[index] ? avgRating(rating[index]) : 0}
+                    updateProduct={updateProduct}
+                    context={context}
                   />
                 </div>
               </div>
