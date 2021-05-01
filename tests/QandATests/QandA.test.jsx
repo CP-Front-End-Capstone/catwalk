@@ -11,7 +11,7 @@ import qaContext from '../../client/src/contexts/QaContext.js';
 import questionsData from './questionsData.js';
 import Question from '../../client/src/widgets/qa/Question.jsx';
 
-describe('QuestionList component', () => {
+xdescribe('QuestionList component', () => {
   let wrapper;
   const productId = questionsData.product_id;
   const productName = 'Cool Product';
@@ -69,6 +69,7 @@ describe('Question component', () => {
   });
 
   it('should render without crashing', () => {
+    console.log(question.question_id);
     expect(wrapper.find(`#questionbody${question.question_id}`).exists()).to.be(true);
   });
 });
