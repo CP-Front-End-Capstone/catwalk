@@ -49,10 +49,6 @@ const App = (props) => {
 
   const getTotalReviews = (reviewsArray) => {
     setTotalReviews(reviewsArray.length);
-<<<<<<< HEAD
-    // console.log('this is total reviews', totalReviews);
-=======
->>>>>>> bb9989d2115f5317d7c63f0982864404feff6a44
   };
 
   const trackClicks = (element, widget, time) => {
