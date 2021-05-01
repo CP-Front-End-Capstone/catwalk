@@ -88,76 +88,78 @@ const ReviewBreakDown = () => {
               {recommendPercent}
               % of reviewers recommend this product
             </div>
-            <button type="button" className="text-left btn-light small" onClick={() => { handleRatingFilter('5'); }}>
-              <div className="row" style={{ padding: '8px' }}>
-                <div className="col-2 text-left font-weight-bold" style={{ padding: '1px' }}>
-                  5 Stars
-                  {' '}
+            <div id="starratings">
+              <button type="button" className="text-left btn-light small" onClick={() => { handleRatingFilter('5'); }}>
+                <div className="row" style={{ padding: '8px' }}>
+                  <div className="col-2 text-left font-weight-bold" style={{ padding: '1px' }}>
+                    5 Stars
+                    {' '}
+                  </div>
+                  <div className="col-9 text-right" style={{ padding: '1px' }}>
+                    <HSBar height={10} data={[{ value: fiveStars, color: 'green' }, { value: 100 - fiveStars, color: 'grey' }]} />
+                  </div>
+                  <div className="col-1 text-center" style={{ padding: '1px' }}>
+                    {five}
+                  </div>
                 </div>
-                <div className="col-9 text-right" style={{ padding: '1px' }}>
-                  <HSBar height={10} data={[{ value: fiveStars, color: 'green' }, { value: 100 - fiveStars, color: 'grey' }]} />
+              </button>
+              <button type="button" className="text-left btn-light small" onClick={() => { handleRatingFilter('4'); }}>
+                <div className="row" style={{ padding: '8px' }}>
+                  <div className="col-2 text-left font-weight-bold" style={{ padding: '1px' }}>
+                    4 Stars
+                    {' '}
+                  </div>
+                  <div className="col-9 text-right" style={{ padding: '1px' }}>
+                    <HSBar height={10} data={[{ value: fourStars, color: 'green' }, { value: 100 - fourStars, color: 'grey' }]} />
+                  </div>
+                  <div className="col-1 text-center" style={{ padding: '1px' }}>
+                    {four}
+                  </div>
                 </div>
-                <div className="col-1 text-center" style={{ padding: '1px' }}>
-                  {five}
+              </button>
+              <button type="button" className="text-left btn-light small" onClick={() => { handleRatingFilter('4'); }}>
+                <div className="row" style={{ padding: '8px' }}>
+                  <div className="col-2 text-left font-weight-bold" style={{ padding: '1px' }}>
+                    3 Stars
+                    {' '}
+                  </div>
+                  <div className="col-9 text-right" style={{ padding: '1px' }}>
+                    <HSBar height={10} data={[{ value: threeStars, color: 'green' }, { value: 100 - threeStars, color: 'grey' }]} />
+                  </div>
+                  <div className="col-1 text-center" style={{ padding: '1px' }}>
+                    {three}
+                  </div>
                 </div>
-              </div>
-            </button>
-            <button type="button" className="text-left btn-light small" onClick={() => { handleRatingFilter('4'); }}>
-              <div className="row" style={{ padding: '8px' }}>
-                <div className="col-2 text-left font-weight-bold" style={{ padding: '1px' }}>
-                  4 Stars
-                  {' '}
+              </button>
+              <button type="button" className="text-left btn-light small" onClick={() => { handleRatingFilter('4'); }}>
+                <div className="row" style={{ padding: '8px' }}>
+                  <div className="col-2 text-left font-weight-bold" style={{ padding: '1px' }}>
+                    2 Stars
+                    {' '}
+                  </div>
+                  <div className="col-9 text-right" style={{ padding: '1px' }}>
+                    <HSBar height={10} data={[{ value: twoStars, color: 'green' }, { value: 100 - twoStars, color: 'grey' }]} />
+                  </div>
+                  <div className="col-1 text-center" style={{ padding: '1px' }}>
+                    {two}
+                  </div>
                 </div>
-                <div className="col-9 text-right" style={{ padding: '1px' }}>
-                  <HSBar height={10} data={[{ value: fourStars, color: 'green' }, { value: 100 - fourStars, color: 'grey' }]} />
+              </button>
+              <button type="button" className="text-left btn-light small" onClick={() => { handleRatingFilter('5'); }}>
+                <div className="row" style={{ padding: '8px' }}>
+                  <div className="col-2 text-left font-weight-bold" style={{ padding: '1px' }}>
+                    1 Star &nbsp;
+                    {' '}
+                  </div>
+                  <div className="col-9 text-right" style={{ padding: '1px' }}>
+                    <HSBar height={10} data={[{ value: oneStar, color: 'green' }, { value: 100 - oneStar, color: 'grey' }]} />
+                  </div>
+                  <div className="col-1 text-center" style={{ padding: '1px' }}>
+                    {one}
+                  </div>
                 </div>
-                <div className="col-1 text-center" style={{ padding: '1px' }}>
-                  {four}
-                </div>
-              </div>
-            </button>
-            <button type="button" className="text-left btn-light small" onClick={() => { handleRatingFilter('4'); }}>
-              <div className="row" style={{ padding: '8px' }}>
-                <div className="col-2 text-left font-weight-bold" style={{ padding: '1px' }}>
-                  3 Stars
-                  {' '}
-                </div>
-                <div className="col-9 text-right" style={{ padding: '1px' }}>
-                  <HSBar height={10} data={[{ value: threeStars, color: 'green' }, { value: 100 - threeStars, color: 'grey' }]} />
-                </div>
-                <div className="col-1 text-center" style={{ padding: '1px' }}>
-                  {three}
-                </div>
-              </div>
-            </button>
-            <button type="button" className="text-left btn-light small" onClick={() => { handleRatingFilter('4'); }}>
-              <div className="row" style={{ padding: '8px' }}>
-                <div className="col-2 text-left font-weight-bold" style={{ padding: '1px' }}>
-                  2 Stars
-                  {' '}
-                </div>
-                <div className="col-9 text-right" style={{ padding: '1px' }}>
-                  <HSBar height={10} data={[{ value: twoStars, color: 'green' }, { value: 100 - twoStars, color: 'grey' }]} />
-                </div>
-                <div className="col-1 text-center" style={{ padding: '1px' }}>
-                  {two}
-                </div>
-              </div>
-            </button>
-            <button type="button" className="text-left btn-light small" onClick={() => { handleRatingFilter('5'); }}>
-              <div className="row" style={{ padding: '8px' }}>
-                <div className="col-2 text-left font-weight-bold" style={{ padding: '1px' }}>
-                  1 Star &nbsp;
-                  {' '}
-                </div>
-                <div className="col-9 text-right" style={{ padding: '1px' }}>
-                  <HSBar height={10} data={[{ value: oneStar, color: 'green' }, { value: 100 - oneStar, color: 'grey' }]} />
-                </div>
-                <div className="col-1 text-center" style={{ padding: '1px' }}>
-                  {one}
-                </div>
-              </div>
-            </button>
+              </button>
+            </div>
           </div>
           <div className="row small">{currentFilter}</div>
         </div>
