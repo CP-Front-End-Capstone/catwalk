@@ -76,7 +76,7 @@ const Question = (props) => {
       )));
     }
   }, [showAll, answers]);
-
+  console.log("QUESTION ID:", question.question_id);
   return (
     <>
       <div id={`questionbody${question.id}`} className="row p-1">
@@ -86,7 +86,7 @@ const Question = (props) => {
         <div className="col h6 text-right">
           <Helpful
             input={question}
-            key={question.id}
+            key={question.question_id}
           />
           <AddAnswer
             question={question}
