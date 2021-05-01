@@ -14,10 +14,11 @@ import RelatedProductsCard from './RelatedProductsCard.jsx';
 import avgRating from '../../utils/index.js';
 
 function RelatedProductsList({
-  products, styles, rating, currentProduct, changeProductId,
+  products, styles, rating, currentProduct, changeProductId, context,
 }) {
   const updateProduct = (id) => {
     changeProductId(id);
+    context.trackClicks('Product Image', 'Related Products', context.dateGenerator());
   };
   if (rating !== undefined && products.length !== 0) {
     return (
@@ -33,6 +34,7 @@ function RelatedProductsList({
                     style={styles[index] ? styles[index] : styles[0]}
                     rating={rating[index] ? avgRating(rating[index]) : 0}
                     updateProduct={updateProduct}
+                    context={context}
                   />
                 </div>
               </div>

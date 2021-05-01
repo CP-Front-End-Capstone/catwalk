@@ -14,9 +14,14 @@ import StarRatings from 'react-star-ratings';
 import ComparisonModal from './ComparisonModal.jsx';
 
 function RelatedProductsCard({
-  product, style, rating, currentProduct, updateProduct,
+  product, style, rating, currentProduct, updateProduct, context,
 }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const openModal = () => {
+    setModalIsOpen(true);
+    context.trackClicks('Comparison Modal', 'Related Products', context.dateGenerator());
+  };
+
   return (
     <div className="box-shadow-hover">
       <img
@@ -30,7 +35,7 @@ function RelatedProductsCard({
       />
       {modalIsOpen ? <ComparisonModal updateModal={setModalIsOpen} product={product} currentProduct={currentProduct} /> : null}
       <div id="overlay">
-        <button type="button" className="btn btn-primary float-right" onClick={() => setModalIsOpen(true)}>
+        <button type="button" className="btn btn-primary float-right" onClick={() => openModal()}>
           <span className="fas fa-star" />
         </button>
       </div>
