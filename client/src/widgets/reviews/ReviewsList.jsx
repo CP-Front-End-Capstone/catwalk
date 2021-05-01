@@ -7,6 +7,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import IndividualReview from './IndividualReview.jsx';
 import reviewContext from '../../contexts/ReviewContext';
+import { productContext } from '../../contexts/ProductContext';
 import api from '../../../../API/helper';
 import ReviewBreakDown from './ReviewBreakDown.jsx';
 import AddReview from './AddReview.jsx';
@@ -14,18 +15,23 @@ import ReviewSearch from './ReviewSearch.jsx';
 
 const ReviewsList = () => {
   const reviewsInfo = useContext(reviewContext);
+  const productInfo = useContext(productContext);
   const productId = reviewsInfo.reviewList.product;
   const { reviewsArray } = reviewsInfo;
+  const { trackClicks } = productInfo;
+  const { dateGenerator } = productInfo;
   const [reviewCount, setReviewCount] = useState(2);
 
   const handleMoreReviews = (count) => {
     setReviewCount(count);
+    trackClicks('more reviews', 'reviews and ratings', dateGenerator());
   };
 
   const displayedReviews = reviewsArray.slice(0, reviewCount);
 
   const handleSortBy = (selection) => {
     reviewsInfo.setSortBy(selection);
+    trackClicks('sort reviews', 'reviews and ratings', dateGenerator());
   };
 
   const moreReviews = reviewCount > reviewsArray.length ? '' : <button id="viewmore" type="button" onClick={() => { handleMoreReviews(reviewCount + 2); }}>More Reviews</button>;
