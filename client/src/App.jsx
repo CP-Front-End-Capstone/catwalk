@@ -33,7 +33,6 @@ const App = (props) => {
     api.fetchEndpoint(`/products/${productId}`)
       .then((productData) => {
         changeProduct(productData);
-        console.log(productData);
         api.fetchEndpoint(`/products/${productId}/styles`)
           .then((stylesData) => {
             changeStyles(stylesData.results);
@@ -50,7 +49,7 @@ const App = (props) => {
 
   const getTotalReviews = (reviewsArray) => {
     setTotalReviews(reviewsArray.length);
-    console.log('this is total reviews', totalReviews);
+    // console.log('this is total reviews', totalReviews);
   };
 
   const trackClicks = (element, widget, time) => {

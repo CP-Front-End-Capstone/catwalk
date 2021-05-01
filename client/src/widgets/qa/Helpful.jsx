@@ -1,14 +1,18 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-one-expression-per-line */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import AddAnswer from './AddAnswer.jsx';
 import Report from './Report.jsx';
 import axios from 'axios';
 import config from '../../../../API/config.js';
+import { productContext } from '../../contexts/ProductContext';
 
 const Helpful = (props) => {
   const { input } = props;
-
+  const {
+    trackClicks,
+    dateGenerator,
+  } = useContext(productContext);
   const [count, changeCount] = useState(0);
   const [clicked, changedclicked] = useState(false);
   useEffect(() => {
@@ -32,6 +36,7 @@ const Helpful = (props) => {
       },
     })
       .then((res) => {
+        trackClicks('Helpful Question', 'QandA', dateGenerator());
         changeCount(count + 1);
         changedclicked(true);
       })
@@ -53,6 +58,7 @@ const Helpful = (props) => {
       },
     })
       .then((res) => {
+        trackClicks('Helpful Answer', 'QandA', dateGenerator());
         changeCount(count + 1);
         changedclicked(true);
       })

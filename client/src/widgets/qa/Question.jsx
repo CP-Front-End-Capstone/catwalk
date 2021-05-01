@@ -3,13 +3,19 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-one-expression-per-line */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Answer from './Answer.jsx';
 import Helpful from './Helpful.jsx';
 import AddAnswer from './AddAnswer.jsx';
 import { orderAnswers } from './helpers.js';
+import { productContext } from '../../contexts/ProductContext';
 
 const Question = (props) => {
+  const {
+    trackClicks,
+    dateGenerator
+  } = useContext(productContext);
+
   const { question, name } = props;
   const [answers, changeAnswers] = useState([]);
   const [answerList, changeAnswerList] = useState([]);
@@ -18,6 +24,7 @@ const Question = (props) => {
   const handleClick = (e) => {
     e.preventDefault();
     changeShowAll(true);
+    trackClicks(`Load More Answers`, 'QandA', dateGenerator());
   };
 
   useEffect(() => {
@@ -76,7 +83,6 @@ const Question = (props) => {
       )));
     }
   }, [showAll, answers]);
-  // console.log("FROM COMP:", question.question_id);
   return (
     <div id={`questionbody${question.question_id}`}>
       <div className="row p-1">
