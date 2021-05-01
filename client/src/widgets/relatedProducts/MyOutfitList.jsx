@@ -17,8 +17,14 @@ function MyOutfitList({ overviewProduct, styles }) {
   const [outfitStyle, setOutfitStyle] = useState([]);
   const [showFit, updateFit] = useState(true);
 
+  const breakPoints = [
+    { width: 1, itemsToShow: 1 },
+    {
+      width: 400, itemsToShow: 2, itemsToScroll: 2,
+    },
+  ];
   return (
-    <Carousel className="styling-example" itemsToScroll={1} itemsToShow={1}>
+    <Carousel className="styling-example" breakPoints={breakPoints}>
       <div className="container">
         <div className="row">
           <div className="card-deck p-2">
