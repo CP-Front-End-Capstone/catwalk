@@ -11,6 +11,7 @@ const Helpful = (props) => {
 
   const [count, changeCount] = useState(0);
   const [clicked, changedclicked] = useState(false);
+  console.log("INPUT:", input);
   useEffect(() => {
     if (input.hasOwnProperty('question_id')) {
       changeCount(input.question_helpfulness);
@@ -41,9 +42,11 @@ const Helpful = (props) => {
   };
   const handleAnswer = (e) => {
     e.preventDefault();
+    const id = input.id !== undefined ? input.id : input.answer_id;
+    console.log("answer id:", input.id);
     axios({
       method: 'PUT',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/answers/${input.id}/helpful`,
+      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/answers/${id}/helpful`,
       data: {
         answer_id: input.id,
       },

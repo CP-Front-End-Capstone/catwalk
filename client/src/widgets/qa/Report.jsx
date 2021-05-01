@@ -9,9 +9,10 @@ const Report = (props) => {
 
   const handleClick = (e) => {
     e.preventDefault();
+    const id = answer.id !== undefined ? answer.id : answer.answer_id;
     axios({
       method: 'PUT',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/answers/${answer.id}/report`,
+      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/answers/${id}/report`,
       data: {
         answer_id: answer.id,
       },
