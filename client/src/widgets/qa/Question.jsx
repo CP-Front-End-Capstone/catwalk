@@ -76,7 +76,6 @@ const Question = (props) => {
       )));
     }
   }, [showAll, answers]);
-  console.log("QUESTION ID:", question.question_id);
   return (
     <>
       <div id={`questionbody${question.id}`} className="row p-1">
