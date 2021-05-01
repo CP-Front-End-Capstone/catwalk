@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/role-supports-aria-props */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
@@ -35,7 +36,7 @@ function RelatedProductsCard({
       />
       {modalIsOpen ? <ComparisonModal updateModal={setModalIsOpen} product={product} currentProduct={currentProduct} /> : null}
       <div id="overlay">
-        <button type="button" className="btn btn-primary float-right" onClick={() => openModal()}>
+        <button type="button" className="btn btn-primary float-right" aria-label={product.name} onClick={() => openModal()}>
           <span className="fas fa-star" />
         </button>
       </div>
