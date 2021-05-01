@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable import/extensions */
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
@@ -13,16 +14,17 @@ import ProductBreakDown from './ProductBreakDown.jsx';
 import AddReview from './AddReview.jsx';
 import api from '../../../../API/helper';
 
-const ReviewsRatings = () => {
+const ReviewsRatings = (props) => {
   const { reviewsMeta, productId } = useContext(productContext);
   const [reviewList, setReviewList] = useState();
   const [reviewsArray, setReviewsArray] = useState();
   const [isMounted, setIsMounted] = useState();
   const [ratingFilter, setRatingFilter] = useState();
   const [helpful, setHelpful] = useState();
+  const [sortBy, setSortBy] = useState('relevant');
 
   useEffect(() => {
-    api.fetchEndpoint(`/reviews/?product_id=${productId}&count=100&sort=relevant`)
+    api.fetchEndpoint(`/reviews/?product_id=${productId}&count=100&sort=${sortBy}`)
       .then((reviewData) => {
         setReviewList(reviewData);
         setReviewsArray(reviewData.results);
@@ -30,9 +32,11 @@ const ReviewsRatings = () => {
       .catch((err) => {
         console.log('error fetching review data', err);
       });
-  }, [productId]);
+  }, [productId, sortBy]);
 
-  if (reviewsMeta) {
+  if (reviewsMeta && reviewList) {
+    console.log(sortBy);
+    props.getTotalReviews(reviewsArray);
     return (
       <div id="reviews">
         <div className="container" style={{ padding: '20px' }}>
@@ -54,7 +58,7 @@ const ReviewsRatings = () => {
             <div className="col">
               <div className="row" style={{ height: '650px' }}>
                 <reviewContext.Provider value={{
-                  reviewList, reviewsArray, setReviewsArray, setReviewList,
+                  reviewList, reviewsArray, setReviewsArray, setReviewList, setSortBy, sortBy,
                 }}
                 >
                   <ReviewsList />

@@ -75,59 +75,63 @@ const IndividualReview = (props) => {
   };
 
   return (
-    <div className="container bg-white border" key={props.review.review_id}>
-      <div className="row">
-        <span className="col-sm">
+    <ul className="list-unstyled w-100" key={props.review.review_id}>
+      <li key={props.review.review_id} className="container list-unstyled" style={{ padding: '5px' }}>
+        <div className="container bg-white border" key={props.review.review_id}>
+          <div className="row">
+            <span className="col-sm">
 
-          <StarRatings
-            rating={props.review.rating}
-            starRatedColor="black"
-            numberOfStars={5}
-            name="rating"
-            starDimension="15px"
-            starSpacing="2px"
-          />
-        </span>
-        <div className="col-sm text-right small">
-          {props.review.reviewer_name}
+              <StarRatings
+                rating={props.review.rating}
+                starRatedColor="black"
+                numberOfStars={5}
+                name="rating"
+                starDimension="15px"
+                starSpacing="2px"
+              />
+            </span>
+            <div className="col-sm text-right small">
+              {props.review.reviewer_name}
           &nbsp;
           &nbsp;
           &nbsp;
-          {dateFormat(props.review.date, 'mmmm dS, yyyy', true)}
-        </div>
-      </div>
-      <h5 className="row" style={{ padding: '5px' }}>{props.review.summary}</h5>
-      <div className="row border small" style={{ padding: '5px' }}>
-        {reviewBody}
-        <a href="#" onClick={(e) => { handleViewMore(e); }}>
-          {viewMore}
-        </a>
-      </div>
-      <div className="row small" style={{ padding: '5px' }}>{recommend}</div>
-      <div className="row bg-secondary">{response}</div>
-      <div className="row">
-        {' '}
-        <ReviewPhotos photos={props.review.photos} />
-        {' '}
-      </div>
-      <div className="row small footer" style={{ padding: '5px' }}>
-        Was this review helpful?
-        <a href="#" onClick={(e) => { handleHelpfulness(e); }}>
+              {dateFormat(props.review.date, 'mmmm dS, yyyy', true)}
+            </div>
+          </div>
+          <h5 className="row" style={{ padding: '5px' }}>{props.review.summary}</h5>
+          <div className="row border small" style={{ padding: '5px' }}>
+            {reviewBody}
+            <a href="#" onClick={(e) => { handleViewMore(e); }}>
+              {viewMore}
+            </a>
+          </div>
+          <div className="row small" style={{ padding: '5px' }}>{recommend}</div>
+          <div className="row bg-secondary">{response}</div>
+          <div className="row">
+            {' '}
+            <ReviewPhotos photos={props.review.photos} />
+            {' '}
+          </div>
+          <div className="row small footer" style={{ padding: '5px' }}>
+            Was this review helpful?
+            <a href="#" onClick={(e) => { handleHelpfulness(e); }}>
         &nbsp;
-          {yes}
+              {yes}
         &nbsp;
-        </a>
-        <div>
-          (
-          {count}
-          )
+            </a>
+            <div>
+              (
+              {count}
+              )
+            </div>
+            <a href="#" onClick={(e) => { handleReport(e); }}>
+              &nbsp;
+              Report
+            </a>
+          </div>
         </div>
-        <a href="#" onClick={(e) => { handleReport(e); }}>
-         &nbsp;
-          Report
-        </a>
-      </div>
-    </div>
+      </li>
+    </ul>
   );
 };
 export default IndividualReview;
