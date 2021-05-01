@@ -1,6 +1,10 @@
+/* eslint-disable quotes */
+/* eslint-disable prefer-template */
+/* eslint-disable max-len */
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 import React, { useContext } from 'react';
+import { promisify } from 'util';
 import ReactDOM from 'react-dom';
 import Enzyme, { shallow, mount } from 'enzyme';
 import { productContext } from '../../client/src/contexts/ProductContext';
@@ -41,5 +45,25 @@ describe('<AddToCart />', () => {
 
   test('Add to Cart button displays correct phrase', () => {
     expect(wrapper.find('#addToCartButton').text()).toBe('Add To Cart');
+  });
+
+  test('Displays size when user clicks size selection button', () => {
+    const sizeButton = promisify(() => {
+      wrapper.find('#sizeButton').first().simulate('click');
+    });
+    sizeButton()
+      .then(() => {
+        expect(wrapper.find('#popItLikeItsHot').text()).toBe('XS');
+      });
+  });
+
+  test('Add to Cart button displays correct phrase', () => {
+    expect(wrapper.find('#addToCartButton').text()).toBe('Add To Cart');
+  });
+
+  test('Size dropdown menu displays all sizes', () => {
+    const sizes = [];
+    const texts = wrapper.find('#dropTop').map((node) => sizes.push(node.text()));
+    expect(sizes).toBe(['XS', 'S', 'M', 'L', 'XL', 'XL']);
   });
 });
