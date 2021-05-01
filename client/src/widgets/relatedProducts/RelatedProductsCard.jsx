@@ -35,7 +35,7 @@ function RelatedProductsCard({
       />
       {modalIsOpen ? <ComparisonModal updateModal={setModalIsOpen} product={product} currentProduct={currentProduct} /> : null}
       <div id="overlay">
-        <button type="button" className="btn btn-primary float-right" onClick={() => openModal()}>
+        <button type="button" aria-label="star" className="btn btn-primary float-right" onClick={() => openModal()}>
           <span className="fas fa-star" />
         </button>
       </div>
