@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/extensions */
 import { promisify } from 'util';
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import Enzyme from 'enzyme';
 import config from '../testconfig.js';
@@ -11,8 +11,12 @@ import qaContext from '../../client/src/contexts/QaContext.js';
 import questionsData from './questionsData.js';
 import Question from '../../client/src/widgets/qa/Question.jsx';
 import Answer from '../../client/src/widgets/qa/Answer';
+import Helpful from '../../client/src/widgets/qa/Helpful';
+import Report from '../../client/src/widgets/qa/Report';
+import AddAnswer from '../../client/src/widgets/qa/AddAnswer';
+import AddQuestion from '../../client/src/widgets/qa/AddQuestion';
 
-xdescribe('QuestionList component', () => {
+describe('QuestionList component', () => {
   let wrapper;
   const productId = questionsData.product_id;
   const productName = 'Cool Product';
@@ -55,7 +59,7 @@ xdescribe('QuestionList component', () => {
   });
 });
 
-xdescribe('Question component', () => {
+describe('Question component', () => {
   let wrapper;
   const question = questionsData.results[1];
   const productName = 'Cool Product';
@@ -76,10 +80,10 @@ xdescribe('Question component', () => {
 
 describe('Answer component', () => {
   let wrapper;
-  const questions = questionsData.results[0];
-  const answers = questions.answers;
+  const question = questionsData.results[0];
+  const { answers } = question;
   const answer = answers['68'];
-  const id = answer.id;
+  const { id } = answer;
   const changeAnswers = () => {};
   beforeEach(() => {
     wrapper = Enzyme.mount(
@@ -93,42 +97,92 @@ describe('Answer component', () => {
     );
   });
 
-  it('should render without crashing', () => {
-    console.log(wrapper);
+  it('should render Answer without crashing', () => {
   });
 });
 
-xdescribe('Helpful component', () => {
+describe('Helpful component', () => {
+  let wrapper;
+  const question = questionsData.results[0];
+  beforeEach(() => {
+    wrapper = Enzyme.mount(
+      <Helpful
+        input={question}
+        key={question.question_id}
+      />,
+    );
+  });
+  it('should render Helpful without crashing', () => {
+  });
+});
+
+describe('Report component', () => {
+  let wrapper;
+  const question = questionsData.results[0];
+  const { answers } = question;
+  const answer = answers['68'];
+  beforeEach(() => {
+    wrapper = Enzyme.mount(
+      <Report
+        answer={answer}
+        answers={answers}
+        changeAnswers={() => {}}
+      />,
+    );
+  });
+  it('should render Report without crashing', () => {
+  });
+});
+
+xdescribe('Add Question component', () => { // broken
+  let wrapper;
+  const [questionList, changeQuestionList] = useState(questionsData.results);
+  beforeEach(() => {
+    wrapper = Enzyme.mount(
+      <AddQuestion
+        name={productName}
+        changeQuestionList={changeQuestionList}
+        questionList={questions}
+      />,
+    );
+  });
+  it('should render Add Question without crashing', () => {});
+});
+
+xdescribe('Add Answer component', () => { // broken
+  let wrapper;
+  const question = questionsData.results[0];
+  const [answers, changeAnswers] = useState(question.answers);
+  const [answersList, changeAnswersList] = useState(
+    answers.map((ans) => (
+      <Answer
+        answer={ans}
+        key={ans.answerer_id}
+        answers={answers}
+        changeAnswers={changeAnswers}
+      />
+    )),
+  );
+  const answer = answers['68'];
+  const { id } = answer;
+  beforeEach(() => {
+    wrapper = Enzyme.mount(
+      <AddAnswer
+        question={question}
+        name="Cool Product"
+        changeAnswerList={changeAnswersList}
+        answers={answers}
+        changeAnswers={changeAnswers}
+      />,
+    );
+  });
+  it('should render Add Answer without crashing', () => {});
+});
+
+xdescribe('Search component', () => { // not implemented
   let wrapper;
   beforeEach(() => {
 
   });
-});
-
-xdescribe('Report component', () => {
-  let wrapper;
-  beforeEach(() => {
-
-  });
-});
-
-xdescribe('Add Question component', () => {
-  let wrapper;
-  beforeEach(() => {
-
-  });
-});
-
-xdescribe('Add Answer component', () => {
-  let wrapper;
-  beforeEach(() => {
-
-  });
-});
-
-xdescribe('Search component', () => {
-  let wrapper;
-  beforeEach(() => {
-
-  });
+  it('should render Search without crashing', () => {});
 });
