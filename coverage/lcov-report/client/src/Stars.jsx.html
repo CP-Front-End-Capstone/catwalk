@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">8.33% </span>
+                <span class="strong">5.88% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/12</span>
+                <span class='fraction'>1/17</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>0/14</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">8.33% </span>
+                <span class="strong">5.88% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/12</span>
+                <span class='fraction'>1/17</span>
             </div>
         
             
@@ -115,7 +115,18 @@
 <a name='L56'></a><a href='#L56'>56</a>
 <a name='L57'></a><a href='#L57'>57</a>
 <a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -126,18 +137,29 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -188,20 +210,31 @@ const Stars = <span class="fstat-no" title="function not covered" >(p</span>rops
   const product = <span class="cstat-no" title="statement not covered" >useContext(productContext);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  if (product.reviewsMeta &amp;&amp; Object.keys(product.reviewsMeta.ratings).length &gt; 0) {</span>
-    const totalRatings = <span class="cstat-no" title="statement not covered" >Number(product.reviewsMeta.recommended.true)</span>
-    + Number(product.reviewsMeta.recommended.false);
-&nbsp;
     const ratingsCountArray = (<span class="cstat-no" title="statement not covered" >Object.values(product.reviewsMeta.ratings))</span>;
     const numbersArray = <span class="cstat-no" title="statement not covered" >ratingsCountArray.map(<span class="fstat-no" title="function not covered" >(n</span>umber) =&gt; (</span>
 <span class="cstat-no" title="statement not covered" >      Number(number)</span>
     ));
     const largestCount = <span class="cstat-no" title="statement not covered" >Math.max(...numbersArray);</span>
 &nbsp;
-    const avgCalc = <span class="cstat-no" title="statement not covered" >((Number((product.reviewsMeta.ratings[5])) * 5)</span>
-      + (Number((product.reviewsMeta.ratings[4])) * 4)
-      + (Number((product.reviewsMeta.ratings[3])) * 3)
-      + (Number((product.reviewsMeta.ratings[2])) * 2)
-      + (Number((product.reviewsMeta.ratings[1])))) / totalRatings;
+    const fiveStars = <span class="cstat-no" title="statement not covered" >(product.reviewsMeta.ratings[5])</span>
+      ? (product.reviewsMeta.ratings[5]) : 0;
+    const fourStars = <span class="cstat-no" title="statement not covered" >(product.reviewsMeta.ratings[4])</span>
+      ? (product.reviewsMeta.ratings[4]) : 0;
+    const threeStars = <span class="cstat-no" title="statement not covered" >(product.reviewsMeta.ratings[3])</span>
+      ? (product.reviewsMeta.ratings[3]) : 0;
+    const twoStars = <span class="cstat-no" title="statement not covered" >(product.reviewsMeta.ratings[2])</span>
+      ? (product.reviewsMeta.ratings[2]) : 0;
+    const oneStar = <span class="cstat-no" title="statement not covered" >(product.reviewsMeta.ratings[1])</span>
+      ? (product.reviewsMeta.ratings[1]) : 0;
+&nbsp;
+    const totalRatings = <span class="cstat-no" title="statement not covered" >Number(fiveStars) + Number(fourStars)</span>
+    + Number(threeStars) + Number(twoStars) + Number(oneStar);
+&nbsp;
+    const avgCalc = <span class="cstat-no" title="statement not covered" >(((Number(fiveStars)) * 5)</span>
+      + (Number(fourStars) * 4)
+      + (Number(threeStars) * 3)
+      + (Number(twoStars) * 2)
+      + (Number(oneStar))) / totalRatings;
 &nbsp;
     const formattedAvg = <span class="cstat-no" title="statement not covered" >Math.round(avgCalc * 10) / 10;</span>
 &nbsp;
@@ -213,7 +246,7 @@ const Stars = <span class="fstat-no" title="function not covered" >(p</span>rops
             {' '}
             &lt;StarRatings
               rating={formattedAvg}
-              starRatedColor="black"
+              starRatedColor="gold"
               numberOfStars={5}
               name="rating"
               starDimension="30px"
@@ -238,7 +271,7 @@ export default Stars;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Wed Apr 28 2021 21:01:26 GMT-0400 (Eastern Daylight Time)
+                at Sat May 01 2021 09:13:16 GMT-0600 (Mountain Daylight Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>
