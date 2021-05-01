@@ -34,6 +34,7 @@ const Question = (props) => {
           temp.push(
             <Answer
               answer={answers[i]}
+              id={answers[i].id}
               key={answers[i].id}
               answers={answers}
               changeAnswers={changeAnswers}
@@ -56,6 +57,7 @@ const Question = (props) => {
         changeAnswerList(answers.map((answer) => (
           <Answer
             answer={answer}
+            id={answer.id}
             key={answer.id}
             answers={answers}
             changeAnswers={changeAnswers}
@@ -66,6 +68,7 @@ const Question = (props) => {
       changeAnswerList(answers.map((answer) => (
         <Answer
           answer={answer}
+          id={answer.id}
           key={answer.id}
           answers={answers}
           changeAnswers={changeAnswers}
@@ -89,6 +92,8 @@ const Question = (props) => {
             question={question}
             name={name}
             changeAnswerList={changeAnswerList}
+            answers={answers}
+            changeAnswers={changeAnswers}
           />
         </div>
       </div>

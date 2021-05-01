@@ -23,12 +23,13 @@ const customStyles = {
 
 Modal.setAppElement('#app');
 
-
 const addAnswer = (props) => {
   const {
     question,
     name,
     changeAnswerList,
+    answers,
+    changeAnswers,
   } = props;
   const [modalIsOpen, setIsOpen] = useState(false);
   const [answer, changeAnswer] = useState('');
@@ -57,6 +58,7 @@ const addAnswer = (props) => {
       email,
       photos,
     };
+    wipeFormState();
     if (validate(newAnswer)) {
       axios({
         method: 'POST',
@@ -67,7 +69,6 @@ const addAnswer = (props) => {
         },
       })
         .then(() => {
-          wipeFormState();
           axios({
             method: 'GET',
             url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${question.question_id}/answers?count=100`,
@@ -76,9 +77,16 @@ const addAnswer = (props) => {
             },
           })
             .then((newList) => {
+              const answerList = orderAnswers(newList.data.results);
+              // changeAnswers(answerList);
               changeAnswerList(
-                orderAnswers(newList.data.results).map((ans) => (
-                  <Answer answer={ans} key={ans.answer_id} />
+                answerList.map((ans) => (
+                  <Answer
+                    answer={ans}
+                    key={ans.answerer_id}
+                    answers={answers}
+                    changeAnswers={changeAnswers}
+                  />
                 )),
               );
             })
@@ -113,7 +121,7 @@ const addAnswer = (props) => {
     e.preventDefault();
     if (photos.length < 5) {
       changePhotos(
-        photos.concat(e.target.files[0]),
+        photos.concat(URL.createObjectURL(e.target.files[0])),
       );
     }
   };
@@ -170,7 +178,7 @@ const addAnswer = (props) => {
             <div className="row">
               {photos.map((photo) => (
                 <span className="col" key={photo}>
-                  <img src={URL.createObjectURL(photo)} className="img-fluid img-thumbnail" alt="thumbnail" />
+                  <img src={photo} className="img-fluid img-thumbnail" alt="thumbnail" />
                 </span>
               ))}
             </div>

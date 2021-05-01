@@ -6,11 +6,12 @@ import Report from './Report.jsx';
 import Helpful from './Helpful.jsx';
 
 const Answer = (props) => {
-  const { answer, answers, changeAnswers } = props;
+  const { id, answer, answers, changeAnswers } = props;
   const { body, date, answerer_name } = answer;
+
   return (
-    <>
-      <div className="row text-left p-1">
+    <div key={id}>
+      <div className="row text-left p-1" >
         <div className="col h4">
           A: <span className="h6 font-weight-light">{body}</span>
         </div>
@@ -32,7 +33,7 @@ const Answer = (props) => {
           <Report answer={answer} answers={answers} changeAnswers={changeAnswers} />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
