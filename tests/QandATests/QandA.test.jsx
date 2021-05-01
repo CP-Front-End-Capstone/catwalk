@@ -10,6 +10,7 @@ import QuestionList from '../../client/src/widgets/qa/QuestionList.jsx';
 import qaContext from '../../client/src/contexts/QaContext.js';
 import questionsData from './questionsData.js';
 import Question from '../../client/src/widgets/qa/Question.jsx';
+import Answer from '../../client/src/widgets/qa/Answer';
 
 xdescribe('QuestionList component', () => {
   let wrapper;
@@ -54,9 +55,9 @@ xdescribe('QuestionList component', () => {
   });
 });
 
-describe('Question component', () => {
+xdescribe('Question component', () => {
   let wrapper;
-  const question = questionsData.results[0];
+  const question = questionsData.results[1];
   const productName = 'Cool Product';
   beforeEach(() => {
     wrapper = Enzyme.mount(
@@ -68,16 +69,32 @@ describe('Question component', () => {
     );
   });
 
-  it('should render without crashing', () => {
-    console.log(question.question_id);
-    expect(wrapper.find(`#questionbody${question.question_id}`).exists()).to.be(true);
+  it('should render the correct number of children', () => {
+    expect(wrapper.find(`#questionbody${question.question_id}`).children()).toHaveLength(3);
   });
 });
 
-xdescribe('Answer component', () => {
+describe('Answer component', () => {
   let wrapper;
+  const questions = questionsData.results[0];
+  const answers = questions.answers;
+  const answer = answers['68'];
+  const id = answer.id;
+  const changeAnswers = () => {};
   beforeEach(() => {
+    wrapper = Enzyme.mount(
+      <Answer
+        answer={answer}
+        id={id}
+        key={id}
+        answers={answers}
+        changeAnswers={changeAnswers}
+      />,
+    );
+  });
 
+  it('should render without crashing', () => {
+    console.log(wrapper);
   });
 });
 
