@@ -7,6 +7,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import IndividualReview from './IndividualReview.jsx';
 import reviewContext from '../../contexts/ReviewContext';
+import { productContext } from '../../contexts/ProductContext';
 import api from '../../../../API/helper';
 import ReviewBreakDown from './ReviewBreakDown.jsx';
 import AddReview from './AddReview.jsx';
@@ -14,37 +15,32 @@ import ReviewSearch from './ReviewSearch.jsx';
 
 const ReviewsList = () => {
   const reviewsInfo = useContext(reviewContext);
+  const productInfo = useContext(productContext);
   const productId = reviewsInfo.reviewList.product;
   const { reviewsArray } = reviewsInfo;
+  const { trackClicks } = productInfo;
+  const { dateGenerator } = productInfo;
   const [reviewCount, setReviewCount] = useState(2);
 
   const handleMoreReviews = (count) => {
     setReviewCount(count);
+    trackClicks('more reviews', 'reviews and ratings', dateGenerator());
   };
 
   const displayedReviews = reviewsArray.slice(0, reviewCount);
 
   const handleSortBy = (selection) => {
     reviewsInfo.setSortBy(selection);
+    trackClicks('sort reviews', 'reviews and ratings', dateGenerator());
   };
 
-  // useEffect(() => (
-  //   api.fetchEndpoint(`/reviews/?product_id=${productId}&count=100&sort=${sortBy}`)
-  //     .then((reviewData) => {
-  //       reviewsInfo.setReviewsArray(reviewData.results);
-  //     })
-  //     .catch((err) => {
-  //       console.log('error fetching review data', err);
-  //     })
-  // ), [sortBy]);
-
-  const moreReviews = reviewCount > reviewsArray.length ? '' : <button type="button" onClick={() => { handleMoreReviews(reviewCount + 2); }}>More Reviews</button>;
+  const moreReviews = reviewCount > reviewsArray.length ? '' : <button id="viewmore" type="button" onClick={() => { handleMoreReviews(reviewCount + 2); }}>More Reviews</button>;
 
   return (
-    <div className="container" style={{ padding: '40px' }}>
+    <div className="container" style={{ padding: '40px' }} key={productId}>
       <h5 className="row">
         <div>
-          {displayedReviews.length}
+          {reviewCount}
           {' '}
           reviews, sorted by&nbsp;
         </div>
@@ -73,7 +69,9 @@ const ReviewsList = () => {
       </h5>
       <div className="row bg-light h-75 overflow-auto border" style={{ padding: '10px' }} id="individualreview">
         {displayedReviews.map((review) => (
-          <IndividualReview review={review} />
+          <ul className="list-unstyled w-100" key={review.review_id}>
+            <IndividualReview review={review} />
+          </ul>
         ))}
       </div>
       <div className="row" style={{ padding: '10px' }}>

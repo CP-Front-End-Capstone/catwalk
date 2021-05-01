@@ -12,6 +12,7 @@
 /* eslint-disable import/extensions */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import api from '../../API/helper';
 import { productContext } from './contexts/ProductContext.js';
 import ReviewsRatings from './widgets/reviews/ReviewsRatings.jsx';
@@ -19,8 +20,14 @@ import QandA from './widgets/qa/QandA.jsx';
 import Overview from './widgets/overview/Overview.jsx';
 import RelatedProducts from './widgets/relatedProducts/Products.jsx';
 
+const config = require('../../API/config.js');
+
 const App = (props) => {
+<<<<<<< HEAD
   const [productId, changeProductId] = useState('18083');
+=======
+  const [productId, changeProductId] = useState('18078');
+>>>>>>> 7605ad9af9ae7d3dd6d8ca28d313d8c4c9ad6bd6
   const [product, changeProduct] = useState();
   const [styles, changeStyles] = useState();
   const [reviewsMeta, setReviewsMeta] = useState();
@@ -50,6 +57,29 @@ const App = (props) => {
     console.log('this is total reviews', totalReviews);
   };
 
+  const trackClicks = (element, widget, time) => {
+    return axios({
+      method: 'POST',
+      url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/interactions',
+      data: {
+        element,
+        widget,
+        time,
+      },
+      headers: {
+        Authorization: config.TOKEN,
+      },
+    })
+      .then(() => {
+        console.log('successfully tracked click', time);
+      })
+      .catch((err) => {
+        console.log('error tracking click', err);
+      });
+  };
+
+  const dateGenerator = () => (JSON.stringify(new Date()));
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -66,7 +96,7 @@ const App = (props) => {
       </nav>
       <div>
         <productContext.Provider value={{
-          product, styles, productId, changeProductId, reviewsMeta,
+          product, styles, productId, changeProductId, reviewsMeta, trackClicks, dateGenerator,
         }}
         >
           <Overview />
