@@ -68,52 +68,61 @@ function ImageGallery(props) {
           <span className="carousel-control-next-icon" aria-hidden="true" />
           <span className="sr-only">Next</span>
         </a>
+
         {/* <!--/.Controls--> */}
+        <div className="carousel-controls">
+          <a className={currentPhotoIndex === 0 ? 'up carousel-control-prev d-none' : 'up carousel-control-prev'} href="#carousel-thumb1" role="button" data-slide="prev" onClick={() => setCurrentPhotoIndex(currentPhotoIndex - 1)}>
+            <span className="carousel-control-prev-icon" aria-hidden="true" />
+            <span className="sr-only">Previous</span>
+          </a>
+          <ol
+            className="carousel-indicators d-flex flex-column justify-content-between "
+            style={{
+              position: 'absolute',
+              top: '10px',
+              left: '0px',
+              height: '400px',
+              maxWidth: '100px',
+              width: '100px',
+              border: 'none',
+            }}
+          >
+            {currentStyle.photos.map((photo, index) => (
+              <li data-target="#carousel-thumb" key={index} data-slide-to={index} className={index === currentPhotoIndex ? 'active' : 'inactive'}>
+                <img
+                  className="w-100"
+                  src={photo.thumbnail_url}
+                  key={index}
+                  className="img-fluid"
+                  alt="thumbnail"
+                  onClick={() => handleTnImageClick(index)}
+                  style={
+                    index === currentPhotoIndex
+                      ? {
+                        maxWidth: '75px',
+                        height: '50px',
+                        marginBottom: '20px',
+                        overflow: 'hidden',
+                        display: 'block',
+                        border: '2px solid #fff',
+                      }
 
-        <ol
-          className="carousel-indicators d-flex flex-column justify-content-between "
-          style={{
-            position: 'absolute',
-            top: '10px',
-            left: '0px',
-            height: '400px',
-            maxWidth: '100px',
-            width: '100px',
-            border: 'none',
-          }}
-        >
-          {currentStyle.photos.map((photo, index) => (
-            <li data-target="#carousel-thumb" key={index} data-slide-to={index} className={index === currentPhotoIndex ? 'active' : 'inactive'}>
-              <img
-                className="w-100"
-                src={photo.thumbnail_url}
-                key={index}
-                className="img-fluid"
-                alt="thumbnail"
-                onClick={() => handleTnImageClick(index)}
-                style={
-                  index === currentPhotoIndex
-                    ? {
-                      maxWidth: '75px',
-                      height: '50px',
-                      marginBottom: '20px',
-                      overflow: 'hidden',
-                      display: 'block',
-                      border: '2px solid #fff',
-                    }
-
-                    : {
-                      maxWidth: '75px',
-                      height: '50px',
-                      marginBottom: '20px',
-                      overflow: 'hidden',
-                      display: 'block',
-                    }
-                }
-              />
-            </li>
-          ))}
-        </ol>
+                      : {
+                        maxWidth: '75px',
+                        height: '50px',
+                        marginBottom: '20px',
+                        overflow: 'hidden',
+                        display: 'block',
+                      }
+                  }
+                />
+              </li>
+            ))}
+          </ol>
+          <a className="down carousel-control" href="#carousel-thumb" data-slide="next">
+            <span className="glyphicon glyphicon-chevron-bottom" />
+          </a>
+        </div>
       </div>
       // <!--/.Carousel Wrapper-->
 

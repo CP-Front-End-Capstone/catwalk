@@ -11,13 +11,13 @@ import productData from './productData.js';
 import stylesData from './stylesData.js';
 import config from '../testconfig';
 import App from '../../client/src/App.jsx';
-import Styles from '../../client/src/widgets/overview/Styles';
+import ImageGallery from '../../client/src/widgets/overview/ImageGallery';
 
-describe('<Styles />', () => {
+describe('<ImageGallery />', () => {
   let wrapper;
   beforeEach(() => {
     wrapper = mount(
-      <Styles />, {
+      <ImageGallery />, {
         wrappingComponent: styleContext.provider,
         wrappingComponentProps: {
           value: {
@@ -27,13 +27,17 @@ describe('<Styles />', () => {
             setImage: () => {},
             curStyleInd: 0,
             setCurStyleInd: () => {},
+            currentImage: stylesData.results[0].photos[0].url,
+            setCurrentPhotoIndex: () => {},
+            currentPhotoIndex: stylesData.results[0].photos.length,
+            photosLength: 0,
           },
         },
       },
     );
   });
 
-  it('Styles component does not crash', () => {
+  it('ImageGallery component does not crash', () => {
     expect(wrapper).toHaveLength(1);
   });
 });
