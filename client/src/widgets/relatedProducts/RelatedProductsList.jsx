@@ -16,14 +16,14 @@ import avgRating from '../../utils/index.js';
 function RelatedProductsList({
   products, styles, rating, currentProduct, changeProductId,
 }) {
-  if (rating !== undefined) {
+  if (rating !== undefined && products.length !== 0) {
     return (
       <div className="container">
         <div className="row">
           <Carousel className="styling-example" itemsToShow={3} itemsToScroll={1}>
             {products.map((product, index) => (
               <div id="productsList" className="card-deck p-3" key={uuid()}>
-                <div className="card w-25" onClick={() => console.log(changeProductId(product.id))}>
+                <div className="card w-25" onClick={() => changeProductId(product.id)}>
                   <RelatedProductsCard
                     product={product}
                     currentProduct={currentProduct}

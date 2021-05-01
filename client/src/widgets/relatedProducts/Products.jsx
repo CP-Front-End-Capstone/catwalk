@@ -53,7 +53,7 @@ function RelatedProducts() {
       .catch((error) => {
         console.log('Error fetching related items: ', error);
       });
-  }, []);
+  }, [context.productId]);
 
   if (reviewsMeta && products.length !== 0 && styles.length !== 0) {
     return (

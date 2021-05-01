@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable max-len */
 /* eslint-disable no-lone-blocks */
 /* eslint-disable no-undef */
@@ -10,17 +12,36 @@ import MyOutfitCard from './MyOutfitCard.jsx';
 import ProductCard from './ProductCard.jsx';
 
 function MyOutfitList({ overviewProduct, styles }) {
-  const [outfit, setOutfit] = useState(false);
+  const [outfit, setOutfit] = useState([]);
+  const [outfitStyle, setOutfitStyle] = useState([]);
+  const [showFit, updateFit] = useState(true);
+  console.log('Your styles: ', styles);
 
   return (
     <Carousel className="styling-example" itemsToShow={2} itemsToScroll={1}>
       <div className="container">
         <div className="row">
-          <div className="card-deck p-3">
-            <MyOutfitCard updateFit={setOutfit} />
+          <div className="card-deck p-2">
+            <MyOutfitCard
+              updateFit={setOutfit}
+              overviewProduct={overviewProduct}
+              outfit={outfit}
+              styles={styles}
+              outfitStyle={outfitStyle}
+              setOutfitStyle={setOutfitStyle}
+            />
           </div>
-          <div className="card-deck p-3">
-            {outfit ? <ProductCard overviewProduct={overviewProduct} style={styles[0]} updateFit={setOutfit} /> : null}
+          <div className="card-deck p-2">
+            {outfit.length >= 0 ? outfit.map((fit, index) => (
+              <ProductCard
+                overviewProduct={fit}
+                outfit={outfit}
+                setOutfit={setOutfit}
+                style={outfitStyle[index]}
+                updateFit={updateFit}
+                key={index}
+              />
+            )) : null}
           </div>
         </div>
       </div>
