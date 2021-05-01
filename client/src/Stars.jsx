@@ -49,7 +49,7 @@ const Stars = (props) => {
             {' '}
             <StarRatings
               rating={formattedAvg}
-              starRatedColor="black"
+              starRatedColor="gold"
               numberOfStars={5}
               name="rating"
               starDimension="30px"

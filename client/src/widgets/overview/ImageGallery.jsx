@@ -1,3 +1,5 @@
+/* eslint-disable no-const-assign */
+/* eslint-disable no-plusplus */
 /* eslint-disable no-shadow */
 /* eslint-disable react/jsx-no-duplicate-props */
 /* eslint-disable react/no-array-index-key */
@@ -21,24 +23,29 @@ import { styleContext } from '../../contexts/StyleContext.js';
 
 function ImageGallery(props) {
   const {
-    styles, currentImage, currentStyle, setImageView, setCurrentPhotoIndex,
+    styles, currentImage, currentStyle, setImageView, setCurrentPhotoIndex, currentPhotoIndex, photosLength,
   } = useContext(styleContext);
   const handleMainImageClick = (boolean, num) => {
     setImageView(boolean);
+  };
+  const handleTnImageClick = (num) => {
+    setCurrentPhotoIndex(num);
   };
 
   if (currentImage) {
     return (
       // <!--Carousel Wrapper-->
-      <div id="carousel-thumb" className="carousel slide carousel-fade carousel-thumbnails" data-ride="carousel">
+      <div id="carousel-thumb" className="carousel slide carousel-fade carousel-thumbnails" data-ride="carousel" data-interval="false">
         {/* <!--Slides--> */}
         <div className="carousel-inner" role="listbox">
           {currentStyle.photos.map((photo, index) => (
-            <div className={`carousel-item ${(index === 0) && 'active'}`} key={index}>
+            <div className={index === currentPhotoIndex ? 'carousel-item active' : 'carousel-item'} key={index}>
               <img
                 className="d-block w-100"
                 style={{
-                  minHeight: '690px',
+                  minHeight: '500px',
+                  maxHeight: '500px',
+                  maxWidth: '550px',
                   cursor: 'zoom-in',
                 }}
                 src={photo.url}
@@ -53,11 +60,11 @@ function ImageGallery(props) {
         </div>
         {/* <!--/.Slides-->
           <!--Controls--> */}
-        <a className="carousel-control-prev" href="#carousel-thumb" role="button" data-slide="prev">
+        <a className={currentPhotoIndex === 0 ? 'carousel-control-prev d-none' : 'carousel-control-prev'} href="#carousel-thumb" role="button" data-slide="prev" onClick={() => setCurrentPhotoIndex(currentPhotoIndex - 1)}>
           <span className="carousel-control-prev-icon" aria-hidden="true" />
           <span className="sr-only">Previous</span>
         </a>
-        <a className="carousel-control-next" href="#carousel-thumb" role="button" data-slide="next">
+        <a className={currentPhotoIndex === photosLength - 1 ? 'carousel-control-next d-none' : 'carousel-control-next'} href="#carousel-thumb" role="button" data-slide="next" onClick={() => setCurrentPhotoIndex(currentPhotoIndex + 1)}>
           <span className="carousel-control-next-icon" aria-hidden="true" />
           <span className="sr-only">Next</span>
         </a>
@@ -69,28 +76,40 @@ function ImageGallery(props) {
             position: 'absolute',
             top: '10px',
             left: '0px',
-            height: '600px',
+            height: '400px',
             maxWidth: '100px',
             width: '100px',
             border: 'none',
           }}
         >
           {currentStyle.photos.map((photo, index) => (
-            <li data-target="#carousel-thumb" data-slide-to={index} className={index === 0 && 'active'}>
+            <li data-target="#carousel-thumb" key={index} data-slide-to={index} className={index === currentPhotoIndex ? 'active' : 'inactive'}>
               <img
                 className="w-100"
                 src={photo.thumbnail_url}
+                key={index}
                 className="img-fluid"
-                alt="tn"
+                alt="thumbnail"
+                onClick={() => handleTnImageClick(index)}
                 style={
-                {
-                  maxWidth: '100px',
-                  height: '75px',
-                  marginBottom: '20px',
-                  overflow: 'hidden',
-                  display: 'block',
+                  index === currentPhotoIndex
+                    ? {
+                      maxWidth: '75px',
+                      height: '50px',
+                      marginBottom: '20px',
+                      overflow: 'hidden',
+                      display: 'block',
+                      border: '2px solid #fff',
+                    }
+
+                    : {
+                      maxWidth: '75px',
+                      height: '50px',
+                      marginBottom: '20px',
+                      overflow: 'hidden',
+                      display: 'block',
+                    }
                 }
-              }
               />
             </li>
           ))}
