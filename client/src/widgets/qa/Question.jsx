@@ -7,6 +7,7 @@ import React, { useState, useEffect } from 'react';
 import Answer from './Answer.jsx';
 import Helpful from './Helpful.jsx';
 import AddAnswer from './AddAnswer.jsx';
+import { orderAnswers } from './helpers.js';
 
 const Question = (props) => {
   const { question, name } = props;
@@ -20,14 +21,9 @@ const Question = (props) => {
   };
 
   useEffect(() => {
-    const temp = [];
-    for (const id in question.answers) {
-      temp.push(question.answers[id]);
-    }
-    temp.sort((a, b) => (
-      b.helpfulness - a.helpfulness
-    ));
-    changeAnswers(temp);
+    changeAnswers(
+      orderAnswers(question.answers),
+    );
   }, [question]);
 
   useEffect(() => {
@@ -38,6 +34,7 @@ const Question = (props) => {
           temp.push(
             <Answer
               answer={answers[i]}
+              id={answers[i].id}
               key={answers[i].id}
               answers={answers}
               changeAnswers={changeAnswers}
@@ -60,6 +57,7 @@ const Question = (props) => {
         changeAnswerList(answers.map((answer) => (
           <Answer
             answer={answer}
+            id={answer.id}
             key={answer.id}
             answers={answers}
             changeAnswers={changeAnswers}
@@ -70,6 +68,7 @@ const Question = (props) => {
       changeAnswerList(answers.map((answer) => (
         <Answer
           answer={answer}
+          id={answer.id}
           key={answer.id}
           answers={answers}
           changeAnswers={changeAnswers}
@@ -93,6 +92,8 @@ const Question = (props) => {
             question={question}
             name={name}
             changeAnswerList={changeAnswerList}
+            answers={answers}
+            changeAnswers={changeAnswers}
           />
         </div>
       </div>
