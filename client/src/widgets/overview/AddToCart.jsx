@@ -182,7 +182,7 @@ function AddToCart() {
             aria-expanded="false"
             aria-controls="sizeDropdown"
           >
-            {skuArray[0].size}
+            Select Size
           </button>
           <div className="dropdown-menu" id="dropTop" aria-labelledby="dropdownMenu1">
             {skuArray.map((curStyle, index) => (

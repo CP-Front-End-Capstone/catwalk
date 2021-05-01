@@ -28,7 +28,7 @@ function ProductInfoBottom(props) {
             </a>
           </div>
           <div>
-            <a data-pin-do="embedPin" href="https://www.pinterest.com/pin/99360735500167749/">Save on Pinterest</a>
+            <a data-pin-do="embedPin" href="https://www.pinterest.com/pin/99360735500167749/">Pin it!</a>
           </div>
 
         </div>

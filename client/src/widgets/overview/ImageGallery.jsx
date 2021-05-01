@@ -83,7 +83,7 @@ function ImageGallery(props) {
           }}
         >
           {currentStyle.photos.map((photo, index) => (
-            <li data-target="#carousel-thumb" data-slide-to={index} className={index === currentPhotoIndex ? 'active' : 'inactive'}>
+            <li data-target="#carousel-thumb" key={index} data-slide-to={index} className={index === currentPhotoIndex ? 'active' : 'inactive'}>
               <img
                 className="w-100"
                 src={photo.thumbnail_url}
