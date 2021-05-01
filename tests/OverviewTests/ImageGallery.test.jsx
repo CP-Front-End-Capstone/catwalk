@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable react/jsx-no-undef */
 /* eslint-disable import/extensions */
 /* eslint-disable no-unused-vars */
@@ -11,14 +10,17 @@ import { styleContext } from '../../client/src/contexts/StyleContext';
 import productData from './productData.js';
 import stylesData from './stylesData.js';
 import config from '../testconfig';
-import App from '../../client/src/App.jsx';
-import Styles from '../../client/src/widgets/overview/Styles';
+import ImageGallery from '../../client/src/widgets/overview/ImageGallery';
 
-describe('<Styles />', () => {
+describe('<ImageGallery />', () => {
+  test('Renders proper message if state is not set', () => {
+    const shallow2 = shallow(<ImageGallery />);
+    expect(shallow2.find('#loadingImage').text()).toBe('Loading image...');
+  });
+
   let wrapper;
   beforeEach(() => {
     wrapper = mount(
-
       <styleContext.Provider value={{
         styles: stylesData.results,
         currentStyle: stylesData.results[0],
@@ -26,27 +28,27 @@ describe('<Styles />', () => {
         setImage: () => {},
         curStyleInd: 0,
         setCurStyleInd: () => {},
+        currentImage: stylesData.results[0].photos[0].url,
+        setCurrentPhotoIndex: () => {},
+        currentPhotoIndex: stylesData.results[0].photos.length,
+        photosLength: 0,
       }}
       >
-        <Styles />
+        <ImageGallery />
       </styleContext.Provider>,
 
     );
   });
 
-  it('Styles component does not crash', () => {
+  it('ImageGallery component does not crash', () => {
     expect(wrapper).toHaveLength(1);
   });
 
-  test('displays current style name', () => {
-    expect(wrapper.find('#styleName').text()).toBe('Style: Forest Green & Black');
+  test('displays correct number of images in carousel', () => {
+    expect(wrapper.find('#carouselImages').children()).toHaveLength(6);
   });
 
-  test('displays correct number of styles', () => {
-    expect(wrapper.find('#styleList').children()).toHaveLength(6);
-  });
-
-  test('displays correct number of styles', () => {
-    expect(wrapper.find('#styleList').children().containsAllMatchingElements(<img />)).toHaveLength(6);
+  test('displays correct number of thumbnail images', () => {
+    expect(wrapper.find('#thumbnails').children()).toHaveLength(6);
   });
 });

@@ -67,7 +67,7 @@ function ExpandedImageGallery(props) {
         {/* <!--Slides--> */}
         <div className="carousel-inner" role="listbox">
           {currentStyle.photos.map((photo, index) => (
-            <div className={index === currentPhotoIndex ? 'carousel-item active' : 'carousel-item'} key={index}>
+            <div id="expCarouselImages" className={index === currentPhotoIndex ? 'carousel-item active' : 'carousel-item'} key={index}>
               <InnerImageZoom
                 className="d-block w-100"
                 style={{
@@ -109,7 +109,7 @@ function ExpandedImageGallery(props) {
           }}
         >
           {currentStyle.photos.map((photo, index) => (
-            <li data-target="#carousel-thumb" data-slide-to={index} key={index} className={index === currentPhotoIndex ? 'active' : 'inactive'}>
+            <li id="icons" data-target="#carousel-thumb" data-slide-to={index} key={index} className={index === currentPhotoIndex ? 'active' : 'inactive'}>
               <FontAwesomeIcon
                 icon={faImage}
                 listItem
@@ -130,7 +130,7 @@ function ExpandedImageGallery(props) {
 
     );
   }
-  return <h1>Loading image...</h1>;
+  return <h1 id="loadingExpImage">Loading image...</h1>;
 }
 
 export default ExpandedImageGallery;
