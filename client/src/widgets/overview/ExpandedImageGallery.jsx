@@ -79,7 +79,7 @@ function ExpandedImageGallery(props) {
                 key={index}
                 zoomScale={2.5}
                 afterZoomOut={() => { toDefaultImageClick(false); }}
-                alt="Product image"
+                alt="Expanded image"
               />
             </div>
           ))}
