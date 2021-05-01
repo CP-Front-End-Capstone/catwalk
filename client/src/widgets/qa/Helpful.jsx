@@ -8,9 +8,9 @@ import config from '../../../../API/config.js';
 
 const Helpful = (props) => {
   const { input } = props;
+
   const [count, changeCount] = useState(0);
   const [clicked, changedclicked] = useState(false);
-
   useEffect(() => {
     if (input.hasOwnProperty('question_id')) {
       changeCount(input.question_helpfulness);

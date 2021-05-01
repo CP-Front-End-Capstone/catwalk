@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React, { Image, useState } from 'react';
 import Modal from 'react-modal';
 import axios from 'axios';
 import Answer from './Answer.jsx';
-import validate from './helpers.js';
+import { validate, orderAnswers } from './helpers.js';
 
 const config = require('../../../../API/config.js');
 
@@ -21,29 +21,33 @@ const customStyles = {
   },
 };
 
-// Modal.setAppElement('#app');
+Modal.setAppElement('#app');
 
 const addAnswer = (props) => {
   const {
     question,
     name,
     changeAnswerList,
+    answers,
+    changeAnswers,
   } = props;
-
   const [modalIsOpen, setIsOpen] = useState(false);
   const [answer, changeAnswer] = useState('');
   const [nickname, changeNickname] = useState('');
   const [email, changeEmail] = useState('');
   const [photos, changePhotos] = useState([]);
+  const wipeFormState = () => {
+    changeAnswer('');
+    changeNickname('');
+    changeEmail('');
+    changePhotos([]);
+  };
   const openModal = () => {
     setIsOpen(true);
   };
   const onCancel = (e) => {
     e.preventDefault();
-    changeAnswer('');
-    changeNickname('');
-    changeEmail('');
-    changePhotos([]);
+    wipeFormState();
     setIsOpen(false);
   };
   const onSubmit = (e) => {
@@ -54,6 +58,7 @@ const addAnswer = (props) => {
       email,
       photos,
     };
+    wipeFormState();
     if (validate(newAnswer)) {
       axios({
         method: 'POST',
@@ -64,10 +69,6 @@ const addAnswer = (props) => {
         },
       })
         .then(() => {
-          changeAnswer('');
-          changeNickname('');
-          changeEmail('');
-          changePhotos([]);
           axios({
             method: 'GET',
             url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${question.question_id}/answers?count=100`,
@@ -76,9 +77,18 @@ const addAnswer = (props) => {
             },
           })
             .then((newList) => {
-              changeAnswerList(newList.data.results.map((ans) => (
-                <Answer answer={ans} key={ans.answer_id} />
-              )));
+              const answerList = orderAnswers(newList.data.results);
+              // changeAnswers(answerList);
+              changeAnswerList(
+                answerList.map((ans) => (
+                  <Answer
+                    answer={ans}
+                    key={ans.answerer_id}
+                    answers={answers}
+                    changeAnswers={changeAnswers}
+                  />
+                )),
+              );
             })
             .catch((err) => {
               console.log('Error getting new answer list', err);
@@ -109,12 +119,11 @@ const addAnswer = (props) => {
 
   const updatePhotos = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
-    e.target.files.forEach((file) => {
-      changePhotos(photos.concat(e.target.file));
-      console.log(file);
-    });
-    
+    if (photos.length < 5) {
+      changePhotos(
+        photos.concat(URL.createObjectURL(e.target.files[0])),
+      );
+    }
   };
 
   return (
@@ -127,8 +136,6 @@ const addAnswer = (props) => {
       </span>
       <Modal
         isOpen={modalIsOpen}
-        // onAfterOpen={afterOpenModal}
-        // onRequestClose={onCancel}
         style={customStyles}
         contentLabel="Add Answer"
       >
@@ -162,8 +169,19 @@ const addAnswer = (props) => {
           <br />
           <label htmlFor="photos">
             Photos: (optional)
-            <input type="file" name="photos" onChange={updatePhotos} required multiple />
-            <div id={`thumbnails${question.question_id}`} />
+            <input type="file"
+              accept="image/gif, image/jpeg, image/png"
+              name="photos"
+              onChange={updatePhotos}
+              required
+            />
+            <div className="row">
+              {photos.map((photo) => (
+                <span className="col" key={photo}>
+                  <img src={photo} className="img-fluid img-thumbnail" alt="thumbnail" />
+                </span>
+              ))}
+            </div>
           </label>
         </form>
         <button type="button" onClick={onCancel}>Cancel</button>
