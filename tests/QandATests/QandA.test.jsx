@@ -9,16 +9,17 @@ import config from '../testconfig.js';
 import QuestionList from '../../client/src/widgets/qa/QuestionList.jsx';
 import qaContext from '../../client/src/contexts/QaContext.js';
 import questionsData from './questionsData.js';
+import Question from '../../client/src/widgets/qa/Question.jsx';
 
 describe('QuestionList component', () => {
   let wrapper;
+  const productId = questionsData.product_id;
+  const productName = 'Cool Product';
+  const questions = questionsData.results;
+  const changeQuestions = () => {};
+  const count = 4;
+  const changeCount = () => {};
   beforeEach(() => {
-    const productId = questionsData.product_id;
-    const productName = 'product name';
-    const questions = questionsData.results;
-    const changeQuestions = () => {};
-    const count = 4;
-    const changeCount = () => {};
     wrapper = Enzyme.mount(
       <qaContext.Provider value={{
         questions,
@@ -35,7 +36,6 @@ describe('QuestionList component', () => {
   });
 
   it('renders question list with 4 questions', () => {
-    // console.log(wrapper.find('#questionlist'));
     expect(wrapper.find('#questionlist').children()).toHaveLength(4);
   });
 
@@ -56,49 +56,61 @@ describe('QuestionList component', () => {
 
 describe('Question component', () => {
   let wrapper;
-  beforEach(() => {
+  const question = questionsData.results[0];
+  const productName = 'Cool Product';
+  beforeEach(() => {
+    wrapper = Enzyme.mount(
+      <Question
+        question={question}
+        name={productName}
+        key={question.question_id}
+      />,
+    );
+  });
+
+  it('should render without crashing', () => {
+    expect(wrapper.find(`#questionbody${question.question_id}`).exists()).to.be(true);
+  });
+});
+
+xdescribe('Answer component', () => {
+  let wrapper;
+  beforeEach(() => {
 
   });
 });
 
-describe('Answer component', () => {
+xdescribe('Helpful component', () => {
   let wrapper;
-  beforEach(() => {
+  beforeEach(() => {
 
   });
 });
 
-describe('Helpful component', () => {
+xdescribe('Report component', () => {
   let wrapper;
-  beforEach(() => {
+  beforeEach(() => {
 
   });
 });
 
-describe('Report component', () => {
+xdescribe('Add Question component', () => {
   let wrapper;
-  beforEach(() => {
+  beforeEach(() => {
 
   });
 });
 
-describe('Add Question component', () => {
+xdescribe('Add Answer component', () => {
   let wrapper;
-  beforEach(() => {
+  beforeEach(() => {
 
   });
 });
 
-describe('Add Answer component', () => {
+xdescribe('Search component', () => {
   let wrapper;
-  beforEach(() => {
-
-  });
-});
-
-describe('Search component', () => {
-  let wrapper;
-  beforEach(() => {
+  beforeEach(() => {
 
   });
 });
