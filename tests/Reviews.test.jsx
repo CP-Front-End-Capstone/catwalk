@@ -1,55 +1,57 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
 /* eslint-disable import/extensions */
-import React from 'react';
+import React, { useState } from 'react';
 import Enzyme, { shallow, mount } from 'enzyme';
 import config from './testconfig.js';
 import ReviewsRatings from '../client/src/widgets/reviews/ReviewsRatings.jsx';
+import ReviewsList from '../client/src/widgets/reviews/ReviewsList.jsx';
 import { productContext } from '../client/src/contexts/ProductContext.js';
 import reviewContext from '../client/src/contexts/ReviewContext.js';
-
-const reviewsMeta = {
-  product_id: '18078',
-  ratings: {
-    1: '7',
-    2: '12',
-    3: '9',
-    4: '11',
-    5: '21',
-    6: '1',
-  },
-  recommended: {
-    false: '29',
-    true: '32',
-  },
-  characteristics: {
-    Fit: {
-      id: 60618,
-      value: '2.7727272727272727',
-    },
-    Length: {
-      id: 60619,
-      value: '2.8260869565217391',
-    },
-    Comfort: {
-      id: 60620,
-      value: '2.9090909090909091',
-    },
-    Quality: {
-      id: 60621,
-      value: '2.7142857142857143',
-    },
-  },
-};
-const productId = '18078';
+import reviewsData from './reviewsData.js';
 
 describe('Reviews and Ratings Widget', () => {
-  it('renders without crashing', () => {
-    shallow(
+  let wrapper;
+  beforeEach(() => {
+    const { productId } = reviewsData;
+    const { reviewsMeta } = reviewsData;
+    const { reviewsList } = reviewsData;
+    wrapper = mount(
       <productContext.Provider value={{ reviewsMeta, productId }}>
-        <ReviewsRatings />
-        ;
+        <reviewContext.Provider value={{ reviewsList }}>
+          <ReviewsRatings />
+        </reviewContext.Provider>
       </productContext.Provider>,
     );
+  });
+
+  it('renders without crashing', () => {
+    expect(wrapper).toHaveLength(1);
+  });
+});
+
+describe('Reviews List', () => {
+  let wrapper;
+  beforeEach(() => {
+    const { productId } = reviewsData;
+    const { reviewsMeta } = reviewsData;
+    const { reviewList } = reviewsData;
+    const { reviewsArray } = reviewList.results;
+    const setReviewList = () => {};
+    const setReviewsArray = () => {};
+    wrapper = mount(
+      <productContext.Provider value={{ reviewsMeta, productId }}>
+        <reviewContext.Provider value={{
+          reviewList, reviewsArray, setReviewList, setReviewsArray,
+        }}
+        >
+          <ReviewsList />
+        </reviewContext.Provider>
+      </productContext.Provider>,
+    );
+  });
+
+  it('renders reviews list with 2 reviews', () => {
+    expect(wrapper.find('#individualreview').children()).toHaveLength(2);
   });
 });
