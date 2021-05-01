@@ -110,6 +110,7 @@ function AddToCart() {
                 <button
                   className="dropdown-item"
                   type="button"
+                  id="sizeButton"
                   key={index}
                   onClick={sizeSelected
                     ? () => { handleSizeClick(true, curStyle.size, index, skuArray2[index]); }
@@ -133,7 +134,7 @@ function AddToCart() {
               aria-haspopup="true"
               aria-expanded="false"
             >
-              {sizeSelected ? quanSelected : '-'}
+              {sizeSelected ? quanSelected : '____'}
             </button>
             <div className="dropdown-menu" aria-labelledby="dropdownMenu1">
               {sizeSelected
@@ -149,6 +150,7 @@ function AddToCart() {
           <button
             type="button"
             className="btn btn-primary"
+            id="addToCartButton"
             onClick={sizeSelected
               ? () => { addToCartClick(curSku); }
               : (e) => { handleCantAddToCartClick(e); }}

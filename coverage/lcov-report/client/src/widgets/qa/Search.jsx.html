@@ -37,15 +37,9 @@
         
             
             <div class='fl pad1y space-right2'>
-<<<<<<< HEAD
-                <span class="strong">33.33% </span>
-                <span class="quiet">Functions</span>
-                <span class='fraction'>2/6</span>
-=======
                 <span class="strong">50% </span>
                 <span class="quiet">Functions</span>
                 <span class='fraction'>2/4</span>
->>>>>>> main
             </div>
         
             
@@ -108,39 +102,22 @@
 <a name='L43'></a><a href='#L43'>43</a>
 <a name='L44'></a><a href='#L44'>44</a>
 <a name='L45'></a><a href='#L45'>45</a>
-<<<<<<< HEAD
-<a name='L46'></a><a href='#L46'>46</a>
-<a name='L47'></a><a href='#L47'>47</a>
-<a name='L48'></a><a href='#L48'>48</a>
-<a name='L49'></a><a href='#L49'>49</a>
-<a name='L50'></a><a href='#L50'>50</a>
-<a name='L51'></a><a href='#L51'>51</a>
-<a name='L52'></a><a href='#L52'>52</a>
-<a name='L53'></a><a href='#L53'>53</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-=======
 <a name='L46'></a><a href='#L46'>46</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
->>>>>>> main
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<<<<<<< HEAD
-=======
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
->>>>>>> main
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6x</span>
@@ -164,22 +141,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<<<<<<< HEAD
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-=======
->>>>>>> main
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -195,9 +156,6 @@ const Search = (props) =&gt; {
 &nbsp;
   const handleChange = <span class="fstat-no" title="function not covered" >(e</span>) =&gt; {
 <span class="cstat-no" title="statement not covered" >    e.preventDefault();</span>
-<<<<<<< HEAD
-<span class="cstat-no" title="statement not covered" >    changeQuery(e.target.value);</span>
-=======
 <span class="cstat-no" title="statement not covered" >    if (e.target.value.length === 39) { // new query</span>
 <span class="cstat-no" title="statement not covered" >      changeQuery(e.target.value.slice(38));</span>
     } else <span class="cstat-no" title="statement not covered" >if (e.target.value.length === 37) { // protection from backspace on new query</span>
@@ -205,7 +163,6 @@ const Search = (props) =&gt; {
     } else { // continued new query
 <span class="cstat-no" title="statement not covered" >      changeQuery(e.target.value);</span>
     }
->>>>>>> main
   };
 &nbsp;
   useEffect(() =&gt; {
@@ -220,40 +177,16 @@ const Search = (props) =&gt; {
 &nbsp;
   return (
     &lt;div className="row p-1"&gt;
-<<<<<<< HEAD
-      &lt;div className="col-11"&gt;
-        &lt;input 
-=======
       &lt;div className="col"&gt;
         &lt;input
->>>>>>> main
           type="text"
           id="search"
           className="form-control"
           onChange={handleChange}
           value={query !== '' ? <span class="branch-0 cbranch-no" title="branch not covered" >query </span>: 'Have a question? Search for answers...'}
-<<<<<<< HEAD
-          // readOnly=""
-          onFocus={<span class="fstat-no" title="function not covered" >()</span> =&gt; {
-<span class="cstat-no" title="statement not covered" >            if (query === '') {</span>
-<span class="cstat-no" title="statement not covered" >              document.getElementById('search').value = '';</span>
-            }
-          }}
-          onBlur={<span class="fstat-no" title="function not covered" >()</span> =&gt; {
-<span class="cstat-no" title="statement not covered" >            if (query === '') {</span>
-<span class="cstat-no" title="statement not covered" >              document.getElementById('search').value = 'Have a question? Search for answers...';</span>
-            }
-          }}
-        /&gt;
-      &lt;/div&gt;
-      &lt;div className="col-1"&gt;
-        Q
-      &lt;/div&gt;
-=======
           // ternary reset query on full delete by user
         /&gt;
       &lt;/div&gt;
->>>>>>> main
     &lt;/div&gt;
   )
 };
@@ -266,11 +199,7 @@ export default Search;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-<<<<<<< HEAD
-                at Wed Apr 28 2021 21:01:26 GMT-0400 (Eastern Daylight Time)
-=======
-                at Wed Apr 28 2021 18:59:47 GMT-0600 (Mountain Daylight Time)
->>>>>>> main
+                at Sat May 01 2021 13:41:05 GMT-0400 (Eastern Daylight Time)
             </div>
         </div>
         <script src="../../../../prettify.js"></script>

@@ -23,15 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-<<<<<<< HEAD
                 <span class="strong">8.33% </span>
                 <span class="quiet">Statements</span>
                 <span class='fraction'>1/12</span>
-=======
-                <span class="strong">9.09% </span>
-                <span class="quiet">Statements</span>
-                <span class='fraction'>1/11</span>
->>>>>>> main
             </div>
         
             
@@ -50,15 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-<<<<<<< HEAD
                 <span class="strong">8.33% </span>
                 <span class="quiet">Lines</span>
                 <span class='fraction'>1/12</span>
-=======
-                <span class="strong">9.09% </span>
-                <span class="quiet">Lines</span>
-                <span class='fraction'>1/11</span>
->>>>>>> main
             </div>
         
             
@@ -162,23 +150,17 @@
 <a name='L91'></a><a href='#L91'>91</a>
 <a name='L92'></a><a href='#L92'>92</a>
 <a name='L93'></a><a href='#L93'>93</a>
-<<<<<<< HEAD
 <a name='L94'></a><a href='#L94'>94</a>
 <a name='L95'></a><a href='#L95'>95</a>
-<a name='L96'></a><a href='#L96'>96</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-no">&nbsp;</span>
-=======
-<a name='L94'></a><a href='#L94'>94</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
->>>>>>> main
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -267,26 +249,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useContext } from 'react';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/* eslint-disable import/extensions */
+import React, { useContext } from 'react';
 import { StackedHorizontalBarChart } from 'react-stacked-horizontal-bar-chart';
 import reviewContext from '../../contexts/ReviewContext';
-<<<<<<< HEAD
 import { productContext } from '../../contexts/ProductContext.js';
 &nbsp;
 const ProductBreakdown = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
   const reviewMeta = <span class="cstat-no" title="statement not covered" >useContext(reviewContext);</span>
   const review = <span class="cstat-no" title="statement not covered" >useContext(productContext);</span>
   const productDesc = <span class="cstat-no" title="statement not covered" >review.reviewsMeta.characteristics;</span>
-=======
-&nbsp;
-const ProductBreakdown = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
-  const reviewMeta = <span class="cstat-no" title="statement not covered" >useContext(reviewContext);</span>
-  const productDesc = <span class="cstat-no" title="statement not covered" >reviewMeta.reviewsMeta.characteristics;</span>
->>>>>>> main
 &nbsp;
   const fitValue = <span class="cstat-no" title="statement not covered" >(productDesc.Fit) &amp;&amp; (</span>
     &lt;div className="container"&gt;
-      &lt;div className="text-center" style={{ padding: '5px' }}&gt;Fit&lt;/div&gt;
+      &lt;div className="text-center font-weight-bold small" style={{ padding: '5px' }}&gt;Fit&lt;/div&gt;
       &lt;div className="small"&gt;
         &lt;StackedHorizontalBarChart
           rangesPoints={[0, 5]}
@@ -299,7 +275,7 @@ const ProductBreakdown = <span class="fstat-no" title="function not covered" >()
   );
   const lengthValue = <span class="cstat-no" title="statement not covered" >(productDesc.Length) &amp;&amp; (</span>
     &lt;div className="container"&gt;
-      &lt;div className="text-center" style={{ padding: '5px' }}&gt;Length&lt;/div&gt;
+      &lt;div className="text-center font-weight-bold small" style={{ padding: '5px' }}&gt;Length&lt;/div&gt;
       &lt;div className="small"&gt;
         &lt;StackedHorizontalBarChart
           rangesPoints={[0, 5]}
@@ -312,7 +288,7 @@ const ProductBreakdown = <span class="fstat-no" title="function not covered" >()
   );
   const comfortValue = <span class="cstat-no" title="statement not covered" >(productDesc.Comfort) &amp;&amp; (</span>
     &lt;div className="container"&gt;
-      &lt;div className="text-center" style={{ padding: '5px' }}&gt;Comfort&lt;/div&gt;
+      &lt;div className="text-center font-weight-bold small" style={{ padding: '5px' }}&gt;Comfort&lt;/div&gt;
       &lt;div className="small"&gt;
         &lt;StackedHorizontalBarChart
           rangesPoints={[0, 5]}
@@ -325,7 +301,7 @@ const ProductBreakdown = <span class="fstat-no" title="function not covered" >()
   );
   const qualityValue = <span class="cstat-no" title="statement not covered" >(productDesc.Quality) &amp;&amp; (</span>
     &lt;div className="container"&gt;
-      &lt;div className="text-center" style={{ padding: '5px' }}&gt;Quality&lt;/div&gt;
+      &lt;div className="text-center font-weight-bold small" style={{ padding: '5px' }}&gt;Quality&lt;/div&gt;
       &lt;div className="small"&gt;
         &lt;StackedHorizontalBarChart
           rangesPoints={[0, 5]}
@@ -337,8 +313,8 @@ const ProductBreakdown = <span class="fstat-no" title="function not covered" >()
     &lt;/div&gt;
   );
   const widthValue = <span class="cstat-no" title="statement not covered" >(productDesc.Width) &amp;&amp; (</span>
-    &lt;div&gt;
-      &lt;div className="text-center" style={{ padding: '5px' }}&gt;Width&lt;/div&gt;
+    &lt;div className="container"&gt;
+      &lt;div className="text-center font-weight-bold small" style={{ padding: '5px' }}&gt;Width&lt;/div&gt;
       &lt;div className="small"&gt;
         &lt;StackedHorizontalBarChart
           rangesPoints={[0, 5]}
@@ -354,7 +330,7 @@ const ProductBreakdown = <span class="fstat-no" title="function not covered" >()
 <span class="cstat-no" title="statement not covered" >    return (</span>
       &lt;div className="container" style={{ padding: '10px' }}&gt;
         &lt;div className="row"&gt;
-          &lt;div className="container border" style={{ padding: '20px' }}&gt;
+          &lt;div className="container" style={{ padding: '10px' }}&gt;
             {fitValue}
             {lengthValue}
             {comfortValue}
@@ -376,11 +352,7 @@ export default ProductBreakdown;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-<<<<<<< HEAD
-                at Wed Apr 28 2021 21:01:26 GMT-0400 (Eastern Daylight Time)
-=======
-                at Wed Apr 28 2021 18:59:47 GMT-0600 (Mountain Daylight Time)
->>>>>>> main
+                at Sat May 01 2021 13:41:05 GMT-0400 (Eastern Daylight Time)
             </div>
         </div>
         <script src="../../../../prettify.js"></script>

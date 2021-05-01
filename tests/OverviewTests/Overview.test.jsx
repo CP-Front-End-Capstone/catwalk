@@ -28,7 +28,7 @@ describe('<Overview />', () => {
     expect(wrapper).toHaveLength(1);
   });
 
-  it('has an Image Gallery', () => {
-    expect(wrapper.children(<ImageGallery />)).toEqual(true);
+  test('render without error', () => {
+    expect(wrapper.exists()).toBe(true);
   });
 });

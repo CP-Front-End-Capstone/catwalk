@@ -8,21 +8,21 @@ import { styleContext } from '../../contexts/StyleContext.js';
 import Stars from '../../Stars.jsx';
 
 function ProductInfoTop(props) {
-  const { reviewsMeta, product } = useContext(productContext);
-  const { currentStyle, revMeta } = useContext(styleContext);
+  const { product, totalReviews } = useContext(productContext);
+  const { currentStyle } = useContext(styleContext);
 
-  if (currentStyle && reviewsMeta) {
+  if (currentStyle && product) {
     return (
       <div>
         <div className="d-flex justify-content-between">
           <Stars />
-          <a className="row" href="#reviews">Read all reviews</a>
+          <a className={totalReviews === 0 ? 'row d-none' : 'row'} id="totalReviews" href="#reviews">{`Read all ${totalReviews} reviews`}</a>
         </div>
-        <h4>{product.category}</h4>
-        <h1 className="display-4">{product.name}</h1>
+        <h4 id="productCategory">{product.category}</h4>
+        <h1 className="display-4" id="productName">{product.name}</h1>
         {currentStyle.sale_price === null
           ? (
-            <p>
+            <p id="originalPrice">
               $&nbsp;
               {currentStyle.original_price}
             </p>

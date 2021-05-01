@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">4.55% </span>
+                <span class="strong">41.18% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/22</span>
+                <span class='fraction'>7/17</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">12.5% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/11</span>
+                <span class='fraction'>1/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">4.76% </span>
+                <span class="strong">43.75% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/21</span>
+                <span class='fraction'>7/16</span>
             </div>
         
             
@@ -157,12 +157,7 @@
 <a name='L98'></a><a href='#L98'>98</a>
 <a name='L99'></a><a href='#L99'>99</a>
 <a name='L100'></a><a href='#L100'>100</a>
-<a name='L101'></a><a href='#L101'>101</a>
-<a name='L102'></a><a href='#L102'>102</a>
-<a name='L103'></a><a href='#L103'>103</a>
-<a name='L104'></a><a href='#L104'>104</a>
-<a name='L105'></a><a href='#L105'>105</a>
-<a name='L106'></a><a href='#L106'>106</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L101'></a><a href='#L101'>101</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -176,34 +171,29 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<<<<<<< HEAD
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">2x</span>
-=======
-<span class="cline-any cline-yes">1x</span>
->>>>>>> main
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -243,10 +233,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -285,37 +271,36 @@ import ReviewBreakDown from './ReviewBreakDown.jsx';
 import AddReview from './AddReview.jsx';
 import ReviewSearch from './ReviewSearch.jsx';
 &nbsp;
-const ReviewsList = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
-  const reviewsInfo = <span class="cstat-no" title="statement not covered" >useContext(reviewContext);</span>
-  const productId = <span class="cstat-no" title="statement not covered" >reviewsInfo.reviewList.product;</span>
-  const { reviewsArray } = <span class="cstat-no" title="statement not covered" >reviewsInfo;</span>
-  const [reviewCount, setReviewCount] = <span class="cstat-no" title="statement not covered" >useState(2);</span>
-  const [sortBy, setSortBy] = <span class="cstat-no" title="statement not covered" >useState('relevant');</span>
+const ReviewsList = () =&gt; {
+  const reviewsInfo = useContext(reviewContext);
+  const productId = reviewsInfo.reviewList.product;
+  const { reviewsArray } = reviewsInfo;
+  const [reviewCount, setReviewCount] = useState(2);
 &nbsp;
-  const handleMoreReviews = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(c</span>ount) =&gt; {</span>
+  const handleMoreReviews = <span class="fstat-no" title="function not covered" >(c</span>ount) =&gt; {
 <span class="cstat-no" title="statement not covered" >    setReviewCount(count);</span>
   };
 &nbsp;
-  const displayedReviews = <span class="cstat-no" title="statement not covered" >reviewsArray.slice(0, reviewCount);</span>
+  const displayedReviews = reviewsArray.slice(0, reviewCount);
 &nbsp;
   const handleSortBy = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(s</span>election) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    setSortBy(selection);</span>
+<span class="cstat-no" title="statement not covered" >    reviewsInfo.setSortBy(selection);</span>
   };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; (</span>
-<span class="cstat-no" title="statement not covered" >    api.fetchEndpoint(`/reviews/?product_id=${productId}&amp;count=100&amp;sort=${sortBy}`)</span>
-      .then(<span class="fstat-no" title="function not covered" >(r</span>eviewData) =&gt; {
-<span class="cstat-no" title="statement not covered" >        reviewsInfo.setReviewsArray(reviewData.results);</span>
-      })
-      .catch(<span class="fstat-no" title="function not covered" >(e</span>rr) =&gt; {
-<span class="cstat-no" title="statement not covered" >        console.log('error fetching review data', err);</span>
-      })
-  ), [sortBy]);
+  // useEffect(() =&gt; (
+  //   api.fetchEndpoint(`/reviews/?product_id=${productId}&amp;count=100&amp;sort=${sortBy}`)
+  //     .then((reviewData) =&gt; {
+  //       reviewsInfo.setReviewsArray(reviewData.results);
+  //     })
+  //     .catch((err) =&gt; {
+  //       console.log('error fetching review data', err);
+  //     })
+  // ), [sortBy]);
 &nbsp;
   const moreReviews = <span class="cstat-no" title="statement not covered" >reviewCount &gt; reviewsArray.length ? '' : &lt;button type="button" onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; { <span class="cstat-no" title="statement not covered" >handleMoreReviews(reviewCount + 2); </span>}}&gt;More Reviews&lt;/button&gt;;</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  return (</span>
-    &lt;div className="container"&gt;
+    &lt;div className="container" style={{ padding: '40px' }}&gt;
       &lt;h5 className="row"&gt;
         &lt;div&gt;
           {displayedReviews.length}
@@ -330,7 +315,7 @@ const ReviewsList = <span class="fstat-no" title="function not covered" >()</spa
             aria-haspopup="true"
             aria-expanded="false"
           &gt;
-            {sortBy}
+            {reviewsInfo.sortBy}
           &lt;/u&gt;
           &lt;div className="dropdown-menu" aria-labelledby="dropdownMenu1"&gt;
             &lt;a className="dropdown-item" href="#!" onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; { <span class="cstat-no" title="statement not covered" >handleSortBy('newest'); </span>}}&gt;Newest&lt;/a&gt;
@@ -342,20 +327,12 @@ const ReviewsList = <span class="fstat-no" title="function not covered" >()</spa
           {' '}
         &lt;/div&gt;
         &lt;div className="col-right"&gt;
-<<<<<<< HEAD
           &lt;ReviewSearch /&gt;
-=======
-          &lt;ReviewSearch/&gt;
->>>>>>> main
         &lt;/div&gt;
       &lt;/h5&gt;
-      &lt;div className="row bg-light h-75 overflow-auto border" style={{ padding: '10px' }}&gt;
+      &lt;div className="row bg-light h-75 overflow-auto border" style={{ padding: '10px' }} id="individualreview"&gt;
         {displayedReviews.map(<span class="fstat-no" title="function not covered" >(r</span>eview) =&gt; (
-<span class="cstat-no" title="statement not covered" >          &lt;ul key={review.review_id} className="container"&gt;</span>
-            &lt;reviewContext.Provider value={reviewCount}&gt;
-              &lt;IndividualReview review={review} /&gt;
-            &lt;/reviewContext.Provider&gt;
-          &lt;/ul&gt;
+<span class="cstat-no" title="statement not covered" >          &lt;IndividualReview review={review} /&gt;</span>
         ))}
       &lt;/div&gt;
       &lt;div className="row" style={{ padding: '10px' }}&gt;
@@ -387,11 +364,7 @@ export default ReviewsList;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-<<<<<<< HEAD
-                at Wed Apr 28 2021 21:01:26 GMT-0400 (Eastern Daylight Time)
-=======
-                at Wed Apr 28 2021 18:59:47 GMT-0600 (Mountain Daylight Time)
->>>>>>> main
+                at Sat May 01 2021 13:41:05 GMT-0400 (Eastern Daylight Time)
             </div>
         </div>
         <script src="../../../../prettify.js"></script>

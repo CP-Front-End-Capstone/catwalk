@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">47.37% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>7/14</span>
+                <span class='fraction'>9/19</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">16.67% </span>
+                <span class="strong">14.29% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/6</span>
+                <span class='fraction'>1/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">47.37% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>7/14</span>
+                <span class='fraction'>9/19</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -132,7 +132,14 @@
 <a name='L73'></a><a href='#L73'>73</a>
 <a name='L74'></a><a href='#L74'>74</a>
 <a name='L75'></a><a href='#L75'>75</a>
-<a name='L76'></a><a href='#L76'>76</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -153,6 +160,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -164,17 +172,23 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -229,15 +243,17 @@ import Overview from './widgets/overview/Overview.jsx';
 import RelatedProducts from './widgets/relatedProducts/Products.jsx';
 &nbsp;
 const App = (props) =&gt; {
-  const [productId, changeProductId] = useState('18078');
+  const [productId, changeProductId] = useState('18083');
   const [product, changeProduct] = useState();
   const [styles, changeStyles] = useState();
   const [reviewsMeta, setReviewsMeta] = useState();
+  const [totalReviews, setTotalReviews] = useState(0);
 &nbsp;
   useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {
 <span class="cstat-no" title="statement not covered" >    api.fetchEndpoint(`/products/${productId}`)</span>
       .then(<span class="fstat-no" title="function not covered" >(p</span>roductData) =&gt; {
 <span class="cstat-no" title="statement not covered" >        changeProduct(productData);</span>
+<span class="cstat-no" title="statement not covered" >        console.log(productData);</span>
 <span class="cstat-no" title="statement not covered" >        api.fetchEndpoint(`/products/${productId}/styles`)</span>
           .then(<span class="fstat-no" title="function not covered" >(s</span>tylesData) =&gt; {
 <span class="cstat-no" title="statement not covered" >            changeStyles(stylesData.results);</span>
@@ -251,6 +267,11 @@ const App = (props) =&gt; {
 <span class="cstat-no" title="statement not covered" >        console.log('Error fetching data', error);</span>
       });
   }, [productId]);
+&nbsp;
+  const getTotalReviews = <span class="fstat-no" title="function not covered" >(r</span>eviewsArray) =&gt; {
+<span class="cstat-no" title="statement not covered" >    setTotalReviews(reviewsArray.length);</span>
+<span class="cstat-no" title="statement not covered" >    console.log('this is total reviews', totalReviews);</span>
+  };
 &nbsp;
   return (
     &lt;div&gt;
@@ -268,13 +289,13 @@ const App = (props) =&gt; {
       &lt;/nav&gt;
       &lt;div&gt;
         &lt;productContext.Provider value={{
-          product, styles, productId, changeProductId, reviewsMeta,
+          product, styles, productId, changeProductId, reviewsMeta, totalReviews,
         }}
         &gt;
           &lt;Overview /&gt;
           &lt;RelatedProducts /&gt;
           &lt;QandA /&gt;
-          &lt;ReviewsRatings /&gt;
+          &lt;ReviewsRatings getTotalReviews={getTotalReviews} /&gt;
         &lt;/productContext.Provider&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -289,7 +310,7 @@ export default App;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Wed Apr 28 2021 21:01:26 GMT-0400 (Eastern Daylight Time)
+                at Sat May 01 2021 13:41:05 GMT-0400 (Eastern Daylight Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>

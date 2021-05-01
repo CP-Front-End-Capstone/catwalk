@@ -66,7 +66,7 @@ const App = (props) => {
       </nav>
       <div>
         <productContext.Provider value={{
-          product, styles, productId, changeProductId, reviewsMeta,
+          product, styles, productId, changeProductId, reviewsMeta, totalReviews,
         }}
         >
           <Overview />
