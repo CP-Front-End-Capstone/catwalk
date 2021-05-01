@@ -37,7 +37,7 @@ const ReviewsList = () => {
   const moreReviews = reviewCount > reviewsArray.length ? '' : <button id="viewmore" type="button" onClick={() => { handleMoreReviews(reviewCount + 2); }}>More Reviews</button>;
 
   return (
-    <div className="container" style={{ padding: '40px' }}>
+    <div className="container" style={{ padding: '40px' }} key={productId}>
       <h5 className="row">
         <div>
           {reviewCount}
@@ -69,7 +69,9 @@ const ReviewsList = () => {
       </h5>
       <div className="row bg-light h-75 overflow-auto border" style={{ padding: '10px' }} id="individualreview">
         {displayedReviews.map((review) => (
-          <IndividualReview review={review} />
+          <ul className="list-unstyled w-100" key={review.review_id}>
+            <IndividualReview review={review} />
+          </ul>
         ))}
       </div>
       <div className="row" style={{ padding: '10px' }}>
