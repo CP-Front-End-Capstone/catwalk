@@ -6,6 +6,7 @@
   "scripts": {
     "start": "nodemon server/index.js",
     "react-dev": "webpack --config ./webpack.config.js --mode development --watch",
+    "react-prod": "webpack --config ./webpack.config.js --mode production",
     "testCC": "jest --collectCoverage",
     "test": "jest"
   },
