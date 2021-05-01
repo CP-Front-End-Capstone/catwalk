@@ -65,7 +65,7 @@ function RelatedProducts() {
             styles={styles}
             rating={reviewsMeta}
             currentProduct={context.product}
-            setClickedProduct={setClickedProduct}
+            changeProductId={context.changeProductId}
           />
         </div>
         <div className="container">
@@ -73,7 +73,6 @@ function RelatedProducts() {
           <MyOutfitList
             overviewProduct={context.product}
             styles={context.styles}
-            clickedProduct={clickedProduct}
           />
         </div>
       </div>
