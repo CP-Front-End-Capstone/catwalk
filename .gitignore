@@ -3,3 +3,4 @@ API/config.js
 client/dist/bundle.js
 coverage/
 FashionFactory.pem
+client/dist/bundle.js.LICENSE.txt
