@@ -45,7 +45,6 @@ describe('Reviews List', () => {
     const { reviewList } = reviewsData;
     const reviewsArray = reviewList.results;
     const sortBy = 'relevant';
-    const count = 2;
     const setReviewList = () => {};
     const setReviewsArray = () => {};
     const setSortBy = () => {};
@@ -103,16 +102,6 @@ describe('Individual Review', () => {
   it('renders review body with 250 characters or less', () => {
     expect(wrapper.find('#reviewbody')).length <= (250);
   });
-
-  // it('renders remainder of user clicks "view more"', () => {
-  //   const viewMore = promisify(() => {
-  //     wrapper.find('#viewmorebody').simulate('click');
-  //   });
-  //   viewMore()
-  //     .then(() => {
-  //       expect(wrapper.find('#reviewbody')).length > (250);
-  //     });
-  // });
 });
 
 describe('Reviews Breakdown', () => {

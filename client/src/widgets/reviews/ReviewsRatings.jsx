@@ -39,7 +39,7 @@ const ReviewsRatings = (props) => {
     return (
       <div id="reviews">
         <div className="container" style={{ padding: '20px' }}>
-          <h3>Reviews & Ratings</h3>
+          <h4 className="font-weight-light">REVIEWS & RATINGS</h4>
           <div className="row">
             <div className="col-sm-4">
               <div className="container">
