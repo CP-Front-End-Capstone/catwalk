@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types */
-import React, { Image, useState } from 'react';
+import React, { Image, useState, useContext } from 'react';
 import Modal from 'react-modal';
 import axios from 'axios';
 import Answer from './Answer.jsx';
 import { validate, orderAnswers } from './helpers.js';
+import { productContext } from '../../contexts/ProductContext';
 
 const config = require('../../../../API/config.js');
 
@@ -25,6 +26,10 @@ const customStyles = {
 
 const addAnswer = (props) => {
   const {
+    trackClicks,
+    dateGenerator,
+  } = useContext(productContext);
+  const {
     question,
     name,
     changeAnswerList,
@@ -44,11 +49,13 @@ const addAnswer = (props) => {
   };
   const openModal = () => {
     setIsOpen(true);
+    trackClicks('Open Add Answer', 'QandA', dateGenerator());
   };
   const onCancel = (e) => {
     e.preventDefault();
     wipeFormState();
     setIsOpen(false);
+    trackClicks('Cancel Add Answer', 'QandA', dateGenerator());
   };
   const onSubmit = (e) => {
     e.preventDefault();
@@ -69,6 +76,7 @@ const addAnswer = (props) => {
         },
       })
         .then(() => {
+          trackClicks('Submit New Answer', 'QandA', dateGenerator());
           axios({
             method: 'GET',
             url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${question.question_id}/answers?count=100`,
@@ -78,7 +86,6 @@ const addAnswer = (props) => {
           })
             .then((newList) => {
               const answerList = orderAnswers(newList.data.results);
-              // changeAnswers(answerList);
               changeAnswerList(
                 answerList.map((ans) => (
                   <Answer
@@ -124,6 +131,7 @@ const addAnswer = (props) => {
         photos.concat(URL.createObjectURL(e.target.files[0])),
       );
     }
+    trackClicks('Add Photo', 'QandA', dateGenerator());
   };
 
   return (
