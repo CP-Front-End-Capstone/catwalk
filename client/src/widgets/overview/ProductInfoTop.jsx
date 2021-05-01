@@ -30,13 +30,11 @@ function ProductInfoTop(props) {
             <div>
               <p>
                 <s>
-                  $&nbsp;
-                  {currentStyle.original_price}
+                  {`$ ${currentStyle.original_price}`}
                 </s>
               </p>
               <p className="text-danger">
-                $&nbsp;
-                {currentStyle.sale_price}
+                {`$ ${currentStyle.sale_price}`}
               </p>
             </div>
           )}

@@ -22,6 +22,7 @@ function NoStock(props) {
             aria-haspopup="true"
             aria-expanded="false"
             aria-controls="sizeDropdown"
+            aria-label="sizeDropdown"
           >
             Out of Stock
           </button>
@@ -37,6 +38,7 @@ function NoStock(props) {
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"
+            aria-label="quantityButton"
           >
             Out of Stock
           </button>
@@ -44,7 +46,7 @@ function NoStock(props) {
         </div>
       </div>
       <div className="row mt-4">
-        <button type="button" className="btn btn-primary d-none" aria-controls="sizeDropdown">Add To Cart</button>
+        <button type="button" className="btn btn-primary d-none" aria-label="addToCartButton" aria-controls="sizeDropdown">Add To Cart</button>
       </div>
     </div>
   );
