@@ -6,6 +6,7 @@ import Question from './Question.jsx';
 import AddQuestion from './AddQuestion.jsx';
 import Search from './Search.jsx';
 import qaContext from '../../contexts/QaContext';
+import { productContext } from '../../contexts/ProductContext';
 
 const QuestionList = () => {
   const {
@@ -14,6 +15,10 @@ const QuestionList = () => {
     changeCount,
     productName,
   } = useContext(qaContext);
+  const {
+    trackClicks,
+    dateGenerator,
+  } = useContext(productContext);
   const [questionList, changeQuestionList] = useState([]);
 
   useEffect(() => {
@@ -27,6 +32,7 @@ const QuestionList = () => {
 
   const moreQuestions = () => {
     changeCount(count + 4);
+    trackClicks('More Questions', 'QandA', dateGenerator());
   };
 
   return (

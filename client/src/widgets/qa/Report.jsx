@@ -1,12 +1,16 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useContext } from 'react';
 import axios from 'axios';
 import config from '../../../../API/config.js';
+import { productContext } from '../../contexts/ProductContext';
 
 const Report = (props) => {
   const { answer, answers, changeAnswers } = props;
-
+  const {
+    trackClicks,
+    dateGenerator,
+  } = useContext(productContext);
   const handleClick = (e) => {
     e.preventDefault();
     const id = answer.id !== undefined ? answer.id : answer.answer_id;
@@ -21,6 +25,7 @@ const Report = (props) => {
       },
     })
       .then((res) => {
+        trackClicks('Report Answer', 'QandA', dateGenerator());
         const temp = answers.slice();
         for (let i = 0; i < temp.length; i++) {
           if (temp[i].id === answer.id) {

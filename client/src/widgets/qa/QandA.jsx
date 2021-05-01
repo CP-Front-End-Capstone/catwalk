@@ -28,10 +28,6 @@ const QandA = () => {
     }
   }, [product]);
 
-  const handleClick = () => {
-    changeProductId('18079');
-  };
-
   if (questions.length > 0) {
     return (
       <div className="container">
