@@ -35,7 +35,6 @@ const ReviewsRatings = (props) => {
   }, [productId, sortBy]);
 
   if (reviewsMeta && reviewList) {
-    console.log(sortBy);
     props.getTotalReviews(reviewsArray);
     return (
       <div id="reviews">

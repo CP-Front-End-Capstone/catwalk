@@ -10,6 +10,7 @@ import config from '../testconfig.js';
 import ReviewsRatings from '../../client/src/widgets/reviews/ReviewsRatings.jsx';
 import ReviewsList from '../../client/src/widgets/reviews/ReviewsList.jsx';
 import ReviewBreakdown from '../../client/src/widgets/reviews/ReviewBreakdown.jsx';
+import ProductBreakdown from '../../client/src/widgets/reviews/ProductBreakdown.jsx';
 import IndividualReview from '../../client/src/widgets/reviews/IndividualReview.jsx';
 import { productContext } from '../../client/src/contexts/ProductContext.js';
 import reviewContext from '../../client/src/contexts/ReviewContext.js';
@@ -44,6 +45,7 @@ describe('Reviews List', () => {
     const { reviewList } = reviewsData;
     const reviewsArray = reviewList.results;
     const sortBy = 'relevant';
+    const count = 2;
     const setReviewList = () => {};
     const setReviewsArray = () => {};
     const setSortBy = () => {};
@@ -139,5 +141,34 @@ describe('Reviews Breakdown', () => {
 
   it('renders all five ratings even if 0', () => {
     expect(wrapper.find('#starratings').children()).toHaveLength(5);
+  });
+});
+
+describe('Product Breakdown', () => {
+  let wrapper;
+  beforeEach(() => {
+    const { productId } = reviewsData;
+    const { product } = reviewsData;
+    const { reviewsMeta } = reviewsData;
+    const { reviewList } = reviewsData;
+    const reviewsArray = reviewList.results;
+    const sortBy = 'relevant';
+    const setReviewList = () => {};
+    const setReviewsArray = () => {};
+    const setSortBy = () => {};
+    wrapper = mount(
+      <productContext.Provider value={{ reviewsMeta, productId, product }}>
+        <reviewContext.Provider value={{
+          reviewList, reviewsArray, setReviewList, setReviewsArray, sortBy, setSortBy,
+        }}
+        >
+          <ProductBreakdown />
+        </reviewContext.Provider>
+      </productContext.Provider>,
+    );
+  });
+
+  it('renders number of bar charts as there are characteristics in reviewsMeta', () => {
+    expect(wrapper.find('#characteristics').children()).toHaveLength(4);
   });
 });

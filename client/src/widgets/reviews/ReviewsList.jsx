@@ -34,7 +34,7 @@ const ReviewsList = () => {
     <div className="container" style={{ padding: '40px' }}>
       <h5 className="row">
         <div>
-          {displayedReviews.length}
+          {reviewCount}
           {' '}
           reviews, sorted by&nbsp;
         </div>
