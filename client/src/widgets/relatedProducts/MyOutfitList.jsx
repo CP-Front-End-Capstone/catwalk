@@ -1,3 +1,6 @@
+/* eslint-disable react/no-children-prop */
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable max-len */
 /* eslint-disable no-lone-blocks */
 /* eslint-disable no-undef */
@@ -9,18 +12,46 @@ import Carousel from 'react-elastic-carousel';
 import MyOutfitCard from './MyOutfitCard.jsx';
 import ProductCard from './ProductCard.jsx';
 
-function MyOutfitList({ overviewProduct, styles }) {
-  const [outfit, setOutfit] = useState(false);
+function MyOutfitList({ overviewProduct, styles, context }) {
+  const [outfit, setOutfit] = useState([]);
+  const [outfitStyle, setOutfitStyle] = useState([]);
+  const [showFit, updateFit] = useState(true);
 
+  const breakPoints = [
+    { width: 1, itemsToShow: 1 },
+    {
+      width: 400, itemsToShow: 2, itemsToScroll: 2,
+    },
+  ];
   return (
-    <Carousel className="styling-example" itemsToShow={2} itemsToScroll={1}>
+    <Carousel className="styling-example" breakPoints={breakPoints}>
       <div className="container">
         <div className="row">
-          <div className="card-deck p-3">
-            <MyOutfitCard updateFit={setOutfit} />
+          <div className="card-deck p-2">
+            <MyOutfitCard
+              updateFit={setOutfit}
+              overviewProduct={overviewProduct}
+              outfit={outfit}
+              styles={styles}
+              outfitStyle={outfitStyle}
+              setOutfitStyle={setOutfitStyle}
+              context={context}
+            />
           </div>
-          <div className="card-deck p-3">
-            {outfit ? <ProductCard overviewProduct={overviewProduct} style={styles[0]} updateFit={setOutfit} /> : null}
+          <div className="card-deck p-2">
+            {outfit.length > 0 ? outfit.map((fit, index) => (
+              <ProductCard
+                overviewProduct={fit}
+                outfit={outfit}
+                setOutfit={setOutfit}
+                outfitStyle={outfitStyle}
+                setOutfitStyle={setOutfitStyle}
+                style={outfitStyle[index] ? outfitStyle[index] : styles[0]}
+                updateFit={updateFit}
+                context={context}
+                key={index}
+              />
+            )) : null}
           </div>
         </div>
       </div>
